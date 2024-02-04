@@ -2,10 +2,6 @@
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import image1 from "../../images/heroImage1.svg";
-import image2 from "../../images/heroImage2.svg";
-import image3 from "../../images/heroImage3.svg";
-import image4 from "../../images/heroImage4.svg";
 import Image from "next/image";
 
 const CustomSlider = () => {
@@ -30,18 +26,18 @@ const CustomSlider = () => {
       <div className=" ">
         <Slider {...settings}>
           <div>
-            <Image alt="hero image" src={image1} height={300} width={1600} />
+            <Image alt="hero image" src={"images/heroImage1.svg"} height={300} width={1600} />
           </div>
           <div>
-            <Image alt="hero image" src={image2} height={300} width={1600} />
-          </div>
-
-          <div>
-            <Image alt="hero image" src={image3} height={300} width={1600} />
+            <Image alt="hero image" src={"images/heroImage2.svg"} height={300} width={1600} />
           </div>
 
           <div>
-            <Image alt="hero image" src={image4} height={300} width={1600} />
+            <Image alt="hero image" src={"images/heroImage3.svg"} height={300} width={1600} />
+          </div>
+
+          <div>
+            <Image alt="hero image" src={"images/heroImage4.svg"} height={300} width={1600} />
           </div>
 
           

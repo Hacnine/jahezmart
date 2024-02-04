@@ -8,14 +8,14 @@ import {
   import { Badge, Button, Box, Link } from "@mui/material";
   import Image from "next/image";
   import React from "react";
-  import logo from "../../images/logo.svg";
+
 import Navbar from "./Navbar";
 const Header = () => {
   return (
     <>
     <div className="   container mx-auto" style={{background:"Cornsilk"}}>
     <div className="py-4   flex  items-center justify-between px-2" >
-      <Image src={logo} width={200} height={200} alt="logo" />
+      <Image src="/images/logo.svg" width={200} height={200} alt="logo" />
 
       <div className=" lg:flex items-center justify-center  hidden ">
         <input

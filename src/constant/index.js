@@ -1,28 +1,26 @@
-import van from "../images/icons/delivery-van.svg";
-import moneyback from "../images/icons/money-back.svg";
-import service from "../images/icons/service-hours.svg";
-import category1 from "../images/category/category-1.jpg";
-import category2 from "../images/category/category-2.jpg";
-import category3 from "../images/category/category-3.jpg";
-import category4 from "../images/category/category-4.jpg";
-import category5 from "../images/category/category-5.jpg";
-import category6 from "../images/category/category-6.jpg";
-
 export const featureCardInfo = [
-  { image: van, title: "Free Shipping", description: "Order over $200" },
   {
-    image: moneyback,
+    image: "/images/icons/delivery-van.svg",
+    title: "Free Shipping",
+    description: "Order over $200",
+  },
+  {
+    image: "/images/icons/money-back.svg",
     title: "Money Back",
     description: "30 Days Money Back Guarantee",
   },
-  { image: service, title: "Free Shipping", description: "Customer support" },
+  {
+    image: "/images/icons/service-hours.svg",
+    title: "Free Shipping",
+    description: "Customer support",
+  },
 ];
 
 export const shopByCategory = [
-  { image: category1, title: "Bedroom" },
-  { image: category2, title: "Mattress" },
-  { image: category3, title: "Office" },
-  { image: category4, title: " Outdoor" },
-  { image: category5, title: "Lounges & Sofa" },
-  { image: category6, title: "Living & Dining" },
+  { image: "/images/category/category-1.jpg", title: "Bedroom" },
+  { image: "/images/category/category-2.jpg", title: "Mattress" },
+  { image: "/images/category/category-3.jpg", title: "Office" },
+  { image: "/images/category/category-4.jpg", title: " Outdoor" },
+  { image: "/images/category/category-5.jpg", title: "Lounges & Sofa" },
+  { image: "/images/category/category-6.jpg", title: "Living & Dining" },
 ];
