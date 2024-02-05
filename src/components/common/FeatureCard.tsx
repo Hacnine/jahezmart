@@ -14,7 +14,7 @@ const FeatureCard: React.FC<FeatureCardProps> = ({
 }) => {
   return (
     
-        <div className="bg-burlywood rounded-md px-3 py-6 flex justify-center items-center gap-5">
+        <div className="bg-burlywood rounded-md px-3 py-6 flex justify-center items-center gap-5 rounded-tl-3xl rounded-br-3xl">
           <Image
             src={image}
             width={48}

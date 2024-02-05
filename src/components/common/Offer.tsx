@@ -14,7 +14,7 @@ interface  OfferProps {
 
 const Offer:React.FC<OfferProps>  = ({image,offerPersentase, offerType, type, bg}) => {
   return (
-    <div className={`${bg} w-[48%] h-[235px] px-10 py-10 between`}>
+    <div className={`${bg} md:w-[50%] w-full h-[235px] px-10 py-10 between`}>
         
         <div className=" w-fit ">
             <p className="text-lg font-semibold text-red-500  leading-9">{offerPersentase}</p>

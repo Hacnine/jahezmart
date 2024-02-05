@@ -1,10 +1,13 @@
 [
   {
     "id": "1",
-    "name": "Jazz 2 Seater Sofa",
+    "name": "2 Seater Sofa",
+    "brand": "Jazz",
     "price": 719,
     "discount": 45,
-    "new_product": true,
+    "recommended": true,
+    "rating": 4.9,
+    "reviews": 230,
     "colors": ["gray", " sienna"],
     "images": {
       "gray": [
@@ -25,8 +28,6 @@
     ],
     "category": "sofa",
     "featured": true,
-    "rating": 4.9,
-    "star": 80,
     "full_details": [
       {
         "Assembled_Size:": "L 233cm x D 86cm x H 85cm",
@@ -42,9 +43,12 @@
   {
     "id": "2",
     "name": "Gecko Single Bed",
+    "brand": "Gecko",
     "price": 99,
     "discount": 60,
-    "new_product": true,
+    "rating": 4.6,
+    "reviews": 50,
+    "recommended": true,
     "colors": ["pink", "white"],
     "images": {
       "firstColor": [
@@ -73,8 +77,6 @@
     ],
     "category": "bed",
     "featured": true,
-    "rating": 4.6,
-    "star": 282,
     "full_details": [
       {
         "Assembled Size": "L 100cm x D 200cm x H 91cm",
@@ -90,10 +92,13 @@
 
   {
     "id": "3",
-    "name": "Venus Single Bed",
+    "name": "Single Bed",
+    "brand": "Venus",
     "price": 299,
     "discount": 50,
-    "new_product": true,
+    "recommended": true,
+    "rating": 3.9,
+    "reviews": 150,
     "colors": ["pink"],
     "images": {
       "firstColor": [
@@ -113,8 +118,6 @@
     ],
     "category": "bed",
     "featured": true,
-    "rating": 4.5,
-    "star": 194,
     "full_details": [
       {
         "Assembled Size": "L 109cm x D 196cm x H 104cm",
@@ -130,9 +133,12 @@
 
   {
     "id": "4",
-    "name": "Como Single Bed With Storage",
+    "name": "Single Bed With Storage",
+    "brand": "Como",
     "price": 399,
-    "new_product": true,
+    "recommended": true,
+    "rating": 3.9,
+    "reviews": 10,
     "colors": ["black", "white"],
     "images": {
       "black": [
@@ -152,7 +158,6 @@
     ],
     "category": "bed",
     "featured": true,
-    "rating": 3.9,
     "star": 69,
     "full_details": [
       {
@@ -169,10 +174,12 @@
 
   {
     "id": "5",
-    "name": "Rhodes Outdoor Carver Dining Chair",
+    "name": " Carver Dining Chair",
+    "brand": "Rhodes",
     "price": 89,
     "discount": 10,
-    "new_product": true,
+    "rating": 4.9,
+    "reviews": 150,
     "colors": ["black"],
     "images": {
       "black": [
@@ -186,9 +193,8 @@
         "description": "Looking to spruce up your outdoor living space with a new on-trend design? The Rhodes Outdoor Carver Dining Chair is exactly what you’ve been searching for. The seat has been crafted from moulded polypropylene and matched back with metal legs, resulting in a sturdy construction. The color has been UV stabilized to prevent fading when exposed to the sun, and galvanized hardware and legs to prevent rusting and corrosion. The Rhodes Outdoor Carver Dining Chair is lightweight and incredibly multipurpose. Perfect for indoor and outdoor dining or can be moved around the pool or garden on those long summer days. Grab yours before summer's over!"
       }
     ],
-    "category": "dining chair",
+    "category": "dining",
     "featured": true,
-    "rating": 4.9,
     "star": 86,
     "full_details": [
       {
@@ -203,10 +209,13 @@
 
   {
     "id": "6",
-    "name": "Willow Bunk Bed",
+    "name": "Bunk Bed",
+    "brand": "Willow",
     "price": 399,
-    "discount": 429,
+    "discount": 42,
     "new_product": false,
+    "rating": 3.5,
+    "reviews": 10,
     "colors": ["white", "black"],
     "images": {
       "white": [
@@ -236,9 +245,8 @@
         "description": "Click [here](mattress_link) to view the Sleeptight Single Mattress, our recommendation for all top-level bunk beds."
       }
     ],
-    "category": "bunk bed",
+    "category": "Kids Furniture",
     "featured": true,
-    "rating": 4.5,
     "star": 39,
     "full_details": [
       {
@@ -257,10 +265,12 @@
   },
   {
     "id": "7",
-    "name": "Keller 8 Drawer Fabric Dresser",
+    "name": "8 Drawer Fabric Dresser",
+    "brand": "Keller",
     "price": 119,
-    "discount": 139,
-    "new_product": true,
+    "new_product": false,
+    "rating": 4.9,
+    "reviews": 250,
     "colors": ["gray"],
     "images": {
       "gray": [
@@ -278,8 +288,7 @@
         "description": "Durable MDF tabletop\nFabric drawers\nStrong rustproof steel frame\nSpacious removable drawer\nNon-woven rigid fabric\nPull handles\nSmooth runner\nAdjustable feet protect floor from scratches\n\nThis product is not on display or sold in stores. This product is only available for delivery."
       }
     ],
-    "category": "dresser",
-    "rating": 4.2,
+    "category": "other",
     "star": 19,
     "full_details": [
       {
@@ -295,9 +304,12 @@
 
   {
     "id": "8",
-    "name": "Giselle Four Poster Single Bed",
+    "name": "Four Poster Single Bed",
+    "brand": "Giselle",
     "price": 289,
     "new_product": true,
+    "rating": 4.5,
+    "reviews": 150,
     "colors": ["white"],
     "images": {
       "white": [
@@ -316,7 +328,6 @@
       }
     ],
     "category": "bed",
-    "rating": 4.8,
     "star": 34,
     "full_details": [
       {
@@ -330,7 +341,8 @@
   },
   {
     "id": "9",
-    "name": "Cosmic Bunk Bed",
+    "name": " Bunk Bed",
+    "brand": "Cosmic",
     "price": 299,
     "new_product": true,
     "colors": ["grey"],
@@ -379,9 +391,12 @@
 
   {
     "id": "9",
-    "name": "Jordan Single Trundle Bed",
+    "name": " Single Trundle Bed",
+    "brand": "Jordan",
     "price": 179,
     "new_product": true,
+    "rating": 5,
+    "reviews": 150,
     "colors": ["white"],
     "images": {
       "white": [
@@ -404,7 +419,6 @@
       }
     ],
     "category": "bed",
-    "rating": 4.5,
     "star": 48,
     "full_details": [
       {
@@ -420,9 +434,12 @@
 
   {
     "id": "10",
-    "name": "Java Dresser",
+    "name": " Dresser",
+    "brand": "Java",
     "price": 450,
-    "new_product": true,
+    "new_product": false,
+    "rating": 4.9,
+    "reviews": 150,
     "colors": ["peru"],
     "images": {
       "peru": [
@@ -444,9 +461,7 @@
         "description": "At Fantastic Furniture safety is one of our biggest priorities. On the Secure Me Tab, learn more about toppling, and why securing your product with wall straps is so important."
       }
     ],
-    "category": "dresser",
-    "rating": 4.1,
-    "star": 42,
+    "category": "other",
     "full_details": [
       {
         "Assembled Size": "L 90cm x D 40cm x H 84cm",
@@ -462,9 +477,12 @@
 
   {
     "id": "11",
-    "name": "Avalon King Single Bedroom Package",
+    "name": "Single Bedroom Package",
+    "brand": "Avalon King",
     "price": 430,
-    "new_product": true,
+    "new_product": false,
+    "rating": 3.9,
+    "reviews": 150,
     "colors": ["peru"],
     "images": {
       "peru": [
@@ -486,8 +504,7 @@
         "description": "At Fantastic Furniture safety is one of our biggest priorities. On the Secure Me Tab, learn more about toppling, and why securing your product with wall straps is so important."
       }
     ],
-    "category": "bedroom package",
-    "rating": 89,
+    "category": "Kids Furniture",
     "full_details": [
       {
         "Colour": "Whitewash",
@@ -525,14 +542,23 @@
 
   {
     "id": "12",
-    "name": "Tivoli Armchair Sofa",
+    "name": "Armchair Sofa",
+    "brand": "Tivoli",
     "price": 399,
-    "discount": 499,
+    "discount": 9,
     "new_product": true,
+    "rating": 4.9,
+    "reviews": 150,
     "colors": ["black", "tan"],
     "images": {
-      "black": [" /images/products/product13.1.jpg", "/images/products/product13.2.jpg"],
-      "tan": ["/images/products/product13.3.jpg", "/images/products/product13.4.jpg"]
+      "black": [
+        " /images/products/product13.1.jpg",
+        "/images/products/product13.2.jpg"
+      ],
+      "tan": [
+        "/images/products/product13.3.jpg",
+        "/images/products/product13.4.jpg"
+      ]
     },
     "description": [
       {
@@ -545,7 +571,6 @@
       }
     ],
     "category": "chair",
-    "rating": 25,
     "full_details": [
       {
         "Assembled Size": "L 104cm x D 88cm x H 85cm",
@@ -564,9 +589,12 @@
 
   {
     "id": "13",
-    "name": "Kobi Large Wide Bookcase With Glass Doors",
+    "name": "Large Wide Bookcase",
+    "brand": "Kobi",
     "price": 299,
     "new_product": true,
+    "rating": 4.4,
+    "reviews": 150,
     "colors": ["natural wood"],
     "images": {
       "natural wood": [
@@ -585,7 +613,6 @@
       }
     ],
     "category": "office",
-    "rating": 4.4,
     "star": 161,
     "full_details": [
       {
@@ -601,15 +628,16 @@
 
   {
     "id": "14",
-    "name": "Kobi Large Wide Bookcase with Panelled Doors",
+    "name": "Large Wide Bookcase",
+    "brand": "Kobi",
     "price": 259,
-    "discount": 289,
+    "discount": 28,
     "new_product": true,
+    "rating": 4.4,
+    "reviews": 150,
     "colors": ["black"],
     "images": {
-      "black": [
-        "/images/products/product15.jpg"
-      ]
+      "black": ["/images/products/product15.jpg"]
     },
     "description": [
       {
@@ -625,8 +653,7 @@
         "description": "Material: Particle Board and MDF (Medium Density Fibreboard)\nColour: Oak\nHeight: 201cm\nLength: 80cm\nDepth: 28cm\n\nThis product is not on display or sold in stores. This product is only available for delivery."
       }
     ],
-    "category": "bookcase",
-    "rating": 5.0,
+    "category": "office",
     "star": 3,
     "full_details": [
       {
@@ -646,14 +673,15 @@
 
   {
     "id": "15",
-    "name": "Windsor Dining Chair",
+    "name": "Dining Chair",
+    "brand": "Windsor",
     "price": 169,
     "new_product": true,
+    "rating": 5,
+    "reviews": 150,
     "colors": ["gray"],
     "images": {
-      "gray": [
-        "/images/products/product16.jpg"
-      ]
+      "gray": ["/images/products/product16.jpg"]
     },
     "description": [
       {
@@ -665,8 +693,7 @@
         "description": "Enjoy the Windsor Dining Chair first for its classic good look, then for its sturdy construction. Built with you and your family in mind, the Windsor features dark legs made from solid rubber wood."
       }
     ],
-    "category": "dining chair",
-    "rating": 4.8,
+    "category": "dining",
     "star": 249,
     "full_details": [
       {
@@ -677,10 +704,629 @@
         "Delivery type": "Large / bulky item"
       }
     ]
-  }
-  
-  
+  },
 
-  
-  
+  {
+    "id": "16",
+    "name": "Twin Bunk Storage Bed",
+    "brand": "Jordan",
+    "price": 649,
+    "discount": 5,
+    "new_product": true,
+    "rating": 4.9,
+    "reviews": 150,
+    "colors": ["black", "white"],
+    "images": {
+      "black": ["/images/products/product17.1.jpg"],
+      "white": ["/images/products/product17.2.jpg"]
+    },
+    "description": [
+      {
+        "title": "Sleeper Storage Solution",
+        "description": "The Jordan Collection is the storage solution every parent needs for their little one's bedroom. Its classic design gives you plenty of space to neatly tuck away their books and toys."
+      },
+      {
+        "title": "Included in this package",
+        "description": "Jordan Bunk Bed\nJordan Underbed Storage Drawer"
+      },
+      {
+        "title": "Jordan Storage Drawer",
+        "description": "The Jordan Underbed Storage Drawer is the extra storage solution your kid needs! With 4 compartments to keep things tidy, it has plenty of space to store blankets, toys, and more. Castor wheels make it easy to slide in and out from under the Jordan Beds and Bunks."
+      },
+      {
+        "title": "Jordan Bunk Bed",
+        "description": "Great for kids’ rooms and guest bedrooms, this stylish bunk bed comfortably sleeps one underneath and one on top. As your family grows or your needs change, then separate the bunks. Mattress not included."
+      }
+    ],
+    "category": "Kids Furniture",
+    "star": 142,
+    "full_details": [
+      {
+        "Colour": "White",
+        "Assembly": "Required",
+        "Delivery type": "Large / bulky item"
+      }
+    ]
+  },
+  {
+    "id": "17",
+    "name": "Bunk Bed",
+    "brand": "Arlo",
+    "price": 499,
+    "new_product": false,
+    "rating": 4.9,
+    "reviews": 150,
+    "colors": ["MistyRose", "DarkGray"],
+    "images": {
+      "MistyRose": [
+        "/images/products/product18.3.jpg",
+        "/images/products/product18.4.jpg"
+      ],
+
+      "DarkGray": [
+        "/images/products/product18.1.jpg",
+        "/images/products/product18.2.jpg"
+      ]
+    },
+    "description": [
+      {
+        "title": "Introducing our Arlo Twin Bunk",
+        "description": "The Arlo Twin Bunk is the first fabric bunk in our range! Exclusively designed by our in-house Buyer and Product Engineer, this bunk is crafted with Australian families in mind. Featuring a stylish light oak solid timber guard rail frame and ladder, the Arlo Bunk is a great alternative for parents who want a soft and cozy option for their kids. The premium timber construction and foam cushioning ensure that the bunk is sturdy and comfortable, making it a great option for kids and teens alike."
+      },
+      {
+        "title": "Safety First",
+        "description": "This is an Orange Tick AFRDI Certified Bunk that complies with Australian Safety Standards. Available in two colors - grey and blush - the Arlo Bunk is upholstered in a durable polyester fabric that will stand up to years of wear and tear. The bunk is quick and easy to assemble, making it a hassle-free addition to any bedroom."
+      },
+      {
+        "title": "Secure Me",
+        "description": "At Fantastic Furniture, safety is one of our biggest priorities. Learn more about toppling and why securing your product with wall straps is so important."
+      },
+      {
+        "title": "Mattress Recommendations",
+        "description": "Click here to view the Sleeptight Single Mattress, our recommendation for all top-level bunk beds."
+      }
+    ],
+    "category": "Kids Furniture",
+    "star": 7,
+    "full_details": [
+      {
+        "Assembled Size": "L 217cm x D 110cm x H 184cm",
+        "Packaged Size (Box1)": "L 192cm x D 77cm x H 15cm",
+        "Packaged Size (Box2)": "L 189cm x D 108cm x H 28cm",
+        "Colour": "Blush",
+        "Assembly": "Required",
+        "Delivery type": "Large / bulky item",
+        "Type": "Bunk Bed",
+        "Style": "Modern",
+        "Suggested Mattress Height": "20cm",
+        "Sleeping Capacity": 2.0
+      }
+    ]
+  },
+  {
+    "id": "18",
+    "name": "Bunk Bedroom Package",
+    "brand": "Cabin",
+    "price": 999,
+    "new_product": false,
+    "rating": 4.9,
+    "reviews": 150,
+    "colors": ["BurlyWood"],
+    "images": {
+      "BurlyWood": ["/images/products/product19.1.jpg"]
+    },
+    "description": [
+      {
+        "title": "Hideaway Cabin",
+        "description": "Kids and parents alike will love this cleverly designed compact bunk bed, lowboy, and bedside. The low rise design and deep sides on the top bunk make this the perfect first bunk bed, providing comfort and safety. The built-in reversible ladder is a great space saver, and a light ash finish gives a smart contemporary look to suit both boys and girls. (Mattress & accessories not included)"
+      }
+    ],
+    "category": "Kids Furniture",
+    "full_details": [
+      {
+        "Assembly": "Required",
+        "Delivery type": "Large / bulky item",
+        "Includes": "Lowboy",
+        "Type": "Bedroom",
+        "Number Of Pieces": 3,
+        "Style": "Scandi"
+      }
+    ]
+  },
+
+  {
+    "id": "19",
+    "name": "Medium Mattress",
+    "brand": "Sleepapedic Queen",
+    "price": 899,
+    "discount": 100,
+    "new_product": false,
+    "rating": 4.9,
+    "reviews": 150,
+    "colors": ["DarkGray"],
+    "images": {
+      "DarkGray": [
+        "/images/products/product20.1.jpg",
+        "/images/products/product20.2.jpg"
+      ]
+    },
+
+    "description": [
+      {
+        "title": "Luxurious and Contemporary Design",
+        "description": "The Sleepapedic range features a soft, luxurious fabric euro-top, with sophisticated quilting and multiple comfort layers for the ultimate support and comfort of a plush feel mattress. Rest easy knowing that the Sleepapedic Mattress range comes with a 10-year warranty."
+      },
+      {
+        "title": "Multiple Comfort Layers",
+        "description": "The Sleepapedic Mattress range is designed so that each feel features a different assortment of comfort layers so you can pick the perfect mattress feel for you. In addition, the gel-infused memory foam layer keeps you cool and comfortable, offering both molded support and heat-dissipation properties. The gel memory foam comfort layer provides pressure relief as it cradles the body, which eliminates the feeling of stiffness and helps to reduce muscle and joint pains. (Base is sold separately)"
+      },
+      {
+        "title": "Spring System Designed for Comfort",
+        "description": "The Sleepapedic Mattress has a 5-zone pocket spring system to provide you greater support where you need it! The 5-zone spring system is designed to provide the greatest support at the widest parts of the body; the shoulder and hips. This spring system encourages a straighter spine when lying down, which is the best position for a good night’s rest. The mattress also contours to your body shape for maximum comfort and reduces partner disturbance for a great, uninterrupted night’s sleep."
+      }
+    ],
+    "category": "mattress",
+    "full_details": [
+      {
+        "Assembled Size": "L 153cm x D 203cm x H 31cm",
+        "Packaged Size": "L 154cm x D 204cm x H 32cm",
+        "Delivery type": "Large / bulky item",
+        "Feel": "Medium",
+        "Style": "Traditional",
+        "Spring Type": "Pocket Spring",
+        "Features": "Gel Infused",
+        "Zones": "5 Zones",
+        "Where Was I Made": "Made Overseas"
+      }
+    ]
+  },
+  {
+    "id": "20",
+    "name": " Double Bed",
+    "brand": "Tait",
+    "price": 299,
+    "rating": 4.6,
+    "reviews": 90,
+    "colors": ["DarkGray"],
+    "images": {
+      "DarkGray": [
+        "/images/products/product21.1.jpg",
+        "/images/products/product21.2.jpg"
+      ]
+    },
+    "description": [
+      {
+        "title": "This product is not on display or sold in stores.",
+        "description": "This product is only available for delivery."
+      },
+      {
+        "title": "Features",
+        "description": "40 cm total height - 23 cm thick metal frame is super sturdy\nQuick snap system assembles in minutes\n100% polyester cover\nSmartly shipped in 1 carton provides easy delivery right to your door\nQuick assembly\nAll tools required in packaging"
+      }
+    ],
+    "category": "mattress",
+    "full_details": [
+      {
+        "Assembled Size": "L 134cm x D 187cm x H 40cm",
+        "Packaged Size": "L 28cm x D 193cm x H 20cm",
+        "Delivery type": "Medium item",
+        "Under Bed Height": "18cm",
+        "Style": "Modern",
+        "Type": "Bed Base",
+        "Base Type": "No Slats"
+      }
+    ]
+  },
+
+  {
+    "id": "21",
+    "name": "Double Mattress",
+    "brand": "Spine-Lab",
+    "price": 189,
+    "rating": 4.0,
+    "reviews": 50,
+    "colors": ["White"],
+    "images": {
+      "White": [
+        "/images/products/product22.1.jpg",
+        "/images/products/product22.2.jpg"
+      ]
+    },
+    "description": [
+      {
+        "title": "Sleep In Comfort",
+        "description": "Sleep in comfort and awake refreshed with the Spine-Lab 5-Zone Bonnell Spring Mattress. The 5-zone design of the mattress provides both pressure-relief and support. The mattress has been designed using traditional bonnell-spring construction finished with several layers of high-density foam. The cool-touch quilted cover and the breathable upper memory foam layer ensure that heat does not get trapped for the maximum in comfort. The upper foam layers have been designed to adjust to the body and provide a customised and relaxing sleep surface, while the lower bonnell spring layer has been designed to offer long-lasting support."
+      },
+      {
+        "title": "Features",
+        "description": "Medium-firm design\nHypo-allergenic material\nSturdy inner bonnell-spring design\n5-zone design provides both support and pressure redistribution\nThe upper foam layers adjust to the body to provide a customised and relaxing sleep surface\nThe lower bonnell spring layer offers lasting support\nHigh-density foam\nCool-touch quilted cover"
+      },
+      {
+        "title": "This product is not on display or sold in stores.",
+        "description": "This product is only available for delivery."
+      }
+    ],
+    "category": "mattress",
+    "full_details": [
+      {
+        "Assembled Size": "L 137cm x D 187cm x H 21cm",
+        "Packaged Size": "L 147cm x D 30cm x H 30cm",
+        "Delivery type": "Medium item",
+        "Feel": "Medium",
+        "Spring Type": "Bonnell Spring",
+        "Comfort Layers": "High Density Foam",
+        "Zones": "5 Zones"
+      }
+    ]
+  },
+
+  {
+    "id": "23",
+    "name": " Queen Medium Mattress",
+    "brand": "Sleepscape",
+    "price": 399,
+    "rating": 4.1,
+    "reviews": 150,
+    "colors": ["DarkGray"],
+    "images": {
+      "DarkGray": [
+        "/images/products/product23.1.jpg",
+        "/images/products/product23.2.jpg"
+      ]
+    },
+    "description": [
+      {
+        "title": "Supportive",
+        "description": "The Sleepscape is perfect for every-body! A medium-firm feel, the pocket springs of this mattress provide you with support exactly where you need it. With a eurotop design, you’ll be enjoying edge to edge comfort without fear of rolling off."
+      },
+      {
+        "title": "Comfortable",
+        "description": "Upholstered in a quality, soft-feeling jacquard fabric, the Sleepscape is comfortable and suitable for most types of sleeper."
+      },
+      {
+        "title": "Mattress in a Box",
+        "description": "The Sleepscape Mattress is compressed, rolled and boxed to fit in your car for easy transportation. Take the Sleepscape Mattress home today, unroll it and allow it to decompress for 48 hours to enjoy the blissful night’s sleep you’ve been dreaming of."
+      }
+    ],
+    "category": "mattress",
+    "full_details": [
+      {
+        "Assembled Size": "L 153cm x D 203cm x H 24cm",
+        "Packaged Size": "L 33cm x D 32cm x H 160cm",
+        "Delivery type": "Large / bulky item",
+        "Feel": "Medium",
+        "Spring Type": "Pocket Spring",
+        "Features": "Eurotop Comfort Layer",
+        "Zones": "No Zoning",
+        "Where Was I Made": "Made Overseas"
+      }
+    ]
+  },
+  {
+    "id": "24",
+    "name": " Double Mattress",
+    "brand": "Sleeptight",
+    "price": 199,
+    "rating": 4.9,
+    "reviews": 150,
+    "colors": ["White"],
+    "images": {
+      "White": [
+        "/images/products/product24.2.jpg",
+        "/images/products/product24.1.jpg"
+      ]
+    },
+    "description": [
+      {
+        "title": "Mattress in a Box",
+        "description": "Getting a great night's sleep has never been quicker or easier than with this comfortable take-home mattress. It comes rolled and compressed so you can pack it in your car and take it home the same day. Just open it up and the Sleeptight mattress is ready to sleep on within 48 hours of opening."
+      },
+      {
+        "title": "Supportive Comfort",
+        "description": "Featuring world-renowned Bonnell springs, this mattress will support you while you sleep. A thick foam layer provides additional comfort to enhance deep sleep."
+      }
+    ],
+    "category": "mattress",
+    "full_details": [
+      {
+        "Assembled Size": "L 138cm x D 188cm x H 18cm",
+        "Packaged Size": "L 29cm x D 30cm x H 146cm",
+        "Delivery type": "Large / bulky item",
+        "Feel": "Medium",
+        "Style": "Traditional",
+        "Spring Type": "Bonnell Spring",
+        "Zones": "No Zoning",
+        "Where Was I Made": "Made Overseas",
+        "Mattress In A Box": "Yes"
+      }
+    ]
+  },
+  {
+    "id": "25",
+    "name": " 6 Seater Dining Set ",
+    "brand": "Havana",
+    "price": 329,
+    "rating": 4.3,
+    "reviews": 50,
+    "colors": ["White"],
+    "images": {
+      "White": [
+        "/images/products/product25.1.jpg",
+        "/images/products/product25.2.jpg"
+      ]
+    },
+    "description": [
+      {
+        "title": "Havana 6 Seater Dining Table",
+        "description": "The Havana 6 Seater Dining Table adds a cool coastal feel to your home. Featuring an oak look finish that works well with a variety of colorways, you can easily style this dining table with bright pops of color or neutral dining chairs."
+      },
+      {
+        "title": "Province Dining Chair",
+        "description": "Timeless and elegant, add a touch of French café style to your dining room with the Province Dining Chair. The Province offers a fresh and fun take on the popular home décor look with its curved seat back and splayed legs. Made from durable powder-coated steel with an easy-clean polypropylene seat."
+      }
+    ],
+    "category": "dining",
+    "full_details": [
+      {
+        "Colour": "White",
+        "Assembly": "Required",
+        "Delivery type": "Large / bulky item",
+        "Seating Capacity": "6 Seater",
+        "Style": "Coastal",
+        "Shape": "Rectangle"
+      }
+    ]
+  },
+  {
+    "id": "26",
+    "name": "6 Seater Dining Set",
+    "brand": "Torkay",
+    "price": 1099,
+    "rating": 4.6,
+    "reviews": 150,
+    "colors": ["Walnut"],
+    "images": {
+      "Walnut": [
+        "/images/products/product26.1.jpg",
+        "/images/products/product26.2.jpg"
+      ]
+    },
+    "description": [
+      {
+        "title": "French Flair",
+        "description": "Add a French flavour to your dining room with this delightful 6-Seater Dining Table with Newhaven Chairs. Featuring classic French provincial styling with a combination of natural timber top with white legs, your home will receive an instant French makeover."
+      },
+      {
+        "title": "6 Seater Dining Table",
+        "description": "The 6 Seater Dining Table features classic French provincial styling with a combination of natural timber top with white legs, your home will receive an instant French makeover."
+      },
+      {
+        "title": "Newhaven Dining Chairs",
+        "description": "The Newhaven Dining Chair is not just a good-looking chair, it’s easy to assemble and easy to clean too! With its durable construction, your next dinner will be fuss-free."
+      }
+    ],
+    "category": "dining",
+    "full_details": [
+      {
+        "Colour": "Walnut",
+        "Assembly": "Required",
+        "Delivery type": "Large / bulky item",
+        "Seating Capacity": "6 Seater"
+      }
+    ]
+  },
+
+  {
+    "id": "32",
+    "name": "4 Seater Dining Set With Dimi Chairs",
+    "price": 649,
+    "rating": 4.9,
+    "reviews": 90,
+    "colors": ["White"],
+    "images": {
+      "White": [
+        "/images/products/product27.1.jpg",
+        "/images/products/product27.2.jpg"
+      ]
+    },
+    "brand": "Waverley",
+    "description": [],
+    "category": "dining set",
+    "full_details": [
+      {
+        "Colour": "White",
+        "Assembly": "Required",
+        "Delivery type": "Large / bulky item",
+        "Seating Capacity": "4 Seater",
+        "Style": "Contemporary",
+        "Shape": "Round"
+      }
+    ]
+  },
+  {
+    "id": "28",
+    "name": "6 Seater Dining Set With Samba Chairs",
+    "price": 569,
+    "rating": 4.9,
+    "reviews": 150,
+    "colors": ["Grey"],
+    "images": {
+      "Grey": [
+        "/images/products/product28.1.jpg",
+        "/images/products/product28.2.jpg"
+      ]
+    },
+    "brand": "Havana",
+    "description": [
+      {
+        "title": "Stylish and Sophisticated",
+        "description": "The on-trend Samba Dining Chair is the perfect dining companion. With stylish oak-look metal legs and a fabric upholstered seat, you’ll be dining in style and comfort at every meal. The Samba Dining Chair is easy to assemble and has a weight capacity of 120kg."
+      },
+      {
+        "title": "Let There Be Light",
+        "description": "Create a refreshingly bright and breezy look in your dining room with the beautiful Havana Dining Set. Featuring the Havana Table and paired with the stylish Mambo Dining Chair, this dining set will give you the latest Scandinavian look for less. Paired with the on-trend Samba chair to give your dining room a funky retro edge."
+      },
+      {
+        "title": "Contemporary Design",
+        "description": "Entertain in style with the contemporary looking Havana dining table featuring a light oak textured finish and comfortably seating 6 people."
+      }
+    ],
+    "category": "dining",
+    "full_details": [
+      {
+        "Colour": "Grey",
+        "Assembly": "Required",
+        "Delivery type": "Large / bulky item",
+        "Seating Capacity": "6 Seater",
+        "Style": "Scandi",
+        "Shape": "Rectangle"
+      }
+    ]
+  },
+  {
+    "id": "28",
+    "name": "6 Seater Dining Set With Samba Chairs",
+    "price": 569,
+    "recommended": true,
+    "rating": 3.9,
+    "reviews": 150,
+    "colors": ["gray"],
+    "images": {
+      "gray": ["/images/products/product29.1.jpg"]
+    },
+    "brand": "Havana",
+    "description": [
+      {
+        "title": "Stylish and Sophisticated",
+        "description": "The on-trend Samba Dining Chair is the perfect dining companion. With stylish oak-look metal legs and a fabric upholstered seat, you’ll be dining in style and comfort at every meal. The Samba Dining Chair is easy to assemble and has a weight capacity of 120kg."
+      },
+      {
+        "title": "Let There Be Light",
+        "description": "Create a refreshingly bright and breezy look in your dining room with the beautiful Havana Dining Set. Featuring the Havana Table and paired with the stylish Mambo Dining Chair, this dining set will give you the latest Scandinavian look for less. Paired with the on-trend Samba chair to give your dining room a funky retro edge."
+      },
+      {
+        "title": "Contemporary Design",
+        "description": "Entertain in style with the contemporary looking Havana dining table featuring a light oak textured finish and comfortably seating 6 people."
+      }
+    ],
+    "category": "outdoor",
+    "full_details": [
+      {
+        "Colour": "Grey",
+        "Assembly": "Required",
+        "Delivery type": "Large / bulky item",
+        "Seating Capacity": "6 Seater",
+        "Style": "Scandi",
+        "Shape": "Rectangle"
+      }
+    ]
+  },
+  {
+    "id": "29",
+    "name": " Outdoor Umbrella",
+    "price": 159,
+    "discount": 20,
+    "recommended": true,
+    "rating": 4.9,
+    "reviews": 150,
+    "colors": ["Black"],
+    "images": {
+      "Black": [
+        "/images/products/product30.1.jpg",
+        "/images/products/product30.2.jpg"
+      ]
+    },
+    "brand": "Weston",
+    "description": [
+      {
+        "title": "Features",
+        "description": "Give your outdoor space a fresh look with this stylish Weston 2.7m Outdoor Umbrella that’s picture-perfect for entertaining friends and family. Designed specifically to endure the extreme Australian weather. Features anodized aluminium frames and sturdy polyester canopies."
+      }
+    ],
+    "category": "outdoor",
+    "full_details": [
+      {
+        "Assembled Size": "L 273cm x D 273cm x H 180cm",
+        "Packaged Size": "L 180cm x D 15cm x H 16cm",
+        "Colour": "Black",
+        "Assembly": "Required",
+        "Delivery type": "Small item",
+        "Type": "Umbrella"
+      }
+    ]
+  },
+  {
+    "id": "30",
+    "name": "Rocha 4 Seater Outdoor Lounge Set",
+    "price": 269,
+    "discount": 30,
+    "recommended": true,
+    "rating": 4.9,
+    "reviews": 150,
+    "colors": ["Black"],
+    "images": {
+      "Black": [
+        "/images/products/product30.3.jpg",
+        "/images/products/product30.4.jpg"
+      ]
+    },
+    "brand": null,
+    "description": [
+      {
+        "title": "Features",
+        "description": "The comfortable Rocha Lounge Set is perfect for any outdoor area. With its strong powder coated steel frame and HAR-TEX Sling seats this setting will fit seamlessly into any area. 2 Seater Sofa measures: 76cm H x 112cm W x 85cm D Armchairs measure: 76cm H x 60cm W x 85cm D Table measures: 39cm H x 85cm W x 45cm D"
+      }
+    ],
+    "category": "outdoor",
+    "full_details": [
+      {
+        "Assembled Size": "L 112cm x D 85cm x H 76cm",
+        "Packaged Size": "L 61cm x D 145cm x H 13cm",
+        "Colour": "Black",
+        "Assembly": "Required",
+        "Delivery type": "Medium item",
+        "Type": "Lounge Set"
+      }
+    ]
+  },
+  {
+    "id": "31",
+    "name": " 3 Seater Sofa",
+    "price": 1119,
+    "discount": 6,
+    "recommended": true,
+    "rating": 4.9,
+    "reviews": 150,
+    "colors": ["Brown"],
+    "images": {
+      "Brown": [
+        "/images/products/product31.1.jpg",
+        "/images/products/product31.2.jpg"
+      ]
+    },
+    "brand": "Hisky",
+    "description": [
+      {
+        "title": "About This Product",
+        "description": "The Whiskey 3 Seater Sofa brings Modest and stylish design to your space. This is an amazing piece with its style, versatility, luxury and value in one. The seat part is well supported by tacked in pocket spring with a pure foam to give you lasting comfort. It is upholstered in an eye-catching brown fabric, and its solid MDF frame construction with Metal legs makes the design simple yet functional."
+      },
+      {
+        "title": "Features",
+        "description": "Fashioned with a solid MDF frame for lasting strength and durability. Padded with high-quality foam for superior seating comfort and support. Finished with a practical linen-look Polyester fabric for the perfect blend of resilience and style. Contemporary design and neutral colour palette complements a range of popular interior styles for your convenience. Designed for ease of use and constructed to support the weight of multiple people for your peace of mind. Long armrests to encourage a relaxed posture."
+      }
+    ],
+    "category": "outdoor",
+    "full_details": [
+      {
+        "Assembled Size": "L 88cm x D 228cm x H 81cm",
+        "Packaged Size": "L 92cm x D 231cm x H 46cm",
+        "Colour": "Brown",
+        "Assembly": "Required",
+        "Delivery type": "Oversized item",
+        "Seating Capacity": "3 Seater",
+        "Features": "Sofa In A Box",
+        "Type": "Sofa"
+      }
+    ]
+  }
 ]

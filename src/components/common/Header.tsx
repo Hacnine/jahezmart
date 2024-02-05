@@ -27,9 +27,10 @@ const Header = () => {
           startIcon={<Search fontSize="large" />}
           className="bg-chocolate hover:bg-sandyBrown text-white"
           sx={{
-            backgroundColor: "red",
+            backgroundColor: "chocolate",
             px: 4,
             py: 1.5,
+            color:'white',
             borderTopRightRadius: 25,
             borderBottomRightRadius: 25,
             borderTopLeftRadius: 0,

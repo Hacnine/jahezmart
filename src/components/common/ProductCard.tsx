@@ -1,4 +1,4 @@
-"use client";
+
 import Image from "next/image";
 import React, { useState } from "react";
 
@@ -6,6 +6,7 @@ import { Button } from "@mui/material";
 import { FavoriteBorder, HeartBroken, ShoppingCart } from "@mui/icons-material";
 import IconButton from "@mui/material/IconButton";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import StarRating from "./ui/StarRating";
 
 interface ProductCardProps {
   name: string;
@@ -16,6 +17,7 @@ interface ProductCardProps {
   colors: string[];
   star?: number;
   rating: number;
+  reviews?:number
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({
@@ -27,10 +29,11 @@ const ProductCard: React.FC<ProductCardProps> = ({
   colors,
   star,
   rating,
+  reviews
 }) => {
   const [iconColor, setIconColor] = useState(false);
   // const firstImagePath = images[colors[0]];
-  console.log(images);
+  console.log('reviews', reviews);
 
   const firstColorKey = Object.keys(images)[0];
   const firstImagePath = (images as { [color: string]: string[] })[
@@ -42,54 +45,53 @@ const ProductCard: React.FC<ProductCardProps> = ({
     setIconColor(!iconColor);
   };
   return (
-    <div className=" relative shadow-md shadow-slate-400 w-fit rounded-md overflow-hidden h-[430px]">
-      <div className="w-fit h-fit relative  group shadow-md ">
-        <div className="center relative group px-4 ">
+    <div className=" relative shadow-md shadow-slate-400 w-fit rounded-md overflow-hidden h-[430px] rounded-tr-3xl rounded-bl-3xl">
+      <div className="w-fit h-fit relative  group ">
+        <div className="center relative group p-4 ">
           <img
             src={firstImagePath}
             alt=""
-            className=" md:w-[300px] w-[250px]"
+            className=" md:w-[300px] w-[250px] h-[223px]"
           />
         </div>
         <div
           className="absolute inset-0 bg-opacity-30 bg-blue-200 hover:bg-black
-          group-hover:bg-opacity-30 rounded-md transition-opacity duration-300"
+          group-hover:bg-opacity-30 rounded-md transition-color duration-300 rounded-tr-3xl rounded-bl-3xl"
         >
-          <div className="between gap-44 pl-2 pt-2">
+          <div className="between gap-44 p-2">
             {discount ? (
-              <p className="rounded-md bg-green-600 p-1 text-white">
-                {discount}$
+              <p className="rounded-sm w-10 bg-green-600 p-1 text-center text-white">
+                {discount}%
               </p>
             ) : null}
 
-            <IconButton onClick={handleIconClick}>
+            <IconButton onClick={handleIconClick} className="bg-white">
               {iconColor ? (
-                <FavoriteBorder className="text-red-600" />
-              ) : (
                 <FavoriteIcon className="text-red-600" />
+                
+              ) : (
+                <FavoriteBorder className="text-red-600" />
               )}
             </IconButton>
           </div>
-          <button className="w-full opacity-0 bg-chocolate  group-hover:opacity-100 absolute z-10 bottom-0 py-2 font-semibold text-white">
+          <button className="w-full opacity-0 bg-orange-500  group-hover:opacity-100 absolute z-10 bottom-0 py-2 font-semibold text-white transition-color duration-300 rounded-bl-3xl rounded-tr-3xl">
             Quick View
           </button>
         </div>
       </div>
 
       <div className=" p-3 my-2 ">
-        <h3 className=" font-semibold uppercase leading-7 text-lg hover:text-chocolate">
+        <h3 className=" font-semibold uppercase leading-7 text-base hover:text-chocolate">
           {name}
         </h3>
 
-        <span className="font-bold text-lg text-red-600 leading-7">
+        <span className="font-bold text-base text-red-600 leading-7">
           <span className=" font-extrabold"> ৳</span> {price}
         </span>
-        <p className="text-sm text-gray-700 uppercase font-semibold leading-7">
-          {category}
-        </p>
-        <p className="font-bold text-chocolate ">{star}</p>
+       
+        <div className="start"><StarRating rating={rating} reviews={reviews} /></div>
       </div>
-      <button className="absolute bottom-0 bg-chocolate hover:bg-chocolate/90 w-full py-2 text-white font-semibold">
+      <button className="absolute bottom-0 bg-chocolate hover:bg-chocolate/90 w-full py-2 text-white font-semibold rounded-tr-3xl rounded-bl-3xl">
         <ShoppingCart /> ADD TO CART
       </button>
     </div>
