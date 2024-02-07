@@ -4,7 +4,7 @@ import React from 'react'
 const Footer = () => {
   return (
     
-  <footer className="bg-black pt-14">
+  <footer className=" pt-14 " style={{background:"#28170bff"}}>
   <div className="text-zinc-300 px-10 py-5 font-poppins flex ">
     <div className="w-2/5  font-semibold">
       <img src="/images/logo.svg" alt=""/>

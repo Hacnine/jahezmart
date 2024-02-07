@@ -3,8 +3,11 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Image from "next/image";
-
+import image1 from "../../../public/images/heroImage1.svg"
+import image2 from "../../../public/images/heroImage2.svg"
+import CustomSliderBackground from "./ui/CustomSliderBackground";
 const CustomSlider = () => {
+
   const settings = {
     dots: false,
     infinite: true,
@@ -22,23 +25,25 @@ const CustomSlider = () => {
   };
   return (
     // sm:bg-green-600 md:bg-yellow-900 lg:bg-red-500
-    <div className=" h-[550px] overflow-hidden border-gray-700 w-full ">
+    <div className=" h-full overflow-hidden border-gray-700 w-full ">
       <div className=" ">
         <Slider {...settings}>
-          <div>
-            <Image alt="hero image" src={"images/heroImage1.svg"} height={300} width={1600} />
-          </div>
-          <div>
-            <Image alt="hero image" src={"images/heroImage2.svg"} height={300} width={1600} />
+        <CustomSliderBackground image={'images/heroImage1.svg'}/>
+        <CustomSliderBackground image={'images/heroImage2.svg'}/>
+        <CustomSliderBackground image={'images/heroImage3.svg'}/>
+        <CustomSliderBackground image={'images/heroImage4.svg'}/>
+
+{/*            <div>
+            <Image alt="hero image" src={"images/heroImage2.svg"} height={524} width={1600} />
           </div>
 
           <div>
-            <Image alt="hero image" src={"images/heroImage3.svg"} height={300} width={1600} />
+            <Image alt="hero image" src={"images/heroImage3.svg"} height={524} width={1600} />
           </div>
 
           <div>
-            <Image alt="hero image" src={"images/heroImage4.svg"} height={300} width={1600} />
-          </div>
+            <Image alt="hero image" src={"images/heroImage4.svg"} height={524} width={1600} />
+        </div>  */} 
 
           
         </Slider>

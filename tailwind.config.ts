@@ -17,15 +17,19 @@ const config: Config = {
         colorRed: '#ff0000',
         sandyBrown:	'#F4A460',
         chocolate: '#D2691E',
-        tan:'#D2B48C',
+        tan:'#28170bff',
         maroon:'#800000',
         burlywood:'#DEB887'
       },
 
-      container: {
-        center: true,
-        padding:'3rem'
-      },
+
+        container: {
+          padding: {
+            DEFAULT: '1rem', // Default padding for the container
+            sm: '1.5rem',   // Small screen padding
+            md: '3rem',     // Medium screen padding
+          },
+        },
     },
   },
   plugins: [],

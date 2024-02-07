@@ -9,7 +9,10 @@ import Home from "../app/home/page";
 interface initialStateType {
   allProducts: Product[];
   filterProducts: Product[];
-  featuredProducts: Product[],
+  bed:Product[] ,
+  sofa:Product[] ,
+  dinning:Product[] ,
+  kidsFurniture:Product[],
   newProducts: Product[],
   // isLoading: boolean;
 }
@@ -19,15 +22,21 @@ const initialState: initialStateType = {
   filterProducts: [],
   featuredProducts: [],
   newProducts: [],
-
+  bed:[] ,
+  sofa:[] ,
+  dinning:[] ,
+  kidsFurniture:[]
   // isLoading: true,
 };
 
 type FilterContext = {
   allProducts: Product[];
   filterProducts: Product[];
-  featuredProducts: Product[],
   newProducts: Product[],
+  bed:Product[] ,
+  sofa:Product[] ,
+  dinning:Product[] ,
+  kidsFurniture:Product[],
   // isLoading: boolean;
   getFeaturedData: () => Product[];
   getNewData: () => Product[];

@@ -7,6 +7,8 @@ import { FavoriteBorder, HeartBroken, ShoppingCart } from "@mui/icons-material";
 import IconButton from "@mui/material/IconButton";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import StarRating from "../ui/StarRating";
+import { BsCartCheckFill, BsCartDash } from "react-icons/bs";
+import { BsCartFill } from "react-icons/bs";
 
 interface MiniProductCardProps {
   name: string;
@@ -31,57 +33,67 @@ const MiniProductCard: React.FC<MiniProductCardProps> = ({
   rating,
   reviews
 }) => {
-  const [iconColor, setIconColor] = useState(false);
+  const [wishList, setWishList] = useState(false);
+  const [cart, setCart] = useState(false);
+
   // const firstImagePath = images[colors[0]];
-  console.log('reviews', reviews);
 
   const firstColorKey = Object.keys(images)[0];
   const firstImagePath = (images as { [color: string]: string[] })[
     firstColorKey
   ]?.[0];
 
-  const handleIconClick = () => {
-    // Change the color on each click
-    setIconColor(!iconColor);
+  const handleWhishListClick = () => {
+    setWishList(!wishList);
   };
+
+  const handleCartClick = () =>{
+    setCart(!cart);
+  }
   return (
-    <div className=" relative shadow-md shadow-slate-400 rounded-md overflow-hidden rounded-tr-3xl rounded-bl-3xl between  w-[276px] h-[95px]">
-      <div className="w-fit h-fit relative  group ">
-        <div className="center relative group p-4 w-[105px] h-[95px]">
+    <div className=" my-4 relative shadow-md shadow-slate-400 rounded-md overflow-hidden rounded-tr-3xl rounded-bl-3xl center md:flex-row flex-col md:w-[276px] md:h-[95px] w-full">
+      <div className="w-fit h-fit relative  group overflow-hidden">
+          
+        <div className="center relative group  ">
+          
           <img
             src={firstImagePath}
             alt=""
-            className=" "
+            className="md:w-[90%] p-3 w-[60%]"
           />
         </div>
+
         <div
           className="absolute inset-0 bg-opacity-30 bg-blue-200 hover:bg-black
           group-hover:bg-opacity-30 rounded-md transition-color duration-300 rounded-tr-3xl rounded-bl-3xl"
         >
-          <div className="between gap-44 p-2">
-            {/* {discount ? (
-              <p className="rounded-sm w-10 bg-green-600 p-1 text-center text-white">
-                {discount}%
-              </p>
-            ) : null} */}
-
-            {/* <IconButton onClick={handleIconClick} className="bg-white">
-              {iconColor ? (
-                <FavoriteIcon className="text-red-600" />
+          <div className="between px-2 mt-6">
+          <IconButton onClick={handleCartClick} className="bg-white">
+              {cart ? (
+                <BsCartCheckFill className="text-red-600 text-base" />
                 
               ) : (
-                <FavoriteBorder className="text-red-600" />
+                <BsCartDash  className="text-red-600 text-base" />
               )}
-            </IconButton> */}
+            </IconButton>
+
+            <IconButton onClick={handleWhishListClick} className="bg-white">
+              {wishList ? (
+                <FavoriteIcon className="text-red-600 text-base" />
+                
+              ) : (
+                <FavoriteBorder className="text-red-600 text-base" />
+              )}
+            </IconButton>
           </div>
-          {/* <button className="w-full opacity-0 bg-orange-500  group-hover:opacity-100 absolute z-10 bottom-0 py-2 font-semibold text-white transition-color duration-300 rounded-bl-3xl rounded-tr-3xl">
+          <button className="w-full opacity-0 bg-orange-500  group-hover:opacity-100 absolute z-10 md:bottom-1 bottom-0 py-1 font-semibold text-white text-xs transition-color duration-300 rounded-bl-3xl rounded-tr-3xl">
             Quick View
-          </button> */}
+          </button>
         </div>
       </div>
 
       <div className=" p-3 w-full ">
-        <h3 className=" font-semibold uppercase leading-5 text-xs hover:text-chocolate">
+        <h3 className=" font-semibold uppercase leading-5 md:text-xs text-sm hover:text-chocolate">
           {name}
         </h3>
 

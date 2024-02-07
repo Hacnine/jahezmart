@@ -21,7 +21,7 @@ const StarRating:React.FC<StarRatingProps> = ({ rating, reviews }) => {
   if (hasHalfStar) {
     starsArray.push(<FaStarHalf key="half-star" className="text-yellow-500" />);
   }
-  return <span className="center gap-1">{starsArray} <span className="text-gray-500">({reviews})</span></span>;
+  return <span className="center gap-1">{starsArray} <span className="text-gray-500 md:text-base text-xs">({reviews})</span></span>;
 };
 
 export default StarRating;

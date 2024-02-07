@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import {  Open_Sans } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/common/Header";
 import Footer from "@/components/common/ui/Footer";
 import FilterContextProvider from "@/context_reducer/filterContext";
 
-const inter = Inter({ subsets: ["latin"] });
+const openSnas = Open_Sans({ subsets: ['cyrillic'],weight:'600' });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -19,7 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={openSnas.className}>
         <FilterContextProvider>
         <Header/>
         {children}

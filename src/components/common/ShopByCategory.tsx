@@ -12,7 +12,7 @@ interface FeatureCardProps {
 const ShopByCategory: React.FC<FeatureCardProps> = ({ image, title }) => {
   return (
     <>
-      <div className="relative rounded-sm overflow-hidden group rounded-bl-[200px] rounded-tr-[200px] ">
+      <div className="relative rounded-sm overflow-hidden group rounded-bl-lg rounded-tr-xl] center">
         <img
           src={image}
           
