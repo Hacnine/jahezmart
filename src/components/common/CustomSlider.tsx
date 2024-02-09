@@ -25,7 +25,7 @@ const CustomSlider = () => {
   };
   return (
     // sm:bg-green-600 md:bg-yellow-900 lg:bg-red-500
-    <div className=" h-full overflow-hidden border-gray-700 w-full ">
+    <div className=" h-full  w-full ">
       <div className=" ">
         <Slider {...settings}>
         <CustomSliderBackground image={'images/heroImage1.svg'}/>

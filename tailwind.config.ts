@@ -15,11 +15,13 @@ const config: Config = {
       },
       colors: {
         colorRed: '#ff0000',
-        sandyBrown:	'#F4A460',
-        chocolate: '#D2691E',
+        sandyBrown:	'#FF5733',
+        chocolate: '#FF4500',
         tan:'#28170bff',
         maroon:'#800000',
-        burlywood:'#DEB887'
+        burlywood:'#DEB887',
+        orangeRed:'#FF4500',
+        lightOrange:'#FF5733'
       },
 
 

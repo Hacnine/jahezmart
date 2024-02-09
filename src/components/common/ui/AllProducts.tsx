@@ -13,7 +13,7 @@ const AllProducts = () => {
   return (
     <div className='center flex-col'>
        <div className="container py-16 w-full center flex-col">
-       <img src="/images/featured.svg" className="mb-10" alt="" />
+       <img src="/images/titles/featured.svg" className="mb-10" alt="" />
         <TitleBg image={'images/bg.svg'}/>
         {/* <img src="/images/bg.svg" alt="" /> */}
         <div className="grid lg:grid-cols-4 grid-cols-2 gap-6 w">

@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
-import {  Open_Sans } from "next/font/google";
+import {  Open_Sans, Poppins } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/common/Header";
 import Footer from "@/components/common/ui/Footer";
 import FilterContextProvider from "@/context_reducer/filterContext";
 
-const openSnas = Open_Sans({ subsets: ['cyrillic'],weight:'600' });
+const openSnas = Poppins({subsets: ['devanagari'], weight:'400' });
+// Open_Sans({ subsets: ['cyrillic'],weight:'400' });
 
 export const metadata: Metadata = {
   title: "Create Next App",

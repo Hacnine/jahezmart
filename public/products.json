@@ -1,7 +1,7 @@
 [
   {
     "id": "1",
-    "name": "2 Seater Sofa",
+    "name": "3 Seater Sofa",
     "brand": "Jazz",
     "price": 719,
     "discount": 45,
@@ -393,48 +393,7 @@
     ]
   },
 
-  {
-    "id": "9",
-    "name": " Single Trundle Bed",
-    "brand": "Jordan",
-    "price": 179,
-    "new_product": false,
-    "rating": 5,
-    "reviews": 150,
-    "colors": ["white"],
-    "images": {
-      "white": [
-        "/images/products/product10.1.jpg",
-        "/images/products/product10.2.jpg"
-      ]
-    },
-    "description": [
-      {
-        "title": "Sleepover Solution",
-        "description": "Available in crisp white, the Jordan Trundle is the space-saving sleepover solution you need! Castor wheels make the Jordan Trundle easy to slide in and out from under the Jordan Beds and Bunks. Simply pull it out when your little one's friends come to stay and tuck back under when not in use!"
-      },
-      {
-        "title": "Get the Look",
-        "description": "Pair your new Jordan Trundle Bed with the rest of the Jordan range for a coordinated look with the Jordan Bed, Bedside Table, Tallboy, and more!"
-      },
-      {
-        "title": "Mattress Recommendations",
-        "description": "Click [here](mattress_link) to view the Sleeptight Single Mattress, our recommendation for all top-level bunk beds."
-      }
-    ],
-    "category": "bed",
-    "star": 48,
-    "full_details": [
-      {
-        "Assembled Size": "L 96cm x D 190cm x H 14cm",
-        "Packaged Size": "L 200cm x D 32cm x H 13cm",
-        "Colour": "White",
-        "Assembly": "Required",
-        "Delivery type": "Large / bulky item",
-        "Type": "Bed"
-      }
-    ]
-  },
+
 
   {
     "id": "10",
@@ -970,6 +929,49 @@
   },
 
   {
+    "id": "22",
+    "name": " Single Trundle Bed",
+    "brand": "Jordan",
+    "price": 179,
+    "new_product": false,
+    "rating": 5,
+    "reviews": 150,
+    "colors": ["white"],
+    "images": {
+      "white": [
+        "/images/products/product10.1.jpg",
+        "/images/products/product10.2.jpg"
+      ]
+    },
+    "description": [
+      {
+        "title": "Sleepover Solution",
+        "description": "Available in crisp white, the Jordan Trundle is the space-saving sleepover solution you need! Castor wheels make the Jordan Trundle easy to slide in and out from under the Jordan Beds and Bunks. Simply pull it out when your little one's friends come to stay and tuck back under when not in use!"
+      },
+      {
+        "title": "Get the Look",
+        "description": "Pair your new Jordan Trundle Bed with the rest of the Jordan range for a coordinated look with the Jordan Bed, Bedside Table, Tallboy, and more!"
+      },
+      {
+        "title": "Mattress Recommendations",
+        "description": "Click [here](mattress_link) to view the Sleeptight Single Mattress, our recommendation for all top-level bunk beds."
+      }
+    ],
+    "category": "bed",
+    "star": 48,
+    "full_details": [
+      {
+        "Assembled Size": "L 96cm x D 190cm x H 14cm",
+        "Packaged Size": "L 200cm x D 32cm x H 13cm",
+        "Colour": "White",
+        "Assembly": "Required",
+        "Delivery type": "Large / bulky item",
+        "Type": "Bed"
+      }
+    ]
+  },
+
+  {
     "id": "23",
     "name": " Queen Medium Mattress",
     "brand": "Sleepscape",
@@ -1155,7 +1157,7 @@
     ]
   },
   {
-    "id": "28",
+    "id": "27",
     "name": "6 Seater Dining Set With Samba Chairs",
     "price": 569,
     "rating": 4.9,
@@ -1281,11 +1283,11 @@
         "/images/products/product30.4.jpg"
       ]
     },
-    "brand": null,
+    "brand": "Gecko",
     "description": [
       {
         "title": "Features",
-        "description": "The comfortable Rocha Lounge Set is perfect for any outdoor area. With its strong powder coated steel frame and HAR-TEX Sling seats this setting will fit seamlessly into any area. 2 Seater Sofa measures: 76cm H x 112cm W x 85cm D Armchairs measure: 76cm H x 60cm W x 85cm D Table measures: 39cm H x 85cm W x 45cm D"
+        "description": "The comfortable Rocha Lounge Set is perfect for any outdoor area. With its strong powder coated steel frame and HAR-TEX Sling seats this setting will fit seamlessly into any area. 3 Seater Sofa measures: 76cm H x 112cm W x 85cm D Armchairs measure: 76cm H x 60cm W x 85cm D Table measures: 39cm H x 85cm W x 45cm D"
       }
     ],
     "category": "outdoor",

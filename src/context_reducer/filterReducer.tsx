@@ -2,7 +2,8 @@ import { Product2 as Product } from "../type/index";
 
 interface FilterState {
   allProducts: Product[];
-  filterProducts: Product[];
+  filteredProducts: Product[];
+  // filter:Product[];
   // featuredProducts: Product[],
   // newProducts: Product[],
 }
@@ -22,7 +23,6 @@ const filterReducer = (state: FilterState, action: FilterAction) => {
 
 
       const sofa = featuredData('sofa');
-      console.log('sofa', sofa)
       const bed = featuredData('bed');
       const dinning = featuredData('dining');
       const kidsFurniture = featuredData('Kids Furniture');
@@ -38,6 +38,13 @@ const filterReducer = (state: FilterState, action: FilterAction) => {
         dinning:dinning,
         kidsFurniture:kidsFurniture
       };
+
+      case "UPDATE_FILTERED_DATA":
+  
+        return {
+          ...state,
+          filteredProducts: action.payload
+        };
   }
   return state;
 };

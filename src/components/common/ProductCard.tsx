@@ -47,7 +47,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
 
   const [selected, setSelected] = useState<string>(colors[0]);
   return (
-    <div className=" relative shadow-md shadow-slate-400 w-full rounded-md overflow-hidden md:h-[390px] h-[330px] rounded-tr-3xl rounded-bl-3xl">
+    <div className=" relative shadow-md shadow-slate-400 w-full rounded-md overflow-hidden md:h-[400px] h-[360px] rounded-tr-3xl rounded-bl-3xl">
       <div className="w-full  h-fit relative  group ">
         <div className="">
         <div className="center relative  group ">
@@ -83,11 +83,12 @@ const ProductCard: React.FC<ProductCardProps> = ({
         </div>
       </div>
 
-      <div className=" p-3 my-2 ">
+      <div className=" p-3 md:space-y-2 mt-4">
         <div className="start gap-2">
         {colors.map((currentColor, index) => {
           return (
-            <ColorButton
+            <div key={index}>
+              <ColorButton
               currentColor={currentColor}
               index={index}
               colors={colors}
@@ -95,18 +96,22 @@ const ProductCard: React.FC<ProductCardProps> = ({
               setSelected={setSelected}
               setIndex={setIndex}
             />
+            </div>
           );
         })}
         </div>
 
 
-        <h3 className=" font-semibold uppercase leading-7 md:text-base text-xs hover:text-chocolate">
+        <h3 className=" font-bold uppercase leading-7 md:text-base text-xs hover:text-chocolate">
           {name}
         </h3>
+        <p className='flex  text-[20px] leading-[38px] font-extrabold text-sandyBrown'>
+        <span className=' text-base text-gray-600 self-start text-[18px] font-extrabold  leading-[17px] '> ৳</span>
+        {price}
+        <span className='self-end text-[14px] leading-[17px] font-medium'>/1 item</span>
+      </p>
 
-        <span className="font-bold text-base text-red-600 leading-7">
-          <span className=" font-extrabold"> ৳</span> {price}
-        </span>
+       
 
         <div className="start">
           <StarRating rating={rating} reviews={reviews} />

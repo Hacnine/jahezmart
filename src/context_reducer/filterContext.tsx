@@ -1,5 +1,4 @@
 "use client"
-
 import React, { createContext, useReducer, useContext } from "react";
 import productsData from "../../public/products.json";
 import filterReducer from "./filterReducer";
@@ -8,40 +7,37 @@ import Home from "../app/home/page";
 
 interface initialStateType {
   allProducts: Product[];
-  filterProducts: Product[];
+  filteredProducts: Product[];
   bed:Product[] ,
   sofa:Product[] ,
   dinning:Product[] ,
   kidsFurniture:Product[],
   newProducts: Product[],
-  // isLoading: boolean;
 }
 
 const initialState: initialStateType = {
   allProducts: productsData,
-  filterProducts: [],
+  filteredProducts: [],
   featuredProducts: [],
   newProducts: [],
   bed:[] ,
   sofa:[] ,
   dinning:[] ,
-  kidsFurniture:[]
-  // isLoading: true,
+  kidsFurniture:[],
 };
 
 type FilterContext = {
   allProducts: Product[];
-  filterProducts: Product[];
+  filteredProducts: Product[];
   newProducts: Product[],
   bed:Product[] ,
   sofa:Product[] ,
   dinning:Product[] ,
   kidsFurniture:Product[],
-  // isLoading: boolean;
   getFeaturedData: () => Product[];
   getNewData: () => Product[];
+  updateFilteredProducts: (filteredProducts: Product[]) => void; // Change the type of updateFilteredProducts
 };
-
 
 export const FilterContext = createContext<FilterContext | null>(null);
 
@@ -49,12 +45,7 @@ const FilterContextProvider = ({ children }: { children: React.ReactNode }) => {
   const [state, dispatch] = useReducer(filterReducer, initialState);
 
   const getFeaturedData = () => {
-
-    // dispatch({ type: "SET_API_DATA", payload: products });
-      dispatch({ type: "GET_FEATURED_DATA", payload: state.allProducts });
-
-    // console.log('Alhamdulillah!')
-   
+    dispatch({ type: "GET_FEATURED_DATA", payload: state.allProducts });
   };
 
   const getNewData = () => {
@@ -66,19 +57,19 @@ const FilterContextProvider = ({ children }: { children: React.ReactNode }) => {
     return newProduct;
   };
 
-  type ExtendedStateType = initialStateType & {
-    getFeaturedData: () => Product[];
-    getNewData: () => Product[];
+  const updateFilteredProducts = (filteredProducts: Product[]) => {
+    dispatch({ type: "UPDATE_FILTERED_DATA", payload: filteredProducts });
   };
 
-  // const extendedState: ExtendedStateType = {
-  //   ...state,
-  //   getFeaturedData,
-  //   getNewData,
-  // };
-
   return (
-    <FilterContext.Provider value={{ ...state, getFeaturedData, getNewData }}>
+    <FilterContext.Provider
+      value={{
+        ...state,
+        getFeaturedData,
+        getNewData,
+        updateFilteredProducts 
+      }}
+    >
       {children}
     </FilterContext.Provider>
   );

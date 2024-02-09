@@ -16,7 +16,7 @@ export interface Product {
       rating: number;
       reviews: number;
       colors: string[];
-      images: Record<string, string[]>;
+      images: { [color: string]: string[] } | { [color: string]: string[] }[];
       description: { title: string; description: string }[];
       category: string;
       star?: number;

@@ -14,6 +14,9 @@ import { useFilterContext } from "@/context_reducer/filterContext";
 import chairad from "../../../public/images/ad/chairad.svg";
 import Image from "next/image";
 import MiniProductCard from "@/components/common/ui/MiniProductCard";
+import SimpleBottomNavigation from "@/components/common/FixedBottomNavigation";
+import TemporaryDrawer from "@/components/common/CustomDrawer";
+import SearchBar from "@/components/common/SearchBar";
 
 const Home = () => {
   const [featuredData, setFeaturedData] = useState([]);
@@ -36,31 +39,36 @@ const Home = () => {
     <div className=" ">
       <Slider />
 
-      <div className="container py-16 ">
-        <div className="w-10/12 grid grid-cols-3 gap-6 mx-auto justify-center">
+      <TemporaryDrawer/>
+
+      <div className="container py-9">
+        <div className="w-10/12 grid md:grid-cols-3 sm:grid-cols-1 gap-6 mx-auto justify-center">
           {featureCardInfo.map((info, index) => (
-            <FeatureCard {...info} />
+            <div key={index}>
+              <FeatureCard {...info} />
+            </div>
           ))}
         </div>
       </div>
 
-      <div className="container py-16">
-        <p className="text-3xl font-medium text-gray-800 uppercase mb-6">
-          shop by category
-        </p>
+      <div className="container py-9 center flex-col">
+      <img src="/images/titles/category.svg" className="mb-9" alt="" />
 
-        <div className="grid grid-cols-3">
+
+        <div className="grid lg:grid-cols-3 grid-cols-2 gap-3">
           {shopByCategory.map((category, index) => (
+            <div key={index}>
             <ShopByCategory {...category} />
+            </div>
           ))}
         </div>
       </div>
 
-      <div className="container py-16 w-full  center flex-col">
+      <div className="container py-9 w-full  center flex-col">
         {/* <p className="text-3xl font-medium text-gray-800 uppercase mb-6">
           Featured Products
         </p> */}
-        <img src="/images/featured.svg" className="mb-10" alt="" />
+        <img src="/images/titles/featured.svg" className="mb-9" alt="" />
         <div className="grid  md:grid-cols-4 grid-cols-2 gap-3">
           
           <div className="">
@@ -153,8 +161,8 @@ const Home = () => {
         <Image src={chairad} className="w-full h-[px]" alt="chairad" />
       </div>
 
-      <div className="container py-16 center flex-col">
-        <img src="/images/new.svg" className="mb-10 w-[40%]" alt="" />
+      <div className="container py-9 center flex-col">
+        <img src="/images/titles/new.svg" className="mb-9"alt="" />
 
         <div className="grid lg:grid-cols-4 grid-cols-2 gap-6 ">
           {newProducts.map((product) => (
@@ -176,6 +184,8 @@ const Home = () => {
           ))}
         </div>
       </div>
+      <SearchBar/>
+      <SimpleBottomNavigation/>
     </div>
   );
 };

@@ -1,4 +1,5 @@
-"use client";
+
+
 import Image from "next/image";
 import React, { useState } from "react";
 
@@ -22,7 +23,7 @@ interface MiniProductCardProps {
   reviews?:number
 }
 
-const MiniProductCard: React.FC<MiniProductCardProps> = ({
+const SearchbarMiniProductCard: React.FC<MiniProductCardProps> = ({
   name,
   category,
   price,
@@ -51,7 +52,7 @@ const MiniProductCard: React.FC<MiniProductCardProps> = ({
     setCart(!cart);
   }
   return (
-    <div className=" mb-2 relative shadow-md shadow-slate-400 rounded-md overflow-hidden rounded-tr-3xl rounded-bl-3xl center md:flex-row flex-col md:w-[276px] md:h-[95px] w-full">
+    <div className=" mb-2 relative  rounded-md overflow-hidden rounded-tr-3xl rounded-bl-3xl center  w-[350px] h-[95px] border-b border-l z-50">
       <div className="w-fit h-fit relative  group overflow-hidden">
           
         <div className="center relative group  ">
@@ -59,7 +60,7 @@ const MiniProductCard: React.FC<MiniProductCardProps> = ({
           <img
             src={firstImagePath}
             alt=""
-            className="md:w-[90%] p-3 w-[60%]"
+            className="w-[60%] h-[60%] "
           />
         </div>
 
@@ -67,7 +68,7 @@ const MiniProductCard: React.FC<MiniProductCardProps> = ({
           className="absolute inset-0 bg-opacity-30 bg-blue-200 hover:bg-black
           group-hover:bg-opacity-30 rounded-md transition-color duration-300 rounded-tr-3xl rounded-bl-3xl"
         >
-          <div className="between px-2 mt-6">
+          {/* <div className="between px-2 mt-6">
           <IconButton onClick={handleCartClick} className="bg-white">
               {cart ? (
                 <BsCartCheckFill className="text-red-600 text-base" />
@@ -85,15 +86,20 @@ const MiniProductCard: React.FC<MiniProductCardProps> = ({
                 <FavoriteBorder className="text-red-600 text-base" />
               )}
             </IconButton>
-          </div>
-          <button className="w-full opacity-0 bg-orange-500  group-hover:opacity-100 absolute z-10 md:bottom-1 bottom-0 py-1 font-semibold text-white text-xs transition-color duration-300 rounded-bl-3xl rounded-tr-3xl">
+          </div> */}
+          <button className="w-full opacity-0 bg-orange-500  group-hover:opacity-100 absolute z-10 md:bottom-0 bottom-0 py-1 font-semibold text-white text-xs transition-color duration-300 rounded-bl-3xl rounded-tr-3xl">
             Quick View
           </button>
         </div>
       </div>
 
       <div className=" p-3 w-full ">
-        <h3 className=" font-semibold uppercase leading-5 md:text-xs text-sm hover:text-chocolate">
+        <h3 className=" font-semibold uppercase leading-5 md:text-xs text-sm hover:text-chocolate"  style={{
+    overflow: 'hidden',
+    whiteSpace: 'nowrap',
+    textOverflow: 'ellipsis',
+    width: '8rem'
+  }}>
           {name}
         </h3>
 
@@ -111,4 +117,6 @@ const MiniProductCard: React.FC<MiniProductCardProps> = ({
   );
 };
 
-export default MiniProductCard;
+export default SearchbarMiniProductCard;
+
+
