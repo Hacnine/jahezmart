@@ -4,6 +4,11 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  max-width: 1350;
+  margin-left: auto; 
+  margin-right: auto;
+}
 .center {
   @apply flex items-center justify-center
 }
@@ -14,4 +19,8 @@
 
 .between {
   @apply flex items-center justify-between
+}
+
+.wrapper {
+  @apply sm:px-[24px] md:px-[48px] px-[16px]
 }

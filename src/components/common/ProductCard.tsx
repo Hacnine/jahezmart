@@ -47,7 +47,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
 
   const [selected, setSelected] = useState<string>(colors[0]);
   return (
-    <div className=" relative shadow-md shadow-slate-400 w-full rounded-md overflow-hidden md:h-[400px] h-[360px] rounded-tr-3xl rounded-bl-3xl">
+    <div className=" relative shadow-md shadow-slate-400 w-full rounded-md overflow-hidden rounded-tr-3xl rounded-bl-3xl">
       <div className="w-full  h-fit relative  group ">
         <div className="">
         <div className="center relative  group ">
@@ -83,8 +83,8 @@ const ProductCard: React.FC<ProductCardProps> = ({
         </div>
       </div>
 
-      <div className=" p-3 md:space-y-2 mt-4">
-        <div className="start gap-2">
+      <div className="  md:space-y-2 mt-4">
+        <div className="start gap-2 px-3">
         {colors.map((currentColor, index) => {
           return (
             <div key={index}>
@@ -102,10 +102,10 @@ const ProductCard: React.FC<ProductCardProps> = ({
         </div>
 
 
-        <h3 className=" font-bold uppercase leading-7 md:text-base text-xs hover:text-chocolate">
+        <h3 className=" font-bold uppercase leading-7 md:text-base text-xs hover:text-chocolate p-3">
           {name}
         </h3>
-        <p className='flex  text-[20px] leading-[38px] font-extrabold text-sandyBrown'>
+        <p className='flex  text-[20px] leading-[38px] font-extrabold text-sandyBrown px-3'>
         <span className=' text-base text-gray-600 self-start text-[18px] font-extrabold  leading-[17px] '> ৳</span>
         {price}
         <span className='self-end text-[14px] leading-[17px] font-medium'>/1 item</span>
@@ -113,13 +113,15 @@ const ProductCard: React.FC<ProductCardProps> = ({
 
        
 
-        <div className="start">
+        <div className="start px-3 pb-14">
           <StarRating rating={rating} reviews={reviews} />
         </div>
-      </div>
-      <button className="absolute bottom-0 bg-chocolate hover:bg-chocolate/90 w-full py-2 md:text-sm text-xs center text-white font-semibold rounded-tr-3xl rounded-bl-3xl">
+
+        <button className="absolute bottom-0 mt-3 bg-chocolate hover:bg-chocolate/90 w-full py-2 md:text-sm text-xs center text-white font-semibold rounded-tr-3xl rounded-bl-3xl">
         <ShoppingCart /> ADD TO CART
       </button>
+      </div>
+      
     </div>
   );
 };

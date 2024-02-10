@@ -1,25 +1,30 @@
 "use client"
 import { useFilterContext } from '@/context_reducer/filterContext';
-import React from 'react'
+import React, { Fragment, useState, useEffect } from "react";
 import ProductCard from '../ProductCard';
-import TitleBg from '../TitleBg';
+
+import Link from "next/link";
+import { useRouter, useSearchParams } from 'next/navigation';
 
 const AllProducts = () => {
 
-   
+  const { allProducts, updateFilteredProducts } = useFilterContext();
+  const searchParams = useSearchParams();
+  const query = searchParams.get("search");
 
-    const { allProducts } =
-    useFilterContext();
+  const filteredProducts = allProducts.filter(product =>
+    product.name.toLowerCase().includes(query?.toLowerCase() || '')
+  );
+
   return (
     <div className='center flex-col'>
        <div className="container py-16 w-full center flex-col">
-       <img src="/images/titles/featured.svg" className="mb-10" alt="" />
-        <TitleBg image={'images/bg.svg'}/>
-        {/* <img src="/images/bg.svg" alt="" /> */}
+       <img src="/images/titles/all.svg" className="mb-10" alt="" />
+       
         <div className="grid lg:grid-cols-4 grid-cols-2 gap-6 w">
-          {allProducts.map((product) => (
+          {filteredProducts.map((product) => (
             <ProductCard
-              key={product.id} // Make sure to add a unique key for each item
+              key={product.id}
               name={product.name}
               category={product.category}
               price={product.price}

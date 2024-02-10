@@ -10,9 +10,9 @@ import FirstHeader from "./FirstHeader";
 const Navbar = () => {
   return (
     <Headroom>
-      <nav className=" bg-tan w-full md:block hidden ">
-        <div className="container flex ">
-          <div className="px-8 py-4 bg-chocolate hover:bg-sandyBrown flex items center cursor-pointer  z-50 group">
+      <nav className=" bg-tan w-full lg:block md:hidden hidden ">
+        <div className="wrapper flex ">
+          <div className="px-8 py-4 bg-chocolate hover:bg-sandyBrown relative flex items center cursor-pointer  z-50 group">
             <span className="text-white capitalize ml-2 center gap-1">
               <Menu /> All Categories
             </span>

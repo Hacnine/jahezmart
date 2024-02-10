@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import {  Open_Sans, Poppins } from "next/font/google";
 import "./globals.css";
-import Header from "@/components/common/Header";
+import Header from "@/components/common/header/Header";
 import Footer from "@/components/common/ui/Footer";
 import FilterContextProvider from "@/context_reducer/filterContext";
 

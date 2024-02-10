@@ -26,3 +26,8 @@
     border-right: 50px solid transparent;
     border-top: 28.8675px solid red;
   }
+
+  .home {
+    /* This will hide the scrollbar */
+    overflow: hidden;
+  }

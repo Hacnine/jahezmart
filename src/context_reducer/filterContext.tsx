@@ -1,5 +1,5 @@
 "use client"
-import React, { createContext, useReducer, useContext } from "react";
+import React, { createContext, useReducer, useContext, useEffect } from "react";
 import productsData from "../../public/products.json";
 import filterReducer from "./filterReducer";
 import { Product2 as Product } from "../type/index";
@@ -36,7 +36,7 @@ type FilterContext = {
   kidsFurniture:Product[],
   getFeaturedData: () => Product[];
   getNewData: () => Product[];
-  updateFilteredProducts: (filteredProducts: Product[]) => void; // Change the type of updateFilteredProducts
+  updateFilteredProducts: (filteredProducts: Product[]) => void; 
 };
 
 export const FilterContext = createContext<FilterContext | null>(null);
@@ -44,9 +44,9 @@ export const FilterContext = createContext<FilterContext | null>(null);
 const FilterContextProvider = ({ children }: { children: React.ReactNode }) => {
   const [state, dispatch] = useReducer(filterReducer, initialState);
 
-  const getFeaturedData = () => {
-    dispatch({ type: "GET_FEATURED_DATA", payload: state.allProducts });
-  };
+  const getFeaturedData = () => (
+    dispatch({ type: "GET_FEATURED_DATA", payload: state.allProducts })
+  );
 
   const getNewData = () => {
     dispatch({ type: "GET_NEW_PRODUCT_DATA" });
@@ -60,6 +60,10 @@ const FilterContextProvider = ({ children }: { children: React.ReactNode }) => {
   const updateFilteredProducts = (filteredProducts: Product[]) => {
     dispatch({ type: "UPDATE_FILTERED_DATA", payload: filteredProducts });
   };
+
+  useEffect(() => {
+    dispatch({ type: "UPDATE_FILTERED_DATA"});
+  }, []);
 
   return (
     <FilterContext.Provider

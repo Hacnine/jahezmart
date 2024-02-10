@@ -6,18 +6,26 @@ import { ChevronRight, Search } from "@mui/icons-material";
 import Link from "next/link";
 import React from "react";
 
-import SearchbarMiniProductCard from "./header/SearchbarMiniProductCard";
+import SearchbarMiniProductCard from "../header/SearchbarMiniProductCard";
 import Scrollbars from "react-custom-scrollbars-2";
 import { useRouter } from "next/navigation";
 import { useFilterContext } from "@/context_reducer/filterContext";
 
-const SearchBar = () => {
+const SearchBar:React.FC<{otherClasses:string}> = ({otherClasses}) => {
   const [query, setQuery] = useState("");
   const router = useRouter();
 
   const [visible, setVisible] = useState(false);
   const { allProducts, updateFilteredProducts, filteredProducts } = useFilterContext();
 
+
+  // useEffect(() => {
+  //   const { name } = router.query;
+  //   if (typeof name === "string") {
+  //     setQuery(name);
+  //   }
+  // }, [router.query]);
+  
   const primaryFilteredProducts = allProducts.filter((product) =>
     product.name.toLowerCase().includes(query.toLowerCase())
   );
@@ -30,6 +38,7 @@ const SearchBar = () => {
     } else {
      
       updateSearchParams(query.toLowerCase());
+      
        updateFilteredProducts(primaryFilteredProducts);
       console.log(primaryFilteredProducts)
     }
@@ -37,20 +46,23 @@ const SearchBar = () => {
 
   const updateSearchParams = (query: string) => {
     const searchParams = new URLSearchParams(window.location.search);
-    console.log(searchParams);
-    if (query) {
-      searchParams.set("name", query);
-    } else {
-      searchParams.delete("name");
-    }
+    // console.log(searchParams);
+    // if (query) {
+    //   searchParams.set("name", query);
+    // } else {
+    //   searchParams.delete("name");
+    // }
+    const queryString = `?search=${query}`;
 
-    const newPathname = `${window.location.pathname}?${searchParams.toString()}`;
-    router.push(newPathname);
-    console.log(updateSearchParams);
+    router.push(`/shop${queryString}`);
+
+    // const newPathname = `${window.location.pathname}?${searchParams.toString()}`;
+    // router.push(newPathname);
+    // console.log(updateSearchParams);
   };
-
+ 
   return (
-    <div className="w-[700px] bg-transparent ">
+    <div className={`${otherClasses} w-[50%]   lg:block bg-transparent `}>
       <div className=" bg-transparent  lg:flex items-center justify-center  w-full ">
         <Combobox>
           <div className="relative w-full center">

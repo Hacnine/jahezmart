@@ -14,9 +14,9 @@ import { useFilterContext } from "@/context_reducer/filterContext";
 import chairad from "../../../public/images/ad/chairad.svg";
 import Image from "next/image";
 import MiniProductCard from "@/components/common/ui/MiniProductCard";
-import SimpleBottomNavigation from "@/components/common/FixedBottomNavigation";
+import SimpleBottomNavigation from "@/components/common/header/FixedBottomNavigation";
 import TemporaryDrawer from "@/components/common/CustomDrawer";
-import SearchBar from "@/components/common/SearchBar";
+import SearchBar from "@/components/common/header/SearchBar";
 
 const Home = () => {
   const [featuredData, setFeaturedData] = useState([]);
@@ -36,12 +36,10 @@ const Home = () => {
   }, []);
 
   return (
-    <div className=" ">
+    <div className="home ">
       <Slider />
 
-      <TemporaryDrawer/>
-
-      <div className="container py-9">
+      <div className="wrapper py-9">
         <div className="w-10/12 grid md:grid-cols-3 sm:grid-cols-1 gap-6 mx-auto justify-center">
           {featureCardInfo.map((info, index) => (
             <div key={index}>
@@ -51,7 +49,7 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="container py-9 center flex-col">
+      <div className="wrapper py-9 center flex-col">
       <img src="/images/titles/category.svg" className="mb-9" alt="" />
 
 
@@ -64,15 +62,15 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="container py-9 w-full  center flex-col">
+      <div className="wrapper py-9 w-full  center flex-col">
         {/* <p className="text-3xl font-medium text-gray-800 uppercase mb-6">
           Featured Products
         </p> */}
         <img src="/images/titles/featured.svg" className="mb-9" alt="" />
-        <div className="grid  md:grid-cols-4 grid-cols-2 gap-3">
+        <div className="grid  xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-2 gap-3">
           
           <div className="">
-          <p className="  text-[20px]">Bed</p>
+          <p className="  text-[20px] font-semibold">Bed</p>
             {bed.map((product) => (
               <MiniProductCard
                 key={product.id} // Make sure to add a unique key for each item
@@ -92,7 +90,7 @@ const Home = () => {
             ))}
           </div>
           <div className="">
-          <p className="  text-[18px]">Sofa</p>
+          <p className="font-semibold  text-[18px]">Sofa</p>
 
             {sofa.map((product) => (
               <MiniProductCard
@@ -113,7 +111,7 @@ const Home = () => {
             ))}
           </div>
           <div className="">
-          <p className="  text-[18px]">Dinnig</p>
+          <p className="font-semibold  text-[18px]">Dinnig</p>
 
             {dinning.map((product) => (
               <MiniProductCard
@@ -133,10 +131,11 @@ const Home = () => {
               />
             ))}
           </div>
-          <div className="">
-          <p className="  text-[18px]">Kid's Furniture</p>
+          <div className="xl:col-span-1 lg:col-span-3 md:col-span-3 min-md:col-span-1 " >
+          <p className="text-[18px] font-semibold">Kid's Furniture</p>
 
-            {kidsFurniture.map((product) => (
+          <div className="md:grid xl:grid-cols-1 lg:grid-cols-3 md:grid-cols-3 min-md:grid-cols-1 lg:gap-1  md:gap-3">
+          {kidsFurniture.map((product) => (
               <MiniProductCard
                 key={product.id} // Make sure to add a unique key for each item
                 name={product.name}
@@ -154,14 +153,16 @@ const Home = () => {
               />
             ))}
           </div>
+           
+          </div>
         </div>
       </div>
 
-      <div className="container w-full">
+      <div className="wrapper w-full">
         <Image src={chairad} className="w-full h-[px]" alt="chairad" />
       </div>
 
-      <div className="container py-9 center flex-col">
+      <div className="wrapper py-9 center flex-col">
         <img src="/images/titles/new.svg" className="mb-9"alt="" />
 
         <div className="grid lg:grid-cols-4 grid-cols-2 gap-6 ">
@@ -184,7 +185,6 @@ const Home = () => {
           ))}
         </div>
       </div>
-      <SearchBar/>
       <SimpleBottomNavigation/>
     </div>
   );
