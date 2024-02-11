@@ -10,13 +10,13 @@ import FirstHeader from "./FirstHeader";
 const Navbar = () => {
   return (
     <Headroom>
-      <nav className=" bg-tan w-full lg:block md:hidden hidden ">
+      <nav className=" bg-tan w-full lg:block md:hidden hidden shadow-md shadow-slate-300 ">
         <div className="wrapper flex ">
           <div className="px-8 py-4 bg-chocolate hover:bg-sandyBrown relative flex items center cursor-pointer  z-50 group">
             <span className="text-white capitalize ml-2 center gap-1">
               <Menu /> All Categories
             </span>
-            <AllCategories />
+            <AllCategories otherClasses={"absolute left-0 z-30 opacity-0 group-hover:opacity-100 transition invisible group-hover:visible shadow-md text-gray-600"}/>
           </div>
           <div className="flex items-center justify-between flex-grow pl-12 text-white">
             <div className="flex items-center  flex-grow space-x-6 capitalize ">

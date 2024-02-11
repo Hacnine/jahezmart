@@ -23,9 +23,6 @@ const MenuDrawer: React.FC<{
         <Box
           sx={{
             bgcolor: "Khaki",
-
-            padding: "25px",
-
             display: "flex",
             alignItems: "center",
             justifyContent: "center",

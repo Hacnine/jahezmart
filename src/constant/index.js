@@ -1,3 +1,25 @@
+export const MY_ACCOUNT = [
+  { label: "Orders", link: "/orders" },
+  { label: "Wishlist", link: "/wishlist" },
+  { label: "Track Order", link: "/track-order" },
+  { label: "Manage Account", link: "/manage-account" },
+  { label: "Return Order", link: "/return-order" },
+];
+
+export const CONTACT = {
+  address: "7895 Dr New Albuquerue, NM 19800, United States Of America",
+  phoneNumbers: ["+566 477 256", "+566 254 575"],
+  email: "info@domain.com",
+};
+
+export const INFORMATION = [
+  { label: "About Us", link: "/about-us" },
+  { label: "Return Policy", link: "/return-policy" },
+  { label: "Terms & Conditions", link: "/terms-and-conditions" },
+  { label: "Privacy Policy", link: "/privacy-policy" },
+  { label: "FAQ", link: "/faq" },
+];
+
 export const featureCardInfo = [
   {
     image: "/images/icons/delivery-van.svg",

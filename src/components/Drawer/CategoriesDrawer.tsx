@@ -4,11 +4,11 @@ import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import Button from "@mui/material/Button";
 import SearchBar from "../common/header/SearchBar";
+import AllCategories from "../common/header/AllCategories";
 const CategoriesDrawer: React.FC<{
   open: boolean;
   setOpen: (open: boolean) => void;
 }> = ({ open, setOpen }) => {
-  // const [open, setOpen] = React.useState(false);
 
   const toggleDrawer = () => {
     setOpen(!open);
@@ -17,44 +17,34 @@ const CategoriesDrawer: React.FC<{
   return (
     <div className="  w-fit md:hidden block text-mushroom">
       <Drawer anchor="right" open={open} onClose={toggleDrawer}>
-      <Box
+        <Box
           sx={{
             bgcolor: "Khaki",
-           
-
-            padding: "25px",
-
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
           }}
         >
-          <img src="/images/background/category.svg" 
-          width={310}
-          alt="" />
+          <img src="/images/background/category.svg" width={310} alt="" />
         </Box>
-      <Box
+        <Box
           sx={{
             display: "flex",
-            flexDirection: "column", 
-            paddingTop: "16px", 
+            flexDirection: "column",
             "& a": {
-              textDecoration: "none", 
+              textDecoration: "none",
               marginBottom: "8px",
-              width:300,
-              color:'#aa4400',
-              fontWeight: 600
-              // orangeRed:'#FF4500',
-              // lightOrange:'#FF5733',
-              // mushroom:'#aa4400',
+              width: 300,
+              color: "#aa4400",
+              fontWeight: 600,
             },
           }}
         >
-         
+          <AllCategories otherClasses="text-mushroom" />
         </Box>
       </Drawer>
     </div>
   );
 };
 
-export default CategoriesDrawer
+export default CategoriesDrawer;

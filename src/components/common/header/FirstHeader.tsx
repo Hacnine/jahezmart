@@ -12,7 +12,7 @@ import SearchBar from './SearchBar';
 import Link from 'next/link';
 const FirstHeader = () => {
   return (
-    <div className=" w-full  lg:bg-white bg-tan  wrapper ">
+    <div className=" w-full  lg:bg-white bg-tan  wrapper shadow-md shadow-slate-300 ">
     <div className=" py-4   between w-full " >
       <Link href={'/'}>
       <img src="/images/logo.svg"  className=' md:w-[200px] w-[160px]' alt="logo" />

@@ -21,19 +21,12 @@ import SearchBar from "@/components/common/header/SearchBar";
 const Home = () => {
   const [featuredData, setFeaturedData] = useState([]);
   const {
-    getFeaturedData,
     sofa,
     dinning,
     kidsFurniture,
     bed,
-    getNewData,
     newProducts,
   } = useFilterContext();
-
-  useEffect(() => {
-    getFeaturedData();
-    getNewData();
-  }, []);
 
   return (
     <div className="home ">
@@ -70,7 +63,7 @@ const Home = () => {
         <div className="grid  xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-2 gap-3">
           
           <div className="">
-          <p className="  text-[20px] font-semibold">Bed</p>
+          <p className=" mb-3  text-[20px] font-semibold">Bed</p>
             {bed.map((product) => (
               <MiniProductCard
                 key={product.id} // Make sure to add a unique key for each item
@@ -90,7 +83,7 @@ const Home = () => {
             ))}
           </div>
           <div className="">
-          <p className="font-semibold  text-[18px]">Sofa</p>
+          <p className="font-semibold  text-[18px] mb-3">Sofa</p>
 
             {sofa.map((product) => (
               <MiniProductCard
@@ -111,7 +104,7 @@ const Home = () => {
             ))}
           </div>
           <div className="">
-          <p className="font-semibold  text-[18px]">Dinnig</p>
+          <p className="font-semibold  text-[18px] mb-3">Dinnig</p>
 
             {dinning.map((product) => (
               <MiniProductCard
@@ -132,7 +125,7 @@ const Home = () => {
             ))}
           </div>
           <div className="xl:col-span-1 lg:col-span-3 md:col-span-3 min-md:col-span-1 " >
-          <p className="text-[18px] font-semibold">Kid's Furniture</p>
+          <p className="text-[18px] font-semibold mb-3">Kid's Furniture</p>
 
           <div className="md:grid xl:grid-cols-1 lg:grid-cols-3 md:grid-cols-3 min-md:grid-cols-1 lg:gap-1  md:gap-3">
           {kidsFurniture.map((product) => (
@@ -181,6 +174,7 @@ const Home = () => {
               colors={product.colors}
               rating={product.rating}
               reviews={product.reviews}
+              stock={product.stock}
             />
           ))}
         </div>

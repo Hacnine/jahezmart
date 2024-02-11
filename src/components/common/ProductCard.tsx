@@ -18,6 +18,7 @@ interface ProductCardProps {
   star?: number;
   rating: number;
   reviews?: number;
+  stock:number
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({
@@ -30,6 +31,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
   star,
   rating,
   reviews,
+  stock
 }) => {
   
   const [iconColor, setIconColor] = useState(false);
@@ -44,6 +46,34 @@ const ProductCard: React.FC<ProductCardProps> = ({
   const handleIconClick = () => {
     setIconColor(!iconColor);
   };
+
+
+  // const [check, setCheck] = useState(colors[0]);
+  const [amount, setAmount] = useState(1);
+
+  // useEffect(() => {
+  //   getColor(check);
+  // }, [check]);
+
+  const setDecrease = () => {
+    amount > 1 ? setAmount(amount - 1) : setAmount(1);
+  };
+
+  const setIncrease = () => {
+    amount < stock ? setAmount(amount + 1) : setAmount(stock);
+  };
+
+  // const sentCartItem = () => {
+    // Check if the product is already in the cart
+    // const existingProduct = cartProducts.find((item) => item.id === id);
+
+    // if (existingProduct) {
+      // If product is already in the cart, update the quantity
+      // addCartItem(id, name, image[0].url, existingProduct.amount + amount, check, price, stock);
+    // } else {
+      // If product is not in the cart, add it
+      // addCartItem(id, name, image[0].url, amount, check, price, stock);
+    // }
 
   const [selected, setSelected] = useState<string>(colors[0]);
   return (
@@ -127,41 +157,3 @@ const ProductCard: React.FC<ProductCardProps> = ({
 };
 
 export default ProductCard;
-
-// {
-//   "id": ,
-//   "name": "",
-//   "price": ,
-//   "discount": ,
-//   "new product": ,
-//   "colors": [" "],
-//   "images": [
-//     {"gray":["/images/products/product1.1.jpg",
-//     "/images/products/product1.2.jpg"
-//     ],
-//   "orange":[
-//     "/images/products/product1.4.jpg"
-//   ],
-//   "description": [
-//     {
-//       "Jazz it Up": "J ."
-//     },
-//     {
-//       "Design It Your Way": " "
-//     }
-//   ],
-//   "category": " ",
-//   "featured": true,
-//   "rating": ,
-//   "star":  ,
-//   "full_details": [
-//     {
-//       "Assembled_Size:": " ",
-
-//       "Packaged Size": " ",
-//       "Assembly": "Required",
-//       "Made in": "Australia",
-//       "Delivery type": " "
-//     }
-//   ]
-// },

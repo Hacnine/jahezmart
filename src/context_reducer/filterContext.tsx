@@ -5,9 +5,10 @@ import filterReducer from "./filterReducer";
 import { Product2 as Product } from "../type/index";
 import Home from "../app/home/page";
 
-interface initialStateType {
+interface ContextState  {
   allProducts: Product[];
   filteredProducts: Product[];
+  featuredProducts: Product[],
   bed:Product[] ,
   sofa:Product[] ,
   dinning:Product[] ,
@@ -15,7 +16,7 @@ interface initialStateType {
   newProducts: Product[],
 }
 
-const initialState: initialStateType = {
+const initialState: ContextState  = {
   allProducts: productsData,
   filteredProducts: [],
   featuredProducts: [],
@@ -26,17 +27,8 @@ const initialState: initialStateType = {
   kidsFurniture:[],
 };
 
-type FilterContext = {
-  allProducts: Product[];
-  filteredProducts: Product[];
-  newProducts: Product[],
-  bed:Product[] ,
-  sofa:Product[] ,
-  dinning:Product[] ,
-  kidsFurniture:Product[],
-  getFeaturedData: () => Product[];
-  getNewData: () => Product[];
-  updateFilteredProducts: (filteredProducts: Product[]) => void; 
+type FilterContext = ContextState & {
+  updateFilteredProducts: (filteredProducts: Product[]) => void;
 };
 
 export const FilterContext = createContext<FilterContext | null>(null);
@@ -44,21 +36,12 @@ export const FilterContext = createContext<FilterContext | null>(null);
 const FilterContextProvider = ({ children }: { children: React.ReactNode }) => {
   const [state, dispatch] = useReducer(filterReducer, initialState);
 
-  const getFeaturedData = () => (
-    dispatch({ type: "GET_FEATURED_DATA", payload: state.allProducts })
-  );
-
-  const getNewData = () => {
-    dispatch({ type: "GET_NEW_PRODUCT_DATA" });
-
-    const newProduct = state.allProducts.filter((currentElement) => {
-      return currentElement.new_product === true;
-    });
-    return newProduct;
-  };
-
   const updateFilteredProducts = (filteredProducts: Product[]) => {
     dispatch({ type: "UPDATE_FILTERED_DATA", payload: filteredProducts });
+  };
+
+  const addToCart = (cartItem:Product[] ) => {
+    dispatch({ type: "ADD_TO_CART",payload: cartItem });
   };
 
   useEffect(() => {
@@ -68,9 +51,14 @@ const FilterContextProvider = ({ children }: { children: React.ReactNode }) => {
   return (
     <FilterContext.Provider
       value={{
-        ...state,
-        getFeaturedData,
-        getNewData,
+        allProducts: state.allProducts,
+        filteredProducts: state.filteredProducts,
+        featuredProducts: state.featuredProducts,
+        newProducts: state.newProducts,
+        bed: state.bed,
+        sofa: state.sofa,
+        dinning: state.dinning,
+        kidsFurniture: state.kidsFurniture,
         updateFilteredProducts 
       }}
     >
