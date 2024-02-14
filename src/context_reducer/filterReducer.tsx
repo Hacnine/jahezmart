@@ -1,5 +1,12 @@
 import { Product2 as Product } from "../type/index";
 
+interface AddToWishListProps {
+  id?: string;
+  name?: string;
+  firstImagePath?: string;
+  price?: number;
+}
+
 interface FilterState {
   allProducts: Product[];
   filteredProducts: Product[];
@@ -13,7 +20,7 @@ interface FilterState {
 
 interface FilterAction {
   type: string;
-  payload?: Product[];
+  payload?: Product[] ;
 }
 
 const filterReducer = (state: FilterState, action: FilterAction) => {

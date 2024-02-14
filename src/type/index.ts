@@ -11,6 +11,7 @@ export interface Product2 {
   stock: number;
   price: number;
   discount?: number;
+  quantity: number;
   recommended?: boolean;
   featured?: boolean;
   new_product?: boolean;
@@ -23,56 +24,41 @@ export interface Product2 {
   star?: number;
   full_details?: Record<string, string>[];
 
-  // full_details: {
-  //   AssembledSize: string;
-  //   PackagedSize: string;
-  //   Color?: string; // Optional color property, as it's present only in some products
-  //   Assembly?: string;
-  //   DeliveryType?: string;
-  //   type?: string;
-  // style?: string;
-  // suggestedMattressHeight?: string;
-  // sleepingCapacity?: number;
-
-  // "Assembled Size"?: string;
-  // "Packaged Size"?: string;
-  // "Packaged Size (Box1)"?: string;
-  // "Packaged Size (Box2)"?: string;
-  // "Under Bed Height"?: string;
-  // "Delivery type": string;
-  // "Includes"?: string;
-  // "Type"?: string;
-  // "Number Of Pieces"?: number;
-  // "Style"?: string;
-  // "Suggested Mattress Height"?: string;
-  // "Sleeping Capacity"?: number;
-  // "Feel"?: string;
-  // "Spring Type"?: string;
-  // "Comfort Layers"?: string;
-  // "Zones"?: string;
-  // "Where Was I Made"?: string;
-  // "Mattress In A Box"?: string;
-  // "Features"?: string;
-  // }[];
 };
+export interface UpdateQuantity {
+  id: string;
+  quantity?: number;
+}
 
-export interface CartItems {
-  id: string,
+export interface CartItems extends UpdateQuantity {
   name: string,
   image: string,
   amount: number,
   price: number,
 }
 
+export interface AddToWishListProps {
+  id: string;
+  name?: string;
+  firstImagePath?: string;
+  price?: number;
+}
 
-export interface ContextState  {
+export interface AddToCartProps extends AddToWishListProps {
+  quantity: number;
+  stock: number;
+  large:boolean;
+}
+
+
+export interface ContextState {
   allProducts: Product[];
   filteredProducts: Product[];
   featuredProducts: Product[],
-  bed:Product[] ,
-  sofa:Product[] ,
-  dinning:Product[] ,
-  kidsFurniture:Product[],
+  bed: Product[],
+  sofa: Product[],
+  dinning: Product[],
+  kidsFurniture: Product[],
   newProducts: Product[],
 }
 

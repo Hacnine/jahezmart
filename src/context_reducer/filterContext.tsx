@@ -2,7 +2,7 @@
 import React, { createContext, useReducer, useContext, useEffect } from "react";
 import productsData from "../../public/products.json";
 import filterReducer from "./filterReducer";
-import { Product2 as Product } from "../type/index";
+import { AddToWishListProps, Product2 as Product } from "../type/index";
 import Home from "../app/home/page";
 
 interface ContextState  {
@@ -40,9 +40,6 @@ const FilterContextProvider = ({ children }: { children: React.ReactNode }) => {
     dispatch({ type: "UPDATE_FILTERED_DATA", payload: filteredProducts });
   };
 
-  const addToCart = (cartItem:Product[] ) => {
-    dispatch({ type: "ADD_TO_CART",payload: cartItem });
-  };
 
   useEffect(() => {
     dispatch({ type: "UPDATE_FILTERED_DATA"});

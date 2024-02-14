@@ -20,36 +20,31 @@ import SearchBar from "@/components/common/header/SearchBar";
 
 const Home = () => {
   const [featuredData, setFeaturedData] = useState([]);
-  const {
-    sofa,
-    dinning,
-    kidsFurniture,
-    bed,
-    newProducts,
-  } = useFilterContext();
+  const { sofa, dinning, kidsFurniture, bed, newProducts } = useFilterContext();
 
   return (
     <div className="home ">
       <Slider />
 
-      <div className="wrapper py-9">
-        <div className="w-10/12 grid md:grid-cols-3 sm:grid-cols-1 gap-6 mx-auto justify-center">
+      <div className="center gap-3">
+      <div>
+        <div className=" wrapper py-9 w-10/12 grid md:grid-cols-3 sm:grid-cols-1 gap-6  mx-2">
           {featureCardInfo.map((info, index) => (
-            <div key={index}>
+            <div key={index} className="px-6">
               <FeatureCard {...info} />
             </div>
           ))}
         </div>
       </div>
+      </div>
 
       <div className="wrapper py-9 center flex-col">
-      <img src="/images/titles/category.svg" className="mb-9" alt="" />
-
+        <img src="/images/titles/category.svg" className="mb-9" alt="" />
 
         <div className="grid lg:grid-cols-3 grid-cols-2 gap-3">
           {shopByCategory.map((category, index) => (
             <div key={index}>
-            <ShopByCategory {...category} />
+              <ShopByCategory {...category} />
             </div>
           ))}
         </div>
@@ -61,12 +56,11 @@ const Home = () => {
         </p> */}
         <img src="/images/titles/featured.svg" className="mb-9" alt="" />
         <div className="grid  xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-2 gap-3">
-          
           <div className="">
-          <p className=" mb-3  text-[20px] font-semibold">Bed</p>
+            <p className=" mb-3  text-[20px] font-semibold">Bed</p>
             {bed.map((product) => (
               <MiniProductCard
-                key={product.id} // Make sure to add a unique key for each item
+                key={product.id}
                 name={product.name}
                 category={product.category}
                 price={product.price}
@@ -83,7 +77,7 @@ const Home = () => {
             ))}
           </div>
           <div className="">
-          <p className="font-semibold  text-[18px] mb-3">Sofa</p>
+            <p className="font-semibold  text-[18px] mb-3">Sofa</p>
 
             {sofa.map((product) => (
               <MiniProductCard
@@ -104,7 +98,7 @@ const Home = () => {
             ))}
           </div>
           <div className="">
-          <p className="font-semibold  text-[18px] mb-3">Dinnig</p>
+            <p className="font-semibold  text-[18px] mb-3">Dinnig</p>
 
             {dinning.map((product) => (
               <MiniProductCard
@@ -124,29 +118,28 @@ const Home = () => {
               />
             ))}
           </div>
-          <div className="xl:col-span-1 lg:col-span-3 md:col-span-3 min-md:col-span-1 " >
-          <p className="text-[18px] font-semibold mb-3">Kid's Furniture</p>
+          <div className="xl:col-span-1 lg:col-span-3 md:col-span-3 min-md:col-span-1 ">
+            <p className="text-[18px] font-semibold mb-3">Kid's Furniture</p>
 
-          <div className="md:grid xl:grid-cols-1 lg:grid-cols-3 md:grid-cols-3 min-md:grid-cols-1 lg:gap-1  md:gap-3">
-          {kidsFurniture.map((product) => (
-              <MiniProductCard
-                key={product.id} // Make sure to add a unique key for each item
-                name={product.name}
-                category={product.category}
-                price={product.price}
-                discount={product.discount}
-                images={
-                  Array.isArray(product.images)
-                    ? product.images[0]
-                    : product.images
-                }
-                colors={product.colors}
-                rating={product.rating}
-                reviews={product.reviews}
-              />
-            ))}
-          </div>
-           
+            <div className="md:grid xl:grid-cols-1 lg:grid-cols-3 md:grid-cols-3 min-md:grid-cols-1 lg:gap-1  md:gap-3">
+              {kidsFurniture.map((product) => (
+                <MiniProductCard
+                  key={product.id} // Make sure to add a unique key for each item
+                  name={product.name}
+                  category={product.category}
+                  price={product.price}
+                  discount={product.discount}
+                  images={
+                    Array.isArray(product.images)
+                      ? product.images[0]
+                      : product.images
+                  }
+                  colors={product.colors}
+                  rating={product.rating}
+                  reviews={product.reviews}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </div>
@@ -156,14 +149,15 @@ const Home = () => {
       </div>
 
       <div className="wrapper py-9 center flex-col">
-        <img src="/images/titles/new.svg" className="mb-9"alt="" />
+        <img src="/images/titles/new.svg" className="mb-9" alt="" />
 
         <div className="grid lg:grid-cols-4 grid-cols-2 gap-6 ">
           {newProducts.map((product) => (
             <ProductCard
-              key={product.id} // Make sure to add a unique key for each item
+              id={product.id} // Make sure to add a unique key for each item
               name={product.name}
               category={product.category}
+              quantity={product.quantity}
               price={product.price}
               discount={product.discount}
               images={
@@ -179,7 +173,6 @@ const Home = () => {
           ))}
         </div>
       </div>
-      <SimpleBottomNavigation/>
     </div>
   );
 };

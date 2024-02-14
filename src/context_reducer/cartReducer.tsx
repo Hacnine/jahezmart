@@ -1,31 +1,67 @@
-import { Product2 as Product } from "../type/index";
+import { Product2 as Product, AddToCartProps, UpdateQuantity,AddToWishListProps } from "../type/index";
 
-interface FilterState {
+interface CartState {
   filteredProducts: Product[];
-  cartProducts: Product[];
-
-}
-
-interface FilterAction {
-  type: string;
-  payload?: Product[];
-}
-
-const filterReducer = (state: FilterState, action: FilterAction) => {
-  switch (action.type) {
-    case "UPDATE_FILTERED_DATA":
-      return {
-        ...state,
-        filteredProducts: action.payload || state.filteredProducts,
-      };
-    case "ADD_TO_CART":
-      console.log(action.payload);
-      return {
-        ...state,
-        // cartProducts: [...state.cartProducts, action.payload],
-      };
-    }
-    return state;
-  };
+  cartProducts: AddToCartProps[];
+  wishListProducts:AddToWishListProps[];
   
-  export default filterReducer;
+}
+
+interface CartAction {
+  type: string;
+  payload?: Product[] | AddToCartProps[] | string | UpdateQuantity | AddToWishListProps[];
+}
+
+const cartReducer = (state: CartState, action: CartAction) => {
+  switch (action.type) {
+
+    case "ADD_TO_CART":
+      return {
+        ...state,
+        cartProducts: [...state.cartProducts, action.payload],
+      };
+
+      case "REMOVE_FROM_CART":
+        console.log(action.payload)
+      return {
+        cartProducts: state.cartProducts.filter(item => item.id !== action.payload),
+
+      };
+
+      case "ADD_TO_Wish_List":
+        console.log(action.payload)
+      return {
+        ...state,
+        wishListProducts: [...state.wishListProducts, action.payload],
+      };
+
+      case "REMOVE_FROM_Wish_List":
+        console.log(action.payload)
+      return {
+        wishListProducts: state.wishListProducts.filter(item => item.id !== action.payload),
+
+      };
+
+      case "UPDATE_QUANTITY":
+        const { id, quantity } = action.payload;
+  
+        const updatedCartProducts = state.cartProducts.map((product) => {
+          if (product.id === id) {
+            return { ...product, quantity: quantity };
+          }
+          return product;
+        });
+        console.log(updatedCartProducts);
+  
+        return {
+          ...state,
+          cartProducts: updatedCartProducts,
+        };
+
+      default:
+        return state;
+  }
+  
+};
+
+export default cartReducer;

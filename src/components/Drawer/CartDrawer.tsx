@@ -4,11 +4,15 @@ import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import Button from "@mui/material/Button";
 import SearchBar from "../common/header/SearchBar";
+import { useCartContext } from "@/context_reducer/cartContext";
+import { Close } from "@mui/icons-material";
+import Scrollbars from "react-custom-scrollbars-2";
+import CartItems from "../common/cart/CartItems";
 const CartDrawer: React.FC<{
   open: boolean;
   setOpen: (open: boolean) => void;
 }> = ({ open, setOpen }) => {
-  // const [open, setOpen] = React.useState(false);
+ 
 
   const toggleDrawer = () => {
     setOpen(!open);
@@ -23,7 +27,7 @@ const CartDrawer: React.FC<{
         sx={{
           height: 400,
           "& .MuiDrawer-paper": {
-          width: 450,
+            width: 320,
 
             // height: 550,
             // p: 4,
@@ -39,35 +43,17 @@ const CartDrawer: React.FC<{
             bgcolor: "Khaki",
             paddingTop: "18px",
             paddingBottom: "18px",
-
             paddingRight: "35px",
-
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
           }}
         >
-          <img src="/images/background/cart.svg" 
-          width={310}
-          alt="" />
+          <div className="center gap-1">
+            <img src="/images/background/cart.svg" width={310} alt="" />
+          </div>
         </Box>
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            paddingTop: "16px",
-            "& a": {
-              textDecoration: "none",
-              marginBottom: "8px",
-              width: 300,
-              color: "#aa4400",
-              fontWeight: 600,
-              // orangeRed:'#FF4500',
-              // lightOrange:'#FF5733',
-              // mushroom:'#aa4400',
-            },
-          }}
-        ></Box>
+       <CartItems width={'300'} height={300} large={false}/>
       </Drawer>
     </div>
   );
