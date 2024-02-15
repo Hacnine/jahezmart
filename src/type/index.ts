@@ -27,7 +27,7 @@ export interface Product2 {
 };
 export interface UpdateQuantity {
   id: string;
-  quantity?: number;
+  quantity: number;
 }
 
 export interface CartItems extends UpdateQuantity {
@@ -42,12 +42,14 @@ export interface AddToWishListProps {
   name?: string;
   firstImagePath?: string;
   price?: number;
+  quantity: number;
+  stock: number;
+  selected:string;
+  large?:boolean;
 }
 
 export interface AddToCartProps extends AddToWishListProps {
-  quantity: number;
-  stock: number;
-  large:boolean;
+ 
 }
 
 

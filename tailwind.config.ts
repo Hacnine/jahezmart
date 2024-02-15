@@ -6,6 +6,12 @@ const config: Config = {
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+
+  variants: {
+    extend: {
+      border: ['focus'], // Enable focus variants for border
+    },
+  },
   theme: {
 
     screens: {
@@ -24,11 +30,13 @@ const config: Config = {
         sandyBrown:	'#FF5733',
         chocolate: '#FF4500',
         tan:'#28170bff',
+        darkChocolate:'#28170bff',
         maroon:'#800000',
         burlywood:'#DEB887',
         orangeRed:'#FF4500',
         lightOrange:'#FF5733',
         mushroom:'#aa4400',
+        warning:'#ed6c02'
 
       },
 
@@ -42,6 +50,8 @@ const config: Config = {
         },
     },
   },
-  plugins: [],
+    
+    plugins: [],
+    // require('@tailwindcss/forms'),
 };
 export default config;

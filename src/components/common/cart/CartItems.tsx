@@ -34,8 +34,8 @@ const CartItems:React.FC<CartItemProps> = ({width, height, large}) => {
         }}
       >
         <Scrollbars style={{ width: width, height: height }}>
-          {cartProducts.map((product) => (
-            <div className="start gap-1 backdrop-blur-sm bg-white/30   my-1">
+          {cartProducts && cartProducts.map((product) => (
+            <div className="start gap-3 backdrop-blur-sm bg-white/30   my-1">
               <CartCard {...product} large={large}/>
             </div>
           ))}

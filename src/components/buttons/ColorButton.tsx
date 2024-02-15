@@ -21,7 +21,7 @@ const ColorButton: React.FC<ColorButtonProps> = ({
   return (
       <button
         key={index}
-        className={`${currentColor === 'white' ? 'border border-slate-200': ''}  w-8 h-8  rounded-md  overflow-clip center shadow-md `}
+        className={`${currentColor === 'white' ? 'border border-slate-200': ''}  sm:w-8 sm:h-8 w-5 h-5 rounded-md  overflow-clip center shadow-md `}
         style={{ backgroundColor: currentColor}}
         onClick={() => {setCheck(colors[index]); setIndex(index)}}
         >

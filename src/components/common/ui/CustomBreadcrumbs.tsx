@@ -1,0 +1,37 @@
+import { Breadcrumbs } from '@mui/material'
+import Link from 'next/link'
+import React from 'react'
+
+interface Link {
+    linkName: string;
+    link: string;
+  };
+
+const CustomBreadcrumbs:React.FC<{ links: Link }> = ({links}) => {
+  return (
+    <div className="my-5 border-2  border-mushroom border-l-0 w-fit py-2 px-3 rounded-r-full">
+          <Breadcrumbs
+            separator="›"
+            aria-label="breadcrumb"
+            sx={{ color: "#aa4400" }}
+          >
+            <Link color="inherit" href="/">
+              {/* <Home sx={{ mr: 0.5 }} fontSize="inherit" /> */}
+              Home
+            </Link>
+            <Link href="/account/wishlist">
+              {/* <Favorite sx={{ mr: 0.5 }} fontSize="inherit" /> */}
+              Wishlist
+            </Link>
+            {links.map((link)=>{
+                <Link href={link.link}>
+                {/* <Favorite sx={{ mr: 0.5 }} fontSize="inherit" /> */}
+                {link.linkName}
+              </Link>
+            })}
+          </Breadcrumbs>
+        </div>
+  )
+}
+
+export default CustomBreadcrumbs

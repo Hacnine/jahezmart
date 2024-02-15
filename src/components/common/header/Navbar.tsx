@@ -28,7 +28,7 @@ const Navbar = () => {
           </div>
 
           <div className="text-white  pt-4">
-            <a href="http://127.0.0.1:5500/dist/login.html">Login/Logout</a>
+            <a href="/signin">Login/Logout</a>
           </div>
         </div>
       </nav>

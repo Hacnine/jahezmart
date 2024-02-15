@@ -24,16 +24,16 @@ const Footer = () => {
           <div className="start">
             <input
               type="text"
-              className="w-[260px] border border-gray-300   h-[48px]  border-r-0  px-4 py-3 ring-transparent  outline-none focus:border focus:border-orangeRed focus:border-r-0 rounded-lr-md rounded-tl-3xl"
+              className="md:w-[260px] w-[190px] border border-gray-300   h-[48px]  border-r-0  px-4 py-3 ring-transparent  outline-none focus:border focus:border-orangeRed focus:border-r-0 rounded-lr-md rounded-tl-3xl"
             />
-            <button className="bg-orangeRed hover:bg-sandyBrown text-white center gap-1 py-3 px-5 rounded-lr-md rounded-tr-3xl font-semibold ">
+            <button className="bg-orangeRed hover:bg-sandyBrown text-white center gap-1 py-3 sm:px-5 px-2 rounded-lr-md rounded-tr-3xl font-semibold sm:text-base ">
               Subscribe{" "}
             </button>
           </div>
         </div>
 
         {/* <div className="center lg:gap-28 gap-20"> */}
-        <div className="md:gap-[50px] gap-5 grid  md:grid-cols-3 sm:grid-cols-3 ">
+        <div className="md:gap-[50px] gap-1 grid  md:grid-cols-3 sm:grid-cols-3 ">
           <div className=" col-span-1  mr-[60px] w-[130px]">
             <h2 className="text-lg font-semibold mb-4">ACCOUNT</h2>
             <ul>

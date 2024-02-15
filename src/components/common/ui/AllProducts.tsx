@@ -6,42 +6,34 @@ import ProductCard from '../ProductCard';
 import Link from "next/link";
 import { useRouter, useSearchParams } from 'next/navigation';
 
-const AllProducts = () => {
+interface Props {
+  grid:boolean;
+}
 
-  const { allProducts, updateFilteredProducts } = useFilterContext();
+const AllProducts:React.FC<Props> = ({grid}) => {
+
+  const { filteredProducts, updateFilteredProducts } = useFilterContext();
   const searchParams = useSearchParams();
   const query = searchParams.get("search");
 
-  const filteredProducts = allProducts.filter(product =>
-    product.name.toLowerCase().includes(query?.toLowerCase() || '')
-  );
+  // const filteredProducts = filteredProducts.filter(product =>
+  //   product.name.toLowerCase().includes(query?.toLowerCase() || '')
+  // );
 
   return (
-    <div className='center flex-col'>
-       <div className="container py-16 w-full center flex-col">
-       <img src="/images/titles/all.svg" className="mb-10" alt="" />
+    <div className='lg:col-span-9 col-span-12  '>
+       {/* <div className="  w-full center flex-col"> */}
+     
        
-        <div className="grid lg:grid-cols-4 grid-cols-2 gap-6 w">
+        <div className={` lg:ml-8  grid ${grid? 'lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-2 grid-cols-2': 'grid-cols-1'} gap-6`}>
           {filteredProducts.map((product) => (
             <ProductCard
-              key={product.id}
-              name={product.name}
-              category={product.category}
-              price={product.price}
-              discount={product.discount}
-              images={
-                Array.isArray(product.images)
-                  ? product.images[0]
-                  : product.images
-              }
-              colors={product.colors}
-              rating={product.rating}
-              reviews={product.reviews}
+              {...product}
             />
           ))}
         </div>
       </div>
-    </div>
+    // </div>
   )
 }
 

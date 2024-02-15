@@ -846,7 +846,7 @@
     "price": 899,
     "stock":7,
     "quantity":1,
-    "discount": 100,
+    "discount": 2,
     "new_product": false,
     "rating": 4.9,
     "reviews": 150,

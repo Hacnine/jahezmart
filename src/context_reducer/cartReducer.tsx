@@ -22,22 +22,21 @@ const cartReducer = (state: CartState, action: CartAction) => {
       };
 
       case "REMOVE_FROM_CART":
-        console.log(action.payload)
       return {
+        ...state,
         cartProducts: state.cartProducts.filter(item => item.id !== action.payload),
 
       };
 
       case "ADD_TO_Wish_List":
-        console.log(action.payload)
       return {
         ...state,
         wishListProducts: [...state.wishListProducts, action.payload],
       };
 
       case "REMOVE_FROM_Wish_List":
-        console.log(action.payload)
       return {
+        ...state,
         wishListProducts: state.wishListProducts.filter(item => item.id !== action.payload),
 
       };
@@ -51,7 +50,6 @@ const cartReducer = (state: CartState, action: CartAction) => {
           }
           return product;
         });
-        console.log(updatedCartProducts);
   
         return {
           ...state,

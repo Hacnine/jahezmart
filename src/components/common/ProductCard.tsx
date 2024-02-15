@@ -8,6 +8,7 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import StarRating from "./ui/StarRating";
 import ColorButton from "../buttons/ColorButton";
 import { useCartContext } from "@/context_reducer/cartContext";
+import { CgShoppingCart } from "react-icons/cg";
 
 interface ProductCardProps {
   id: string;
@@ -86,7 +87,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
     if (existingProduct) {
       setMessage("You have already added this product in your cart!");
     } else {
-      addToCart({ id, name, firstImagePath, quantity, price, stock });
+      addToCart({ id, name, firstImagePath, quantity, price, stock,selected });
     }
   };
 
@@ -94,7 +95,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
 
   const sentWishListItem = () => {
     setOpenWishList(true);
-    addToWishList({ id, name, firstImagePath, price });
+    addToWishList({ id, name, firstImagePath, price,stock, quantity,selected });
 
     setTimeout(() => {
       setOpenWishList(false);
@@ -224,11 +225,11 @@ const ProductCard: React.FC<ProductCardProps> = ({
           })}
         </div>
 
-        <h3 className=" font-bold uppercase leading-7 md:text-base text-xs hover:text-chocolate p-3">
+        <h3 className=" font-bold uppercase text-gray-600  md:text-base text-[10px] hover:text-chocolate pl-3">
           {name}
         </h3>
-        <p className="flex  text-[20px] leading-[38px] font-extrabold text-sandyBrown px-3">
-          <span className=" text-base text-gray-600 self-start text-[18px] font-extrabold  leading-[17px] ">
+        <p className="flex  dm:text-[20px] text-[14px] leading-[38px] font-extrabold text-sandyBrown px-3">
+          <span className=" text-base text-gray-600 self-start sm:text-[18px] text-[12px] font-extrabold  leading-[17px] ">
             {" "}
             ৳
           </span>
@@ -264,10 +265,11 @@ const ProductCard: React.FC<ProductCardProps> = ({
               }}
             >
               <button
-                className="absolute bottom-0 mt-3 bg-chocolate hover:bg-chocolate/90 w-full py-2 md:text-sm text-xs center text-white font-semibold rounded-tr-3xl rounded-bl-3xl"
+                className="absolute bottom-0 mt-3 bg-chocolate hover:bg-chocolate/90 w-full py-2 md:text-sm text-[10px] center text-white font-semibold rounded-tr-3xl rounded-bl-3xl center gap-1"
                 onClick={sentCartItem}
               >
-                <ShoppingCart /> ADD TO CART
+                <CgShoppingCart className="text-lg"/>
+                 <p>ADD TO CART</p>
               </button>
             </Tooltip>
           </div>
