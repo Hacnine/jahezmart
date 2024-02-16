@@ -4,22 +4,22 @@
 @tailwind components;
 @tailwind utilities;
 
-/* @layer components{
+@layer components{
   .size-selector input:checked + label{
-      @apply bg-[#ff0000] text-white;
+      @apply bg-orangeRed text-white;
   } 
   .color-selector input:checked + label{
       @apply ring-1 ring-yellow-300;
   }
   
   .input-box{
-      @apply block w-full border border-gray-300 px-4 py-3 text-gray-600 text-sm rounded placeholder-gray-400  focus:border-[#ff0000]  focus:ring-[#ff0000]
+      @apply block w-full border border-gray-300 px-4 py-3 text-gray-600 text-sm rounded placeholder-gray-400  focus:border-orangeRed  focus:ring-orangeRed outline-none
   }
 
   .rememberme-selector input:checked{
-      @apply bg-[#ff0000];
+      @apply bg-orangeRed;
   }
-} */
+}
 
 body {
   max-width: 1350;

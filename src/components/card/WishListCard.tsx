@@ -10,11 +10,12 @@ const WishListCard: React.FC<AddToWishListProps> = ({
   price,
   quantity,
   stock,
+  selected
 }) => {
   const { removeFromWishList, addToCart } = useCartContext();
 
   const sentToCart = ()=>{
-    addToCart({ id, name, firstImagePath, quantity, price, stock });
+    addToCart({ id, name, firstImagePath, quantity, price, stock, selected });
     removeFromWishList(id);
   }
 

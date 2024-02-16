@@ -1,7 +1,7 @@
 "use client"
 import { useFilterContext } from '@/context_reducer/filterContext';
 import React, { Fragment, useState, useEffect } from "react";
-import ProductCard from '../ProductCard';
+import ProductCard from '../../card/ProductCard';
 
 import Link from "next/link";
 import { useRouter, useSearchParams } from 'next/navigation';

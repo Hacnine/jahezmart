@@ -29,12 +29,12 @@ const FirstHeader = () => {
         <SearchBar otherClasses={" hidden md:hidden"} />
 
         <div className=" flex items-center justify-evenly gap-6">
-          <Link href={"/cart"} className=" lg:block hidden">
+          <Link href={"/account/cart"} className=" lg:block hidden">
             <Badge badgeContent={cartProducts.length} color="error" sx={{ color: "OrangeRed" }}>
               <ShoppingCart />
             </Badge>
           </Link>
-          <Link href="/wishlist">
+          <Link href="/account/wishlist">
             <Badge badgeContent={wishListProducts.length} color="error" sx={{ color: "OrangeRed" }}>
               <Favorite />
             </Badge>

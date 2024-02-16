@@ -2,8 +2,8 @@ import React from 'react'
 
 const ShopSidebar = () => {
   return (
-    <div className="hidden lg:block col-span-3 items-start">
-    <div className=" shadow pt-2  px-3 pb-16 rounded">
+    
+    <div className="  pt-2  px-3 pb-16 rounded">
       <div className="divide-y divide-gray-200 space-y-5">
         {/* Category Filter */}
         <div className="pt-4">
@@ -257,7 +257,7 @@ const ShopSidebar = () => {
         </div>
       </div>
     </div>
-  </div>
+ 
   )
 }
 

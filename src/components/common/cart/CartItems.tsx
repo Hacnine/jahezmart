@@ -4,7 +4,7 @@ import React from "react";
 import Box from "@mui/material/Box";
 import { useCartContext } from "@/context_reducer/cartContext";
 import Scrollbars from "react-custom-scrollbars-2";
-import CartCard from "./CartCard";
+import CartCard from "../../card/CartCard";
 interface CartItemProps {
   width:string;
   height:number;
@@ -35,7 +35,7 @@ const CartItems:React.FC<CartItemProps> = ({width, height, large}) => {
       >
         <Scrollbars style={{ width: width, height: height }}>
           {cartProducts && cartProducts.map((product) => (
-            <div className="start gap-3 backdrop-blur-sm bg-white/30   my-1">
+            <div className="start gap-3 backdrop-blur-sm bg-white/30   my-1 shadow">
               <CartCard {...product} large={large}/>
             </div>
           ))}

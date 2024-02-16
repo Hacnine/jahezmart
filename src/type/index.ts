@@ -30,6 +30,22 @@ export interface UpdateQuantity {
   quantity: number;
 }
 
+export interface ProductCardProps {
+    id: string;
+    name: string;
+    category: string;
+    quantity: number;
+    price: number;
+    discount?: number;
+    images: { [color: string]: string[] } | { [color: string]: string[] }[];
+    colors: string[];
+    star?: number;
+    rating: number;
+    reviews?: number;
+    stock: number;
+  }
+  
+
 export interface CartItems extends UpdateQuantity {
   name: string,
   image: string,

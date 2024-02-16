@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import AllCategories from "./AllCategories";
-import { Menu } from "@mui/icons-material";
+import { Login, Menu } from "@mui/icons-material";
 import StickyBox from "react-sticky-box";
 import AppBar from "@mui/material/AppBar";
 import Headroom from "react-headroom";
@@ -27,8 +27,8 @@ const Navbar = () => {
             </div>
           </div>
 
-          <div className="text-white  pt-4">
-            <a href="/signin">Login/Logout</a>
+          <div className="text-white px-5 bg-orangeRed  py-4">
+            <Link href="/signin"><Login className=""/></Link>
           </div>
         </div>
       </nav>

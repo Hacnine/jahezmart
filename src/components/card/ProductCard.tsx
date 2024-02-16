@@ -1,30 +1,18 @@
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
+import Link from "next/link";
 
 import { Button, ClickAwayListener, Tooltip, Zoom } from "@mui/material";
 import { FavoriteBorder, HeartBroken, ShoppingCart } from "@mui/icons-material";
 import IconButton from "@mui/material/IconButton";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import StarRating from "./ui/StarRating";
+import StarRating from "../common/ui/StarRating";
 import ColorButton from "../buttons/ColorButton";
 import { useCartContext } from "@/context_reducer/cartContext";
 import { CgShoppingCart } from "react-icons/cg";
 
-interface ProductCardProps {
-  id: string;
-  name: string;
-  category: string;
-  quantity: number;
-  price: number;
-  discount?: number;
-  images: { [color: string]: string[] } | { [color: string]: string[] }[];
-  colors: string[];
-  star?: number;
-  rating: number;
-  reviews?: number;
-  stock: number;
-}
-
+import { ProductCardProps } from "@/type";
+import TooltipWrapper from "../wrapper/TooltipWrapper";
 const ProductCard: React.FC<ProductCardProps> = ({
   id,
   name,
@@ -51,9 +39,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
   const [open, setOpen] = React.useState(false);
   const [openWishList, setOpenWishList] = React.useState(false);
   const [message, setMessage] = useState("Added to cart!");
-  const [wishListMessage, setWishListMessage] = useState(
-    "Added to WishList!"
-  );
+  const [wishListMessage, setWishListMessage] = useState("Added to WishList!");
 
   const handleTooltipClose = () => {
     setOpen(false);
@@ -74,8 +60,6 @@ const ProductCard: React.FC<ProductCardProps> = ({
     setFavorite(!favorite);
   };
 
-  const [amount, setAmount] = useState(1);
-
   const sentCartItem = () => {
     setOpen(true);
 
@@ -87,24 +71,26 @@ const ProductCard: React.FC<ProductCardProps> = ({
     if (existingProduct) {
       setMessage("You have already added this product in your cart!");
     } else {
-      addToCart({ id, name, firstImagePath, quantity, price, stock,selected });
+      addToCart({ id, name, firstImagePath, quantity, price, stock, selected });
     }
   };
 
-
-
   const sentWishListItem = () => {
     setOpenWishList(true);
-    addToWishList({ id, name, firstImagePath, price,stock, quantity,selected });
+    addToWishList({
+      id,
+      name,
+      firstImagePath,
+      price,
+      stock,
+      quantity,
+      selected,
+    });
 
     setTimeout(() => {
       setOpenWishList(false);
       setWishListMessage("Product is added to Wishlist!"); // Reset message after a certain period
     }, 3000);
-
-    // } else {
-    //   addToWishList({ id, name, firstImagePath, price });
-    // }
   };
 
   const removeWishlistItem = () => {
@@ -116,23 +102,6 @@ const ProductCard: React.FC<ProductCardProps> = ({
       setOpenWishList(false);
       setWishListMessage("Product is added to Wishlist!"); // Reset message after a certain period
     }, 3000);
-    // if (wishListProducts.length !== 0) {
-    // setOpen(true);
-
-    // setTimeout(() => {
-    //   setOpen(false);
-    // }, 3000)
-    // const existingProduct = wishListProducts.find((item) => item.id === id);
-
-    // if (existingProduct) {
-    // setMessage('You have already added this product in your cart!')
-
-    // } else {
-    // addToWishList({ id, name, firstImagePath, price });
-    // }
-    // } else {
-    //   addToWishList({ id, name, firstImagePath, price });
-    // }
   };
   useEffect(() => {
     const existingProduct = wishListProducts.find((item) => item.id === id);
@@ -144,7 +113,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
   }, [wishListProducts, id]);
 
   return (
-    <div className=" relative shadow-md shadow-slate-400 w-full rounded-md overflow-hidden rounded-tr-3xl rounded-bl-3xl">
+    <div className=" hover:cursor-pointer relative group shadow-md shadow-slate-300 w-full rounded-md overflow-hidden rounded-tr-3xl rounded-bl-3xl">
       <div className="w-full  h-fit relative  group ">
         <div className="">
           <div className="center relative  group ">
@@ -162,43 +131,33 @@ const ProductCard: React.FC<ProductCardProps> = ({
               </p>
             ) : null}
 
-            <ClickAwayListener onClickAway={handleWishListTooltipClose}>
-              <div>
-                <Tooltip
-                  TransitionComponent={Zoom}
-                  PopperProps={{
-                    disablePortal: true,
-                  }}
-                  onClose={handleWishListTooltipClose}
-                  open={openWishList}
-                  disableFocusListener
-                  disableHoverListener
-                  disableTouchListener
-                  title={wishListMessage}
-                  sx={{
-                    color: "red",
-                    backgroundColor: "red",
-                    "&.MuiTooltip-tooltip": {
-                      backgroundColor: "red",
-                    },
-                  }}
-                >
-                  <IconButton onClick={handleIconClick} className="bg-white">
-                    {favorite ? (
-                      <FavoriteIcon
-                        className="text-red-600"
-                        onClick={removeWishlistItem}
-                      />
-                    ) : (
-                      <FavoriteBorder
-                        className="text-red-600"
-                        onClick={sentWishListItem}
-                      />
-                    )}
-                  </IconButton>
-                </Tooltip>
-              </div>
-            </ClickAwayListener>
+            <TooltipWrapper
+              open={openWishList}
+              setOpen={setOpenWishList}
+              message={wishListMessage}
+            >
+              <IconButton
+                onClick={handleIconClick}
+                sx={{
+                  bgcolor: "white",
+                  "&:hover": {
+                    bgcolor: "lightgray",
+                  },
+                }}
+              >
+                {favorite ? (
+                  <FavoriteIcon
+                    className="text-red-600 "
+                    onClick={removeWishlistItem}
+                  />
+                ) : (
+                  <FavoriteBorder
+                    className="text-red-600 "
+                    onClick={sentWishListItem}
+                  />
+                )}
+              </IconButton>
+            </TooltipWrapper>
           </div>
 
           <button className="w-full opacity-0 bg-orange-500  group-hover:opacity-100 absolute z-10 bottom-0 py-2 font-semibold text-white text-xs transition-color duration-300 rounded-bl-3xl rounded-tr-3xl">
@@ -225,11 +184,13 @@ const ProductCard: React.FC<ProductCardProps> = ({
           })}
         </div>
 
-        <h3 className=" font-bold uppercase text-gray-600  md:text-base text-[10px] hover:text-chocolate pl-3">
-          {name}
-        </h3>
-        <p className="flex  dm:text-[20px] text-[14px] leading-[38px] font-extrabold text-sandyBrown px-3">
-          <span className=" text-base text-gray-600 self-start sm:text-[18px] text-[12px] font-extrabold  leading-[17px] ">
+        <Link href={`shop/${id}`}>
+          <h3 className="  font-bold uppercase text-gray-600  md:text-base text-[10px] hover:text-chocolate pl-3">
+            {name}
+          </h3>
+        </Link>
+        <p className="flex  sm:text-[20px] text-[14px] leading-[38px] font-extrabold text-sandyBrown px-3">
+          <span className=" text-base text-gray-600 self-start md:text-[18px] sm:text-[10px] text-[9px] font-extrabold  leading-[17px] ">
             {" "}
             ৳
           </span>
@@ -239,41 +200,19 @@ const ProductCard: React.FC<ProductCardProps> = ({
           </span>
         </p>
 
-        <div className="start px-3 pb-14">
+        <div className="block group-hover:opacity-0 opacity-100 start px-3 md:pb-2 pb-5 ">
           <StarRating rating={rating} reviews={reviews} />
         </div>
 
-        <ClickAwayListener onClickAway={handleTooltipClose}>
-          <div>
-            <Tooltip
-              TransitionComponent={Zoom}
-              PopperProps={{
-                disablePortal: true,
-              }}
-              onClose={handleTooltipClose}
-              open={open}
-              disableFocusListener
-              disableHoverListener
-              disableTouchListener
-              title={message}
-              sx={{
-                color: "red",
-                backgroundColor: "red",
-                "&.MuiTooltip-tooltip": {
-                  backgroundColor: "red",
-                },
-              }}
-            >
-              <button
-                className="absolute bottom-0 mt-3 bg-chocolate hover:bg-chocolate/90 w-full py-2 md:text-sm text-[10px] center text-white font-semibold rounded-tr-3xl rounded-bl-3xl center gap-1"
-                onClick={sentCartItem}
-              >
-                <CgShoppingCart className="text-lg"/>
-                 <p>ADD TO CART</p>
-              </button>
-            </Tooltip>
-          </div>
-        </ClickAwayListener>
+        <TooltipWrapper open={open} setOpen={setOpen} message={message}>
+          <button
+            className="absolute bottom-0 mt-3 bg-chocolate hover:bg-chocolate/90 w-full py-2 md:text-sm text-[10px] center text-white font-semibold rounded-tr-3xl rounded-bl-3xl center gap-1 opacity-0 group-hover:opacity-100"
+            onClick={sentCartItem}
+          >
+            <CgShoppingCart className="text-lg" />
+            <p>ADD TO CART</p>
+          </button>
+        </TooltipWrapper>
       </div>
     </div>
   );
