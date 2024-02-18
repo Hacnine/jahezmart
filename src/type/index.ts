@@ -1,7 +1,22 @@
 export interface Product {
-
-  // Add other specific properties based on your needs
+  brand: string;
+  category: string;
+  colors: string[];
+  description: { title: string, description: string }[];
+  discount: number;
+  featured: boolean;
+  full_details: { [key: string]: string };
+  id: string;
+  images: { [key: string]: string[] };
+  name: string;
+  price: number;
+  quantity: number;
+  rating: number;
+  recommended: boolean;
+  reviews: number;
+  stock: number;
 }
+
 
 export interface Product2 {
 

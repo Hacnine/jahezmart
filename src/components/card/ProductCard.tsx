@@ -65,7 +65,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
 
     setTimeout(() => {
       setOpen(false);
-    }, 3000);
+    }, 1000);
     const existingProduct = cartProducts.find((item) => item.id === id);
 
     if (existingProduct) {

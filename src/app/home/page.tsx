@@ -60,19 +60,7 @@ const Home = () => {
             <p className=" mb-3  text-[20px] font-semibold">Bed</p>
             {bed.map((product) => (
               <MiniProductCard
-                key={product.id}
-                name={product.name}
-                category={product.category}
-                price={product.price}
-                discount={product.discount}
-                images={
-                  Array.isArray(product.images)
-                    ? product.images[0]
-                    : product.images
-                }
-                colors={product.colors}
-                rating={product.rating}
-                reviews={product.reviews}
+                {...product}
               />
             ))}
           </div>
@@ -81,19 +69,7 @@ const Home = () => {
 
             {sofa.map((product) => (
               <MiniProductCard
-                key={product.id} // Make sure to add a unique key for each item
-                name={product.name}
-                category={product.category}
-                price={product.price}
-                discount={product.discount}
-                images={
-                  Array.isArray(product.images)
-                    ? product.images[0]
-                    : product.images
-                }
-                colors={product.colors}
-                rating={product.rating}
-                reviews={product.reviews}
+              {...product}
               />
             ))}
           </div>
@@ -102,19 +78,7 @@ const Home = () => {
 
             {dinning.map((product) => (
               <MiniProductCard
-                key={product.id} // Make sure to add a unique key for each item
-                name={product.name}
-                category={product.category}
-                price={product.price}
-                discount={product.discount}
-                images={
-                  Array.isArray(product.images)
-                    ? product.images[0]
-                    : product.images
-                }
-                colors={product.colors}
-                rating={product.rating}
-                reviews={product.reviews}
+              {...product}
               />
             ))}
           </div>
@@ -124,19 +88,7 @@ const Home = () => {
             <div className="md:grid xl:grid-cols-1 lg:grid-cols-3 md:grid-cols-3 min-md:grid-cols-1 lg:gap-1  md:gap-3">
               {kidsFurniture.map((product) => (
                 <MiniProductCard
-                  key={product.id} // Make sure to add a unique key for each item
-                  name={product.name}
-                  category={product.category}
-                  price={product.price}
-                  discount={product.discount}
-                  images={
-                    Array.isArray(product.images)
-                      ? product.images[0]
-                      : product.images
-                  }
-                  colors={product.colors}
-                  rating={product.rating}
-                  reviews={product.reviews}
+                {...product}
                 />
               ))}
             </div>

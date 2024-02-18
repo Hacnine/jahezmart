@@ -2,7 +2,7 @@
 import React, { createContext, useReducer, useContext, useEffect } from "react";
 import productsData from "../../public/products.json";
 import filterReducer from "./filterReducer";
-import { AddToWishListProps, Product2 as Product } from "../type/index";
+import { AddToWishListProps, Product2 as Product, Product as Product3 } from "../type/index";
 import Home from "../app/home/page";
 
 interface ContextState  {
@@ -29,6 +29,7 @@ const initialState: ContextState  = {
 
 type FilterContext = ContextState & {
   updateFilteredProducts: (filteredProducts: Product[]) => void;
+  getProductById: (productId: string) => Product3 | undefined;
 };
 
 export const FilterContext = createContext<FilterContext | null>(null);
@@ -40,6 +41,9 @@ const FilterContextProvider = ({ children }: { children: React.ReactNode }) => {
     dispatch({ type: "UPDATE_FILTERED_DATA", payload: filteredProducts });
   };
 
+  const getProductById = (productId:string) => {
+    return state.allProducts.find(product => product.id=== productId)
+  }
 
   useEffect(() => {
     dispatch({ type: "UPDATE_FILTERED_DATA"});
@@ -56,7 +60,8 @@ const FilterContextProvider = ({ children }: { children: React.ReactNode }) => {
         sofa: state.sofa,
         dinning: state.dinning,
         kidsFurniture: state.kidsFurniture,
-        updateFilteredProducts 
+        updateFilteredProducts ,
+        getProductById
       }}
     >
       {children}

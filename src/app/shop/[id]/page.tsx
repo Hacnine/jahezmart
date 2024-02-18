@@ -1,6 +1,61 @@
-import React from "react";
+"use client";
 
-const Page = () => {
+import React, { useState } from "react";
+import { useRouter } from "next/navigation";
+import { useFilterContext } from "@/context_reducer/filterContext";
+import StarRating from "@/components/common/ui/StarRating";
+import ColorButton from "@/components/buttons/ColorButton";
+import Link from "next/link";
+import { Facebook, FavoriteBorder, Instagram, Twitter } from "@mui/icons-material";
+import { BsInstagram } from "react-icons/bs";
+import { FaOpencart } from "react-icons/fa6";
+const Page = ({ params }: { params: { id: string } }) => {
+  const { allProducts, getProductById } = useFilterContext();
+  const product = getProductById(params.id);
+  const {
+    brand,
+    category,
+    colors,
+    description,
+    discount,
+    featured,
+    full_details,
+    id,
+    images,
+    name,
+    price,
+    quantity,
+    rating,
+    recommended,
+    reviews,
+    stock,
+  } = product;
+  console.log(description);
+  const [index, setIndex] = useState(0);
+  const [selected, setSelected] = useState<string>(colors[0]);
+  const [temporaryQuantity, setTemporaryQuantity] =
+    React.useState<number>(quantity);
+  const setDecrease = () => {
+    if (temporaryQuantity > 1) {
+      setTemporaryQuantity(temporaryQuantity - 1);
+      // updateCartItemQuantity(id, temporaryQuantity - 1);
+    } else {
+      setTemporaryQuantity(1);
+      // updateCartItemQuantity(id, temporaryQuantity)
+    }
+  };
+
+  const setIncrease = () => {
+    if (temporaryQuantity < stock) {
+      setTemporaryQuantity(temporaryQuantity + 1);
+      // updateCartItemQuantity(id, temporaryQuantity + 1);
+    }
+    temporaryQuantity < stock
+      ? setTemporaryQuantity(temporaryQuantity + 1)
+      : setTemporaryQuantity(stock);
+  };
+  // console.log(product);
+
   return (
     <>
       <div>
@@ -10,7 +65,7 @@ const Page = () => {
             <img src="/images/products/product7.jpg" alt="" />
 
             {/* <!-- Mini Product Slide --> */}
-            <div className="grid grid-cols-5 items-center jusitify-between mt-3 gap-3 mb-6">
+            <div className="grid grid-cols-5 items-center justify-between mt-3 gap-3 mb-6">
               <img
                 src="/images/products/product7.jpg"
                 alt=""
@@ -41,21 +96,20 @@ const Page = () => {
 
             {/* <!-- Product Description --> */}
             <div className="mt-5 mb-6  text-sm space-y-3">
-              <p className="text-2xl text-gray-800">Product Description</p>
+              <p className="text-2xl text-gray-800 font-bold">Product Description</p>
               <hr className="border-t border-gray-400 " />
-              <p className="text-gray-600">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam
-                aperiam odio veniam itaque culpa fugit ratione debitis!
-                Laboriosam sint aperiam commodi ratione magni nostrum. At fuga
-                mollitia dolorem sint soluta. Lorem ipsum dolor sit amet
-                consectetur adipisicing elit. Illum ab consectetur, ullam
-                doloribus eveniet minus id voluptate animi consequuntur voluptas
-                totam earum natus, cum at odio explicabo minima fuga aspernatur.
-              </p>
+
+              {description.map((description: string) => (
+                <>
+                  <p className="text-gray-600 text-base font-semibold">{description.title}</p>
+
+                  <p className="text-gray-600">{description.description}</p>
+                </>
+              ))}
             </div>
 
             {/* <!-- Table --> */}
-            <div className="mb-6">
+            {/* <div className="mb-6">
               <table className="table-auto text-left text-gray-600 text-sm mt-6 border-collapse border  w-full   ">
                 <tr className="space-y-2">
                   <th className=" py-2 px-3   font-medium w-40 border border-slate-300 pl-3 ">
@@ -82,7 +136,7 @@ const Page = () => {
                   </td>
                 </tr>
               </table>
-            </div>
+            </div> */}
             {/* <!-- Table Ends--> */}
           </div>
 
@@ -90,135 +144,60 @@ const Page = () => {
 
           {/* <!-- Product Name Rating Size Etc --> */}
           <div className="col-span-1 ml-4">
-            <h1 className="text-3xl font-semibold text-gray-600">Easy Chair</h1>
+            <h1 className="text-3xl font-semibold text-gray-600">{name}</h1>
             <div className="mt-2 mb-2">
-              <div>
-                <span className="text-yellow-300">
-                  <i className="fas fa-star"></i>
+              <div className="start">
+                <StarRating rating={rating} reviews={reviews} />
+                <span className="ml-3 text-gray-400 text-sm">
+                  ({reviews} Reviews)
                 </span>
-                <span className="text-yellow-300">
-                  <i className="fas fa-star"></i>
-                </span>
-                <span className="text-yellow-300">
-                  <i className="fas fa-star"></i>
-                </span>
-                <span className="text-yellow-300">
-                  <i className="fas fa-star"></i>
-                </span>
-                <span className="text-yellow-300">
-                  <i className="fas fa-star"></i>
-                </span>
-                <span className="ml-3 text-gray-400 text-sm">(34 Reviews)</span>
               </div>
 
               <div className="mt-2 mb-2  font-semibold  text-base">
                 <span className="text-gray-600">Availablity:</span>
-                <span className="text-green-600 ml-2">In Stock</span>
+                <span className="text-green-600 ml-2">{stock} In Stock</span>
               </div>
 
               <div className="mt-2 mb-2  ">
                 <span className="text-gray-600 font-semibold">Brand:</span>
-                <span className=" text-sm ml-2 text-gray-600 ">Lorem</span>
+                <span className=" text-sm ml-2 text-gray-600 ">{brand}</span>
               </div>
 
               <div className="mt-2 mb-2 ">
                 <span className="text-gray-600 font-semibold">Category:</span>
-                <span className=" text-sm ml-2 text-gray-600 ">Chair</span>
+                <span className=" text-sm ml-2 text-gray-600 ">{category}</span>
               </div>
 
-              <div className="mt-2 mb-2 ">
-                <span className="text-gray-600 font-semibold">SKU:</span>
-                <span className=" text-sm ml-2 text-gray-600 ">Lorem</span>
-              </div>
-
-              <div className="mt-2 mb-2 font-roboto space-x-2 ">
-                <span className="text-orangeRed font-semibold">$450.00</span>
+              <div className="mt-2  font-roboto space-x-2 ">
+                <span className="text-sm text-orangeRed font-semibold">
+                  {" "}
+                  <span className=" font-extrabold">৳</span>
+                  {price}
+                </span>
                 <span className=" text-sm  text-gray-600 line-through ">
-                  500.00{" "}
+                  {price - 200}
                 </span>
               </div>
 
-              <p className="text-gray-600 text-sm">
+              {/* <p className="text-gray-600 text-sm">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum
                 unde odio quasi similique neque autem atque totam doloribus.
-              </p>
+              </p> */}
 
-              <div className="pt-4">
+              <div className="pt-2">
                 <p className="text-gray-600 font-semibold ">Size</p>
-                <div className="flex items-center mt-4 gap-3">
+                <div className="flex items-center mt-2 gap-3">
                   {/* <!-- Single Size --> */}
-                  <div className="size-selector">
-                    <input
-                      type="radio"
-                      name="size"
-                      className="hidden"
-                      id="size-s"
-                    />
-                    <label
-                      htmlFor="size-s"
-                      className="text-gray-600 w-6 h-6 text-sm  ring-1 ring-gray-600  rounded-sm flex items-center justify-center cursor-pointer"
-                    >
-                      S
-                    </label>
-                  </div>
-                  <div className="size-selector">
-                    <input
-                      type="radio"
-                      name="size"
-                      className="hidden"
-                      id="size-m"
-                    />
-                    <label
-                      htmlFor="size-m"
-                      className="text-gray-600 w-6 h-6 text-sm  ring-1 ring-gray-600  rounded-sm flex items-center justify-center cursor-pointer"
-                    >
-                      M
-                    </label>
-                  </div>
 
-                  <div className="size-selector">
-                    <input
-                      type="radio"
-                      name="size"
-                      className="hidden"
-                      id="size-l"
-                    />
-                    <label
-                      htmlFor="size-l"
-                      className="text-gray-600 w-6 h-6 text-sm  ring-1 ring-gray-600  rounded-sm flex items-center justify-center cursor-pointer"
-                    >
-                      L
-                    </label>
-                  </div>
-
-                  <div className="size-selector">
-                    <input
-                      type="radio"
-                      name="size"
-                      className="hidden"
-                      id="size-xl"
-                    />
-                    <label
-                      htmlFor="size-xl"
-                      className="text-gray-600 w-6 h-6 text-sm  ring-1 ring-gray-600  rounded-sm flex items-center justify-center cursor-pointer"
-                    >
-                      XL
-                    </label>
-                  </div>
-                  <div className="size-selector">
-                    <input
-                      type="radio"
-                      name="size"
-                      className="hidden"
-                      id="size-xs"
-                    />
-                    <label
-                      htmlFor="size-xs"
-                      className="text-gray-600 w-6 h-6 text-sm  ring-1 ring-gray-600  rounded-sm flex items-center justify-center cursor-pointer"
-                    >
-                      XS
-                    </label>
-                  </div>
+                  <button className="text-gray-600 w-6 h-6 text-sm  ring-1 ring-gray-600  rounded-sm flex items-center justify-center cursor-pointer">
+                    S
+                  </button>
+                  <button className="text-gray-600 w-6 h-6 text-sm  ring-1 ring-gray-600  rounded-sm flex items-center justify-center cursor-pointer">
+                    M
+                  </button>
+                  <button className="text-gray-600 w-6 h-6 text-sm  ring-1 ring-gray-600  rounded-sm flex items-center justify-center cursor-pointer">
+                    L
+                  </button>
                   {/* <!-- Single Size Ends --> */}
                 </div>
               </div>
@@ -228,113 +207,78 @@ const Page = () => {
               <div className="pt-4">
                 <p className="text-gray-600 font-semibold">Color</p>
 
-                {/* <!-- Single Size --> */}
-                <div className="flex  items-center gap-3 mt-4">
-                  <div className="color-selector">
-                    <input type="radio" className="hidden" id="pink" />
-                    <label
-                      htmlFor="pink"
-                      className=" flex justify-center h-6 w-6 rounded-full cursor-pointer"
-                      style={{ backgroundColor: "pink" }}
-                    ></label>
-                  </div>
-
-                  <div className="color-selector">
-                    <input type="radio" className="hidden" id="red" />
-                    <label
-                      htmlFor="red"
-                      className=" flex justify-center h-6 w-6 rounded-full cursor-pointer"
-                      style={{ backgroundColor: "red" }}
-                    ></label>
-                  </div>
-
-                  <div className="color-selector">
-                    <input type="radio" className="hidden" id="yellow" />
-                    <label
-                      htmlFor="yellow"
-                      className=" flex justify-center h-6 w-6 rounded-full cursor-pointer"
-                      style={{ backgroundColor: "yellow" }}
-                    ></label>
-                  </div>
-
-                  <div className="color-selector">
-                    <input type="radio" className="hidden" id="green" />
-                    <label
-                      htmlFor="green"
-                      className=" flex justify-center h-6 w-6 rounded-full cursor-pointer"
-                      style={{ backgroundColor: "yellowgreen" }}
-                    ></label>
-                  </div>
-
-                  <div className="color-selector">
-                    <input type="radio" className="hidden" id="yellowgreen" />
-                    <label
-                      htmlFor="yellowgreen"
-                      className=" flex justify-center h-6 w-6 rounded-full cursor-pointer"
-                      style={{ backgroundColor: "yellowgreen" }}
-                    ></label>
-                  </div>
+                <div className="start gap-2 ">
+                  {colors.map((currentColor: string, index: number) => {
+                    return (
+                      <div key={index}>
+                        <ColorButton
+                          currentColor={currentColor}
+                          index={index}
+                          colors={colors}
+                          selected={selected}
+                          setSelected={setSelected}
+                          setIndex={setIndex}
+                        />
+                      </div>
+                    );
+                  })}
                 </div>
                 {/* <!-- Single Size Ends --> */}
               </div>
 
               {/* <!-- Increase Decrease Quantity --> */}
-              <div className="flex items-center text-gray-600 font-semibold border border-b border-gray-500 divide-x divide-gray-500 w-max mt-5 mb-5">
-                <div className="text-xl h-8 w-8 flex items-center justify-center cursor-pointer">
+              <div
+                className={`
+              "text-lg font-semibold border mt-4 border-warning center rounded-sm w-fit text-gray-600`}
+              >
+                <button className="   px-2 py-0.5" onClick={setDecrease}>
                   -
-                </div>
-                <div className=" h-8 w-8 flex items-center justify-center cursor-pointer">
-                  2
-                </div>
-                <div className="text-xl h-8 w-8 flex items-center justify-center cursor-pointer">
+                </button>
+                <button className=" border-r text-sm border-l border-r-warning border-l-warning px-2 py-0.5 ">
+                  {temporaryQuantity}
+                </button>
+                <button className="  px-2 py-0.5" onClick={setIncrease}>
                   +
-                </div>
+                </button>
               </div>
               {/* <!-- End Increase Decrease Quantity --> */}
 
               {/* <!-- Button --> */}
               <div className="font-roboto gap-4 flex items-center pb-5 mt-6 ">
-                <div className="text-white">
-                  <a
-                    href=""
-                    className="bg-orangeRed flex items-center justify-center w-48 h-10 gap-4  border border-b border-orangeRed rounded"
-                  >
-                    <i className="fas fa-shopping-bag"></i>ADD TO CART
-                  </a>
-                </div>
+                 <button className="text-white  border-2 bg-orangeRed hover:text-orangeRed hover:bg-white font-semibold border-orangeRed  flex items-center justify-center w-48 h-10 gap-4 rounded group">
+                    <FaOpencart className="font-xl font-bold"/>
+CART
+                  
+                </button>
 
-                <div className="text-gray-600 border border-b border-gray-600 rounded">
-                  <a
-                    href=""
-                    className=" flex items-center justify-center w-48 h-10 gap-4 rounded"
-                  >
-                    <i className="fas fa-shopping-bag"></i>WISH LIST
-                  </a>
-                </div>
+                <button className="text-darkChocolate  border-2 hover:bg-darkChocolate hover:text-white font-semibold border-darkChocolate  flex items-center justify-center w-48 h-10 gap-4 rounded group">
+                  
+                    <FavoriteBorder className="group-hover:text-white" sx={{color:"#28170bff",
+                  '&:hover': {
+                    color: 'white', 
+                  },
+                  }}/> WISH LIST
+                </button>
               </div>
 
               <hr className="border-t border-gray-400 " />
               <div className="mt-5 mb-6 flex items-center gap-2 text-gray-600">
                 <div className=" w-8 h-8 border border-gray-600  flex justify-center items-center rounded-full">
-                  <a href="" className="0 ">
-                    <i className="fa-brands fa-facebook-f"></i>
-                  </a>
+                  <Link href="" className="0 ">
+                    <Facebook />
+                  </Link>
                 </div>
 
                 <div className=" w-8 h-8 border border-gray-600  flex justify-center items-center rounded-full">
-                  <a href="" className="0 ">
-                    <a href="">
-                      <i className="fa-brands fa-twitter"></i>
-                    </a>
-                  </a>
+                  <Link href="">
+                    <BsInstagram />
+                  </Link>
                 </div>
 
                 <div className=" w-8 h-8 border border-gray-600  flex justify-center items-center rounded-full">
-                  <a href="" className="0 ">
-                    <a href="">
-                      <i className="fa-brands fa-instagram"></i>
-                    </a>
-                  </a>
+                  <Link href="" className="0 ">
+                    <Twitter />
+                  </Link>
                 </div>
               </div>
             </div>

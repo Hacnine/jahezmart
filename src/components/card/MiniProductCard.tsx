@@ -12,7 +12,7 @@ import {
 import IconButton from "@mui/material/IconButton";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import StarRating from "../common/ui/StarRating";
-import { BsCartCheckFill, BsCartDash } from "react-icons/bs";
+import { BsCart, BsCartCheckFill, BsCartDash } from "react-icons/bs";
 import { BsCartFill } from "react-icons/bs";
 import { useCartContext } from "@/context_reducer/cartContext";
 import { ProductCardProps } from "@/type";
@@ -65,8 +65,13 @@ const MiniProductCard: React.FC<ProductCardProps> = ({
     firstColorKey
   ]?.[0];
 
-  const handleIconClick = () => {
+  const handleFavoriteClick = () => {
     setFavorite(!favorite);
+    if (favorite) {
+      removeWishlistItem();
+    } else {
+      sentWishListItem();
+    }
   };
 
   const sentCartItem = () => {
@@ -74,14 +79,27 @@ const MiniProductCard: React.FC<ProductCardProps> = ({
 
     setTimeout(() => {
       setOpen(false);
-    }, 3000);
-    const existingProduct = cartProducts.find((item) => item.id === id);
+      setMessage("Added to Cart!")
+    }, 1000);
+    // const existingProduct = cartProducts.find((item) => item.id === id);
 
-    if (existingProduct) {
-      setMessage("You have already added this product in your cart!");
-    } else {
-      addToCart({ id, name, firstImagePath, quantity, price, stock, selected });
-    }
+    // if (existingProduct) {
+    //   setMessage("You have already added this product in your cart!");
+    // } else {
+    addToCart({ id, name, firstImagePath, quantity, price, stock, selected });
+    // }
+  };
+
+  const removeCartItem = () => {
+    setOpen(true);
+
+    deleteCartSingleProduct(id);
+    setMessage("Removed from Cart!");
+
+    setTimeout(() => {
+      setOpen(false);
+      setMessage("Added to Cart!"); // Reset message after a certain period
+    }, 1000);
   };
 
   const sentWishListItem = () => {
@@ -99,7 +117,7 @@ const MiniProductCard: React.FC<ProductCardProps> = ({
     setTimeout(() => {
       setOpenWishList(false);
       setWishListMessage("Product is added to Wishlist!"); // Reset message after a certain period
-    }, 3000);
+    }, 1000);
   };
 
   const removeWishlistItem = () => {
@@ -110,7 +128,7 @@ const MiniProductCard: React.FC<ProductCardProps> = ({
     setTimeout(() => {
       setOpenWishList(false);
       setWishListMessage("Product is added to Wishlist!"); // Reset message after a certain period
-    }, 3000);
+    }, 1000);
   };
   useEffect(() => {
     const existingProduct = wishListProducts.find((item) => item.id === id);
@@ -121,14 +139,16 @@ const MiniProductCard: React.FC<ProductCardProps> = ({
     }
   }, [wishListProducts, id]);
 
-  const handleWhishListClick = () => {
-    setWishList(!wishList);
-  };
-
   const handleCartClick = () => {
     setCart(!cart);
-  };
 
+    if (cart) {
+      removeCartItem();
+    } else {
+      sentCartItem();
+    }
+  };
+  // rounded-tr-3xl rounded-bl-3xl
   return (
     <div className=" mb-2 relative group shadow-md shadow-slate-400 rounded-md overflow-hidden rounded-tr-3xl rounded-bl-3xl center md:flex-row flex-col md:w-[276px] md:h-[95px] w-full">
       <div className="w-fit h-fit relative  group overflow-hidden">
@@ -152,14 +172,9 @@ const MiniProductCard: React.FC<ProductCardProps> = ({
                 }}
               >
                 {cart ? (
-                  <BsCartCheckFill
-                    className="text-red-600 text-base"
-                    onClick={()=>deleteCartSingleProduct(id)}
-                  />
+                  <BsCartCheckFill className="text-red-600 text-base" />
                 ) : (
-                  <BsCartDash className="text-red-600 text-base" 
-                  onClick={sentCartItem}
-                  />
+                  <BsCart className="text-red-600 text-base" />
                 )}
               </IconButton>
             </TooltipWrapper>
@@ -170,7 +185,7 @@ const MiniProductCard: React.FC<ProductCardProps> = ({
               message={wishListMessage}
             >
               <IconButton
-                onClick={handleWhishListClick}
+                onClick={handleFavoriteClick}
                 sx={{
                   bgcolor: "white",
                   "&:hover": {
@@ -178,16 +193,10 @@ const MiniProductCard: React.FC<ProductCardProps> = ({
                   },
                 }}
               >
-                {wishList ? (
-                  <FavoriteIcon
-                    className="text-red-600 text-base"
-                    onClick={removeWishlistItem}
-                  />
+                {favorite ? (
+                  <FavoriteIcon className="text-red-600 text-base" />
                 ) : (
-                  <FavoriteBorder
-                    className="text-red-600 text-base"
-                    onClick={sentWishListItem}
-                  />
+                  <FavoriteBorder className="text-red-600 text-base" />
                 )}
               </IconButton>
             </TooltipWrapper>

@@ -1,13 +1,11 @@
-
-
 import { FaStar, FaStarHalf } from "react-icons/fa";
 
-interface StarRatingProps{
-    rating:number,
-    reviews?:number
+interface StarRatingProps {
+  rating: number;
+  reviews?: number;
 }
 
-const StarRating:React.FC<StarRatingProps> = ({ rating, reviews }) => {
+const StarRating: React.FC<StarRatingProps> = ({ rating, reviews }) => {
   const fullStars = Math.floor(rating);
 
   // Check if there's a half star
@@ -21,7 +19,11 @@ const StarRating:React.FC<StarRatingProps> = ({ rating, reviews }) => {
   if (hasHalfStar) {
     starsArray.push(<FaStarHalf key="half-star" className="text-yellow-500" />);
   }
-  return <span className="center gap-1">{starsArray} <span className="text-gray-500 md:text-base text-xs">({reviews})</span></span>;
+  return (
+    <span className="start gap-1">
+      {starsArray} <span className="text-gray-500 md:text-base text-xs"></span>
+    </span>
+  );
 };
 
 export default StarRating;
