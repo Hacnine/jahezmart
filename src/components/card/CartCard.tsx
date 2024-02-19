@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { AddToCartProps } from "@/type";
 import { Close, Delete } from "@mui/icons-material";
 import { FaHeartCirclePlus } from "react-icons/fa6";
 import { useCartContext } from "@/context_reducer/cartContext";
 import Link from "next/link";
+import TooltipWrapper from "../wrapper/TooltipWrapper";
 
 const CartCard: React.FC<AddToCartProps> = ({
   id,
@@ -15,10 +16,15 @@ const CartCard: React.FC<AddToCartProps> = ({
   selected,
   large,
 }) => {
-  const { updateCartItemQuantity, deleteCartSingleProduct, addToWishList } =
+  const { sentWishListItem,updateCartItemQuantity, deleteCartSingleProduct, addToWishList } =
     useCartContext();
   const [temporaryQuantity, setTemporaryQuantity] =
     React.useState<number>(quantity);
+  const [openWishList, setOpenWishList] = useState(false);
+  const [wishListMessage, setWishListMessage] = useState("Added to WishList!");
+  const [open, setOpen] = React.useState(false);
+  const [message, setMessage] = useState("Added to cart!");
+
 
   const setDecrease = () => {
     if (temporaryQuantity > 1) {
@@ -41,16 +47,17 @@ const CartCard: React.FC<AddToCartProps> = ({
   };
 
   const sentToCart = () => {
-    addToWishList({
+    sentWishListItem(setOpenWishList, setWishListMessage, {
       id,
-      firstImagePath,
       name,
+      firstImagePath,
       quantity,
-      stock,
       price,
+      stock,
       selected,
     });
-    deleteCartSingleProduct(id);
+    deleteCartSingleProduct(setOpen,
+      setMessage, id)
   };
 
   return (
@@ -65,12 +72,19 @@ const CartCard: React.FC<AddToCartProps> = ({
       <div className="w-full">
         <div className="between gap-3 w-full">
           <p className={` text-gray-700 font-semibold`}>{name}</p>
+
+          <TooltipWrapper
+              open={openWishList}
+              setOpen={setOpenWishList}
+              message={wishListMessage}
+            >
           <button
             onClick={sentToCart}
             className=" bg-warning text-white  px-4 py-0.5  rounded-sm"
           >
             <FaHeartCirclePlus className=" text-lg" />
           </button>
+          </TooltipWrapper>
         </div>
         <div className="between gap-5">
           <div className="font-semibold text-lg">
@@ -97,13 +111,15 @@ const CartCard: React.FC<AddToCartProps> = ({
               +
             </button>
           </div>
-
+        <TooltipWrapper open={open} setOpen={setOpen} message={message}>
           <button
-            onClick={() => deleteCartSingleProduct(id)}
+            onClick={() => deleteCartSingleProduct(setOpen,
+              setMessage, id)}
             className=" focus-within:border-warning px-3.5 "
           >
             <Delete fontSize="small" color="warning" />
           </button>
+          </TooltipWrapper>
         </div>
 
         <div

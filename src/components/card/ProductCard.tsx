@@ -28,9 +28,8 @@ const ProductCard: React.FC<ProductCardProps> = ({
   stock,
 }) => {
   const {
-    addToCart,
-    cartProducts,
-    addToWishList,
+    sentCartItem,
+    sentWishListItem,
     wishListProducts,
     removeFromWishList,
   } = useCartContext();
@@ -40,69 +39,82 @@ const ProductCard: React.FC<ProductCardProps> = ({
   const [openWishList, setOpenWishList] = React.useState(false);
   const [message, setMessage] = useState("Added to cart!");
   const [wishListMessage, setWishListMessage] = useState("Added to WishList!");
-
-  const handleTooltipClose = () => {
-    setOpen(false);
-  };
-
-  const handleWishListTooltipClose = () => {
-    setOpenWishList(false);
-  };
   const [favorite, setFavorite] = useState(false);
   const [index, setIndex] = useState(0);
-
   const firstColorKey = Object.keys(images)[index];
   const firstImagePath = (images as { [color: string]: string[] })[
     firstColorKey
   ]?.[0];
 
-  const handleIconClick = () => {
+  const handleFavoriteClick = () => {
     setFavorite(!favorite);
-  };
-
-  const sentCartItem = () => {
-    setOpen(true);
-
-    setTimeout(() => {
-      setOpen(false);
-    }, 1000);
-    const existingProduct = cartProducts.find((item) => item.id === id);
-
-    if (existingProduct) {
-      setMessage("You have already added this product in your cart!");
+    if (favorite) {
+      removeFromWishList(setOpenWishList, setWishListMessage, id);
     } else {
-      addToCart({ id, name, firstImagePath, quantity, price, stock, selected });
+      sentWishListItem(setOpenWishList, setWishListMessage, {
+        id,
+        name,
+        firstImagePath,
+        quantity,
+        price,
+        stock,
+        selected,
+      });
     }
   };
 
-  const sentWishListItem = () => {
-    setOpenWishList(true);
-    addToWishList({
-      id,
-      name,
-      firstImagePath,
-      price,
-      stock,
-      quantity,
-      selected,
-    });
+  // const handleTooltipClose = () => {
+  //   setOpen(false);
+  // };
 
-    setTimeout(() => {
-      setOpenWishList(false);
-      setWishListMessage("Product is added to Wishlist!"); // Reset message after a certain period
-    }, 3000);
-  };
+  // const handleWishListTooltipClose = () => {
+  //   setOpenWishList(false);
+  // };
 
-  const removeWishlistItem = () => {
-    setOpenWishList(true);
-    removeFromWishList(id);
-    setWishListMessage("Removed from your wishlist!");
+  // const sentCartItem = () => {
+  //   setOpen(true);
 
-    setTimeout(() => {
-      setOpenWishList(false);
-      setWishListMessage("Product is added to Wishlist!"); // Reset message after a certain period
-    }, 3000);
-  };
+  //   setTimeout(() => {
+  //     setOpen(false);
+  //   }, 1000);
+  //   const existingProduct = cartProducts.find((item) => item.id === id);
+  //   const items = { id, name, firstImagePath, quantity, price, stock, selected }
+  //   if (existingProduct) {
+  //     setMessage("You have already added this product in your cart!");
+  //   } else {
+  //     addToCart(items);
+  //   }
+
+  // };
+
+  // const sentWishListItem = () => {
+  //   setOpenWishList(true);
+  //   addToWishList({
+  //     id,
+  //     name,
+  //     firstImagePath,
+  //     price,
+  //     stock,
+  //     quantity,
+  //     selected,
+  //   });
+
+  //   setTimeout(() => {
+  //     setOpenWishList(false);
+  //     setWishListMessage("Product is added to Wishlist!"); // Reset message after a certain period
+  //   }, 3000);
+  // };
+
+  // const removeWishlistItem = () => {
+  //   setOpenWishList(true);
+  //   removeFromWishList(id);
+  //   setWishListMessage("Removed from your wishlist!");
+
+  //   setTimeout(() => {
+  //     setOpenWishList(false);
+  //     setWishListMessage("Product is added to Wishlist!"); // Reset message after a certain period
+  //   }, 3000);
+  // };
   useEffect(() => {
     const existingProduct = wishListProducts.find((item) => item.id === id);
     if (existingProduct) {
@@ -137,7 +149,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
               message={wishListMessage}
             >
               <IconButton
-                onClick={handleIconClick}
+                onClick={handleFavoriteClick}
                 sx={{
                   bgcolor: "white",
                   "&:hover": {
@@ -146,15 +158,9 @@ const ProductCard: React.FC<ProductCardProps> = ({
                 }}
               >
                 {favorite ? (
-                  <FavoriteIcon
-                    className="text-red-600 "
-                    onClick={removeWishlistItem}
-                  />
+                  <FavoriteIcon className="text-red-600 " />
                 ) : (
-                  <FavoriteBorder
-                    className="text-red-600 "
-                    onClick={sentWishListItem}
-                  />
+                  <FavoriteBorder className="text-red-600 " />
                 )}
               </IconButton>
             </TooltipWrapper>
@@ -191,7 +197,6 @@ const ProductCard: React.FC<ProductCardProps> = ({
         </Link>
         <p className="flex  sm:text-[20px] text-[14px] leading-[38px] font-extrabold text-sandyBrown px-3">
           <span className=" text-base text-gray-600 self-start md:text-[18px] sm:text-[10px] text-[9px] font-extrabold  leading-[17px] ">
-            {" "}
             ৳
           </span>
           {price}
@@ -207,7 +212,17 @@ const ProductCard: React.FC<ProductCardProps> = ({
         <TooltipWrapper open={open} setOpen={setOpen} message={message}>
           <button
             className="absolute bottom-0 mt-3 bg-chocolate hover:bg-chocolate/90 w-full py-2 md:text-sm text-[10px] center text-white font-semibold rounded-tr-3xl rounded-bl-3xl center gap-1 opacity-0 group-hover:opacity-100"
-            onClick={sentCartItem}
+            onClick={() =>
+              sentCartItem(setOpen, setMessage, {
+                id,
+                name,
+                firstImagePath,
+                quantity,
+                price,
+                stock,
+                selected,
+              })
+            }
           >
             <CgShoppingCart className="text-lg" />
             <p>ADD TO CART</p>

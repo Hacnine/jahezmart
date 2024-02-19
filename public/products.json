@@ -2,9 +2,9 @@
   {
     "id": "1",
     "name": "3 Seater Sofa",
-    "stock":12,
+    "stock": 12,
     "brand": "Jazz",
-    "quantity":1,
+    "quantity": 1,
     "price": 719,
     "discount": 45,
     "recommended": true,
@@ -45,9 +45,9 @@
   {
     "id": "2",
     "name": "Gecko Single Bed",
-    "stock":12,
+    "stock": 12,
     "brand": "Gecko",
-    "quantity":1,
+    "quantity": 1,
 
     "price": 99,
     "discount": 60,
@@ -99,8 +99,8 @@
     "id": "3",
     "name": "Single Bed",
     "brand": "Venus",
-    "stock":12,
-    "quantity":1,
+    "stock": 12,
+    "quantity": 1,
     "price": 299,
     "discount": 50,
     "recommended": true,
@@ -141,10 +141,10 @@
   {
     "id": "4",
     "name": "Single Bed With Storage",
-    "quantity":1,
+    "quantity": 1,
     "brand": "Como",
     "price": 399,
-    "stock":12,
+    "stock": 12,
     "recommended": true,
     "rating": 3.9,
     "reviews": 10,
@@ -185,11 +185,11 @@
     "id": "5",
     "name": " Carver Dining Chair",
     "brand": "Rhodes",
-    "quantity":1,
+    "quantity": 1,
     "price": 89,
-    "stock":12,
+    "stock": 12,
     "discount": 10,
-    "featured":true,
+    "featured": true,
     "rating": 4.9,
     "reviews": 150,
     "colors": ["black"],
@@ -220,12 +220,12 @@
   },
 
   {
-    "quantity":1,
+    "quantity": 1,
     "id": "6",
     "name": "Bunk Bed",
     "brand": "Willow",
     "price": 399,
-    "stock":2,
+    "stock": 2,
     "discount": 42,
     "new_product": true,
     "rating": 3.5,
@@ -281,9 +281,9 @@
     "id": "7",
     "name": "8 Drawer Fabric Dresser",
     "brand": "Keller",
-    "quantity":1,
+    "quantity": 1,
     "price": 119,
-    "stock":12,
+    "stock": 12,
     "new_product": true,
     "rating": 4.9,
     "reviews": 250,
@@ -304,7 +304,7 @@
         "description": "Durable MDF tabletop\nFabric drawers\nStrong rustproof steel frame\nSpacious removable drawer\nNon-woven rigid fabric\nPull handles\nSmooth runner\nAdjustable feet protect floor from scratches\n\nThis product is not on display or sold in stores. This product is only available for delivery."
       }
     ],
-    "category": "other",
+    "category": "bedroom",
     "star": 19,
     "full_details": [
       {
@@ -322,8 +322,8 @@
     "id": "8",
     "name": "Four Poster Single Bed",
     "brand": "Giselle",
-    "quantity":1,
-    "stock":26,
+    "quantity": 1,
+    "stock": 26,
     "price": 289,
     "new_product": true,
     "rating": 4.5,
@@ -361,9 +361,9 @@
     "id": "9",
     "name": " Bunk Bed",
     "brand": "Cosmic",
-    "quantity":1,
+    "quantity": 1,
     "price": 299,
-    "stock":22,
+    "stock": 22,
     "new_product": true,
     "colors": ["Gainsboro", "black"],
     "images": {
@@ -371,9 +371,7 @@
         "/images/products/product12.1.jpg",
         "/images/products/product12.2.jpg"
       ],
-      "black":[
-        "/images/products/product12.3.jpg"
-      ]
+      "black": ["/images/products/product12.3.jpg"]
     },
     "description": [
       {
@@ -412,13 +410,11 @@
     ]
   },
 
-
-
   {
     "id": "10",
     "name": " Dresser",
-    "quantity":1,
-    "stock":32,
+    "quantity": 1,
+    "stock": 32,
     "brand": "Java",
     "price": 450,
     "new_product": false,
@@ -445,7 +441,7 @@
         "description": "At Fantastic Furniture safety is one of our biggest priorities. On the Secure Me Tab, learn more about toppling, and why securing your product with wall straps is so important."
       }
     ],
-    "category": "other",
+    "category": "bedroom",
     "full_details": [
       {
         "Assembled Size": "L 90cm x D 40cm x H 84cm",
@@ -463,11 +459,11 @@
     "id": "11",
     "name": "Single Bedroom Package",
     "brand": "Avalon King",
-    "stock":5,
-    "quantity":1,
+    "stock": 5,
+    "quantity": 1,
     "price": 430,
     "new_product": false,
-    "featured":false,
+    "featured": false,
     "rating": 3.9,
     "reviews": 150,
     "colors": ["peru"],
@@ -531,11 +527,11 @@
     "id": "12",
     "name": "Armchair Sofa",
     "brand": "Tivoli",
-    "quantity":1,
-    "stock":15,
+    "quantity": 1,
+    "stock": 15,
     "price": 399,
     "discount": 9,
-    "featured":true,
+    "featured": true,
     "new_product": true,
     "rating": 4.9,
     "reviews": 150,
@@ -581,8 +577,8 @@
     "id": "13",
     "name": "Large Wide Bookcase",
     "brand": "Kobi",
-    "quantity":1,
-    "stock":8,
+    "quantity": 1,
+    "stock": 8,
     "price": 299,
     "new_product": false,
     "rating": 4.4,
@@ -623,8 +619,8 @@
     "name": "Large Wide Bookcase",
     "brand": "Kobi",
     "price": 259,
-    "quantity":1,
-    "stock":14,
+    "quantity": 1,
+    "stock": 14,
     "discount": 28,
     "new_product": false,
     "rating": 4.4,
@@ -670,10 +666,10 @@
     "name": "Dining Chair",
     "brand": "Windsor",
     "price": 169,
-    "quantity":1,
-    "stock":14,
+    "quantity": 1,
+    "stock": 14,
     "new_product": false,
-    "featured":true,
+    "featured": true,
     "rating": 5,
     "reviews": 150,
     "colors": ["gray"],
@@ -708,8 +704,8 @@
     "name": "Twin Bunk Storage Bed",
     "brand": "Jordan",
     "price": 649,
-    "quantity":1,
-    "stock":14,
+    "quantity": 1,
+    "stock": 14,
     "discount": 5,
     "new_product": true,
     "rating": 4.9,
@@ -751,10 +747,10 @@
     "id": "17",
     "name": "Bunk Bed",
     "brand": "Arlo",
-    "stock":14,
-    "quantity":1,
+    "stock": 14,
+    "quantity": 1,
     "price": 499,
-    "featured":true,
+    "featured": true,
     "new_product": true,
     "rating": 4.9,
     "reviews": 150,
@@ -809,11 +805,11 @@
     "id": "18",
     "name": "Bunk Bedroom Package",
     "brand": "Cabin",
-    "quantity":1,
+    "quantity": 1,
     "price": 999,
-    "stock":14,
+    "stock": 14,
     "new_product": false,
-    "featured":true,
+    "featured": true,
     "rating": 4.9,
     "reviews": 150,
     "colors": ["BurlyWood"],
@@ -844,8 +840,8 @@
     "name": "Medium Mattress",
     "brand": "Sleepapedic Queen",
     "price": 899,
-    "stock":7,
-    "quantity":1,
+    "stock": 7,
+    "quantity": 1,
     "discount": 2,
     "new_product": false,
     "rating": 4.9,
@@ -892,8 +888,8 @@
     "name": " Double Bed",
     "brand": "Tait",
     "price": 299,
-    "stock":10,
-    "quantity":1,
+    "stock": 10,
+    "quantity": 1,
     "rating": 4.6,
     "reviews": 90,
     "colors": ["DarkGray"],
@@ -929,10 +925,10 @@
 
   {
     "id": "21",
-    "stock":27,
+    "stock": 27,
     "name": "Double Mattress",
     "brand": "Spine-Lab",
-    "quantity":1,
+    "quantity": 1,
     "price": 189,
     "rating": 4.0,
     "reviews": 50,
@@ -973,8 +969,9 @@
 
   {
     "id": "22",
-    "name": " Single Trundle Bed","stock":57,
-    "quantity":1,
+    "name": " Single Trundle Bed",
+    "stock": 57,
+    "quantity": 1,
     "brand": "Jordan",
     "price": 179,
     "new_product": false,
@@ -1017,8 +1014,9 @@
 
   {
     "id": "23",
-    "quantity":1,
-    "name": " Queen Medium Mattress","stock":3,
+    "quantity": 1,
+    "name": " Queen Medium Mattress",
+    "stock": 3,
     "brand": "Sleepscape",
     "price": 399,
     "rating": 4.1,
@@ -1061,10 +1059,10 @@
   {
     "id": "24",
     "name": " Double Mattress",
-    "stock":12,
+    "stock": 12,
     "brand": "Sleeptight",
     "price": 199,
-    "quantity":1,
+    "quantity": 1,
     "rating": 4.9,
     "reviews": 150,
     "colors": ["White"],
@@ -1101,12 +1099,12 @@
   },
   {
     "id": "25",
-    "stock":12,
+    "stock": 12,
     "name": " 6 Seater Dining Set ",
     "brand": "Havana",
-    "featured":true,
+    "featured": true,
     "price": 329,
-    "quantity":1,
+    "quantity": 1,
     "rating": 4.3,
     "reviews": 50,
     "colors": ["whitesmoke"],
@@ -1142,12 +1140,12 @@
     "id": "26",
     "name": "6 Seater Dining Set",
     "brand": "Torkay",
-    "stock":12,
+    "stock": 12,
     "price": 1099,
-    "quantity":1,
+    "quantity": 1,
     "rating": 4.6,
     "reviews": 150,
-    "new_product":true,
+    "new_product": true,
     "colors": ["WhiteSmoke"],
     "images": {
       "WhiteSmoke": [
@@ -1181,11 +1179,11 @@
   },
 
   {
-    "id": "32",
+    "id": "33",
     "name": "4 Seater Dining Set With Dimi Chairs",
     "price": 649,
-    "quantity":1,
-    "stock":12,
+    "quantity": 1,
+    "stock": 12,
     "rating": 4.9,
     "reviews": 90,
     "colors": ["WhiteSmoke"],
@@ -1211,9 +1209,9 @@
   },
   {
     "id": "27",
-    "stock":12,
+    "stock": 12,
     "name": "6 Seater Dining Set With Samba Chairs",
-    "quantity":1,
+    "quantity": 1,
     "price": 569,
     "rating": 4.9,
     "reviews": 150,
@@ -1254,9 +1252,9 @@
   {
     "id": "28",
     "name": "6 Seater Dining Set With Samba Chairs",
-    "quantity":1,
+    "quantity": 1,
     "price": 569,
-    "stock":12,
+    "stock": 12,
     "recommended": true,
     "rating": 3.9,
     "reviews": 150,
@@ -1295,8 +1293,8 @@
     "id": "29",
     "name": " Outdoor Umbrella",
     "price": 159,
-    "stock":12,
-    "quantity":1,
+    "stock": 12,
+    "quantity": 1,
     "discount": 20,
     "recommended": true,
     "rating": 4.9,
@@ -1331,8 +1329,8 @@
     "id": "30",
     "name": "Rocha 4 Seater Outdoor Lounge Set",
     "price": 269,
-    "stock":12,
-    "quantity":1,
+    "stock": 12,
+    "quantity": 1,
     "discount": 30,
     "recommended": true,
     "rating": 4.9,
@@ -1366,12 +1364,12 @@
   {
     "id": "31",
     "name": " 3 Seater Sofa",
-    "stock":12,
+    "stock": 12,
     "price": 1119,
-    "quantity":1,
+    "quantity": 1,
     "discount": 6,
     "recommended": true,
-    "featured":true,
+    "featured": true,
     "rating": 4.9,
     "reviews": 150,
     "colors": ["Brown"],
@@ -1405,5 +1403,50 @@
         "Type": "Sofa"
       }
     ]
+  },
+
+  {
+    "id": "35",
+    "name": "5 Drawer Fabric Dresser",
+    "brand": "Keller ",
+    "price": 450,
+    "quantity": 1,
+    "stock": 32,
+    "discount": 60,
+    "new_product": false,
+    "rating": 4.9,
+    "reviews": 150,
+    "colors": ["peru"],
+    "images": {
+      "peru": [
+        "/images/products/product33.1.jpg",
+        "/images/products/product33.2.jpg",
+        "/images/products/product33.3.jpg"
+      ]
+    },
+    "description": [
+      {
+        "title": "Bohemian Living",
+        "description": "Store your clothing and more in your very own Java Dresser! Forget the floor-drobe or that random chair in the corner, with the Java’s spacious drawers, you’ll keep clutter at bay and make getting ready a breeze."
+      },
+      {
+        "title": "Get the Look",
+        "description": "Fancy the coastal and bohemian look in your home but not the price tag? Get ready for the latest and greatest range – the Java! Our trendy Java range features natural rattan doors, panels, and drawers with a textured, sandy oak look finish! Complete the look and add the wow factor to your home by pairing your new dresser with other items from the Java range."
+      },
+      {
+        "title": "Secure Me",
+        "description": "At Fantastic Furniture safety is one of our biggest priorities. On the Secure Me Tab, learn more about toppling, and why securing your product with wall straps is so important."
+      }
+    ],
+    "category": "bedroom",
+    "full_details": [{
+      "Assembled Size": "L 90cm x D 40cm x H 84cm",
+      "Packaged Size": "L 102cm x D 47cm x H 20cm",
+      "Colour": "Natural Oak",
+      "Assembly": "Required",
+      "Delivery type": "Large / bulky item",
+      "Number Of Drawers": 3,
+      "Style": "Coastal"
+    }]
   }
 ]

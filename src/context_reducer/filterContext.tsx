@@ -1,35 +1,42 @@
-"use client"
+"use client";
 import React, { createContext, useReducer, useContext, useEffect } from "react";
 import productsData from "../../public/products.json";
 import filterReducer from "./filterReducer";
-import { AddToWishListProps, Product2 as Product, Product as Product3 } from "../type/index";
+import {
+  AddToWishListProps,
+  Product2 as Product,
+  Product as Product3,
+} from "../type/index";
 import Home from "../app/home/page";
 
-interface ContextState  {
+export interface ContextState {
   allProducts: Product[];
   filteredProducts: Product[];
-  featuredProducts: Product[],
-  bed:Product[] ,
-  sofa:Product[] ,
-  dinning:Product[] ,
-  kidsFurniture:Product[],
-  newProducts: Product[],
+  featuredProducts: Product[];
+  featuredBed: Product[];
+  featuredSofa: Product[];
+  featuredDinning: Product[];
+  featuredKidsFurniture: Product[];
+  newProducts: Product[];
+
 }
 
-const initialState: ContextState  = {
+const initialState: ContextState = {
   allProducts: productsData,
   filteredProducts: [],
   featuredProducts: [],
   newProducts: [],
-  bed:[] ,
-  sofa:[] ,
-  dinning:[] ,
-  kidsFurniture:[],
+  featuredBed: [],
+  featuredSofa: [],
+  featuredDinning: [],
+  featuredKidsFurniture: [],
+
 };
 
 type FilterContext = ContextState & {
   updateFilteredProducts: (filteredProducts: Product[]) => void;
-  getProductById: (productId: string) => Product3 | undefined;
+  getProductById: (productId: string) =>void;
+  filterByCategory:(categoryName:string) => Product[];
 };
 
 export const FilterContext = createContext<FilterContext | null>(null);
@@ -41,12 +48,19 @@ const FilterContextProvider = ({ children }: { children: React.ReactNode }) => {
     dispatch({ type: "UPDATE_FILTERED_DATA", payload: filteredProducts });
   };
 
-  const getProductById = (productId:string) => {
-    return state.allProducts.find(product => product.id=== productId)
-  }
+  const getProductById = (productId: string) => {
+    return state.allProducts.find((product) => product.id === productId);
+  };
 
+  const filterByCategory = (categoryName: string): Product[] => {
+    return state.allProducts.filter((currentElement) => {
+      return currentElement.category === categoryName;
+    });
+  };
+
+    
   useEffect(() => {
-    dispatch({ type: "UPDATE_FILTERED_DATA"});
+    dispatch({ type: "UPDATE_FILTERED_DATA" });
   }, []);
 
   return (
@@ -56,12 +70,13 @@ const FilterContextProvider = ({ children }: { children: React.ReactNode }) => {
         filteredProducts: state.filteredProducts,
         featuredProducts: state.featuredProducts,
         newProducts: state.newProducts,
-        bed: state.bed,
-        sofa: state.sofa,
-        dinning: state.dinning,
-        kidsFurniture: state.kidsFurniture,
-        updateFilteredProducts ,
-        getProductById
+        featuredBed: state.featuredBed,
+        featuredSofa: state.featuredSofa,
+        featuredDinning: state.featuredDinning,
+        featuredKidsFurniture: state.featuredKidsFurniture,
+        updateFilteredProducts,
+        getProductById,
+        filterByCategory,
       }}
     >
       {children}

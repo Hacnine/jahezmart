@@ -6,6 +6,7 @@ interface StarRatingProps {
 }
 
 const StarRating: React.FC<StarRatingProps> = ({ rating, reviews }) => {
+  console.log(rating)
   const fullStars = Math.floor(rating);
 
   // Check if there's a half star

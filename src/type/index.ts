@@ -102,6 +102,11 @@ export interface BunkBedroomPackage extends Product {
   style: string;
 }
 
+export interface DescriptionItem {
+  title: string;
+  description: string;
+}
+
 export interface MediumMattress extends Product {
   type: "mattress";
   feel: "Medium";

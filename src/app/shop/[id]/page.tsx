@@ -1,14 +1,25 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useFilterContext } from "@/context_reducer/filterContext";
 import StarRating from "@/components/common/ui/StarRating";
 import ColorButton from "@/components/buttons/ColorButton";
 import Link from "next/link";
-import { Facebook, FavoriteBorder, Instagram, Twitter } from "@mui/icons-material";
-import { BsInstagram } from "react-icons/bs";
+import {
+  Facebook,
+  FavoriteBorder,
+  Instagram,
+  Twitter,
+} from "@mui/icons-material";
+import { BsInstagram, BsStarFill } from "react-icons/bs";
 import { FaOpencart } from "react-icons/fa6";
+import { useCartContext } from "@/context_reducer/cartContext";
+import TooltipWrapper from "@/components/wrapper/TooltipWrapper";
+import CategorySlider from "@/components/slider/CategorySlider";
+import { DescriptionItem } from "@/type";
+import { FaFacebookF, FaRegStar, FaStar } from "react-icons/fa";
+import StarReview from "@/components/common/ui/StarReview";
 const Page = ({ params }: { params: { id: string } }) => {
   const { allProducts, getProductById } = useFilterContext();
   const product = getProductById(params.id);
@@ -30,9 +41,49 @@ const Page = ({ params }: { params: { id: string } }) => {
     reviews,
     stock,
   } = product;
-  console.log(description);
-  const [index, setIndex] = useState(0);
+  console.log(full_details);
+
+  const {
+    sentCartItem,
+    deleteCartSingleProduct,
+    sentWishListItem,
+    wishListProducts,
+    removeFromWishList,
+  } = useCartContext();
+  const { filterByCategory } = useFilterContext();
+  const categoryProducts = filterByCategory(category);
+
   const [selected, setSelected] = useState<string>(colors[0]);
+  const [open, setOpen] = React.useState(false);
+  const [openWishList, setOpenWishList] = React.useState(false);
+  const [message, setMessage] = useState("Added to cart!");
+  const [wishListMessage, setWishListMessage] = useState("Added to WishList!");
+
+  const [favorite, setFavorite] = useState<boolean>(false);
+  const [index, setIndex] = useState<number>(0);
+
+  const firstColorKey = Object.keys(images)[index];
+  const firstImagePath = (images as { [color: string]: string[] })[
+    firstColorKey
+  ]?.[0];
+
+  const handleFavoriteClick = () => {
+    setFavorite(!favorite);
+    if (favorite) {
+      removeFromWishList(setOpenWishList, setWishListMessage, id);
+    } else {
+      sentWishListItem(setOpenWishList, setWishListMessage, {
+        id,
+        name,
+        firstImagePath,
+        quantity,
+        price,
+        stock,
+        selected,
+      });
+    }
+  };
+
   const [temporaryQuantity, setTemporaryQuantity] =
     React.useState<number>(quantity);
   const setDecrease = () => {
@@ -54,90 +105,73 @@ const Page = ({ params }: { params: { id: string } }) => {
       ? setTemporaryQuantity(temporaryQuantity + 1)
       : setTemporaryQuantity(stock);
   };
-  // console.log(product);
+
+  useEffect(() => {
+    const existingProduct = wishListProducts.find((item) => item.id === id);
+    if (existingProduct) {
+      setFavorite(true);
+    } else {
+      setFavorite(false);
+    }
+  }, [wishListProducts, id]);
 
   return (
     <>
-      <div>
+      <div className="wrapper my-5">
         {/* <!-- Product View --> */}
-        <div className="container grid grid-cols-2">
+        <div className=" grid grid-cols-2">
           <div className="col-span-1">
-            <img src="/images/products/product7.jpg" alt="" />
+            <img src={firstImagePath} alt="" />
 
             {/* <!-- Mini Product Slide --> */}
             <div className="grid grid-cols-5 items-center justify-between mt-3 gap-3 mb-6">
-              <img
-                src="/images/products/product7.jpg"
-                alt=""
-                className="border border-1 border-orangeRed w-full h-full object-cover transform transition-transform hover:scale-110 hover:border-orangeRed"
-              />
-              <img
-                src="/images/products/product2.jpg"
-                className=" w-full h-full object-cover transform transition-transform hover:scale-110 border border-1 hover:border-orangeRed"
-                alt=""
-              />
-              <img
-                src="/images/products/product3.jpg"
-                className=" w-full h-full object-cover transform transition-transform hover:scale-110 hover:border-orangeRed border border-1"
-                alt=""
-              />
-              <img
-                src="/images/products/product4.jpg"
-                className=" w-full h-full object-cover transform transition-transform hover:scale-110 hover:border-orangeRed border border-1"
-                alt=""
-              />
-              <img
-                src="/images/products/product5.jpg"
-                className=" w-full h-full object-cover transform transition-transform hover:scale-110 hover:border-orangeRed border border-1"
-                alt=""
-              />
+              {Object.keys(images).map((color) =>
+                images[color].map((imageUrl: string, index: number) => (
+                  <img
+                    key={`${color}-${index}`}
+                    src={imageUrl}
+                    alt=""
+                    className="border border-1 border-orangeRed w-full h-full object-cover transform transition-transform hover:scale-110 hover:border-orangeRed"
+                  />
+                ))
+              )}
             </div>
             {/* <!-- Mini Product Slide Ends--> */}
 
             {/* <!-- Product Description --> */}
             <div className="mt-5 mb-6  text-sm space-y-3">
-              <p className="text-2xl text-gray-800 font-bold">Product Description</p>
-              <hr className="border-t border-gray-400 " />
+              <p className="text-2xl text-gray-800 font-bold">
+                Product Description
+              </p>
+              <hr className="border-t border-gray-200 " />
 
-              {description.map((description: string) => (
+              {description.map((text: DescriptionItem) => (
                 <>
-                  <p className="text-gray-600 text-base font-semibold">{description.title}</p>
+                  <p className="text-gray-600 text-base font-semibold">
+                    {text.title}
+                  </p>
 
-                  <p className="text-gray-600">{description.description}</p>
+                  <p className="text-gray-600">{text.description}</p>
                 </>
               ))}
             </div>
 
-            {/* <!-- Table --> */}
-            {/* <div className="mb-6">
-              <table className="table-auto text-left text-gray-600 text-sm mt-6 border-collapse border  w-full   ">
-                <tr className="space-y-2">
-                  <th className=" py-2 px-3   font-medium w-40 border border-slate-300 pl-3 ">
-                    Color
-                  </th>
-                  <td className="py-2 px-3 border border-slate-300 pl-3">
-                    Black, Brown
-                  </td>
-                </tr>
-                <tr className="space-y-2">
-                  <th className=" py-2 px-3   font-medium w-40 border border-slate-300 pl-3 ">
-                    Color
-                  </th>
-                  <td className="py-2 px-3 border border-slate-300 pl-3">
-                    Black, Brown
-                  </td>
-                </tr>
-                <tr className="space-y-2">
-                  <th className=" py-2 px-3   font-medium w-40 border border-slate-300 pl-3 ">
-                    Color
-                  </th>
-                  <td className="py-2 px-3 border border-slate-300 pl-3">
-                    Black, Brown
-                  </td>
-                </tr>
-              </table>
-            </div> */}
-            {/* <!-- Table Ends--> */}
+            <div>
+              <p className="text-gray-600 font-bold text-lg">
+                Full Description
+              </p>
+              {full_details.map((item: string, index: number) => (
+                <div key={index}>
+                  {/* Iterate over each property in the object */}
+                  {Object.entries(item).map(([key, value]) => (
+                    <div key={key}>
+                      <strong className="text-gray-700">{key}:</strong> {value}
+                    </div>
+                  ))}
+                  <br />
+                </div>
+              ))}
+            </div>
           </div>
 
           {/* <!-- Product Description End--> */}
@@ -245,37 +279,64 @@ const Page = ({ params }: { params: { id: string } }) => {
 
               {/* <!-- Button --> */}
               <div className="font-roboto gap-4 flex items-center pb-5 mt-6 ">
-                 <button className="text-white  border-2 bg-orangeRed hover:text-orangeRed hover:bg-white font-semibold border-orangeRed  flex items-center justify-center w-48 h-10 gap-4 rounded group">
-                    <FaOpencart className="font-xl font-bold"/>
-CART
-                  
-                </button>
+                <TooltipWrapper open={open} setOpen={setOpen} message={message}>
+                  <button
+                    className="text-white  border-2 bg-orangeRed hover:text-orangeRed hover:bg-white font-semibold border-orangeRed  flex items-center justify-center w-48 h-10 gap-4 rounded group transition-colors duration-300"
+                    onClick={() =>
+                      sentCartItem(setOpen, setMessage, {
+                        id,
+                        name,
+                        firstImagePath,
+                        quantity,
+                        price,
+                        stock,
+                        selected,
+                      })
+                    }
+                  >
+                    <FaOpencart className="text-2xl font-extrabold" />
+                    ADD TO CART
+                  </button>
+                </TooltipWrapper>
 
-                <button className="text-darkChocolate  border-2 hover:bg-darkChocolate hover:text-white font-semibold border-darkChocolate  flex items-center justify-center w-48 h-10 gap-4 rounded group">
-                  
-                    <FavoriteBorder className="group-hover:text-white" sx={{color:"#28170bff",
-                  '&:hover': {
-                    color: 'white', 
-                  },
-                  }}/> WISH LIST
-                </button>
+                <TooltipWrapper
+                  open={openWishList}
+                  setOpen={setOpenWishList}
+                  message={wishListMessage}
+                >
+                  <button
+                    className="text-darkChocolate  border-2 hover:bg-darkChocolate hover:text-white font-semibold border-darkChocolate  center w-48 h-10 gap-1 rounded group transition-colors duration-300"
+                    onClick={handleFavoriteClick}
+                  >
+                    <FavoriteBorder
+                      className="group-hover:text-white"
+                      sx={{
+                        color: "#28170bff",
+                        "&:hover": {
+                          color: "white",
+                        },
+                      }}
+                    />{" "}
+                    WISH LIST
+                  </button>
+                </TooltipWrapper>
               </div>
 
-              <hr className="border-t border-gray-400 " />
-              <div className="mt-5 mb-6 flex items-center gap-2 text-gray-600">
-                <div className=" w-8 h-8 border border-gray-600  flex justify-center items-center rounded-full">
+              <hr className="border-t border-gray-200 " />
+              <div className="mt-5 mb-6 flex items-center gap-2 text-orangeRed">
+                <div className=" w-8 h-8 border border-orangeRed  flex justify-center items-center rounded-full">
                   <Link href="" className="0 ">
-                    <Facebook />
+                    <FaFacebookF />
                   </Link>
                 </div>
 
-                <div className=" w-8 h-8 border border-gray-600  flex justify-center items-center rounded-full">
+                <div className=" w-8 h-8 border border-orangeRed  flex justify-center items-center rounded-full">
                   <Link href="">
                     <BsInstagram />
                   </Link>
                 </div>
 
-                <div className=" w-8 h-8 border border-gray-600  flex justify-center items-center rounded-full">
+                <div className=" w-8 h-8 border border-orangeRed  flex justify-center items-center rounded-full">
                   <Link href="" className="0 ">
                     <Twitter />
                   </Link>
@@ -287,238 +348,101 @@ CART
         </div>
         {/* <!-- Product View end --> */}
 
-        <div className="container">
-          <div className=" ">
-            <h1 className="text-xl text-gray-800">Related Products</h1>
+        <h1 className="text-2xl text-gray-800 font-bold mb-5">
+          Related Products
+        </h1>
+        <CategorySlider category={category} />
+      </div>
+
+      <div className="max-w-4xl mx-auto px-4 py-8">
+        <div className="start gap-12">
+          <div className="space-y-1 mb-4">
+            <p className="text-4xl font-semibold">4.9 / 5</p>
+            <StarRating rating={5} />
+            <div className="text-sm text-gray-500">20 Ratings</div>
           </div>
-          {/* <!-- Releted Product --> */}
-          <div className=" grid grid-cols-5 mb-6 gap-4">
-            <div className="flex justify-center items-center relative group">
-              <div className="space-y-2 ml-2">
-                <img src="/images/products/product2.jpg" alt="" />
 
-                <p className="font-semibold text-gray-600 text-50">
-                  Lorem Name
-                </p>
-                <div>
-                  <span className="text-yellow-300">
-                    <i className="fas fa-star"></i>
-                  </span>
-                  <span className="text-yellow-300">
-                    <i className="fas fa-star"></i>
-                  </span>
-                  <span className="text-yellow-300">
-                    <i className="fas fa-star"></i>
-                  </span>
-                  <span className="text-yellow-300">
-                    <i className="fas fa-star"></i>
-                  </span>
-                  <span className="text-yellow-300">
-                    <i className="fas fa-star"></i>
-                  </span>
-                  <span className="ml-3 text-gray-400 text-sm">
-                    (34 Reviews)
-                  </span>
-                </div>
-                <div className="mt-2 mb-2 font-roboto space-x-2 ">
-                  <span className="text-orangeRed font-semibold">$450.00</span>
-                  <span className=" text-sm  text-gray-600 line-through ">
-                    500.00{" "}
-                  </span>
-                </div>
-
-                <div className="text-white">
-                  <a
-                    href=""
-                    className="bg-orangeRed flex items-center justify-center w-full h-10 gap-4  border border-b border-orangeRed rounded"
-                  >
-                    <i className="fas fa-shopping-bag"></i>ADD TO CART
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <div className="flex justify-center items-center relative group">
-              <div className="space-y-2 ml-2">
-                <img src="/images/products/product2.jpg" alt="" />
-
-                <p className="font-semibold text-gray-600 text-50">
-                  Lorem Name
-                </p>
-                <div>
-                  <span className="text-yellow-300">
-                    <i className="fas fa-star"></i>
-                  </span>
-                  <span className="text-yellow-300">
-                    <i className="fas fa-star"></i>
-                  </span>
-                  <span className="text-yellow-300">
-                    <i className="fas fa-star"></i>
-                  </span>
-                  <span className="text-yellow-300">
-                    <i className="fas fa-star"></i>
-                  </span>
-                  <span className="text-yellow-300">
-                    <i className="fas fa-star"></i>
-                  </span>
-                  <span className="ml-3 text-gray-400 text-sm">
-                    (34 Reviews)
-                  </span>
-                </div>
-                <div className="mt-2 mb-2 font-roboto space-x-2 ">
-                  <span className="text-orangeRed font-semibold">$450.00</span>
-                  <span className=" text-sm  text-gray-600 line-through ">
-                    500.00{" "}
-                  </span>
-                </div>
-
-                <div className="text-white">
-                  <a
-                    href=""
-                    className="bg-orangeRed flex items-center justify-center w-full h-10 gap-4  border border-b border-orangeRed rounded"
-                  >
-                    <i className="fas fa-shopping-bag"></i>ADD TO CART
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <div className="flex justify-center items-center relative group">
-              <div className="space-y-2 ml-2">
-                <img src="/images/products/product2.jpg" alt="" />
-
-                <p className="font-semibold text-gray-600 text-50">
-                  Lorem Name
-                </p>
-                <div>
-                  <span className="text-yellow-300">
-                    <i className="fas fa-star"></i>
-                  </span>
-                  <span className="text-yellow-300">
-                    <i className="fas fa-star"></i>
-                  </span>
-                  <span className="text-yellow-300">
-                    <i className="fas fa-star"></i>
-                  </span>
-                  <span className="text-yellow-300">
-                    <i className="fas fa-star"></i>
-                  </span>
-                  <span className="text-yellow-300">
-                    <i className="fas fa-star"></i>
-                  </span>
-                  <span className="ml-3 text-gray-400 text-sm">
-                    (34 Reviews)
-                  </span>
-                </div>
-                <div className="mt-2 mb-2 font-roboto space-x-2 ">
-                  <span className="text-orangeRed font-semibold">$450.00</span>
-                  <span className=" text-sm  text-gray-600 line-through ">
-                    500.00{" "}
-                  </span>
-                </div>
-
-                <div className="text-white">
-                  <a
-                    href=""
-                    className="bg-orangeRed flex items-center justify-center w-full h-10 gap-4  border border-b border-orangeRed rounded"
-                  >
-                    <i className="fas fa-shopping-bag"></i>ADD TO CART
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <div className="flex justify-center items-center relative group">
-              <div className="space-y-2 ml-2">
-                <img src="/images/products/product2.jpg" alt="" />
-
-                <p className="font-semibold text-gray-600 text-50">
-                  Lorem Name
-                </p>
-                <div>
-                  <span className="text-yellow-300">
-                    <i className="fas fa-star"></i>
-                  </span>
-                  <span className="text-yellow-300">
-                    <i className="fas fa-star"></i>
-                  </span>
-                  <span className="text-yellow-300">
-                    <i className="fas fa-star"></i>
-                  </span>
-                  <span className="text-yellow-300">
-                    <i className="fas fa-star"></i>
-                  </span>
-                  <span className="text-yellow-300">
-                    <i className="fas fa-star"></i>
-                  </span>
-                  <span className="ml-3 text-gray-400 text-sm">
-                    (34 Reviews)
-                  </span>
-                </div>
-                <div className="mt-2 mb-2 font-roboto space-x-2 ">
-                  <span className="text-orangeRed font-semibold">$450.00</span>
-                  <span className=" text-sm  text-gray-600 line-through ">
-                    500.00{" "}
-                  </span>
-                </div>
-
-                <div className="text-white">
-                  <a
-                    href=""
-                    className="bg-orangeRed flex items-center justify-center w-full h-10 gap-4  border border-b border-orangeRed rounded"
-                  >
-                    <i className="fas fa-shopping-bag"></i>ADD TO CART
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <div className="flex justify-center items-center relative group">
-              <div className="space-y-2 ml-2">
-                <img src="/images/products/product2.jpg" alt="" />
-
-                <p className="font-semibold text-gray-600 text-50">
-                  Lorem Name
-                </p>
-                <div>
-                  <span className="text-yellow-300">
-                    <i className="fas fa-star"></i>
-                  </span>
-                  <span className="text-yellow-300">
-                    <i className="fas fa-star"></i>
-                  </span>
-                  <span className="text-yellow-300">
-                    <i className="fas fa-star"></i>
-                  </span>
-                  <span className="text-yellow-300">
-                    <i className="fas fa-star"></i>
-                  </span>
-                  <span className="text-yellow-300">
-                    <i className="fas fa-star"></i>
-                  </span>
-                  <span className="ml-3 text-gray-400 text-sm">
-                    (34 Reviews)
-                  </span>
-                </div>
-                <div className="mt-2 mb-2 font-roboto space-x-2 ">
-                  <span className="text-orangeRed font-semibold">$450.00</span>
-                  <span className=" text-sm  text-gray-600 line-through ">
-                    500.00{" "}
-                  </span>
-                </div>
-
-                <div className="text-white">
-                  <a
-                    href=""
-                    className="bg-orangeRed flex items-center justify-center w-full h-10 gap-4  border border-b border-orangeRed rounded"
-                  >
-                    ADD TO CART
-                  </a>
-                </div>
-              </div>
-            </div>
+          <div className="">
+            <StarReview rating={4.9} width="90%" review={230} />
+            <StarReview rating={3.9} width="80%" review={134} />
+            <StarReview rating={2.9} width="60%" review={10} />
+            <StarReview rating={1.9} width="30%" review={5} />
           </div>
         </div>
+
+    
+        <div className="mb-8">
+          <h2 className="text-lg font-semibold mb-4">Product Reviews</h2>
+          <div className="space-y-8">
+            {[
+              {
+                user: "Jabir",
+                date: "30 Jul 2021",
+                content:
+                  "Lorem Ipsumin gravida nibh vel velit auctor aliquet...",
+                images: ["/images/products/comment1.jpg", "/images/products/comment2.jpg"], // Example image paths
+              },
+              {
+                user: "Abir.",
+                date: "30 Jul 2021",
+                content:
+                  "Lorem Ipsumin gravida nibh vel velit auctor aliquet...",
+                images: ["/images/products/comment3.jpg", "/images/products/comment4.jpg"], // Example image paths
+              },
+            ].map((review, index) => (
+              <div key={index} className="border rounded p-4">
+                <div className="flex items-center mb-2">
+                  <div className="text-lg font-bold mr-2">{review.user}</div>
+                  <StarRating rating={4.4}/>
+                </div>
+                <div className="text-sm text-gray-500 mb-2">{review.date}</div>
+                <div className="text-gray-800">{review.content}</div>
+                <div className="mt-4 flex space-x-4">
+                  {review.images.map((image, idx) => (
+                    <img
+                      key={idx}
+                      src={image}
+                      alt={`Review Image ${idx + 1}`}
+                      className="w-24 h-24 object-cover rounded-md"
+                    />
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        
+      </div>
+
+
+      <div className="mb-8">
+        <h2 className="text-2xl font-bold mb-4">Product Reviews</h2>
+        <div className="space-y-8">
+          {[{ user: 'Dr.SaifuzZ.', date: '27 Oct 2021', content: 'There is no discount sir' }, { user: 'Store Admin', date: '27 Oct 2021', content: 'Any discount?' }, { user: 'Dr.SaifuzZ.', date: '27 Oct 2021', content: 'There is no discount sir' }, { user: 'Store Admin', date: '27 Oct 2021', content: 'Any discount?' }].map(
+            (review, index) => (
+              <div key={index} className="border rounded p-4">
+                <div className="flex items-center mb-2">
+                  <div className="text-lg font-bold">{review.user}</div>
+                  <div className="flex ml-2">
+                    {[...Array(5)].map((_, index) => (
+                      <BsStarFill key={index} className="text-yellow-400" />
+                    ))}
+                  </div>
+                </div>
+                <div className="text-sm text-gray-500 mb-2">{review.date}</div>
+                <div className="text-gray-800">{review.content}</div>
+              </div>
+            )
+          )}
+        </div>
+      </div>
+
+      <div className="border rounded p-4 mb-8">
+        <div className="text-lg font-bold mb-2">Question about this product (3)</div>
+        <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
+          Ask a Question
+        </button>
       </div>
     </>
   );

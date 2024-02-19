@@ -33,10 +33,9 @@ const MiniProductCard: React.FC<ProductCardProps> = ({
   stock,
 }) => {
   const {
-    addToCart,
-    cartProducts,
-    addToWishList,
+    sentCartItem,
     deleteCartSingleProduct,
+    sentWishListItem,
     wishListProducts,
     removeFromWishList,
   } = useCartContext();
@@ -50,13 +49,6 @@ const MiniProductCard: React.FC<ProductCardProps> = ({
   const [message, setMessage] = useState("Added to cart!");
   const [wishListMessage, setWishListMessage] = useState("Added to WishList!");
 
-  const handleTooltipClose = () => {
-    setOpen(false);
-  };
-
-  const handleWishListTooltipClose = () => {
-    setOpenWishList(false);
-  };
   const [favorite, setFavorite] = useState(false);
   const [index, setIndex] = useState(0);
 
@@ -67,69 +59,71 @@ const MiniProductCard: React.FC<ProductCardProps> = ({
 
   const handleFavoriteClick = () => {
     setFavorite(!favorite);
-    if (favorite) {
-      removeWishlistItem();
-    } else {
-      sentWishListItem();
+    if(favorite){
+      removeFromWishList(setOpenWishList, setWishListMessage, id);
+       }
+
+      else{
+      sentWishListItem(setOpenWishList, setWishListMessage,{ id, name, firstImagePath, quantity, price, stock, selected })
+      }
     }
-  };
 
-  const sentCartItem = () => {
-    setOpen(true);
+  // const sentCartItem = () => {
+  //   setOpen(true);
 
-    setTimeout(() => {
-      setOpen(false);
-      setMessage("Added to Cart!")
-    }, 1000);
+  //   setTimeout(() => {
+  //     setOpen(false);
+  //     setMessage("Added to Cart!")
+  //   }, 1000);
     // const existingProduct = cartProducts.find((item) => item.id === id);
 
     // if (existingProduct) {
     //   setMessage("You have already added this product in your cart!");
     // } else {
-    addToCart({ id, name, firstImagePath, quantity, price, stock, selected });
-    // }
-  };
+  //   addToCart({ id, name, firstImagePath, quantity, price, stock, selected });
+  //   // }
+  // };
 
-  const removeCartItem = () => {
-    setOpen(true);
+  // const removeCartItem = () => {
+  //   setOpen(true);
 
-    deleteCartSingleProduct(id);
-    setMessage("Removed from Cart!");
+  //   deleteCartSingleProduct(id);
+  //   setMessage("Removed from Cart!");
 
-    setTimeout(() => {
-      setOpen(false);
-      setMessage("Added to Cart!"); // Reset message after a certain period
-    }, 1000);
-  };
+  //   setTimeout(() => {
+  //     setOpen(false);
+  //     setMessage("Added to Cart!"); // Reset message after a certain period
+  //   }, 1000);
+  // };
 
-  const sentWishListItem = () => {
-    setOpenWishList(true);
-    addToWishList({
-      id,
-      name,
-      firstImagePath,
-      price,
-      stock,
-      quantity,
-      selected,
-    });
+  // const sentWishListItem = () => {
+  //   setOpenWishList(true);
+  //   addToWishList({
+  //     id,
+  //     name,
+  //     firstImagePath,
+  //     price,
+  //     stock,
+  //     quantity,
+  //     selected,
+  //   });
 
-    setTimeout(() => {
-      setOpenWishList(false);
-      setWishListMessage("Product is added to Wishlist!"); // Reset message after a certain period
-    }, 1000);
-  };
+  //   setTimeout(() => {
+  //     setOpenWishList(false);
+  //     setWishListMessage("Product is added to Wishlist!"); // Reset message after a certain period
+  //   }, 1000);
+  // };
 
-  const removeWishlistItem = () => {
-    setOpenWishList(true);
-    removeFromWishList(id);
-    setWishListMessage("Removed from your wishlist!");
+  // const removeWishlistItem = () => {
+  //   setOpenWishList(true);
+  //   removeFromWishList(id);
+  //   setWishListMessage("Removed from your wishlist!");
 
-    setTimeout(() => {
-      setOpenWishList(false);
-      setWishListMessage("Product is added to Wishlist!"); // Reset message after a certain period
-    }, 1000);
-  };
+  //   setTimeout(() => {
+  //     setOpenWishList(false);
+  //     setWishListMessage("Product is added to Wishlist!"); // Reset message after a certain period
+  //   }, 1000);
+  // };
   useEffect(() => {
     const existingProduct = wishListProducts.find((item) => item.id === id);
     if (existingProduct) {
@@ -143,9 +137,9 @@ const MiniProductCard: React.FC<ProductCardProps> = ({
     setCart(!cart);
 
     if (cart) {
-      removeCartItem();
+      deleteCartSingleProduct(setOpen, setMessage, id);
     } else {
-      sentCartItem();
+      sentCartItem(setOpen, setMessage,{ id, name, firstImagePath, quantity, price, stock, selected });
     }
   };
   // rounded-tr-3xl rounded-bl-3xl

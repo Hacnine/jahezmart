@@ -2,10 +2,7 @@
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import Image from "next/image";
-import image1 from "../../../public/images/heroImage1.svg";
-import image2 from "../../../public/images/heroImage2.svg";
-import CustomSliderBackground from "./ui/CustomSliderBackground";
+import CustomSliderBackground from "../common/ui/CustomSliderBackground";
 const CustomSlider = () => {
   const settings = {
     dots: false,

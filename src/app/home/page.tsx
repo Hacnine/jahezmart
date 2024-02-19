@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import Head from "next/head";
-import Slider from "../../components/common/CustomSlider";
+import Slider from "../../components/slider/HeroImageSlider";
 import FeatureCard from "@/components/common/FeatureCard";
 import { featureCardInfo, shopByCategory } from "../../constant/index";
 import ShopByCategory from "@/components/common/ShopByCategory";
@@ -20,7 +20,7 @@ import SearchBar from "@/components/common/header/SearchBar";
 
 const Home = () => {
   const [featuredData, setFeaturedData] = useState([]);
-  const { sofa, dinning, kidsFurniture, bed, newProducts } = useFilterContext();
+  const { featuredSofa: sofa, featuredDinning: dinning, featuredKidsFurniture: kidsFurniture, featuredBed: bed, newProducts } = useFilterContext();
 
   return (
     <div className="home ">
