@@ -26,7 +26,7 @@ const ColorButton: React.FC<ColorButtonProps> = ({
         onClick={() => {setCheck(colors[index]); setIndex(index)}}
         >
         {check === currentColor ? (
-          <IoCheckmarkDoneOutline className={`${currentColor === 'white' ? 'text-slate-500': 'text-slate-300'}  text-xl`}/>
+          <IoCheckmarkDoneOutline className={`${currentColor === 'white' ? 'text-slate-500': 'text-slate-300'}  md:text-xl text-sm`}/>
         ) : null}
       </button>
   );

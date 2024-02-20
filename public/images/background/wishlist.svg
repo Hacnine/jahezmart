@@ -27,14 +27,14 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
      showgrid="false"
-     inkscape:zoom="0.2435099"
-     inkscape:cx="817.21523"
-     inkscape:cy="227.91681"
-     inkscape:window-width="780"
-     inkscape:window-height="728"
-     inkscape:window-x="-47"
-     inkscape:window-y="34"
-     inkscape:window-maximized="0"
+     inkscape:zoom="0.1721875"
+     inkscape:cx="-775.3176"
+     inkscape:cy="232.3049"
+     inkscape:window-width="1366"
+     inkscape:window-height="705"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
      inkscape:current-layer="g1" /><g
      inkscape:groupmode="layer"
      inkscape:label="Image"
@@ -123,7 +123,8 @@
    id="path513" />
 </g></g><g
        id="g414"
-       transform="translate(193.01063)"><rect
+       transform="translate(86.238816)"
+       style="opacity:0.4109589"><rect
          style="opacity:0.311031;fill:#80c1be;fill-opacity:1;stroke:none;stroke-width:2.75977"
          id="rect540"
          width="456.53995"
@@ -140,19 +141,19 @@
    id="g298">
 					<polygon
    style="fill:#eac873"
-   points="89.161,57.577 75.566,144.972 147.425,144.972 157.524,57.577 "
+   points="147.425,144.972 157.524,57.577 89.161,57.577 75.566,144.972 "
    id="polygon290" />
 					<polygon
    style="fill:#e5bc61"
-   points="147.425,144.972 165.29,144.972 157.524,57.577 "
+   points="157.524,57.577 147.425,144.972 165.29,144.972 "
    id="polygon292" />
 					<polygon
    style="fill:#d6ae54"
-   points="147.425,144.972 156.357,134.485 157.524,57.577 "
+   points="157.524,57.577 147.425,144.972 156.357,134.485 "
    id="polygon294" />
 					<polygon
    style="fill:#eac873"
-   points="165.29,144.972 156.357,134.485 157.524,57.577 "
+   points="157.524,57.577 165.29,144.972 156.357,134.485 "
    id="polygon296" />
 				</g>
 				<g
@@ -183,19 +184,19 @@
    id="g320">
 					<polygon
    style="fill:#ef8067"
-   points="35.74,80.041 22.144,167.437 94.003,167.437 104.102,80.041 "
+   points="94.003,167.437 104.102,80.041 35.74,80.041 22.144,167.437 "
    id="polygon312" />
 					<polygon
    style="fill:#ef8067"
-   points="94.003,167.437 111.868,167.437 104.102,80.041 "
+   points="104.102,80.041 94.003,167.437 111.868,167.437 "
    id="polygon314" />
 					<polygon
    style="fill:#e54c3c"
-   points="94.003,167.437 102.936,156.949 104.102,80.041 "
+   points="104.102,80.041 94.003,167.437 102.936,156.949 "
    id="polygon316" />
 					<polygon
    style="fill:#ea6d59"
-   points="111.868,167.437 102.936,156.949 104.102,80.041 "
+   points="104.102,80.041 111.868,167.437 102.936,156.949 "
    id="polygon318" />
 				</g>
 				<g

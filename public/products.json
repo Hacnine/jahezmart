@@ -1,67 +1,25 @@
 [
-  {
-    "id": "1",
-    "name": "3 Seater Sofa",
-    "stock": 12,
-    "brand": "Jazz",
-    "quantity": 1,
-    "price": 719,
-    "discount": 45,
-    "recommended": true,
-    "rating": 4.9,
-    "reviews": 230,
-    "colors": ["gray", " sienna"],
-    "images": {
-      "gray": [
-        "/images/products/product1.1.jpg",
-        "/images/products/product1.2.jpg"
-      ],
-      "sienna": ["/images/products/product1.4.jpg"]
-    },
-    "description": [
-      {
-        "title": "Jazz it Up",
-        "description": "Jazz up your lounge room with the fabulous Jazz 3 seater sofa, featuring an ultra trendy design with streamlined arms, timber legs and plump seats. Stitched and pulled-in back cushions give this sofa a designer flair."
-      },
-      {
-        "title": "Design It Your Way",
-        "description": "It’s so easy to create a sofa you love at an affordable price with Design It Your Way! With more than 50 fabrics to choose from, there’s a sofa for every style and every home. All Design It Your Way sofas are backed by our quality guarantee to ensure peace of mind when you make your purchase."
-      }
-    ],
-    "category": "sofa",
-    "featured": true,
-    "full_details": [
-      {
-        "Assembled_Size:": "L 233cm x D 86cm x H 85cm",
 
-        "Packaged Size": "L 233cm x D 87cm x H 57cm",
-        "Assembly": "Required",
-        "Made in": "Australia",
-        "Delivery type": "Large / bulky item"
-      }
-    ]
-  },
 
   {
     "id": "2",
-    "name": "Gecko Single Bed",
+    "name": "Single Bed",
     "stock": 12,
     "brand": "Gecko",
     "quantity": 1,
-
-    "price": 99,
+    "price": 990,
     "discount": 60,
     "rating": 4.6,
     "reviews": 50,
     "recommended": true,
-    "colors": ["pink", "white"],
+    "colors": [ "white","pink"],
     "images": {
-      "firstColor": [
+      "white": [
         "/images/products/product2.1.jpg",
         "/images/products/product2.2.jpg",
         "/images/products/product2.3.jpg"
       ],
-      "secondColor": [
+      "pink": [
         "/images/products/product2.4.jpg",
         "/images/products/product2.5.jpg"
       ]
@@ -101,16 +59,16 @@
     "brand": "Venus",
     "stock": 12,
     "quantity": 1,
-    "price": 299,
+    "price": 2909,
     "discount": 50,
     "recommended": true,
     "rating": 3.9,
     "reviews": 150,
     "colors": ["pink"],
     "images": {
-      "firstColor": [
-        "/images/products/product2.4.jpg",
-        "/images/products/venus_bed_pink_2.jpg"
+      "pink": [
+        "/images/products/product3.1.jpg",
+        "/images/products/product3.2.jpg"
       ]
     },
     "description": [
@@ -143,7 +101,7 @@
     "name": "Single Bed With Storage",
     "quantity": 1,
     "brand": "Como",
-    "price": 399,
+    "price": 3099,
     "stock": 12,
     "recommended": true,
     "rating": 3.9,
@@ -186,7 +144,7 @@
     "name": " Carver Dining Chair",
     "brand": "Rhodes",
     "quantity": 1,
-    "price": 89,
+    "price": 8009,
     "stock": 12,
     "discount": 10,
     "featured": true,
@@ -206,7 +164,6 @@
       }
     ],
     "category": "dining",
-    "featured": true,
     "star": 86,
     "full_details": [
       {
@@ -224,7 +181,7 @@
     "id": "6",
     "name": "Bunk Bed",
     "brand": "Willow",
-    "price": 399,
+    "price": 3909,
     "stock": 2,
     "discount": 42,
     "new_product": true,
@@ -282,7 +239,7 @@
     "name": "8 Drawer Fabric Dresser",
     "brand": "Keller",
     "quantity": 1,
-    "price": 119,
+    "price": 1109,
     "stock": 12,
     "new_product": true,
     "rating": 4.9,
@@ -324,7 +281,7 @@
     "brand": "Giselle",
     "quantity": 1,
     "stock": 26,
-    "price": 289,
+    "price": 2890,
     "new_product": true,
     "rating": 4.5,
     "reviews": 150,
@@ -362,7 +319,7 @@
     "name": " Bunk Bed",
     "brand": "Cosmic",
     "quantity": 1,
-    "price": 299,
+    "price": 2909,
     "stock": 22,
     "new_product": true,
     "colors": ["Gainsboro", "black"],
@@ -416,7 +373,7 @@
     "quantity": 1,
     "stock": 32,
     "brand": "Java",
-    "price": 450,
+    "price": 4500,
     "new_product": false,
     "rating": 4.9,
     "reviews": 150,
@@ -535,13 +492,13 @@
     "new_product": true,
     "rating": 4.9,
     "reviews": 150,
-    "colors": ["black", "lightgray"],
+    "colors": ["black", "#b5a99d"],
     "images": {
       "black": [
         " /images/products/product13.1.jpg",
         "/images/products/product13.2.jpg"
       ],
-      "lightgray": [
+      "#b5a99d": [
         "/images/products/product13.3.jpg",
         "/images/products/product13.4.jpg"
       ]
@@ -662,10 +619,53 @@
   },
 
   {
+    "id": "1",
+    "name": "3 Seater Sofa",
+    "stock": 12,
+    "brand": "Jazz",
+    "quantity": 1,
+    "price": 719,
+    "discount": 45,
+    "recommended": true,
+    "rating": 4.9,
+    "reviews": 230,
+    "colors": ["gray", " sienna"],
+    "images": {
+      "gray": [
+        "/images/products/product1.1.jpg",
+        "/images/products/product1.2.jpg"
+      ],
+      "sienna": ["/images/products/product1.4.jpg"]
+    },
+    "description": [
+      {
+        "title": "Jazz it Up",
+        "description": "Jazz up your lounge room with the fabulous Jazz 3 seater sofa, featuring an ultra trendy design with streamlined arms, timber legs and plump seats. Stitched and pulled-in back cushions give this sofa a designer flair."
+      },
+      {
+        "title": "Design It Your Way",
+        "description": "It’s so easy to create a sofa you love at an affordable price with Design It Your Way! With more than 50 fabrics to choose from, there’s a sofa for every style and every home. All Design It Your Way sofas are backed by our quality guarantee to ensure peace of mind when you make your purchase."
+      }
+    ],
+    "category": "sofa",
+    "featured": true,
+    "full_details": [
+      {
+        "Assembled_Size:": "L 233cm x D 86cm x H 85cm",
+
+        "Packaged Size": "L 233cm x D 87cm x H 57cm",
+        "Assembly": "Required",
+        "Made in": "Australia",
+        "Delivery type": "Large / bulky item"
+      }
+    ]
+  },
+
+  {
     "id": "15",
     "name": "Dining Chair",
     "brand": "Windsor",
-    "price": 169,
+    "price": 16900,
     "quantity": 1,
     "stock": 14,
     "new_product": false,
@@ -703,7 +703,7 @@
     "id": "16",
     "name": "Twin Bunk Storage Bed",
     "brand": "Jordan",
-    "price": 649,
+    "price": 64900,
     "quantity": 1,
     "stock": 14,
     "discount": 5,
@@ -749,7 +749,7 @@
     "brand": "Arlo",
     "stock": 14,
     "quantity": 1,
-    "price": 499,
+    "price": 4990,
     "featured": true,
     "new_product": true,
     "rating": 4.9,
@@ -806,7 +806,7 @@
     "name": "Bunk Bedroom Package",
     "brand": "Cabin",
     "quantity": 1,
-    "price": 999,
+    "price": 9990,
     "stock": 14,
     "new_product": false,
     "featured": true,
@@ -839,7 +839,7 @@
     "id": "19",
     "name": "Medium Mattress",
     "brand": "Sleepapedic Queen",
-    "price": 899,
+    "price": 8990,
     "stock": 7,
     "quantity": 1,
     "discount": 2,
@@ -887,7 +887,7 @@
     "id": "20",
     "name": " Double Bed",
     "brand": "Tait",
-    "price": 299,
+    "price": 2990,
     "stock": 10,
     "quantity": 1,
     "rating": 4.6,
@@ -929,7 +929,7 @@
     "name": "Double Mattress",
     "brand": "Spine-Lab",
     "quantity": 1,
-    "price": 189,
+    "price": 1890,
     "rating": 4.0,
     "reviews": 50,
     "colors": ["gray"],
@@ -973,7 +973,7 @@
     "stock": 57,
     "quantity": 1,
     "brand": "Jordan",
-    "price": 179,
+    "price": 1790,
     "new_product": false,
     "rating": 5,
     "reviews": 150,
@@ -1018,7 +1018,7 @@
     "name": " Queen Medium Mattress",
     "stock": 3,
     "brand": "Sleepscape",
-    "price": 399,
+    "price": 3990,
     "rating": 4.1,
     "reviews": 150,
     "colors": ["DarkGray"],
@@ -1061,7 +1061,7 @@
     "name": " Double Mattress",
     "stock": 12,
     "brand": "Sleeptight",
-    "price": 199,
+    "price": 1990,
     "quantity": 1,
     "rating": 4.9,
     "reviews": 150,
@@ -1103,7 +1103,7 @@
     "name": " 6 Seater Dining Set ",
     "brand": "Havana",
     "featured": true,
-    "price": 329,
+    "price": 3290,
     "quantity": 1,
     "rating": 4.3,
     "reviews": 50,
@@ -1141,7 +1141,7 @@
     "name": "6 Seater Dining Set",
     "brand": "Torkay",
     "stock": 12,
-    "price": 1099,
+    "price": 10990,
     "quantity": 1,
     "rating": 4.6,
     "reviews": 150,
@@ -1181,7 +1181,7 @@
   {
     "id": "33",
     "name": "4 Seater Dining Set With Dimi Chairs",
-    "price": 649,
+    "price": 6490,
     "quantity": 1,
     "stock": 12,
     "rating": 4.9,
@@ -1212,7 +1212,7 @@
     "stock": 12,
     "name": "6 Seater Dining Set With Samba Chairs",
     "quantity": 1,
-    "price": 569,
+    "price": 5690,
     "rating": 4.9,
     "reviews": 150,
     "colors": ["Gray"],
@@ -1253,7 +1253,7 @@
     "id": "28",
     "name": "6 Seater Dining Set With Samba Chairs",
     "quantity": 1,
-    "price": 569,
+    "price": 5609,
     "stock": 12,
     "recommended": true,
     "rating": 3.9,
@@ -1292,7 +1292,7 @@
   {
     "id": "29",
     "name": " Outdoor Umbrella",
-    "price": 159,
+    "price": 1059,
     "stock": 12,
     "quantity": 1,
     "discount": 20,
@@ -1328,7 +1328,7 @@
   {
     "id": "30",
     "name": "Rocha 4 Seater Outdoor Lounge Set",
-    "price": 269,
+    "price": 2690,
     "stock": 12,
     "quantity": 1,
     "discount": 30,
@@ -1365,7 +1365,7 @@
     "id": "31",
     "name": " 3 Seater Sofa",
     "stock": 12,
-    "price": 1119,
+    "price": 11109,
     "quantity": 1,
     "discount": 6,
     "recommended": true,
@@ -1409,7 +1409,7 @@
     "id": "35",
     "name": "5 Drawer Fabric Dresser",
     "brand": "Keller ",
-    "price": 450,
+    "price": 4500,
     "quantity": 1,
     "stock": 32,
     "discount": 60,
@@ -1448,5 +1448,51 @@
       "Number Of Drawers": 3,
       "Style": "Coastal"
     }]
+  },
+
+  {
+    "id": "36",
+    "name": " Single Bed",
+    "brand": "Stratford",
+    "stock": 8,
+    "quantity": 1,
+    "price": 4109,
+    "discount": 0,
+    "recommended": false,
+    "rating": 4.9,
+    "reviews": 12,
+    "colors": ["white"],
+    "images": {
+      "white": [
+        "/images/products/product2.6.jpg",
+        "/images/products/product2.7.jpg"
+      ]
+    },
+    "description": [
+      {
+        "title": "Made for Comfort and Storage",
+        "description": "The Stratford Single Bed is crafted from Rubber Wood and MDF, ensuring durability and sturdiness. Its bed base features 3 storage compartments, each with 2 dividers, allowing for organized storage of essentials. The storage compartment doors are versatile and can be installed on either side."
+      },
+      {
+        "title": "Standard Size and Weight Capacity",
+        "description": "This bed fits a standard single size mattress (not included). It stands at a height of 40cm from the floor to the top of the slat and has a weight capacity of 90kgs, providing ample support and comfort for a restful sleep."
+      }
+    ],
+    "category": "bed",
+    "featured": false,
+    "full_details": [
+      {
+        "Assembled Size": "L 96cm x D 193cm x H 40cm",
+        "Packaged Size (Box1)": "L 50cm x D 202cm x H 9cm",
+        "Packaged Size (Box2)": "L 70cm x D 101cm x H 6cm",
+        "Packaged Size (Box3)": "L 67cm x D 103cm x H 8cm",
+        "Colour": "White",
+        "Assembly": "Required",
+        "Delivery type": "Bulky item",
+        "Style": "Modern",
+        "Type": "Kids Bed"
+      }
+    ]
   }
+  
 ]

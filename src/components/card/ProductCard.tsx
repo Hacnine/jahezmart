@@ -2,7 +2,7 @@ import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 
-import { Button, ClickAwayListener, Tooltip, Zoom } from "@mui/material";
+import { Button, ClickAwayListener, Modal, Tooltip, Zoom } from "@mui/material";
 import { FavoriteBorder, HeartBroken, ShoppingCart } from "@mui/icons-material";
 import IconButton from "@mui/material/IconButton";
 import FavoriteIcon from "@mui/icons-material/Favorite";
@@ -13,6 +13,8 @@ import { CgShoppingCart } from "react-icons/cg";
 
 import { ProductCardProps } from "@/type";
 import TooltipWrapper from "../wrapper/TooltipWrapper";
+import Scrollbars from "react-custom-scrollbars-2";
+import QuickView from "../common/ui/QuickView";
 const ProductCard: React.FC<ProductCardProps> = ({
   id,
   name,
@@ -34,6 +36,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
     removeFromWishList,
   } = useCartContext();
 
+  const [modalOpen, setModalOpen] = useState(false);
   const [selected, setSelected] = useState<string>(colors[0]);
   const [open, setOpen] = React.useState(false);
   const [openWishList, setOpenWishList] = React.useState(false);
@@ -166,9 +169,29 @@ const ProductCard: React.FC<ProductCardProps> = ({
             </TooltipWrapper>
           </div>
 
-          <button className="w-full opacity-0 bg-orange-500  group-hover:opacity-100 absolute z-10 bottom-0 py-2 font-semibold text-white text-xs transition-color duration-300 rounded-bl-3xl rounded-tr-3xl">
+          <button className="w-full opacity-0 bg-orange-500  group-hover:opacity-100 absolute z-10 bottom-0 py-2 font-semibold text-white text-xs transition-color duration-300 rounded-bl-3xl rounded-tr-3xl" onClick={() => setModalOpen(true)}>
             Quick View
-          </button>
+          
+      </button>
+      <Modal
+        open={modalOpen}
+        onClose={() => setModalOpen(false)}
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <div
+          className="bg-white center md:p-10 p-4 rounded-md"
+          style={{ width: "90%", height: "90%" }}
+        >
+          <Scrollbars style={{ width: "100%", height: "100%" }}>
+            <QuickView id={id} modal={true} />
+          </Scrollbars>
+        </div>
+      </Modal>
+
         </div>
       </div>
 

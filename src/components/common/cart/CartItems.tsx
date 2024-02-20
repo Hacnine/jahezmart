@@ -20,7 +20,7 @@ const CartItems:React.FC<CartItemProps> = ({width, height, large}) => {
           display: "flex",
           flexDirection: "column",
           p: "16px",
-          backgroundImage: "url('/images/cart-bg.svg')",
+          backgroundImage: `url('${large ? "/images/background/largecart.svg" : "/images/cart-bg.svg"}')`,
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
           backgroundPosition: "center",

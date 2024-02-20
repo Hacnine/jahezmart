@@ -2,10 +2,10 @@ export interface Product {
   brand: string;
   category: string;
   colors: string[];
-  description: { title: string, description: string }[];
+  description?: { title: string, description: string }[];
   discount: number;
-  featured: boolean;
-  full_details: { [key: string]: string };
+  featured?: boolean;
+  full_details?: { [key: string]: string };
   id: string;
   images: { [key: string]: string[] };
   name: string;
@@ -70,10 +70,11 @@ export interface CartItems extends UpdateQuantity {
 
 export interface AddToWishListProps {
   id: string;
-  name?: string;
+  name: string;
   firstImagePath?: string;
   price?: number;
-  quantity: number;
+  quantity?: number;
+  tempQuantity?:number,
   stock: number;
   selected:string;
   large?:boolean;

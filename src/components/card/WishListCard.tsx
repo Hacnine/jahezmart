@@ -10,6 +10,7 @@ const WishListCard: React.FC<AddToWishListProps> = ({
   name,
   price,
   quantity,
+  tempQuantity,
   stock,
   selected,
 }) => {
@@ -21,8 +22,8 @@ const WishListCard: React.FC<AddToWishListProps> = ({
     deleteCartSingleProduct,
     addToWishList,
   } = useCartContext();
-  const [temporaryQuantity, setTemporaryQuantity] =
-    React.useState<number>(quantity);
+  const [temporaryQuantity, setTemporaryQuantity] = useState<number>(quantity ?? tempQuantity ?? 0);
+
   const [openWishList, setOpenWishList] = useState(false);
   const [wishListMessage, setWishListMessage] = useState("Added to WishList!");
   const [open, setOpen] = React.useState(false);
@@ -71,6 +72,7 @@ const WishListCard: React.FC<AddToWishListProps> = ({
           </button>
         </div>
       </div>
+      
     </>
   );
 };

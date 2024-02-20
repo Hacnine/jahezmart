@@ -11,6 +11,7 @@ import Link from "next/link";
 import CustomBreadcrumbs from "@/components/common/ui/CustomBreadcrumbs";
 import AccountSideBar from "@/components/common/sidebar/AccountSideBar";
 import AccountDrawer from "@/components/Drawer/DynamicDrawer";
+import SummaryCard from "@/components/card/SummaryCard";
 const WishList = () => {
   const { wishListProducts } = useCartContext();
   const links = [{ linkName: "Wishlist", link: "/account/wishlist" }];
@@ -33,13 +34,13 @@ const WishList = () => {
           },
         }}
       >
-        <div className="start w-full gap-5">
-        <div className="px-6 bg-white shadow-md md:block hidden">
+        <div className="start  md:flex-row flex-col w-full gap-5">
+        <div className="w-[24%] hidden lg:block  lg:center flex-col">
         <CustomBreadcrumbs links={links} />
         <AccountSideBar/>
         </div>
 
-        <div className=" w-full">
+        <div className=" center flex-col  lg:w-[50%] w-full">
         <div className="center w-full relative gap-5">
         <IconButton className="absolute left-0 block text-darkChocolate md:hidden" onClick={()=> setOpen(true)} >
         <Menu/>
@@ -47,11 +48,16 @@ const WishList = () => {
         <img src="/images/titles/wishlist.svg" className="my-8 w-48" alt="" />
         </div>
         {wishListProducts.map((product) => (
-          <div className="center gap-4 backdrop-blur-sm bg-white/30   my-1 ">
+          <div className="center gap-4  w-full backdrop-blur-sm bg-white/30   my-1 ">
             <WishListCard {...product} />
           </div>
         ))}
         </div>
+
+        <div className="w-[24%] mt-28 mb-20 shadow-sm">
+        <SummaryCard />
+      </div>
+
 
         </div>
 
