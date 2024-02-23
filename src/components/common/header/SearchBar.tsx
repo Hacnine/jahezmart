@@ -6,7 +6,7 @@ import { ChevronRight, Search } from "@mui/icons-material";
 import Link from "next/link";
 import React from "react";
 
-import SearchbarMiniProductCard from "../header/SearchbarMiniProductCard";
+import SearchbarMiniProductCard from "../../card/SearchbarMiniProductCard";
 import Scrollbars from "react-custom-scrollbars-2";
 import { useRouter } from "next/navigation";
 import { useFilterContext } from "@/context_reducer/filterContext";
@@ -18,19 +18,9 @@ const SearchBar:React.FC<{otherClasses:string}> = ({otherClasses}) => {
   const [visible, setVisible] = useState(false);
   const { allProducts, updateFilteredProducts, filteredProducts } = useFilterContext();
 
-
-  // useEffect(() => {
-  //   const { name } = router.query;
-  //   if (typeof name === "string") {
-  //     setQuery(name);
-  //   }
-  // }, [router.query]);
-  
   const primaryFilteredProducts = allProducts.filter((product) =>
     product.name.toLowerCase().includes(query.toLowerCase())
   );
-
-
 
   const handleFilteredProducts = () => {
     if (query === "") {
@@ -62,13 +52,13 @@ const SearchBar:React.FC<{otherClasses:string}> = ({otherClasses}) => {
   };
  
   return (
-    <div className={`${otherClasses} w-[50%]   lg:block bg-transparent `}>
+    <div className={`${otherClasses} w-[40%]   lg:block bg-transparent `}>
       <div className=" bg-transparent  lg:flex items-center justify-center  w-full ">
         <Combobox>
           <div className="relative w-full center">
             <Combobox.Input
               className={
-                "w-full border border-gray-300   h-[48px]  border-r-0  px-4 py-3 ring-transparent  outline-none focus:border focus:border-orangeRed focus:border-r-0 rounded-lr-md rounded-tl-3xl"
+                "w-full border border-gray-300 h-[48px] border-r-0 px-4 py-3 ring-transparent outline-none focus:border focus:border-orangeRed focus:border-r-0 rounded-lr-md rounded-tl-3xl"
               }
               onChange={(event) => setQuery(event.target.value)}
               placeholder="Search products..."
@@ -102,7 +92,7 @@ const SearchBar:React.FC<{otherClasses:string}> = ({otherClasses}) => {
                       value={query}
                       className=" text-base font-bold "
                     >
-                      <div className=" start gap-1">
+                      <div className="mb-3 start gap-1">
                         {primaryFilteredProducts.length} Matching products found.
                         <Link
                           className="center gap-3 text-lightOrange "
@@ -114,7 +104,7 @@ const SearchBar:React.FC<{otherClasses:string}> = ({otherClasses}) => {
                       </div>
                     </Combobox.Option>
 
-                    <Scrollbars style={{ width: 500, height: 400 }}>
+                    <Scrollbars style={{ width: 600, height: 400 }}>
                       {primaryFilteredProducts.map((product) => (
                         <Combobox.Option
                           key={product.id}
@@ -154,13 +144,6 @@ const SearchBar:React.FC<{otherClasses:string}> = ({otherClasses}) => {
             </Transition>
           </div>
         </Combobox>
-
-        {/* <Link href={"/shop"}>
-          <button className="bg-orangeRed hover:bg-sandyBrown text-white center gap-1 py-3 px-3 rounded-lr-md rounded-br-3xl">
-            <Search fontSize="medium" />
-            Search
-          </button>
-        </Link> */}
       </div>
       <div
         className={`${

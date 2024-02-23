@@ -12,13 +12,13 @@ const CustomSliderBackground: React.FC<CustomSliderBackgroundProps> = ({ image }
           backgroundSize: 'cover', 
           backgroundRepeat: 'no-repeat',
           backgroundPosition: 'center',
-          height: '500px',
+          height: '',
           
         },
     };
 
   return (
-    <div className="h-full w-full" style={styles.container}></div>
+    <div className="md:h-[500px] h-[300px] w-full" style={styles.container}></div>
   );
 }
 

@@ -28,6 +28,5 @@
   }
 
   .home {
-    /* This will hide the scrollbar */
     overflow: hidden;
   }

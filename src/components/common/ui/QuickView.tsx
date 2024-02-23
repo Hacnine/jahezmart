@@ -113,7 +113,7 @@ const QuickView: React.FC<QuickViewProps> = ({ id, modal }) => {
 
   return (
     <>
-      <div className=" grid grid-cols-2">
+      <div className=" grid grid-cols-2 ">
         <div className="sm:col-span-1 col-span-2 center flex-col">
           <img
             src={firstImagePath}
@@ -330,6 +330,11 @@ const QuickView: React.FC<QuickViewProps> = ({ id, modal }) => {
           </div>
         </div>
         {/* <!-- Product Name Rating Size Etc --> */}
+
+        {modal? 
+        
+          <button className=" col-span-2  mt-3 bg-darkChocolate hover:bg-darkChocolate/90 w-full py-2 md:text-sm text-base center text-white font-semibold rounded-tr-3xl rounded-bl-3xl center gap-1 group-hover:opacity-100"><Link href={`shop/${id}`} className="w-full">View More </Link></button>
+        :null}
       </div>
     </>
   );

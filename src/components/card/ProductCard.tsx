@@ -183,7 +183,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
         }}
       >
         <div
-          className="bg-white center md:p-10 p-4 rounded-md"
+          className="bg-white center md:p-10 p-4 center rounded-tr-[33px] rounded-bl-[33px] rounded"
           style={{ width: "90%", height: "90%" }}
         >
           <Scrollbars style={{ width: "100%", height: "100%" }}>

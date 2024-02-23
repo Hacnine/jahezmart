@@ -176,7 +176,7 @@ const MiniProductCard: React.FC<ProductCardProps> = ({
   };
 
   return (
-    <div className=" mb-2 relative group shadow-md shadow-slate-400 rounded-md overflow-hidden rounded-tr-3xl rounded-bl-3xl center md:flex-row flex-col md:w-[276px] md:h-[95px] w-full">
+    <div className=" mb-2 relative group  rounded-md overflow-hidden  start md:flex-row flex-col md:w-[276px] md:h-[95px] w-full">
       <div className="w-fit h-fit relative  group overflow-hidden">
         <div className="center    ">
           <img src={firstImagePath} alt="" className="md:w-[90%] p-3 w-[60%]" />
@@ -184,9 +184,9 @@ const MiniProductCard: React.FC<ProductCardProps> = ({
 
         <div
           className="absolute inset-0 bg-opacity-30 bg-blue-200 hover:bg-black
-          group-hover:bg-opacity-30 rounded-md transition-color duration-300 rounded-tr-3xl rounded-bl-3xl"
+          group-hover:bg-opacity-30 rounded-md transition-color duration-300 "
         >
-          <div className="between px-2 mt-4">
+          <div className="between mt-10 px-2 ">
             <TooltipWrapper open={open} setOpen={setOpen} message={message}>
               <IconButton
                 onClick={handleCartClick}
@@ -230,7 +230,7 @@ const MiniProductCard: React.FC<ProductCardProps> = ({
         </div>
       </div>
       <button
-        className="left-0 opacity-0   group-hover:opacity-100 absolute z-10 w-fit px-2 bottom-0 bg-orangeRed py-1 font-semibold text-white text-xs transition-color duration-300 rounded-bl-3xl rounded-tr-3xl"
+        className="left-0 opacity-0   group-hover:opacity-100 absolute z-10 w-fit px-2 bottom-0 bg-orangeRed py-1 font-semibold text-white text-xs transition-color duration-300 rounded-md"
         onClick={() => setModalOpen(true)}
       >
         <Preview />
@@ -245,7 +245,7 @@ const MiniProductCard: React.FC<ProductCardProps> = ({
         }}
       >
         <div
-          className="bg-white center md:p-10 p-4 rounded-md"
+          className="bg-white center md:p-10 p-4 rounded-tr-[33px] rounded-bl-[33px] rounded"
           style={{ width: "90%", height: "90%" }}
         >
           <Scrollbars style={{ width: "100%", height: "100%" }}>

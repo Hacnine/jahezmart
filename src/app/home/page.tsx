@@ -55,7 +55,7 @@ const Home = () => {
           Featured Products
         </p> */}
         <img src="/images/titles/featured.svg" className="mb-9" alt="" />
-        <div className="grid  xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-2 gap-3">
+        <div className="grid  xl:grid-cols-4 lg:grid-cols-3 grid-cols-2  gap-3">
           <div className="">
             <p className=" mb-3  text-[20px] font-semibold">Bed</p>
             {bed.map((product) => (
@@ -82,10 +82,10 @@ const Home = () => {
               />
             ))}
           </div>
-          <div className="xl:col-span-1 lg:col-span-3 md:col-span-3 min-md:col-span-1 ">
+          <div className="xl:block lg:hidden sm:block">
             <p className="text-[18px] font-semibold mb-3">Kid's Furniture</p>
 
-            <div className="md:grid xl:grid-cols-1 lg:grid-cols-3 md:grid-cols-3 min-md:grid-cols-1 lg:gap-1  md:gap-3">
+            <div className="">
               {kidsFurniture.map((product) => (
                 <MiniProductCard
                 {...product}

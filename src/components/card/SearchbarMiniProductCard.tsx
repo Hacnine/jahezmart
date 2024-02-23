@@ -7,7 +7,7 @@ import { Button } from "@mui/material";
 import { FavoriteBorder, HeartBroken, ShoppingCart } from "@mui/icons-material";
 import IconButton from "@mui/material/IconButton";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import StarRating from "../ui/StarRating";
+import StarRating from "../common/ui/StarRating";
 import { BsCartCheckFill, BsCartDash } from "react-icons/bs";
 import { BsCartFill } from "react-icons/bs";
 
