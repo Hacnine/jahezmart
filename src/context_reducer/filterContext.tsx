@@ -35,7 +35,7 @@ const initialState: ContextState = {
 
 type FilterContext = ContextState & {
   updateFilteredProducts: (filteredProducts: Product[]) => void;
-  getProductById: (productId: string) =>void;
+  getProductById: (productId: string) =>Product | undefined;
   filterByCategory:(categoryName:string) => Product[];
 };
 
@@ -49,7 +49,9 @@ const FilterContextProvider = ({ children }: { children: React.ReactNode }) => {
   };
 
   const getProductById = (productId: string) => {
-    return state.allProducts.find((product) => product.id === productId);
+    const foundProduct = state.allProducts.find((product) => product.id === productId);
+    console.log("Found product:", foundProduct);
+    return foundProduct;
   };
 
   const filterByCategory = (categoryName: string): Product[] => {

@@ -7,6 +7,7 @@ import {
 } from "@mui/icons-material";
 import Link from "next/link";
 import React from "react";
+import { MdAccountTree } from "react-icons/md";
 
 const AccountSideBar = () => {
   return (
@@ -34,11 +35,11 @@ const AccountSideBar = () => {
       <div className="bg-white w-fit col-start-1 mt-6  border border-gray-100 shadow rounded p-4 divide-y  text-gray-600 gap-4 mb-7">
         <div className="space-y-1  m p-2 shadow rounded-md border border-gray-100 ">
           <Link
-            href=""
-            className="start gap-2 block font-medium  text-orangeRed  "
+            href="/account/manageaccoun"
+            className="start gap-2 block font-semibold  text-orangeRed  "
           >
-            <span className="">
-              <Badge />
+            <span className="t">
+            <MdAccountTree className="text-xl"/>
             </span>
             Manage account
           </Link>
@@ -46,22 +47,22 @@ const AccountSideBar = () => {
         <div className="pl-8">
 
         <Link
-            href=""
-            className=" hover:text-orangeRed block  capitalize transition"
+            href="/account/profile"
+            className=" hover:text-orangeRed block  capitalize transition text-sm mb-1"
           >
             Profile info
           </Link>
 
           <Link
-            href=""
-            className=" hover:text-orangeRed block  capitalize transition"
+            href="/account/address"
+            className=" hover:text-orangeRed block  capitalize transition text-sm mb-1"
           >
             Manage Addresses
           </Link>
 
           <Link
-            href=""
-            className=" hover:text-orangeRed block  capitalize transition"
+            href="/account/changepassword"
+            className=" hover:text-orangeRed block  capitalize transition text-sm mb-1"
           >
             Change Password
           </Link>
@@ -69,7 +70,7 @@ const AccountSideBar = () => {
         </div>
 
         <div className="space-y-1 mt-3 p-2 shadow rounded-md border border-gray-100">
-          <Link href="" className="start gap-2 block font-medium capitalize">
+          <Link href="/account/orderhistory" className="start gap-2 block capitalize font-semibold">
             <span className="">
               <BorderColor />
             </span>
@@ -78,24 +79,24 @@ const AccountSideBar = () => {
 
           <div className="pl-8">
             <Link
-              href=""
-              className=" hover:text-orangeRed block  capitalize transition"
+              href="/account/returns"
+              className=" hover:text-orangeRed block  capitalize transition text-sm mb-1 "
             >
               {" "}
               Returns
             </Link>
 
             <Link
-              href=""
-              className=" hover:text-orangeRed block  capitalize transition"
+              href="/account/cancelation"
+              className=" hover:text-orangeRed block  capitalize transition text-sm mb-1"
             >
               {" "}
               Cancelation
             </Link>
 
             <Link
-              href=""
-              className=" hover:text-orangeRed block  capitalize transition"
+              href="/account/reviews"
+              className=" hover:text-orangeRed block  capitalize transition text-sm mb-1"
             >
               {" "}
               Reviews
@@ -105,8 +106,8 @@ const AccountSideBar = () => {
 
         <div className="space-y-1  mt-3 p-2 shadow rounded-md border border-gray-100">
           <Link
-            href=""
-            className=" start gap-2 block font-medium capitalize   "
+            href="/account/payment"
+            className=" start gap-2 block capitalize  font-semibold "
           >
             <span className=" text-base">
               <Payment />
@@ -114,24 +115,24 @@ const AccountSideBar = () => {
             Payments Method
           </Link>
           <Link
-            href=""
-            className="pl-8 hover:text-orangeRed block  capitalize transition"
+            href="/account/voucher"
+            className="pl-8 hover:text-orangeRed block  capitalize transition text-sm"
           >
             Voucher
           </Link>
         </div>
 
         <div className="space-y-1 mt-3 p-2 shadow rounded-md border border-gray-100">
-          <Link href="" className="start gap-2 block font-medium capitalize ">
-            <span className=" text-base">
+          <Link href="/account/wishlist" className="start gap-2 block font-medium capitalize ">
+            <span className=" text-base font-semibold">
               <Favorite />
             </span>
-            <p> Wish List</p>
+            <p className="font-semibold"> Wish List</p>
           </Link>
         </div>
 
         <div className="space-y-1  mt-3 p-2 shadow rounded-md border border-gray-100">
-          <Link href="" className="start gap-2 block font-medium capitalize">
+          <Link href="/signin" className="start gap-2 block capitalize font-semibold">
             <span className=" text-base">
               <Logout />
             </span>

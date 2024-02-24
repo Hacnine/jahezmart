@@ -16,7 +16,7 @@ const Shop = () => {
       <div className="wrapper grid grid-cols-12 pb-12">
         <div className="col-span-12 mb-4 my-8 block lg:hidden">
           <div className="center">
-            <img src="/images/titles/all.svg" className="w-[30%]" alt="" />
+            <img src="/images/titles/all.svg" className="md:h-[25px] h-[30px] " alt="" />
           </div>
         </div>
 

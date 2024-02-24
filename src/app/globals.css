@@ -13,7 +13,9 @@
   }
   
   .input-box{
-      @apply block w-full border border-gray-300 px-4 py-3 text-gray-600 text-sm rounded placeholder-gray-400  focus:border-orangeRed  focus:ring-orangeRed outline-none
+      @apply block w-full border border-gray-300 px-4 py-3 text-gray-600 text-sm rounded placeholder-gray-400  focus:border-orangeRed 
+      outline-none 
+      focus:ring-orangeRed 
   }
 
   .rememberme-selector input:checked{
