@@ -1,5 +1,6 @@
 "use client";
 
+import ProfileCard from "@/components/card/ProfileCard";
 import AccountSideBar from "@/components/common/sidebar/AccountSideBar";
 import CustomBreadcrumbs from "@/components/common/ui/CustomBreadcrumbs";
 import React, { useState } from "react";
@@ -23,7 +24,7 @@ const AddressForm = () => {
   };
 
   return (
-    <div className="container mx-auto text-gray-600">
+    <div className="wrapper text-gray-600">
       <CustomBreadcrumbs
         links={[
           { linkName: "My Account", link: "/about" },
@@ -31,10 +32,11 @@ const AddressForm = () => {
         ]}
       />
       <div className="grid grid-cols-12">
-        <div className=" col-span-3">
-          <AccountSideBar />
+        <div className=" lg:col-span-3 lg:block hidden">
+          <AccountSideBar link="address"/>
         </div>
-        <div className="col-span-9">
+        <div className=" lg:col-span-9 col-span-full">
+          <ProfileCard/>
           <h1 className="text-lg font-semibold mb-4">Manage Address</h1>
           <form
             onSubmit={handleSubmit}
@@ -47,7 +49,7 @@ const AddressForm = () => {
               <input
                 type="text"
                 id="fullName"
-                className="w-full border border-gray-300 rounded px-3 py-2 mb-2"
+                className="input"
                 value={fullName}
                 onChange={(e) => setFullName(e.target.value)}
               />
@@ -59,7 +61,7 @@ const AddressForm = () => {
               <input
                 type="text"
                 id="phoneNumber"
-                className="w-full border border-gray-300 rounded px-3 py-2 mb-2"
+                className="input"
                 value={phoneNumber}
                 onChange={(e) => setPhoneNumber(e.target.value)}
               />
@@ -70,7 +72,7 @@ const AddressForm = () => {
               </label>
               <select
                 id="country"
-                className="w-full border border-gray-300 rounded px-3 py-2 mb-2"
+                className="input"
                 value={country}
                 onChange={(e) => setCountry(e.target.value)}
               >
@@ -88,7 +90,7 @@ const AddressForm = () => {
               </label>
               <select
                 id="region"
-                className="w-full border border-gray-300 rounded px-3 py-2 mb-2"
+                className="input"
                 value={region}
                 onChange={(e) => setRegion(e.target.value)}
               >
@@ -106,7 +108,7 @@ const AddressForm = () => {
               </label>
               <select
                 id="city"
-                className="w-full border border-gray-300 rounded px-3 py-2 mb-2"
+                className="input"
                 value={city}
                 onChange={(e) => setCity(e.target.value)}
               >
@@ -124,7 +126,7 @@ const AddressForm = () => {
               </label>
               <select
                 id="area"
-                className="w-full border border-gray-300 rounded px-3 py-2 mb-2"
+                className="input"
                 value={area}
                 onChange={(e) => setArea(e.target.value)}
               >
@@ -142,7 +144,7 @@ const AddressForm = () => {
               </label>
               <textarea
                 id="address"
-                className="w-full border border-gray-300 rounded px-3 py-2 mb-2"
+                className="input"
                 value={address}
                 onChange={(e) => setAddress(e.target.value)}
               />

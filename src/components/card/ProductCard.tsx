@@ -214,11 +214,11 @@ const ProductCard: React.FC<ProductCardProps> = ({
         </div>
 
         <Link href={`shop/${id}`}>
-          <h3 className="  font-bold uppercase text-gray-600  md:text-base text-[10px] hover:text-chocolate pl-3">
+          <h3 className="  font-bold uppercase text-gray-600  md:text-sm text-[10px] hover:text-chocolate pt-1.5 pl-3">
             {name}
           </h3>
         </Link>
-        <p className="flex  sm:text-[20px] text-[14px] leading-[38px] font-extrabold text-sandyBrown px-3">
+        <p className="flex  sm:text-[20px] text-xs leading-[38px] font-extrabold text-sandyBrown px-3">
           <span className=" text-base text-gray-600 self-start md:text-[18px] sm:text-[10px] text-[9px] font-extrabold  leading-[17px] ">
             ৳
           </span>

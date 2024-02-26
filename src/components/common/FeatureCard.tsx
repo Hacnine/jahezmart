@@ -13,7 +13,7 @@ const FeatureCard: React.FC<FeatureCardProps> = ({
   description,
 }) => {
   return (
-    <div className="bg-tan rounded-md px-3 py-2 h-24 w-[332px] flex justify-center items-center gap-5 rounded-tl-3xl rounded-br-3xl">
+    <div className="bg-tan rounded-md px-3 py-2 h-24 w-[300px] flex justify-center items-center gap-5 rounded-tl-3xl rounded-br-3xl">
       <Image
         src={image}
         width={48}

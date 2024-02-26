@@ -1,4 +1,5 @@
 "use client";
+import ProfileCard from "@/components/card/ProfileCard";
 import AccountSideBar from "@/components/common/sidebar/AccountSideBar";
 import CustomBreadcrumbs from "@/components/common/ui/CustomBreadcrumbs";
 import React, { useState } from "react";
@@ -14,46 +15,51 @@ const ChangePasswordForm = () => {
   };
 
   return (
-    <div className="container mx-auto text-gray-600 text-sm">
+    <div className=" wrapper  text-gray-600 text-sm">
       <CustomBreadcrumbs
         links={[
           { linkName: "My Account", link: "/account" },
           { linkName: "Change Password", link: "/changepassword" },
         ]}
       />
-      <div className="grid grid-cols-12">
-        <div className=" col-span-3">
-          <AccountSideBar />
+      <div className="start md:flex-row flex-col gap-4 w-full ">
+        <div className="hidden  lg:block w-[23%] mr-4 ">
+          <AccountSideBar link="changepassword"/>
         </div>
-        <div className="col-span-9 w-2/3 flex-col">
+        <div className="lg:w-[70%] w-full">
+          <ProfileCard/>
+
           <h1 className="text-lg font-semibold mb-4">Change Password</h1>
           <form onSubmit={handleSubmit}>
-            <div className="mb-4">
+          <div className=" w-full center lg:flex-row flex-col gap-3">
+
+          <div className="mb-4 w-full lg:w-1/2">
               <label htmlFor="currentPassword" className="block mb-1">
                 Current Password
               </label>
               <input
                 type="password"
                 id="currentPassword"
-                className="w-full border border-gray-300 rounded px-3 py-2"
+                className="input"
                 placeholder="Enter current password"
                 value={currentPassword}
                 onChange={(e) => setCurrentPassword(e.target.value)}
               />
             </div>
-            <div className="mb-4">
+            <div className="mb-4 w-full lg:w-1/2">
               <label htmlFor="newPassword" className="block mb-1">
                 New Password
               </label>
               <input
                 type="password"
                 id="newPassword"
-                className="w-full border border-gray-300 rounded px-3 py-2"
+                className="input"
                 placeholder="Enter new password"
                 value={newPassword}
                 onChange={(e) => setNewPassword(e.target.value)}
               />
             </div>
+          </div>
             <div className="mb-4">
               <label htmlFor="retypePassword" className="block mb-1">
                 Retype Password
@@ -61,7 +67,7 @@ const ChangePasswordForm = () => {
               <input
                 type="password"
                 id="retypePassword"
-                className="w-full border border-gray-300 rounded px-3 py-2"
+                className="input"
                 placeholder="Repeat your password"
                 value={retypePassword}
                 onChange={(e) => setRetypePassword(e.target.value)}
@@ -69,7 +75,7 @@ const ChangePasswordForm = () => {
             </div>
             <button
               type="submit"
-              className=" border border-orangeRed bg-orangeRed hover:bg-transparent text-white transition-colors  hover:text-orangeRed font-medium text-base px-4 py-2 rounded"
+              className=" col-start-7 col-span-1 border border-orangeRed bg-orangeRed hover:bg-transparent text-white transition-colors  hover:text-orangeRed font-medium text-sm px-4 py-2 rounded"
             >
               SAVE CHANGES
             </button>{" "}

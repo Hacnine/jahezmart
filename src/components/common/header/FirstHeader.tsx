@@ -1,8 +1,9 @@
-"use client"
+"use client";
 
 import React from "react";
 import {
   Favorite,
+  Login,
   Person,
   Search,
   ShoppingCart,
@@ -13,10 +14,12 @@ import Image from "next/image";
 import SearchBar from "./SearchBar";
 import Link from "next/link";
 import { useCartContext } from "@/context_reducer/cartContext";
+import NavbarBadges from "../ui/NavbarBadges";
+import { BiChevronDown } from "react-icons/bi";
 const FirstHeader = () => {
-  const {wishListProducts, cartProducts} = useCartContext();
+  const { wishListProducts, cartProducts } = useCartContext();
   return (
-    <div className=" w-full  lg:bg-white bg-tan  wrapper shadow-md shadow-slate-300 ">
+    <div className=" w-full  lg:bg-white bg-tan  wrapper shadow-md shadow-slate-300 py-2">
       <div className=" py-4   between w-full ">
         <Link href={"/"}>
           <img
@@ -26,23 +29,18 @@ const FirstHeader = () => {
           />
         </Link>
 
-        <SearchBar otherClasses={" hidden md:hidden"} />
+        <div className="lg:flex items-center justify-between flex-grow pl-12 text-gray-600  hidden font-semibold">
+          <div className="flex items-center  flex-grow space-x-6 capitalize ">
+            <Link href={"/home"}>Home</Link>
+            <Link href={"/shop"}>Shop</Link>
+            <Link href={"/about"}>About</Link>
+            <Link href={"/contact"}>Contact</Link>
+            <div className="flex items-center"><p>Pages</p> <BiChevronDown/></div>
+          </div>
+        </div>
 
-        <div className=" flex items-center justify-evenly gap-6">
-          <Link href={"/account/cart"} className=" lg:block hidden">
-            <Badge badgeContent={cartProducts.length} color="error" sx={{ color: "OrangeRed" }}>
-              <ShoppingCart />
-            </Badge>
-          </Link>
-          <Link href="/account/wishlist">
-            <Badge badgeContent={wishListProducts.length} color="error" sx={{ color: "OrangeRed" }}>
-              <Favorite />
-            </Badge>
-          </Link>
-
-          <Link href="/account">
-            <Person sx={{ color: "OrangeRed" }} />
-          </Link>
+        <div className="lg:hidden block">
+          <NavbarBadges />
         </div>
       </div>
     </div>

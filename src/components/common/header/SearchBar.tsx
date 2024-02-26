@@ -58,13 +58,13 @@ const SearchBar:React.FC<{otherClasses:string}> = ({otherClasses}) => {
           <div className="relative w-full center">
             <Combobox.Input
               className={
-                "w-full border  h-[48px] border-r-0 px-4 py-3 ring-transparent outline-none focus:border focus:border-orangeRed focus:border-r-0 rounded-lr-md rounded-tl-3xl"
+                "w-full border  h-[48px] border-r-0 px-4 py-3 ring-transparent outline-none focus:border focus:border-orangeRed focus:border-r-0 rounded-lr-md rounded-tl-full"
               }
               onChange={(event) => setQuery(event.target.value)}
               placeholder="Search products..."
             />
             {/* <Link href={'/shop'}> */}
-            <Combobox.Button className="bg-orangeRed hover:bg-sandyBrown text-white center gap-1 py-3 px-3 rounded-lr-md rounded-br-3xl"  onClick={handleFilteredProducts}>
+            <Combobox.Button className="bg-orangeRed hover:bg-sandyBrown text-white center gap-1 py-3 pl-3 pr-5 rounded-lr-md rounded-br-full"  onClick={handleFilteredProducts}>
               <Search fontSize="medium" />
               Search
             </Combobox.Button>

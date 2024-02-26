@@ -7,19 +7,13 @@ import FeatureCard from "@/components/common/FeatureCard";
 import { featureCardInfo, shopByCategory } from "../../constant/index";
 import ShopByCategory from "@/components/common/ShopByCategory";
 import "../customcss.css";
-import Offer from "@/components/common/Offer";
-import productsData from "../../../public/products.json";
 import ProductCard from "@/components/card/ProductCard";
 import { useFilterContext } from "@/context_reducer/filterContext";
 import chairad from "../../../public/images/ad/chairad.svg";
 import Image from "next/image";
 import MiniProductCard from "@/components/card/MiniProductCard";
-import SimpleBottomNavigation from "@/components/common/header/FixedBottomNavigation";
-import TemporaryDrawer from "@/components/common/CustomDrawer";
-import SearchBar from "@/components/common/header/SearchBar";
 
 const Home = () => {
-  const [featuredData, setFeaturedData] = useState([]);
   const { featuredSofa: sofa, featuredDinning: dinning, featuredKidsFurniture: kidsFurniture, featuredBed: bed, newProducts } = useFilterContext();
 
   return (
@@ -28,9 +22,9 @@ const Home = () => {
 
       <div className="center gap-3">
       <div>
-        <div className=" wrapper py-9 w-10/12 grid md:grid-cols-3 sm:grid-cols-1 gap-6  mx-2">
+        <div className=" wrapper py-9  grid lg:grid-cols-3 sm:grid-cols-1 gap-6  mx-2">
           {featureCardInfo.map((info, index) => (
-            <div key={index} className="px-6">
+            <div key={index} className="px-2">
               <FeatureCard {...info} />
             </div>
           ))}
@@ -65,7 +59,7 @@ const Home = () => {
             ))}
           </div>
           <div className="">
-            <p className="font-semibold  text-[18px] mb-3">Sofa</p>
+            <p className="font-bold  text-[18px] mb-3">Sofa</p>
 
             {sofa.map((product) => (
               <MiniProductCard

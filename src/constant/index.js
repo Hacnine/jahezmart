@@ -29,7 +29,7 @@ export const featureCardInfo = [
   {
     image: "/images/icons/money-back.svg",
     title: "Money Back",
-    description: "30 Days Money Back Guarantee",
+    description: "30 Days Guarantee",
   },
   {
     image: "/images/icons/service-hours.svg",

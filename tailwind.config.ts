@@ -43,9 +43,9 @@ const config: Config = {
 
         container: {
           padding: {
-            DEFAULT: '1rem', // Default padding for the container
-            sm: '1.5rem',   // Small screen padding
-            md: '3rem',     // Medium screen padding
+            DEFAULT: '1rem', 
+            sm: '1.5rem',   
+            md: '2rem',     
           },
         },
     },

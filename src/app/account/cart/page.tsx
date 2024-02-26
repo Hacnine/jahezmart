@@ -1,5 +1,5 @@
 import CartItems from "@/components/common/cart/CartItems";
-import SummaryCard from "@/components/card/SummaryCard";
+import SummaryCard from "@/components/card/OrderSummaryCard";
 import AccountSideBar from "@/components/common/sidebar/AccountSideBar";
 import CustomBreadcrumbs from "@/components/common/ui/CustomBreadcrumbs";
 import { Menu } from "@mui/icons-material";
@@ -13,7 +13,7 @@ const Cart = () => {
     <div className="wrapper start md:flex-row flex-col ">
       <div className="w-[24%] hidden lg:block">
         <CustomBreadcrumbs links={links} />
-        <AccountSideBar />
+        <AccountSideBar link="cart"/>
       </div>
       <div className=" center flex-col lg:w-[50%] w-full  ">
         <div className="center w-full  gap-5">

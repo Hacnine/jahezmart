@@ -1,4 +1,5 @@
 import React from 'react'
+import Link from 'next/link'
 
 const SignUp = () => {
   return (
@@ -13,31 +14,31 @@ const SignUp = () => {
       <div className="space-y-6">
          <div>
              <label htmlFor="name" className="text-gray-600 mb-2 block"> Name</label>
-             <input type="text" id="name" className="block w-full border border-gray-500 px-4 py-3 text-gray-600 text-sm rounded focus:ring-0 focus:border-[] placeholder-gray-400  " placeholder="Enter your name"/>
+             <input type="text" id="name" className="input " placeholder="Enter your name"/>
          </div>
          
          <div>
              <label htmlFor="phone" className="text-gray-600 mb-2 block"> Phone Number</label>
-             <input type="number" id="phone" className="block w-full border border-gray-500 px-4 py-3 text-gray-600 text-sm rounded focus:ring-0 focus:border-[] placeholder-gray-400  " placeholder="Enter your phone number"/>
+             <input type="number" id="phone" className="input " placeholder="Enter your phone number"/>
          </div>
 
          <div>
              <label htmlFor="email" className="text-gray-600 mb-2 block"> Email Address</label>
-             <input type="email" id="email" className="block w-full border border-gray-500 px-4 py-3 text-gray-600 text-sm rounded focus:ring-0 focus:border-[] placeholder-gray-400  " placeholder="Enter your name"/>
+             <input type="email" id="email" className="input " placeholder="Enter your name"/>
          </div>
 
             <div>
              <label htmlFor="password" className="text-gray-600 mb-2 block"> Password</label>
-             <input type="email" className="block w-full border border-gray-500 px-4 py-3 text-gray-600 text-sm rounded focus:ring-0 focus:border-[] placeholder-gray-400  " id="password" placeholder="Enter your password"/>
+             <input type="email" className="input " id="password" placeholder="Enter your password"/>
             </div>
 
             <div>
              <label htmlFor="re-password" className="text-gray-600 mb-2 block"> Re-Enter Password</label>
-             <input type="email" className="block w-full border border-gray-500 px-4 py-3 text-gray-600 text-sm rounded focus:ring-0 focus:border-[] placeholder-gray-400  " id="password" placeholder="Renter your password"/>
+             <input type="email" className="input " id="password" placeholder="Renter your password"/>
             </div>
 
       </div>
-      <div className="mt-4">
+      <div className="mt-8">
        <button type="submit" className=" block text-center bg-orangeRed w-full rounded-md text-white h-10  ring-1 hover:bg-transparent hover:text-orangeRed ring-orangeRed mt-4">Register</button>
       </div>
       
@@ -50,13 +51,13 @@ const SignUp = () => {
      </div>
 
      <div className="flex mt-4 gap-4">
-       <a href="" className="w-1/2 py-2 text-center text-white bg-blue-800 rounded uppercase font-roboto font-medium text-sm hover:bg-blue-700">Faccebook</a>
+       <Link href="" className="w-1/2 py-2 text-center text-white bg-blue-800 rounded uppercase font-roboto font-medium text-sm hover:bg-blue-700">Faccebook</Link>
 
-       <a href="" className="w-1/2 py-2 text-center text-white bg-red-500 rounded uppercase font-roboto font-medium text-sm hover:bg-red-400">Google</a>
+       <Link href="" className="w-1/2 py-2 text-center text-white bg-red-500 rounded uppercase font-roboto font-medium text-sm hover:bg-red-400">Google</Link>
        
      </div>
      <p className="mt-4 text-gray-600 text-center">Have an Account?
-       <a href="/signin" className="text-red-600">Login Now!</a>
+       <Link href="/signin" className="text-red-600">Login Now!</Link>
      </p>
  </div>
 </div>
