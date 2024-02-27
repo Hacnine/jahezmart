@@ -204,14 +204,14 @@ const QuickView: React.FC<QuickViewProps> = ({ id, modal }) => {
               <div className="flex items-center mt-2 gap-3">
                 {/* <!-- Single Size --> */}
 
-                <button className="text-gray-600 w-6 h-6 text-sm  ring-1 ring-gray-600  rounded-sm flex items-center justify-center cursor-pointer">
+                <button className="text-orangeRed w-6 h-6 text-sm  ring-2 ring-orangeRed  rounded-sm flex items-center justify-center cursor-pointer font-extrabold">
                   S
                 </button>
-                <button className="text-gray-600 w-6 h-6 text-sm  ring-1 ring-gray-600  rounded-sm flex items-center justify-center cursor-pointer">
-                  M
+                <button className="text-orangeRed w-6 h-6 text-sm  ring-2 ring-orangeRed  rounded-sm flex items-center justify-center cursor-pointer font-extrabold">
+                  D
                 </button>
-                <button className="text-gray-600 w-6 h-6 text-sm  ring-1 ring-gray-600  rounded-sm flex items-center justify-center cursor-pointer">
-                  L
+                <button className="text-orangeRed w-6 h-6 text-sm  ring-2 ring-orangeRed  rounded-sm flex items-center justify-center cursor-pointer font-extrabold">
+                  Q
                 </button>
                 {/* <!-- Single Size Ends --> */}
               </div>

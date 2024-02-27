@@ -39,6 +39,8 @@ export interface Product2 {
   star?: number;
   full_details?: Record<string, string>[];
 
+  [key: string]: any;
+
 };
 export interface UpdateQuantity {
   id: string;

@@ -56,7 +56,7 @@
   {
     "id": "3",
     "name": "Single Bed",
-    "brand": "Venus",
+    "brand": "Gecko",
     "stock": 12,
     "quantity": 1,
     "price": 2909,
@@ -100,15 +100,15 @@
     "id": "4",
     "name": "Single Bed With Storage",
     "quantity": 1,
-    "brand": "Como",
+    "brand": "Al Khair",
     "price": 3099,
     "stock": 12,
     "recommended": true,
     "rating": 3.9,
     "reviews": 10,
-    "colors": ["black", "white"],
+    "colors": ["Black", "white"],
     "images": {
-      "black": [
+      "Black": [
         "/images/products/product4.1.jpg",
         "/images/products/product4.2.jpg"
       ],
@@ -142,7 +142,7 @@
   {
     "id": "5",
     "name": " Carver Dining Chair",
-    "brand": "Rhodes",
+    "brand": "Al Khair",
     "quantity": 1,
     "price": 8009,
     "stock": 12,
@@ -150,9 +150,9 @@
     "featured": true,
     "rating": 4.9,
     "reviews": 150,
-    "colors": ["black"],
+    "colors": ["Black"],
     "images": {
-      "black": [
+      "Black": [
         "/images/products/product8.1.jpg",
         "/images/products/product8.2.jpg"
       ]
@@ -180,20 +180,20 @@
     "quantity": 1,
     "id": "6",
     "name": "Bunk Bed",
-    "brand": "Willow",
+    "brand": "Al Khair",
     "price": 3909,
     "stock": 2,
     "discount": 42,
     "new_product": true,
     "rating": 3.5,
     "reviews": 10,
-    "colors": ["white", "black"],
+    "colors": ["white", "Black"],
     "images": {
       "white": [
         "/images/products/product7.3.jpg",
         "/images/products/product7.4.jpg"
       ],
-      "black": [
+      "Black": [
         "/images/products/product7.1.jpg",
         "/images/products/product7.2.jpg"
       ]
@@ -237,16 +237,16 @@
   {
     "id": "7",
     "name": "8 Drawer Fabric Dresser",
-    "brand": "Keller",
+    "brand": "Gecko",
     "quantity": 1,
     "price": 1109,
     "stock": 12,
     "new_product": true,
     "rating": 4.9,
     "reviews": 250,
-    "colors": ["gray"],
+    "colors": ["Gray"],
     "images": {
-      "gray": [
+      "Gray": [
         "/images/products/product6.1.jpg",
         "/images/products/product6.2.jpg"
       ]
@@ -278,7 +278,7 @@
   {
     "id": "8",
     "name": "Four Poster Single Bed",
-    "brand": "Giselle",
+    "brand": "Hisam",
     "quantity": 1,
     "stock": 26,
     "price": 2890,
@@ -317,18 +317,18 @@
   {
     "id": "9",
     "name": " Bunk Bed",
-    "brand": "Cosmic",
+    "brand": "Hisam",
     "quantity": 1,
     "price": 2909,
     "stock": 22,
     "new_product": true,
-    "colors": ["Gainsboro", "black"],
+    "colors": ["Gainsboro", "Black"],
     "images": {
       "Gainsboro": [
         "/images/products/product12.1.jpg",
         "/images/products/product12.2.jpg"
       ],
-      "black": ["/images/products/product12.3.jpg"]
+      "Black": ["/images/products/product12.3.jpg"]
     },
     "description": [
       {
@@ -348,7 +348,7 @@
         "description": "Click [here](mattress_link) to view the Sleeptight Single Mattress, our recommendation for all top-level bunk beds."
       }
     ],
-    "category": "bunk bed",
+    "category": "bed",
     "rating": 4.5,
     "reviews": 57,
     "full_details": [
@@ -372,7 +372,7 @@
     "name": " Dresser",
     "quantity": 1,
     "stock": 32,
-    "brand": "Java",
+    "brand": "Hisam",
     "price": 4500,
     "new_product": false,
     "rating": 4.9,
@@ -415,7 +415,7 @@
   {
     "id": "11",
     "name": "Single Bedroom Package",
-    "brand": "Avalon King",
+    "brand": "Hisam",
     "stock": 5,
     "quantity": 1,
     "price": 430,
@@ -483,7 +483,7 @@
   {
     "id": "12",
     "name": "Armchair Sofa",
-    "brand": "Tivoli",
+    "brand": "Gecko",
     "quantity": 1,
     "stock": 15,
     "price": 399,
@@ -492,9 +492,9 @@
     "new_product": true,
     "rating": 4.9,
     "reviews": 150,
-    "colors": ["black", "#b5a99d"],
+    "colors": ["Black", "#b5a99d"],
     "images": {
-      "black": [
+      "Black": [
         " /images/products/product13.1.jpg",
         "/images/products/product13.2.jpg"
       ],
@@ -533,16 +533,16 @@
   {
     "id": "13",
     "name": "Large Wide Bookcase",
-    "brand": "Kobi",
+    "brand": "Hisam",
     "quantity": 1,
     "stock": 8,
     "price": 299,
     "new_product": false,
     "rating": 4.4,
     "reviews": 150,
-    "colors": ["black"],
+    "colors": ["Black"],
     "images": {
-      "black": [
+      "Black": [
         "/images/products/product14.1.jpg",
         "/images/products/product14.2.jpg"
       ]
@@ -574,7 +574,7 @@
   {
     "id": "14",
     "name": "Large Wide Bookcase",
-    "brand": "Kobi",
+    "brand": "Gecko",
     "price": 259,
     "quantity": 1,
     "stock": 14,
@@ -622,20 +622,20 @@
     "id": "1",
     "name": "3 Seater Sofa",
     "stock": 12,
-    "brand": "Jazz",
+    "brand": "Hisam",
     "quantity": 1,
     "price": 719,
     "discount": 45,
     "recommended": true,
     "rating": 4.9,
     "reviews": 230,
-    "colors": ["gray", " sienna"],
+    "colors": ["Gray", " brown"],
     "images": {
-      "gray": [
+      "Gray": [
         "/images/products/product1.1.jpg",
         "/images/products/product1.2.jpg"
       ],
-      "sienna": ["/images/products/product1.4.jpg"]
+      "brown": ["/images/products/product1.4.jpg"]
     },
     "description": [
       {
@@ -664,7 +664,7 @@
   {
     "id": "15",
     "name": "Dining Chair",
-    "brand": "Windsor",
+    "brand": "Gecko",
     "price": 16900,
     "quantity": 1,
     "stock": 14,
@@ -672,9 +672,9 @@
     "featured": true,
     "rating": 5,
     "reviews": 150,
-    "colors": ["gray"],
+    "colors": ["Gray"],
     "images": {
-      "gray": ["/images/products/product16.jpg"]
+      "Gray": ["/images/products/product16.jpg"]
     },
     "description": [
       {
@@ -702,7 +702,7 @@
   {
     "id": "16",
     "name": "Twin Bunk Storage Bed",
-    "brand": "Jordan",
+    "brand": "Hisam",
     "price": 64900,
     "quantity": 1,
     "stock": 14,
@@ -710,9 +710,9 @@
     "new_product": true,
     "rating": 4.9,
     "reviews": 150,
-    "colors": ["black", "white"],
+    "colors": ["Black", "white"],
     "images": {
-      "black": ["/images/products/product17.1.jpg"],
+      "Black": ["/images/products/product17.1.jpg"],
       "white": ["/images/products/product17.2.jpg"]
     },
     "description": [
@@ -746,7 +746,7 @@
   {
     "id": "17",
     "name": "Bunk Bed",
-    "brand": "Arlo",
+    "brand": "Hisam",
     "stock": 14,
     "quantity": 1,
     "price": 4990,
@@ -754,14 +754,14 @@
     "new_product": true,
     "rating": 4.9,
     "reviews": 150,
-    "colors": ["MistyRose", "DarkGray"],
+    "colors": ["pink", "Gray"],
     "images": {
-      "MistyRose": [
+      "pink": [
         "/images/products/product18.3.jpg",
         "/images/products/product18.4.jpg"
       ],
 
-      "DarkGray": [
+      "Gray": [
         "/images/products/product18.1.jpg",
         "/images/products/product18.2.jpg"
       ]
@@ -804,7 +804,7 @@
   {
     "id": "18",
     "name": "Bunk Bedroom Package",
-    "brand": "Cabin",
+    "brand": "Jordan",
     "quantity": 1,
     "price": 9990,
     "stock": 14,
@@ -812,9 +812,9 @@
     "featured": true,
     "rating": 4.9,
     "reviews": 150,
-    "colors": ["BurlyWood"],
+    "colors": ["tan"],
     "images": {
-      "BurlyWood": ["/images/products/product19.1.jpg"]
+      "tan": ["/images/products/product19.1.jpg"]
     },
     "description": [
       {
@@ -838,7 +838,7 @@
   {
     "id": "19",
     "name": "Medium Mattress",
-    "brand": "Sleepapedic Queen",
+    "brand": "Judad",
     "price": 8990,
     "stock": 7,
     "quantity": 1,
@@ -846,9 +846,9 @@
     "new_product": false,
     "rating": 4.9,
     "reviews": 150,
-    "colors": ["DarkGray"],
+    "colors": ["Gray"],
     "images": {
-      "DarkGray": [
+      "Gray": [
         "/images/products/product20.1.jpg",
         "/images/products/product20.2.jpg"
       ]
@@ -886,15 +886,15 @@
   {
     "id": "20",
     "name": " Double Bed",
-    "brand": "Tait",
+    "brand": "Judad",
     "price": 2990,
     "stock": 10,
     "quantity": 1,
     "rating": 4.6,
     "reviews": 90,
-    "colors": ["DarkGray"],
+    "colors": ["Gray"],
     "images": {
-      "DarkGray": [
+      "Gray": [
         "/images/products/product21.1.jpg",
         "/images/products/product21.2.jpg"
       ]
@@ -927,14 +927,14 @@
     "id": "21",
     "stock": 27,
     "name": "Double Mattress",
-    "brand": "Spine-Lab",
+    "brand": "Jordan",
     "quantity": 1,
     "price": 1890,
     "rating": 4.0,
     "reviews": 50,
-    "colors": ["gray"],
+    "colors": ["Gray"],
     "images": {
-      "gray": [
+      "Gray": [
         "/images/products/product22.1.jpg",
         "/images/products/product22.2.jpg"
       ]
@@ -1017,13 +1017,13 @@
     "quantity": 1,
     "name": " Queen Medium Mattress",
     "stock": 3,
-    "brand": "Sleepscape",
+    "brand": "Judad",
     "price": 3990,
     "rating": 4.1,
     "reviews": 150,
-    "colors": ["DarkGray"],
+    "colors": ["Gray"],
     "images": {
-      "DarkGray": [
+      "Gray": [
         "/images/products/product23.1.jpg",
         "/images/products/product23.2.jpg"
       ]
@@ -1060,14 +1060,14 @@
     "id": "24",
     "name": " Double Mattress",
     "stock": 12,
-    "brand": "Sleeptight",
+    "brand": "Jordan",
     "price": 1990,
     "quantity": 1,
     "rating": 4.9,
     "reviews": 150,
-    "colors": ["White"],
+    "colors": ["white"],
     "images": {
-      "White": [
+      "white": [
         "/images/products/product24.2.jpg",
         "/images/products/product24.1.jpg"
       ]
@@ -1101,7 +1101,7 @@
     "id": "25",
     "stock": 12,
     "name": " 6 Seater Dining Set ",
-    "brand": "Havana",
+    "brand": "Judad",
     "featured": true,
     "price": 3290,
     "quantity": 1,
@@ -1139,7 +1139,7 @@
   {
     "id": "26",
     "name": "6 Seater Dining Set",
-    "brand": "Torkay",
+    "brand": "Judad",
     "stock": 12,
     "price": 10990,
     "quantity": 1,
@@ -1193,9 +1193,9 @@
         "/images/products/product27.2.jpg"
       ]
     },
-    "brand": "Waverley",
+    "brand": "Jordan",
     "description": [],
-    "category": "dining set",
+    "category": "dining",
     "full_details": [
       {
         "Colour": "White",
@@ -1222,7 +1222,7 @@
         "/images/products/product28.2.jpg"
       ]
     },
-    "brand": "Havana",
+    "brand": "Jordan",
     "description": [
       {
         "title": "Stylish and Sophisticated",
@@ -1258,11 +1258,11 @@
     "recommended": true,
     "rating": 3.9,
     "reviews": 150,
-    "colors": ["gray"],
+    "colors": ["Gray"],
     "images": {
-      "gray": ["/images/products/product29.1.jpg"]
+      "Gray": ["/images/products/product29.1.jpg"]
     },
-    "brand": "Havana",
+    "brand": "Jordan",
     "description": [
       {
         "title": "Stylish and Sophisticated",
@@ -1306,7 +1306,7 @@
         "/images/products/product30.2.jpg"
       ]
     },
-    "brand": "Weston",
+    "brand": "Jordan",
     "description": [
       {
         "title": "Features",
@@ -1372,14 +1372,14 @@
     "featured": true,
     "rating": 4.9,
     "reviews": 150,
-    "colors": ["Brown"],
+    "colors": ["brown"],
     "images": {
-      "Brown": [
+      "brown": [
         "/images/products/product31.1.jpg",
         "/images/products/product31.2.jpg"
       ]
     },
-    "brand": "Hisky",
+    "brand": "Al Khair",
     "description": [
       {
         "title": "About This Product",
@@ -1395,7 +1395,7 @@
       {
         "Assembled Size": "L 88cm x D 228cm x H 81cm",
         "Packaged Size": "L 92cm x D 231cm x H 46cm",
-        "Colour": "Brown",
+        "Colour": "brown",
         "Assembly": "Required",
         "Delivery type": "Oversized item",
         "Seating Capacity": "3 Seater",
@@ -1408,7 +1408,7 @@
   {
     "id": "35",
     "name": "5 Drawer Fabric Dresser",
-    "brand": "Keller ",
+    "brand": "Al Khair",
     "price": 4500,
     "quantity": 1,
     "stock": 32,
@@ -1453,7 +1453,7 @@
   {
     "id": "36",
     "name": " Single Bed",
-    "brand": "Stratford",
+    "brand": "Al Khair",
     "stock": 8,
     "quantity": 1,
     "price": 4109,

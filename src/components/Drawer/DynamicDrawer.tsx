@@ -27,7 +27,7 @@ const AccountDrawer: React.FC<{
             justifyContent: "center",
           }}
         >
-          <img src="/images/background/category.svg" width={310} alt="" />
+          <img src="" width={310} alt="" />
         </Box>
         <Box
           sx={{

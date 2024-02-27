@@ -1,28 +1,5 @@
 import { Product2 as Product } from "../type/index";
 import { ContextState } from "./filterContext";
-// interface AddToWishListProps {
-//   id?: string;
-//   name?: string;
-//   firstImagePath?: string;
-//   price?: number;
-// }
-
-// interface FilterState {
-//   allProducts: Product[];
-//   filteredProducts: Product[];
-//   featuredProducts: Product[],
-//   newProducts: Product[],
-//   featuredBed:Product[] ,
-//   featuredSofa:Product[] ,
-//   featuredDinning:Product[] ,
-//   featuredKidsFurniture:Product[],
-//   bed:Product[],
-//   sofa:Product[],
-//   dinning:Product[],
-//   kidsFurniture:Product[],
-//   office:Product[],
-//   mattress:Product[]
-// }
 
 interface FilterAction {
   type: string;
@@ -58,6 +35,12 @@ const filterReducer = (state: ContextState, action: FilterAction) => {
         featuredDinning: featuredDinning,
         featuredKidsFurniture: featuredKidsFurniture,
       };
+
+      case "FILTERED_BY_BRAND_AND_CATEGORY":
+     return {
+        ...state,
+        filteredProducts: action.payload  || state.allProducts,
+      }
    
   }
   return state;

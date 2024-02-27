@@ -141,7 +141,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
         >
           <div className="between p-4">
             {discount ? (
-              <p className="rounded-sm py-1 w-10 bg-green-600 text-center text-white">
+              <p className="rounded-sm py-1 w-10 bg-green-600 text-center md:text-base text-xs text-white">
                 {discount}%
               </p>
             ) : null}
@@ -213,7 +213,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
           })}
         </div>
 
-        <Link href={`shop/${id}`}>
+        <Link href={`/shop/${id}`}>
           <h3 className="  font-bold uppercase text-gray-600  md:text-sm text-[10px] hover:text-chocolate pt-1.5 pl-3">
             {name}
           </h3>

@@ -58,8 +58,7 @@ export const CartContext = createContext<CartContext | null>(null);
 
 const CartContextProvider = ({ children }: { children: React.ReactNode }) => {
   const [state, dispatch] = useReducer(cartReducer, initialState);
-  const [message, setMessage] = useState("Added to cart!");
-  const [open, setOpen] = React.useState(false);
+
 
   const addToCart = (props: AddToCartProps) => {
     {

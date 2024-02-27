@@ -37,6 +37,8 @@ type FilterContext = ContextState & {
   updateFilteredProducts: (filteredProducts: Product[]) => void;
   getProductById: (productId: string) =>Product | undefined;
   filterByCategory:(categoryName:string) => Product[];
+  getCategoryAndProductQuantity: (property: string) => { category: string; count: number }[];
+  getFilteredData:(parameter:string) => void;
 };
 
 export const FilterContext = createContext<FilterContext | null>(null);
@@ -60,6 +62,43 @@ const FilterContextProvider = ({ children }: { children: React.ReactNode }) => {
     });
   };
 
+
+  const getCategoryAndProductQuantity = (property: string) => {
+    let categoryCounts: Record<string, number> = {}; // Explicitly define the type
+    state.allProducts.forEach((currentElement) => {
+      const category = currentElement[property];
+      if (categoryCounts.hasOwnProperty(category)) {
+        categoryCounts[category]++;
+      } else {
+        categoryCounts[category] = 1;
+      }
+    });
+  
+    let uniqueCategories = Object.keys(categoryCounts);
+    let uniqueData = uniqueCategories.map((category) => ({
+      category: category,
+      count: categoryCounts[category],
+    }));
+  
+    return [{ category: "All", count: state.allProducts.length }, ...uniqueData];
+  };
+
+
+  const getFilteredData = (parameter: string) => {
+    let  filteredProducts = [];
+    if(parameter === "All"){
+       filteredProducts = state.allProducts;
+    }
+    else {
+       filteredProducts = state.allProducts.filter(
+        (product) => product.category === parameter || product.brand === parameter
+      );
+      console.log(filteredProducts)
+    }
+    
+
+    dispatch({ type: "FILTERED_BY_BRAND_AND_CATEGORY", payload: filteredProducts });
+  };
     
   useEffect(() => {
     dispatch({ type: "UPDATE_FILTERED_DATA" });
@@ -79,6 +118,8 @@ const FilterContextProvider = ({ children }: { children: React.ReactNode }) => {
         updateFilteredProducts,
         getProductById,
         filterByCategory,
+        getCategoryAndProductQuantity,
+        getFilteredData
       }}
     >
       {children}

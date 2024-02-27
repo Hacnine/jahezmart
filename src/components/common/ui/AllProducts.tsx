@@ -26,10 +26,12 @@ const AllProducts:React.FC<Props> = ({grid}) => {
      
        
         <div className={` lg:ml-8  grid ${grid? 'lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-2 grid-cols-2': 'grid-cols-1'} gap-6`}>
-          {filteredProducts.map((product) => (
-            <ProductCard
+          {filteredProducts.map((product, index) => (
+           <div key={index}>
+             <ProductCard
               {...product}
             />
+           </div>
           ))}
         </div>
       </div>

@@ -9,7 +9,7 @@ import CartContextProvider, {
 } from "@/context_reducer/cartContext";
 import SimpleBottomNavigation from "@/components/common/header/FixedBottomNavigation";
 
-const openSnas = Poppins({ subsets: ["latin"], weight: "400" });
+const openSnas = Poppins({ subsets: ["latin"], weight: "600" });
 // Open_Sans({ subsets: ['cyrillic'],weight:'400' });
 
 export const metadata: Metadata = {

@@ -62,7 +62,7 @@ const CartCard: React.FC<AddToCartProps> = ({
 
   return (
     <>
-      <Link href={`shop/${id}`} style={{ display: 'inline-block', width: 'auto' }}>
+      <Link href={`/shop/${id}`} style={{ display: 'inline-block', width: 'auto' }}>
         <img
           src={firstImagePath}
           alt=""

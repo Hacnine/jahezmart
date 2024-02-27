@@ -1,264 +1,96 @@
-import React from 'react'
+import CustomCheckBox from "@/components/shop/CustomCheckBox";
+import { useFilterContext } from "@/context_reducer/filterContext";
+import React from "react";
 
 const ShopSidebar = () => {
+  const { allProducts, getCategoryAndProductQuantity } = useFilterContext();
+
+  const uniqueColors = Array.from(
+    new Set(allProducts.flatMap((product) => Object.keys(product.images)))
+  );
+
+  const newCategory = getCategoryAndProductQuantity("category");
+
+  const brands = getCategoryAndProductQuantity("brand");
+
   return (
-    
-    <div className="  pt-2  px-3 pb-16 rounded">
-      <div className="divide-y divide-gray-200 space-y-5">
-        {/* Category Filter */}
-        <div className="pt-4">
-          <p className="text-lg text-gray-800 font-medium">CATEGORIES</p>
-          <div className="flex justify-between pt-3">
-            <form
-              action=""
-              className="flex items-center space-x-2 cursor-pointer"
-            >
-              <input
-                type="checkbox"
-                name="checkbox"
-                className="text-orangeRed rounded focus:ring-0 cursor-pointer"
-                id="cat-1"
-              />
-              <label className="text-gray-600">Bedroom</label>
-            </form>
-            <span className="text-gray-600 text-sm">(19)</span>
+    <div className="mx-4 lg:mx-0   max-w-[310px] py-4">
+      <div className="px-4 py-4 col-span-3 shadow-md shadow-gray-300 bg-white rounded-md">
+        <p className="text-base text-gray-800 font-extrabold mb-2">
+          CATEGORIES
+        </p>
+        {newCategory.map((item, index) => (
+          <div className="between" key={index}>
+            <CustomCheckBox label={item.category} />
+            <span className="text-gray-600 text-sm">({item.count})</span>
           </div>
-          <div className="flex justify-between pt-3">
-            <form
-              action=""
-              className="flex items-center space-x-2 cursor-pointer"
-            >
-              <input
-                type="checkbox"
-                name="checkbox"
-                className="text-orangeRed rounded focus:ring-0 cursor-pointer"
-                id="cat-1"
-              />
-              <label className="text-gray-600">Sofa</label>
-            </form>
-            <span className="text-gray-600 text-sm">(19)</span>
+        ))}
+      </div>
+
+      {/* Category Filter Ends */}
+      {/* Brands Filter */}
+      <div className="mt-6 px-4 py-4 col-span-3 shadow-md shadow-gray-300 bg-white rounded-md">
+        <p className="text-base text-gray-800 font-semibold mb-2">BRANDS</p>
+        {brands.map((item, index) => (
+          <div className="between" key={index}>
+            <CustomCheckBox label={item.category} />
+            <span className="text-gray-600 text-sm">({item.count})</span>
           </div>
-          <div className="flex justify-between pt-3">
-            <form
-              action=""
-              className="flex items-center space-x-2 cursor-pointer"
-            >
-              <input
-                type="checkbox"
-                name="checkbox"
-                className="text-orangeRed rounded focus:ring-0 cursor-pointer"
-                id="cat-1"
+        ))}
+      </div>
+      {/* Brands Filter Ends */}
+
+      
+      {/* Color Filter */}
+      <div className="mt-6 px-4 py-4 col-span-3 shadow-md rounded-s-md shadow-gray-300 bg-white ">
+        <p className="text-base font-semibold mb-4 text-gray-800  ">COLOR</p>
+        {/* Single Size */}
+        <div className="grid grid-cols-12 gap-2 ">
+          {uniqueColors.map((property, index) => (
+            <div key={index}>
+              <div
+                className={`${
+                  property === "white" ? "border border-slate-300" : null
+                } w-2 h-5 rounded cursor-pointer`}
+                style={{
+                  backgroundColor: property,
+                  color: property,
+                  boxShadow: "gray",
+                }}
+                key={index}
               />
-              <label className="text-gray-600">Outdoor</label>
-            </form>
-            <span className="text-gray-600 text-sm">(9)</span>
-          </div>
-          <div className="flex justify-between pt-3">
-            <form
-              action=""
-              className="flex items-center space-x-2 cursor-pointer"
-            >
-              <input
-                type="checkbox"
-                name="checkbox"
-                className="text-orangeRed rounded focus:ring-0 cursor-pointer"
-                id="cat-1"
-              />
-              <label className="text-gray-600">Dinning</label>
-            </form>
-            <span className="text-gray-600 text-sm">(56)</span>
-          </div>
+            </div>
+          ))}
         </div>
-        {/* Category Filter Ends */}
-        {/* Brands Filter */}
-        <div className="pt-4">
-          <p className="text-lg text-gray-800 font-medium">BRANDS</p>
-          <div className="flex justify-between pt-3">
-            <form
-              action=""
-              className="flex items-center space-x-2 cursor-pointer"
-            >
-              <input
-                type="checkbox"
-                name="checkbox"
-                className="text-orangeRed rounded focus:ring-0 cursor-pointer"
-                id="cat-1"
-              />
-              <label className="text-gray-600">Dominik</label>
-            </form>
-            <span className="text-gray-600 text-sm">(19)</span>
-          </div>
-          <div className="flex justify-between pt-3">
-            <form
-              action=""
-              className="flex items-center space-x-2 cursor-pointer"
-            >
-              <input
-                type="checkbox"
-                name="checkbox"
-                className="text-orangeRed rounded focus:ring-0 cursor-pointer"
-                id="cat-1"
-              />
-              <label className="text-gray-600">Karl</label>
-            </form>
-            <span className="text-gray-600 text-sm">(19)</span>
-          </div>
-          <div className="flex justify-between pt-3">
-            <form
-              action=""
-              className="flex items-center space-x-2 cursor-pointer"
-            >
-              <input
-                type="checkbox"
-                name="checkbox"
-                className="text-orangeRed rounded focus:ring-0 cursor-pointer"
-                id="cat-1"
-              />
-              <label className="text-gray-600">Maxing</label>
-            </form>
-            <span className="text-gray-600 text-sm">(9)</span>
-          </div>
-          <div className="flex justify-between pt-3">
-            <form
-              action=""
-              className="flex items-center space-x-2 cursor-pointer"
-            >
-              <input
-                type="checkbox"
-                name="checkbox"
-                className="text-orangeRed rounded focus:ring-0 cursor-pointer"
-                id="cat-1"
-              />
-              <label className="text-gray-600">Ernest</label>
-            </form>
-            <span className="text-gray-600 text-sm">(523)</span>
-          </div>
-        </div>
-        {/* Brands Filter Ends */}
-        {/* Price */}
-        <div className="pt-4">
-          <p className="text-xl text-gray-800 font-medium">PRICE</p>
-          <div className="flex items-center mt-4">
-            <input
-              type="text"
-              placeholder="min"
-              className="w-full px-3 py-1 border-gray-300 focus:border-blue-800 rounded-md"
-            />
-            <span className="text-gray-500 px-3">-</span>
-            <input
-              type="text"
-              placeholder="max"
-              className="w-full px-3 py-1 border-gray-300 focus:border-blue-800 rounded-md"
-            />
-          </div>
-        </div>
-        {/* Price Ends */}
-        {/* Size Filter */}
-        <div className="pt-4">
-          <p className="text-xl text-gray-800 font-medium">SIZE</p>
-          <div className="flex items-center mt-4 gap-3">
-            {/* Single Size */}
-            <div className="size-selector">
-              <input type="radio" name="size" className="hidden" id="size-s" />
-              <label
-                htmlFor="size-s"
-                className="text-gray-600 w-6 h-6 text-sm  ring-1 ring-gray-600  rounded-sm flex items-center justify-center cursor-pointer"
-              >
-                S
-              </label>
-            </div>
-            <div className="size-selector">
-              <input type="radio" name="size" className="hidden" id="size-m" />
-              <label
-                htmlFor="size-m"
-                className="text-gray-600 w-6 h-6 text-sm  ring-1 ring-gray-600  rounded-sm flex items-center justify-center cursor-pointer"
-              >
-                M
-              </label>
-            </div>
-            <div className="size-selector">
-              <input type="radio" name="size" className="hidden" id="size-l" />
-              <label
-                htmlFor="size-l"
-                className="text-gray-600 w-6 h-6 text-sm  ring-1 ring-gray-600  rounded-sm flex items-center justify-center cursor-pointer"
-              >
-                L
-              </label>
-            </div>
-            <div className="size-selector">
-              <input type="radio" name="size" className="hidden" id="size-xl" />
-              <label
-                htmlFor="size-xl"
-                className="text-gray-600 w-6 h-6 text-sm  ring-1 ring-gray-600  rounded-sm flex items-center justify-center cursor-pointer"
-              >
-                XL
-              </label>
-            </div>
-            <div className="size-selector">
-              <input type="radio" name="size" className="hidden" id="size-xs" />
-              <label
-                htmlFor="size-xs"
-                className="text-gray-600 w-6 h-6 text-sm  ring-1 ring-gray-600  rounded-sm flex items-center justify-center cursor-pointer"
-              >
-                XS
-              </label>
-            </div>
-            {/* Single Size Ends */}
-          </div>
-        </div>
-        {/* Size Filter Ends */}
-        {/* Color Filter */}
-        <div className="pt-4 col-span-3">
-          <p className="text-xl text-gray-800 font-medium ">COLOR</p>
-          {/* Single Size */}
-          <div className="flex  items-center gap-3 mt-4">
-            <div className="color-selector">
-              <input type="radio" className="hidden" id="pink" />
-              <label
-                htmlFor="pink"
-                className=" flex justify-center h-6 w-6 rounded-full cursor-pointer"
-                style={{ backgroundColor: "pink" }}
-              ></label>
-            </div>
-            <div className="color-selector">
-              <input type="radio" className="hidden" id="red" />
-              <label
-                htmlFor="red"
-                className=" flex justify-center h-6 w-6 rounded-full cursor-pointer"
-                style={{ backgroundColor: "red" }}
-              ></label>
-            </div>
-            <div className="color-selector">
-              <input type="radio" className="hidden" id="yellow" />
-              <label
-                htmlFor="yellow"
-                className=" flex justify-center h-6 w-6 rounded-full cursor-pointer"
-                style={{ backgroundColor: "yellow" }}
-              ></label>
-            </div>
-            <div className="color-selector">
-              <input type="radio" className="hidden" id="green" />
-              <label
-                htmlFor="green"
-                className=" flex justify-center h-6 w-6 rounded-full cursor-pointer"
-                style={{ backgroundColor: "green" }}
-              ></label>
-            </div>
-            <div className="color-selector">
-              <input type="radio" className="hidden" id="yellowgreen" />
-              <label
-                htmlFor="yellowgreen"
-                className=" flex justify-center h-6 w-6 rounded-full cursor-pointer"
-                style={{ backgroundColor: "yellowgreen" }}
-              ></label>
-            </div>
-          </div>
-          {/* Single Size Ends */}
+        {/* Single Size Ends */}
+      </div>
+
+      {/* Price */}
+      <div className="mt-6 px-4 py-4 col-span-3 shadow-md shadow-gray-300 rounded-md bg-white">
+        <p className="text-base font-semibold text-gray-800 ">PRICE</p>
+        <div className="flex items-center mt-4 text-xs">
+          <input
+            type="text"
+            placeholder="Min"
+            className="w-full px-3 py-1  focus:bg-slate-100 rounded-md outline-none bg-slate-50"
+          />
+          <span className="text-gray-500 px-3">To</span>
+          <input
+            type="text"
+            placeholder="Max"
+            className="w-full px-3 py-1  focus:bg-slate-100 rounded-md outline-none bg-slate-50"
+          />
+          <button className="text-orangeRed ml-5 rounded bg-darkChocolate p-1 px-2">
+            Apply
+          </button>
         </div>
       </div>
-    </div>
- 
-  )
-}
+      {/* Price Ends */}
 
-export default ShopSidebar
+
+
+    </div>
+  );
+};
+
+export default ShopSidebar;

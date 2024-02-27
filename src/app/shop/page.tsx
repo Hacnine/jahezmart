@@ -5,9 +5,16 @@ import AllProducts from "@/components/common/ui/AllProducts";
 import CustomBreadcrumbs from "@/components/common/ui/CustomBreadcrumbs";
 import { GridView, Menu, TableRows } from "@mui/icons-material";
 import { IconButton } from "@mui/material";
+// import "../customcss.css";
+
 import React, { useState } from "react";
+// import { useLocation } from "react-router-dom";
 
 const Shop = () => {
+  // const location = useLocation();
+  // const searchParams = new URLSearchParams(location.search);
+  // const selectedData = searchParams.get("title");
+
   const [open, setOpen] = useState<boolean>(false);
   const links = [{ linkName: "Shop", link: "/shop" }];
   const [grid, setGrid] = useState(true);
@@ -16,30 +23,35 @@ const Shop = () => {
       <div className="wrapper grid grid-cols-12 pb-12">
         <div className="col-span-12 mb-4 my-8 block lg:hidden">
           <div className="center">
-            <img src="/images/titles/all.svg" className="md:h-[25px] h-[30px] " alt="" />
+            <img
+              src="/images/titles/all.svg"
+              className="md:h-[25px] h-[30px] "
+              alt=""
+            />
           </div>
         </div>
 
         <div className="col-span-3 mt-3 hidden lg:block ">
-
-          <CustomBreadcrumbs links={links}/>
+          <CustomBreadcrumbs links={links} />
         </div>
 
         <div className="lg:ml-8 lg:col-start-4 col-start-1 col-end-12 mb-4 my-8 ">
           <div className="between">
-
-          <IconButton className="block text-darkChocolate md:hidden" onClick={()=> setOpen(true)} >
-        <Menu/>
-        </IconButton>
+            <IconButton
+              className="block text-darkChocolate lg:hidden"
+              onClick={() => setOpen(true)}
+            >
+              <Menu />
+            </IconButton>
             <select
               name=""
               id=""
-              className="w-44 text-sm text-gray-600 border-gray-300 shadow-md rounded focus:ring-blue-600 focus:border-blue-600 px-4 py-3"
+              className="w-44 text-sm text-gray-600 border-gray-300 rounded outline-none focus:ring-0 focus:border-transparent focus:ring-blue-600 focus:border-blue-600 px-4 py-3 border"
             >
-              <option value="">Deafult sorting</option>
-              <option value="">Price low-high</option>
-              <option value="">Price high-low</option>
-              <option value="">Latest product</option>
+              <option  className="rounded" value="">Deafult sorting</option>
+              <option className="rounded"  value="">Price low-high</option>
+              <option className="rounded"  value="">Price high-low</option>
+              <option  className="rounded" value="">Latest product</option>
             </select>
 
             <img
@@ -69,7 +81,7 @@ const Shop = () => {
           </div>
         </div>
         {/* Slidebar */}
-        <div className="hidden lg:block col-span-3 items-start shadow-lg shadow-slate-300 h-fit">
+        <div className="hidden lg:block col-span-3 items-start h-fit">
           {" "}
           <ShopSidebar />
         </div>
@@ -79,8 +91,7 @@ const Shop = () => {
 
         {/* Shop Wrapper Ends */}
 
-        <AccountDrawer open={open} setOpen={setOpen} Component={ShopSidebar}/>
-
+        <AccountDrawer open={open} setOpen={setOpen} Component={ShopSidebar} />
       </div>
     </>
   );
