@@ -1,14 +1,14 @@
-import { useState } from 'react'; // Import useState hook
-import Slider from 'react-slick';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
-import { useFilterContext } from '@/context_reducer/filterContext';
-import ProductCard from '../card/ProductCard';
+import { useState } from "react"; // Import useState hook
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import { useFilterContext } from "@/context_reducer/filterContext";
+import ProductCard from "../card/ProductCard";
 import {
   IoIosArrowBack,
   IoMdArrowDropleft,
   IoMdArrowDropright,
-} from 'react-icons/io';
+} from "react-icons/io";
 
 interface CategorySlider {
   category: string;
@@ -57,8 +57,9 @@ const CategorySlider: React.FC<CategorySlider> = ({ category }) => {
           slidesToScroll: 1,
         },
       },
-    ]}
-    
+    ],
+  };
+
   return (
     <div className=" h-full  w-full  ">
       <Slider {...settings}>

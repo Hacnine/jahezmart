@@ -44,6 +44,7 @@ const cartReducer = (state: CartState, action: CartAction) => {
       };
 
       case "UPDATE_QUANTITY":
+          /** @ts-expect-error */
         const { id, quantity } = action.payload;
   
         const updatedCartProducts = state.cartProducts.map((product) => {

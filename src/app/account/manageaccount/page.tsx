@@ -1,3 +1,4 @@
+import AccountInfoCard from "@/components/card/AccountInfoCard";
 import ProfileCard from "@/components/card/ProfileCard";
 import AccountSideBar from "@/components/common/sidebar/AccountSideBar";
 import CustomBreadcrumbs from "@/components/common/ui/CustomBreadcrumbs";
@@ -21,48 +22,16 @@ const ManageAccount = () => {
      <div className=" w-full lg:w-1/3 gap-4  ">
 
       <ProfileCard/>
-        <div className="  shadow-md shadow-gray-300 rounded  px-4 p-5  ">
-          <div className="flex justify-between items-center mb-4">
-            <p className="font-medium text-gray-800 ">Profile</p>
-            <p className="text-orangeRed">Edit</p>
-          </div>
-
-          <div className="space-y-1">
-            <p className="text-gray-700 font-medium">Abu Imadullah</p>
-            <p className="text-gray-800">name@email.com</p>
-            <p className="text-gray-800">000 000 000</p>
-          </div>
-        </div>
+        <AccountInfoCard title="Profile" name="Abdullah" email="yourmail@mail.com" mobileNumber={1738844893} link="profile"/>
       </div>
 
       <div className="w-full lg:w-1/3  gap-4  ">
-        <div className=" shadow-md shadow-gray-300 rounded  px-4 p-5 ">
-          <div className="flex justify-between items-center mb-4">
-            <p className="font-medium text-gray-800 ">Shipping Address </p>
-            <p className="text-orangeRed">Edit</p>
-          </div>
-
-          <div className="space-y-1">
-            <p className="text-gray-700 font-medium">.............</p>
-            <p className="text-gray-800">........</p>
-            <p className="text-gray-800">....</p>
-          </div>
-        </div>
+      <AccountInfoCard title="Shipping Address" name="Abdullah" address="Khulana,Shatgumbuj Mosque@mail.com"  link="shippingaddress"/>
       </div>
 
       <div className=" w-full lg:w-1/3  gap-4  ">
-        <div className=" shadow-md shadow-gray-300 rounded px-4 p-5 ">
-          <div className="flex justify-between items-center mb-4">
-            <p className="font-medium text-gray-800 ">Billing Address </p>
-            <p className="text-orangeRed">Edit</p>
-          </div>
+      <AccountInfoCard title="Billing Address" name="Abdullah" address="Khulana,Shatgumbuj Mosque@mail.com" link="billingaddress"/>
 
-          <div className="space-y-1">
-            <p className="text-gray-700 font-medium">.............</p>
-            <p className="text-gray-800">........</p>
-            <p className="text-gray-800">....</p>
-          </div>
-        </div>
       </div>
 
      </div>

@@ -8,6 +8,7 @@ import {
 } from "@mui/icons-material";
 import React from "react";
 import { MY_ACCOUNT, CONTACT, INFORMATION } from "@/constant";
+import Link from "next/link";
 
 const Footer = () => {
   return (
@@ -39,9 +40,9 @@ const Footer = () => {
             <ul>
               {MY_ACCOUNT.map((item, index) => (
                 <li key={index} className="mb-2">
-                  <a href={item.link} className="">
+                  <Link href={item.link} className="font-sans">
                     {item.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -52,9 +53,9 @@ const Footer = () => {
             <ul>
               {INFORMATION.map((item, index) => (
                 <li key={index} className="mb-2">
-                  <a href={item.link} className="">
+                  <Link href={item.link} className="font-sans">
                     {item.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -64,19 +65,19 @@ const Footer = () => {
           <div className="sm:col-span-1 col-span-3">
             <h2 className="text-lg font-semibold mb-4">CONTACT </h2>
 
-              <div className="start gap-2">
+              <div className="start gap-2 font-sans">
                 <Place />{" "}
                 <p className="mb-2">
                   Khulana,Shatgumbuj Mosque
                 </p>
               </div>
 
-              <div className="start gap-2">
+              <div className="start gap-2 font-sans">
                 <Call />
                 <p className="mb-2">+566 477 256 +566 254 575</p>
               </div>
 
-              <div className="start gap-2">
+              <div className="start gap-2 font-sans">
                 <Email />
                 <p className="mb-2">info@domain.com</p>
               </div>

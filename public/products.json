@@ -1493,6 +1493,136 @@
         "Type": "Kids Bed"
       }
     ]
+  },
+  {
+    "id": "37",
+    "name": "Carved lamps",
+    "brand": "Elysian Creations",
+    "price": 99.99,
+    "quantity": 10,
+    "stock": 20,
+    "discount": 10,
+    "new_product": true,
+    "rating": 4.5,
+    "reviews": 25,
+    "colors": ["gold", "silver"],
+
+    "images": {
+      "tan": [
+        "/images/products/product.38.1.png",
+        "/images/products/product.38.2.png"
+      ]
+   
+    },
+    "description": [
+      {
+        "title": "Elegant Design",
+        "description": "Illuminate your space with elegance and style with our Carved Lamps collection. Crafted with precision and attention to detail, these lamps are sure to add a touch of sophistication to any room."
+      },
+      {
+        "title": "High-Quality Materials",
+        "description": "Our Carved Lamps are made from premium materials, ensuring durability and longevity. The intricate carvings and delicate details showcase the craftsmanship and dedication put into each piece."
+      },
+      {
+        "title": "Versatile Lighting",
+        "description": "Whether you're looking for ambient lighting in your living room or a bedside lamp for reading, our Carved Lamps offer versatile lighting solutions to suit your needs."
+      }
+    ],
+    "category": "home decor",
+    "full_details":[ {
+      "Material": "Metal",
+      "Height": "12 inches",
+      "Width": "8 inches",
+      "Weight": "2 lbs",
+      "Power Source": "Electric"
+    }]
+  },
+  {
+    "id": "38",
+    "name": "Wood Egg",
+    "brand": "Nature's Craftsmanship",
+    "price": 49.99,
+    "quantity": 15,
+    "stock": 30,
+    "discount": 5,
+    "new_product": false,
+    "rating": 4.2,
+    "reviews": 15,
+    "colors": ["tan"],
+    "images": {
+      "gold": [
+        "/images/products/product.37.1.png",
+        "/images/products/product.37.2.png"
+      ]
+    },
+    "description": [
+      {
+        "title": "Natural Beauty",
+        "description": "Bring the warmth and beauty of nature into your home with our Wood Egg collection. Each egg is carefully crafted from sustainable wood, showcasing the natural grain and texture for a unique and rustic look."
+      },
+      {
+        "title": "Versatile Decor",
+        "description": "Whether displayed individually or grouped together in a bowl or basket, our Wood Eggs make versatile and charming decor accents for any room. Use them to add a touch of nature to your living space or as seasonal decorations for special occasions."
+      },
+      {
+        "title": "Handcrafted Quality",
+        "description": "Each Wood Egg is handcrafted with care and attention to detail by skilled artisans, ensuring quality craftsmanship and a one-of-a-kind finish. Embrace the beauty of imperfection with these unique pieces."
+      }
+    ],
+    "category": "decorative accents",
+    "full_details": [{
+      "Material": "Wood",
+      "Size": "2.5 inches diameter",
+      "Weight": "0.5 lbs",
+      "Finish": "Natural",
+      "Quantity in Set": 1
+    }]
+  },
+
+  {
+    "id": "39",
+    "name": "Furniture Light",
+    "brand": "Luminous Designs",
+    "price": 129.99,
+    "quantity": 8,
+    "stock": 20,
+    "discount": 15,
+    "new_product": true,
+    "rating": 4.8,
+    "reviews": 20,
+    "colors": ["chocolate"],
+    "images": {
+      "chocolate": [
+        "/images/products/product.39.1.png",
+        "/images/products/product.39.2.png"
+      ]
+    },
+    "description": [
+      {
+        "title": "Modern Design",
+        "description": "Illuminate your space with contemporary flair with our Furniture Light collection. Featuring sleek lines and minimalist designs, these lights are perfect for adding a touch of sophistication to any room."
+      },
+      {
+        "title": "Adjustable Brightness",
+        "description": "Enjoy customizable lighting with our Furniture Lights. With adjustable brightness settings, you can create the perfect ambiance for any occasion, whether it's bright task lighting for work or soft ambient lighting for relaxation."
+      },
+      {
+        "title": "High-Quality Materials",
+        "description": "Crafted from premium materials, our Furniture Lights are built to last. With durable construction and quality components, these lights offer long-lasting performance and style."
+      }
+    ],
+    "category": "lighting",
+    "full_details": [{
+      "Material": "Metal, Plastic",
+      "Dimensions": "Height: 18 inches, Diameter: 6 inches",
+      "Weight": "3 lbs",
+      "Power Source": "Electric",
+      "Bulb Type": "LED",
+      "Voltage": "120 volts"
+    }]
   }
+  
+  
+  
   
 ]

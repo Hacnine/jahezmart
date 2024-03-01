@@ -48,20 +48,20 @@ export interface UpdateQuantity {
 }
 
 export interface ProductCardProps {
-    id: string;
-    name: string;
-    category: string;
-    quantity: number;
-    price: number;
-    discount?: number;
-    images: { [color: string]: string[] } | { [color: string]: string[] }[];
-    colors: string[];
-    star?: number;
-    rating: number;
-    reviews?: number;
-    stock: number;
-  }
-  
+  id: string;
+  name: string;
+  category: string;
+  quantity: number;
+  price: number;
+  discount?: number;
+  images: { [color: string]: string[] } | { [color: string]: string[] }[];
+  colors: string[];
+  star?: number;
+  rating: number;
+  reviews?: number;
+  stock: number;
+}
+
 
 export interface CartItems extends UpdateQuantity {
   name: string,
@@ -76,14 +76,14 @@ export interface AddToWishListProps {
   firstImagePath?: string;
   price?: number;
   quantity?: number;
-  tempQuantity?:number,
+  tempQuantity?: number,
   stock: number;
-  selected:string;
-  large?:boolean;
+  selected: string;
+  large?: boolean;
 }
 
 export interface AddToCartProps extends AddToWishListProps {
- 
+
 }
 
 

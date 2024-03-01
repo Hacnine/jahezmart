@@ -5,7 +5,7 @@ import AccountSideBar from "@/components/common/sidebar/AccountSideBar";
 import CustomBreadcrumbs from "@/components/common/ui/CustomBreadcrumbs";
 import React, { useState } from "react";
 
-const AddressForm = () => {
+const BillingAddress = () => {
   const [fullName, setFullName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [country, setCountry] = useState("");
@@ -28,16 +28,16 @@ const AddressForm = () => {
       <CustomBreadcrumbs
         links={[
           { linkName: "My Account", link: "/about" },
-          { linkName: "Manage Address", link: "/address" },
+          { linkName: "Billing Address", link: "/billingaddress" },
         ]}
       />
       <div className="grid grid-cols-12">
         <div className=" lg:col-span-3 lg:block hidden">
-          <AccountSideBar link="address"/>
+          <AccountSideBar link="billing address"/>
         </div>
         <div className=" lg:col-span-9 col-span-full">
           <ProfileCard/>
-          <h1 className="text-lg font-semibold mb-4">Manage Address</h1>
+          <h1 className="text-lg font-semibold mb-4">Billing Address</h1>
           <form
             onSubmit={handleSubmit}
             className="grid grid-cols-2 gap-4 text-sm"
@@ -152,7 +152,7 @@ const AddressForm = () => {
             <div className="col-span-2">
               <button
                 type="submit"
-                className=" border border-orangeRed bg-orangeRed hover:bg-transparent text-white transition-colors  hover:text-orangeRed font-medium text-base px-4 py-2 rounded"
+                className=" border border-orangeRed bg-orangeRed hover:bg-transparent text-white transition-colors  hover:text-orangeRed font-medium text-sm px-4 py-2 rounded"
               >
                 SAVE CHANGES
               </button>
@@ -164,4 +164,4 @@ const AddressForm = () => {
   );
 };
 
-export default AddressForm;
+export default BillingAddress;

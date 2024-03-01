@@ -9,7 +9,6 @@ const CategoriesDrawer: React.FC<{
   open: boolean;
   setOpen: (open: boolean) => void;
 }> = ({ open, setOpen }) => {
-
   const toggleDrawer = () => {
     setOpen(!open);
   };

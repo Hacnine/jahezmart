@@ -40,23 +40,23 @@ const SearchbarMiniProductCard: React.FC<ProductCardProps> = ({
           className="absolute inset-0 bg-opacity-30 bg-blue-200 hover:bg-black
           group-hover:bg-opacity-30 rounded-md transition-color duration-300  w-[65%]  h-[55%]border border-black"
         >
-           <TooltipWrapper open={open} setOpen={setOpen} message={message}>
-          <button
-            className="w-full opacity-0 bg-orange-500  group-hover:opacity-100 absolute z-10 md:bottom-0 bottom-0 py-1 font-semibold text-white text-xs transition-color duration-300 rounded-bl-3xl "
-            onClick={() =>
-              sentCartItem(setOpen, setMessage, {
-                id,
-                name,
-                firstImagePath,
-                quantity,
-                price,
-                stock,
-                selected,
-              })
-            }
-          >
-            <ShoppingCart fontSize="small" />
-          </button>
+          <TooltipWrapper open={open} setOpen={setOpen} message={message}>
+            <button
+              className="w-full opacity-0 bg-orange-500  group-hover:opacity-100 absolute z-10 md:bottom-0 bottom-0 py-1 font-semibold text-white text-xs transition-color duration-300 rounded-bl-3xl "
+              onClick={() =>
+                sentCartItem(setOpen, setMessage, {
+                  id,
+                  name,
+                  firstImagePath,
+                  quantity,
+                  price,
+                  stock,
+                  selected,
+                })
+              }
+            >
+              <ShoppingCart fontSize="small" />
+            </button>
           </TooltipWrapper>
         </div>
       </div>

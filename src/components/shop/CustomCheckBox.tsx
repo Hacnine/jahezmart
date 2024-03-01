@@ -1,42 +1,44 @@
 import { useFilterContext } from "@/context_reducer/filterContext";
 import { Checkbox, FormControlLabel } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 
-interface CustomCheckBoxProps{
-    label: string;
+interface CustomCheckBoxProps {
+  label: string;
+  filterBy:string;
 }
 
-// const featuredData = (categoryName: string) =>
-// state.allProducts.filter((currentElement) => {
-//   return (
-//     currentElement.featured === true &&
-//     currentElement.category === categoryName
-//   );
-// });
-const CustomCheckBox:React.FC<CustomCheckBoxProps> = ({label}) => {
+const CustomCheckBox: React.FC<CustomCheckBoxProps> = ({ label,filterBy }) => {
+  const { setCategories, removeCategories, removeBrands} = useFilterContext();
 
-  const {getFilteredData} = useFilterContext();
+  const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (event.target.checked) {
+      setCategories(label, filterBy);
+      
+    } else {
+      
+      removeCategories(label, filterBy);
+      removeBrands(label, filterBy);
+    }
+  };
 
   return (
     <FormControlLabel
-    label={<p className="text-gray-600 capitalize">{label}</p>}
-    control={
-      <Checkbox
-        sx={{
-          color:"orangered",
-          '&.Mui-checked': {
-            color:"orangered",
-          },
-         
-         
-        }}
-        disableRipple
-        inputProps={{ "aria-label": "Checkbox demo" }}
-        size="small"
-        onClick={()=> getFilteredData(label)}
-      />
-    }
-  />
+      label={<p className="text-gray-600 capitalize text-sm">{label}</p>}
+      control={
+        <Checkbox
+          sx={{
+            color: "orangered",
+            "&.Mui-checked": {
+              color: "orangered",
+            },
+          }}
+          disableRipple
+          inputProps={{ "aria-label": "Checkbox demo" }}
+          size="small"
+          onChange={handleCheckboxChange} // Use onChange event
+        />
+      }
+    />
   );
 };
 

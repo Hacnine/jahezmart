@@ -12,6 +12,8 @@ import { useFilterContext } from "@/context_reducer/filterContext";
 import chairad from "../../../public/images/ad/chairad.svg";
 import Image from "next/image";
 import MiniProductCard from "@/components/card/MiniProductCard";
+import Offer from "@/components/common/Offer";
+import CollectionCard from "@/components/card/CollectionCard";
 
 const Home = () => {
   const { featuredSofa: sofa, featuredDinning: dinning, featuredKidsFurniture: kidsFurniture, featuredBed: bed, newProducts } = useFilterContext();
@@ -30,6 +32,24 @@ const Home = () => {
           ))}
         </div>
       </div>
+      </div>
+
+      <div className="wrapper between lg:flex-row flex-col gap-8">
+       
+
+        <Offer offerPersentase="40%" type="Furniture Light" bg="#b5a99d" image="/images/lamp.png" offerType="Free Shipping"  id={39}/>
+
+        <Offer offerPersentase="20%" type="Wood Egg " bg="#efefef" image="/images/egg.jpg" offerType="Free Shipping" id={38}/>
+      </div>
+      
+
+      <div className="wrapper between lg:flex-row flex-col gap-8 mt-8">
+        <CollectionCard image={"/images/products/product.43.1.png"} title1={"Ceiling Light"} title2={"Colletion 39 Items"} otherClass={"center flex-col w-[290px]"} />
+
+        <CollectionCard image={"/images/products/product.42.2.png"} title1={"Sculp"} title2={"Colletion 50 Items"} otherClass={"center md:h-[476px] h-fit md:w-[50%] w-full"} />
+
+
+        <CollectionCard image={"/images/products/product.41.1.png"} title1={"Wall Light"} title2={"Latest Colletion 60 Items"} otherClass={" max-h-[476px]"} />
       </div>
 
       <div className="wrapper py-9 center flex-col">
@@ -91,7 +111,7 @@ const Home = () => {
       </div>
 
       <div className="wrapper w-full">
-        <Image src={chairad} className="w-full h-[px]" alt="chairad" />
+        <Image src={chairad} className="w-full h-fit" alt="chairad" />
       </div>
 
       <div className="wrapper py-9 center flex-col">

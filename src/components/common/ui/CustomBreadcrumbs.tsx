@@ -13,7 +13,10 @@ interface CustomBreadcrumbsProps {
   textColor?: boolean;
 }
 
-const CustomBreadcrumbs: React.FC<CustomBreadcrumbsProps> = ({ links, textColor }) => {
+const CustomBreadcrumbs: React.FC<CustomBreadcrumbsProps> = ({
+  links,
+  textColor,
+}) => {
   return (
     <div className="my-8   border-orangeRed border-l-0 w-fit py-2 px-3 rounded-r-full">
       <Breadcrumbs

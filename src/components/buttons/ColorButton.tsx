@@ -6,8 +6,8 @@ interface ColorButtonProps {
   index: number;
   colors: string[];
   selected: string;
-  setSelected: React.Dispatch<React.SetStateAction<string>>; 
-  setIndex:  React.Dispatch<React.SetStateAction<number>>;
+  setSelected: React.Dispatch<React.SetStateAction<string>>;
+  setIndex: React.Dispatch<React.SetStateAction<number>>;
 }
 
 const ColorButton: React.FC<ColorButtonProps> = ({
@@ -19,16 +19,25 @@ const ColorButton: React.FC<ColorButtonProps> = ({
   setIndex,
 }) => {
   return (
-      <button
-        key={index}
-        className={`${currentColor === 'white' ? 'border border-slate-200': ''}  sm:w-8 sm:h-8 w-5 h-5 rounded-md  overflow-clip center shadow-md `}
-        style={{ backgroundColor: currentColor}}
-        onClick={() => {setCheck(colors[index]); setIndex(index)}}
-        >
-        {check === currentColor ? (
-          <IoCheckmarkDoneOutline className={`${currentColor === 'white' ? 'text-slate-500': 'text-slate-300'}  md:text-xl text-sm`}/>
-        ) : null}
-      </button>
+    <button
+      key={index}
+      className={`${
+        currentColor === "white" ? "border border-slate-200" : ""
+      }  sm:w-8 sm:h-8 w-5 h-5 rounded-md  overflow-clip center shadow-md `}
+      style={{ backgroundColor: currentColor }}
+      onClick={() => {
+        setCheck(colors[index]);
+        setIndex(index);
+      }}
+    >
+      {check === currentColor ? (
+        <IoCheckmarkDoneOutline
+          className={`${
+            currentColor === "white" ? "text-slate-500" : "text-slate-300"
+          }  md:text-xl text-sm`}
+        />
+      ) : null}
+    </button>
   );
 };
 

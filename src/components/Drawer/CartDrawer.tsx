@@ -12,8 +12,6 @@ const CartDrawer: React.FC<{
   open: boolean;
   setOpen: (open: boolean) => void;
 }> = ({ open, setOpen }) => {
- 
-
   const toggleDrawer = () => {
     setOpen(!open);
   };
@@ -53,7 +51,7 @@ const CartDrawer: React.FC<{
             <img src="/images/background/cart.svg" width={310} alt="" />
           </div>
         </Box>
-       <CartItems width={'300'} height={300} large={false}/>
+        <CartItems width={"300"} height={300} large={false} />
       </Drawer>
     </div>
   );

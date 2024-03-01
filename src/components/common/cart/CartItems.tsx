@@ -6,12 +6,12 @@ import { useCartContext } from "@/context_reducer/cartContext";
 import Scrollbars from "react-custom-scrollbars-2";
 import CartCard from "../../card/CartCard";
 interface CartItemProps {
-  width:string;
-  height:number;
-  large:boolean;
+  width: string;
+  height: number;
+  large: boolean;
 }
-const CartItems:React.FC<CartItemProps> = ({width, height, large}) => {
-  const { cartProducts} = useCartContext();
+const CartItems: React.FC<CartItemProps> = ({ width, height, large }) => {
+  const { cartProducts } = useCartContext();
 
   return (
     <div>
@@ -20,7 +20,9 @@ const CartItems:React.FC<CartItemProps> = ({width, height, large}) => {
           display: "flex",
           flexDirection: "column",
           p: "16px",
-          backgroundImage: `url('${large ? "/images/background/largecart.svg" : "/images/cart-bg.svg"}')`,
+          backgroundImage: `url('${
+            large ? "/images/background/largecart.svg" : "/images/cart-bg.svg"
+          }')`,
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
           backgroundPosition: "center",
@@ -34,11 +36,12 @@ const CartItems:React.FC<CartItemProps> = ({width, height, large}) => {
         }}
       >
         <Scrollbars style={{ width: width, height: height }}>
-          {cartProducts && cartProducts.map((product) => (
-            <div className="start gap-3 backdrop-blur-sm bg-white/30   my-1 shadow">
-              <CartCard {...product} large={large}/>
-            </div>
-          ))}
+          {cartProducts &&
+            cartProducts.map((product) => (
+              <div className="start gap-3 backdrop-blur-sm bg-white/30   my-1 shadow">
+                <CartCard {...product} large={large} />
+              </div>
+            ))}
         </Scrollbars>
       </Box>
     </div>

@@ -66,58 +66,6 @@ const ProductCard: React.FC<ProductCardProps> = ({
     }
   };
 
-  // const handleTooltipClose = () => {
-  //   setOpen(false);
-  // };
-
-  // const handleWishListTooltipClose = () => {
-  //   setOpenWishList(false);
-  // };
-
-  // const sentCartItem = () => {
-  //   setOpen(true);
-
-  //   setTimeout(() => {
-  //     setOpen(false);
-  //   }, 1000);
-  //   const existingProduct = cartProducts.find((item) => item.id === id);
-  //   const items = { id, name, firstImagePath, quantity, price, stock, selected }
-  //   if (existingProduct) {
-  //     setMessage("You have already added this product in your cart!");
-  //   } else {
-  //     addToCart(items);
-  //   }
-
-  // };
-
-  // const sentWishListItem = () => {
-  //   setOpenWishList(true);
-  //   addToWishList({
-  //     id,
-  //     name,
-  //     firstImagePath,
-  //     price,
-  //     stock,
-  //     quantity,
-  //     selected,
-  //   });
-
-  //   setTimeout(() => {
-  //     setOpenWishList(false);
-  //     setWishListMessage("Product is added to Wishlist!"); // Reset message after a certain period
-  //   }, 3000);
-  // };
-
-  // const removeWishlistItem = () => {
-  //   setOpenWishList(true);
-  //   removeFromWishList(id);
-  //   setWishListMessage("Removed from your wishlist!");
-
-  //   setTimeout(() => {
-  //     setOpenWishList(false);
-  //     setWishListMessage("Product is added to Wishlist!"); // Reset message after a certain period
-  //   }, 3000);
-  // };
   useEffect(() => {
     const existingProduct = wishListProducts.find((item) => item.id === id);
     if (existingProduct) {
@@ -136,7 +84,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
           </div>
         </div>
         <div
-          className="absolute inset-0 bg-opacity-30 bg-blue-200 hover:bg-black
+          className="absolute inset-0 bg-opacity-30 bg-slate-200/20 hover:bg-black
           group-hover:bg-opacity-30 rounded-tl-md transition-color duration-300 rounded-tr-3xl rounded-bl-3xl"
         >
           <div className="between p-4">
@@ -169,29 +117,30 @@ const ProductCard: React.FC<ProductCardProps> = ({
             </TooltipWrapper>
           </div>
 
-          <button className="w-full opacity-0 bg-orange-500  group-hover:opacity-100 absolute z-10 bottom-0 py-2 font-semibold text-white text-xs transition-color duration-300 rounded-bl-3xl rounded-tr-3xl" onClick={() => setModalOpen(true)}>
+          <button
+            className="w-full opacity-0 bg-orange-500  group-hover:opacity-100 absolute z-10 bottom-0 py-2 font-semibold text-white text-xs transition-color duration-300 rounded-bl-3xl rounded-tr-3xl"
+            onClick={() => setModalOpen(true)}
+          >
             Quick View
-          
-      </button>
-      <Modal
-        open={modalOpen}
-        onClose={() => setModalOpen(false)}
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
-        <div
-          className="bg-white center md:p-10 p-4 center rounded-tr-[33px] rounded-bl-[33px] rounded"
-          style={{ width: "90%", height: "90%" }}
-        >
-          <Scrollbars style={{ width: "100%", height: "100%" }}>
-            <QuickView id={id} modal={true} />
-          </Scrollbars>
-        </div>
-      </Modal>
-
+          </button>
+          <Modal
+            open={modalOpen}
+            onClose={() => setModalOpen(false)}
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <div
+              className="bg-white center md:p-10 p-4 center rounded-tr-[33px] rounded-bl-[33px] rounded"
+              style={{ width: "90%", height: "90%" }}
+            >
+              <Scrollbars style={{ width: "100%", height: "100%" }}>
+                <QuickView id={id} modal={true} />
+              </Scrollbars>
+            </div>
+          </Modal>
         </div>
       </div>
 

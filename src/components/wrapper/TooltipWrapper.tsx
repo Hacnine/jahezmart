@@ -1,28 +1,28 @@
 import { ClickAwayListener, Tooltip, Zoom } from "@mui/material";
-import React from "react";
+import React, { ReactElement } from "react";
 
 interface TooltipWrapperProps {
-    open: boolean;
-    setOpen: (open: boolean) => void;
-    message: string;
-    children: React.ReactNode ; // Make children prop required
-  }
-  
-  const TooltipWrapper: React.FC<TooltipWrapperProps> = ({
-    open,
-    setOpen,
-    message,
-    children
-  }) => {
+  open: boolean;
+  setOpen: (open: boolean) => void;
+  message: string;
+  children: ReactElement; // Make children prop required
+}
+
+const TooltipWrapper: React.FC<TooltipWrapperProps> = ({
+  open,
+  setOpen,
+  message,
+  children,
+}) => {
   return (
-    <ClickAwayListener onClickAway={()=>setOpen(false)}>
+    <ClickAwayListener onClickAway={() => setOpen(false)}>
       <div>
         <Tooltip
           TransitionComponent={Zoom}
           PopperProps={{
             disablePortal: true,
           }}
-          onClose={()=>setOpen(false)}
+          onClose={() => setOpen(false)}
           open={open}
           disableFocusListener
           disableHoverListener

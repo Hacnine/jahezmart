@@ -1,19 +1,16 @@
 "use client";
 import AccountDrawer from "@/components/Drawer/DynamicDrawer";
-import ShopSidebar from "@/components/common/sidebar/ShopSidebar";
+import FilterSidebar from "@/components/common/sidebar/FilterSidebar";
 import AllProducts from "@/components/common/ui/AllProducts";
 import CustomBreadcrumbs from "@/components/common/ui/CustomBreadcrumbs";
+import { useFilterContext } from "@/context_reducer/filterContext";
 import { GridView, Menu, TableRows } from "@mui/icons-material";
 import { IconButton } from "@mui/material";
-// import "../customcss.css";
 
 import React, { useState } from "react";
-// import { useLocation } from "react-router-dom";
 
 const Shop = () => {
-  // const location = useLocation();
-  // const searchParams = new URLSearchParams(location.search);
-  // const selectedData = searchParams.get("title");
+  const { sortingProduct } = useFilterContext();
 
   const [open, setOpen] = useState<boolean>(false);
   const links = [{ linkName: "Shop", link: "/shop" }];
@@ -22,12 +19,21 @@ const Shop = () => {
     <>
       <div className="wrapper grid grid-cols-12 pb-12">
         <div className="col-span-12 mb-4 my-8 block lg:hidden">
-          <div className="center">
-            <img
-              src="/images/titles/all.svg"
-              className="md:h-[25px] h-[30px] "
-              alt=""
-            />
+          <div className="flex flex-col items-center justify-center h-screen bg-gray-100">
+            <div className="bg-white p-8 rounded-lg shadow-lg">
+              <h2 className="text-3xl font-semibold text-gray-800 mb-4">
+                Product Not Found
+              </h2>
+              <p className="text-gray-600 mb-8">
+                Oops! We couldn't find the product you're looking for.
+              </p>
+              <a
+                href="/"
+                className="inline-block bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded transition duration-300"
+              >
+                Back to Homepage
+              </a>
+            </div>
           </div>
         </div>
 
@@ -47,11 +53,20 @@ const Shop = () => {
               name=""
               id=""
               className="w-44 text-sm text-gray-600 border-gray-300 rounded outline-none focus:ring-0 focus:border-transparent focus:ring-blue-600 focus:border-blue-600 px-4 py-3 border"
+              onChange={(e) => sortingProduct(e.target.value)}
             >
-              <option  className="rounded" value="">Deafult sorting</option>
-              <option className="rounded"  value="">Price low-high</option>
-              <option className="rounded"  value="">Price high-low</option>
-              <option  className="rounded" value="">Latest product</option>
+              <option className="rounded" value="Default sorting">
+                Default sorting
+              </option>
+              <option className="rounded" value="Price Low-High">
+                Price low-high
+              </option>
+              <option className="rounded" value="Price High-Low">
+                Price high-low
+              </option>
+              <option className="rounded" value="Latest product">
+                Latest product
+              </option>
             </select>
 
             <img
@@ -83,7 +98,7 @@ const Shop = () => {
         {/* Slidebar */}
         <div className="hidden lg:block col-span-3 items-start h-fit">
           {" "}
-          <ShopSidebar />
+          <FilterSidebar />
         </div>
 
         <AllProducts grid={grid} />
@@ -91,7 +106,11 @@ const Shop = () => {
 
         {/* Shop Wrapper Ends */}
 
-        <AccountDrawer open={open} setOpen={setOpen} Component={ShopSidebar} />
+        <AccountDrawer
+          open={open}
+          setOpen={setOpen}
+          Component={FilterSidebar}
+        />
       </div>
     </>
   );

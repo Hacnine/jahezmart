@@ -9,27 +9,28 @@ import Link from "next/link";
 import React from "react";
 import { MdAccountTree } from "react-icons/md";
 
-interface AccountSideBarProps{
-  link:string
+interface AccountSideBarProps {
+  link: string;
 }
-const AccountSideBar:React.FC<AccountSideBarProps> = ({link}) => {
+const AccountSideBar: React.FC<AccountSideBarProps> = ({ link }) => {
   return (
     <div className="text-sm">
       <div className=" rounded-md shadow-md shadow-gray-300 w-fit ">
+        <div
+          className="p-4 bg-white  md:flex md:items-center  w-[233px] gap-4  rounded-md 
+       "
+        >
+          <div className="">
+            <img
+              src="/images/BeardManProfile.svg"
+              className="rounded-full w-14 h-14 border   p-1 object-cover"
+            />
+          </div>
 
-      <div className="p-4 bg-white  md:flex md:items-center  w-[233px] gap-4  rounded-md 
-       ">
-        <div className="">
-          <img
-            src="/images/BeardManProfile.svg"
-            className="rounded-full w-14 h-14 border   p-1 object-cover"
-          />
+          <div className=" ">
+            <p className="text-gray-800 font-medium text-sm">Abdullah</p>
+          </div>
         </div>
-
-        <div className=" ">
-          <p className="text-gray-800 font-medium text-sm">Abu Imadullah</p>
-        </div>
-      </div>
       </div>
 
       {/* <!-- Account Profile End --> */}
@@ -39,41 +40,68 @@ const AccountSideBar:React.FC<AccountSideBarProps> = ({link}) => {
         <div className="space-y-1  p-4  w-[233px] rounded-md  shadow-md shadow-gray-300">
           <Link
             href="/account/manageaccount"
-            className={`${link === 'manageaccount'? "text-orangeRed":"text-gray-600  "} start gap-2 block font-semibold `}
+            className={`${
+              link === "manageaccount" ? "text-orangeRed" : "text-gray-600  "
+            } start gap-2 block font-semibold `}
           >
             <span className="t">
-            <MdAccountTree className="text-xl"/>
+              <MdAccountTree className="text-xl" />
             </span>
             Manage account
           </Link>
 
-        <div className="pl-8">
+          <div className="pl-8">
+            <Link
+              href="/account/profile"
+              className={`${
+                link === "profile" ? "text-orangeRed" : "text-gray-600  "
+              }   hover:text-orangeRed block  capitalize transition text-sm mb-1`}
+            >
+              Profile info
+            </Link>
 
-        <Link
-            href="/account/profile"
-            className= {`${link === 'profile'? "text-orangeRed":"text-gray-600  "}   hover:text-orangeRed block  capitalize transition text-sm mb-1`}
-          >
-            Profile info
-          </Link>
+            <Link
+              href="/account/shippingaddress"
+              className={`${
+                link === "shipping address"
+                  ? "text-orangeRed"
+                  : "text-gray-600  hover:text-orangeRed "
+              }  capitalize transition  pt-2  text-sm`}
+            >
+              Shipping Address
+            </Link>
+            {""}
+            <div className="pt-2">
+              <Link
+                href="/account/billingaddress"
+                className={`${
+                  link === "billing address"
+                    ? "text-orangeRed"
+                    : "text-gray-600  hover:text-orangeRed "
+                }  capitalize transition    text-sm`}
+              >
+                Billing Address
+              </Link>
+            </div>
 
-          <Link
-            href="/account/address"
-            className= {`${link === 'address'? "text-orangeRed":"text-gray-600  hover:text-orangeRed "}  capitalize transition  pt-2  text-sm`} 
-          >
-            Manage Addresses
-          </Link>
-
-          <Link
-            href="/account/changepassword"
-            className=  {`${link === 'changepassword'? "text-orangeRed":"text-gray-600  "}  hover:text-orangeRed block  capitalize transition text-sm mb-1`}
-          >
-            Change Password
-          </Link>
-        </div>
+            <Link
+              href="/account/changepassword"
+              className={`${
+                link === "changepassword" ? "text-orangeRed" : "text-gray-600  "
+              }  hover:text-orangeRed block pt-2 capitalize transition text-sm mb-1`}
+            >
+              Change Password
+            </Link>
+          </div>
         </div>
 
         <div className="space-y-1 mt-3 p-2  rounded-md shadow-md shadow-gray-300 ">
-          <Link href="/account/order/orderhistory" className=  {`${link === 'orderhistory'? "text-orangeRed":"text-gray-600  "}  start gap-2 block capitalize font-semibold`}>
+          <Link
+            href="/account/order/orderhistory"
+            className={`${
+              link === "orderhistory" ? "text-orangeRed" : "text-gray-600  "
+            }  start gap-2 block capitalize font-semibold`}
+          >
             <span className="">
               <BorderColor />
             </span>
@@ -83,19 +111,22 @@ const AccountSideBar:React.FC<AccountSideBarProps> = ({link}) => {
           <div className="pl-8">
             <Link
               href="/account/order/returns"
-              className=  {`${link === 'returns'? "text-orangeRed":"text-gray-600  "}   hover:text-orangeRed block  capitalize transition text-sm mb-1`} 
+              className={`${
+                link === "returns" ? "text-orangeRed" : "text-gray-600  "
+              }   hover:text-orangeRed block  capitalize transition text-sm mb-1`}
             >
               {" "}
               Returns
             </Link>
-
           </div>
         </div>
 
         <div className="space-y-1  mt-3 p-2  rounded-md shadow-md shadow-gray-300  ">
           <Link
             href="/account/payment"
-            className= {`${link === 'payment'? "text-orangeRed":"text-gray-600  "} start gap-2 block capitalize  font-semibold  `} 
+            className={`${
+              link === "payment" ? "text-orangeRed" : "text-gray-600  "
+            } start gap-2 block capitalize  font-semibold  `}
           >
             <span className=" text-base">
               <Payment />
@@ -104,14 +135,21 @@ const AccountSideBar:React.FC<AccountSideBarProps> = ({link}) => {
           </Link>
           <Link
             href="/account/voucher"
-            className= {`${link === 'voucher'? "text-orangeRed":"text-gray-600  "}  pl-8 hover:text-orangeRed block  capitalize transition text-sm`} 
+            className={`${
+              link === "voucher" ? "text-orangeRed" : "text-gray-600  "
+            }  pl-8 hover:text-orangeRed block  capitalize transition text-sm`}
           >
             Voucher
           </Link>
         </div>
 
         <div className="space-y-1 mt-3 p-2  rounded-md shadow-md shadow-gray-300  ">
-          <Link href="/account/wishlist" className= {`${link === 'wishlist'? "text-orangeRed":"text-gray-600  "}  start gap-2 block font-medium capitalize`}  >
+          <Link
+            href="/account/wishlist"
+            className={`${
+              link === "wishlist" ? "text-orangeRed" : "text-gray-600  "
+            }  start gap-2 block font-medium capitalize`}
+          >
             <span className=" text-base font-semibold">
               <Favorite />
             </span>
@@ -120,7 +158,12 @@ const AccountSideBar:React.FC<AccountSideBarProps> = ({link}) => {
         </div>
 
         <div className="space-y-1  mt-3 p-2  rounded-md shadow-md shadow-gray-300  ">
-          <Link href="/signin" className= {`${link === 'signin'? "text-orangeRed":"text-gray-600  "}  `} >
+          <Link
+            href="/signin"
+            className={`${
+              link === "signin" ? "text-orangeRed" : "text-gray-600  "
+            }  `}
+          >
             <span className=" text-base">
               <Logout />
             </span>

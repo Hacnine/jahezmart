@@ -22,12 +22,13 @@ const FeatureCard: React.FC<FeatureCardProps> = ({
         className="w-12 h-12 object-contain"
       />
       <div className=" text-mushroom">
-        <h4 className="capitalize font-medium text-lg text-orangeRed">{title}</h4>
+        <h4 className="capitalize font-medium text-lg text-orangeRed">
+          {title}
+        </h4>
         <p className=" text-sm ">{description}</p>
       </div>
     </div>
   );
 };
-
 
 export default FeatureCard;

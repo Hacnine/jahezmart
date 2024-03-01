@@ -19,10 +19,10 @@ const CustomSlider = () => {
   return (
     <div className=" h-full  w-full ">
       <Slider {...settings}>
-        <CustomSliderBackground image={"images/heroImage1.svg"} />
-        <CustomSliderBackground image={"images/heroImage2.svg"} />
-        <CustomSliderBackground image={"images/heroImage3.svg"} />
-        <CustomSliderBackground image={"images/heroImage4.svg"} />
+        <CustomSliderBackground image={"images/heroImage1.svg"} title1={"Transform "} title2={"your space with "} title3={"timeless elegance."}/>
+        <CustomSliderBackground image={"images/heroImage2.svg"} title1={"Discover"} title2={" furniture that defines your style."} title3={""}/>
+        <CustomSliderBackground image={"images/heroImage3.svg"} title1={"Elevate"} title2={" your home with our curated collection."} title3={""}/>
+        <CustomSliderBackground image={"images/heroImage4.svg"} title1={"Create"} title2={" the perfect "} title3={"ambiance"} title4={" with our decor"} title5={" essentials."}/>
       </Slider>
     </div>
   );

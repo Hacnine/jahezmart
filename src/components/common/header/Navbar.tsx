@@ -1,15 +1,12 @@
 "use client";
 import React from "react";
 import AllCategories from "./AllCategories";
-import {
-  Menu,
-} from "@mui/icons-material";
+import { Menu } from "@mui/icons-material";
 import Headroom from "react-headroom";
 import FirstHeader from "./FirstHeader";
 import SearchBar from "./SearchBar";
 import NavbarBadges from "../ui/NavbarBadges";
 const Navbar = () => {
-
   return (
     <Headroom>
       <nav className=" bg-tan w-full lg:block md:hidden hidden shadow-md shadow-slate-300 ">

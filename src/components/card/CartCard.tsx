@@ -17,14 +17,19 @@ const CartCard: React.FC<AddToCartProps> = ({
   selected,
   large,
 }) => {
-  const { sentWishListItem,updateCartItemQuantity, deleteCartSingleProduct, addToWishList } =
-    useCartContext();
-    const [temporaryQuantity, setTemporaryQuantity] = useState<number>(quantity ?? tempQuantity ?? 0);
+  const {
+    sentWishListItem,
+    updateCartItemQuantity,
+    deleteCartSingleProduct,
+    addToWishList,
+  } = useCartContext();
+  const [temporaryQuantity, setTemporaryQuantity] = useState<number>(
+    quantity ?? tempQuantity ?? 0
+  );
   const [openWishList, setOpenWishList] = useState(false);
   const [wishListMessage, setWishListMessage] = useState("Added to WishList!");
   const [open, setOpen] = React.useState(false);
   const [message, setMessage] = useState("Added to cart!");
-
 
   const setDecrease = () => {
     if (temporaryQuantity > 1) {
@@ -56,13 +61,15 @@ const CartCard: React.FC<AddToCartProps> = ({
       stock,
       selected,
     });
-    deleteCartSingleProduct(setOpen,
-      setMessage, id)
+    deleteCartSingleProduct(setOpen, setMessage, id);
   };
 
   return (
     <>
-      <Link href={`/shop/${id}`} style={{ display: 'inline-block', width: 'auto' }}>
+      <Link
+        href={`/shop/${id}`}
+        style={{ display: "inline-block", width: "auto" }}
+      >
         <img
           src={firstImagePath}
           alt=""
@@ -74,16 +81,16 @@ const CartCard: React.FC<AddToCartProps> = ({
           <p className={` text-gray-700 font-semibold`}>{name}</p>
 
           <TooltipWrapper
-              open={openWishList}
-              setOpen={setOpenWishList}
-              message={wishListMessage}
-            >
-          <button
-            onClick={sentToCart}
-            className=" bg-warning text-white  px-4 py-0.5  rounded-sm"
+            open={openWishList}
+            setOpen={setOpenWishList}
+            message={wishListMessage}
           >
-            <FaHeartCirclePlus className=" text-lg" />
-          </button>
+            <button
+              onClick={sentToCart}
+              className=" bg-warning text-white  px-4 py-0.5  rounded-sm"
+            >
+              <FaHeartCirclePlus className=" text-lg" />
+            </button>
           </TooltipWrapper>
         </div>
         <div className="between gap-5">
@@ -111,14 +118,13 @@ const CartCard: React.FC<AddToCartProps> = ({
               +
             </button>
           </div>
-        <TooltipWrapper open={open} setOpen={setOpen} message={message}>
-          <button
-            onClick={() => deleteCartSingleProduct(setOpen,
-              setMessage, id)}
-            className=" focus-within:border-warning px-3.5 "
-          >
-            <Delete fontSize="small" color="warning" />
-          </button>
+          <TooltipWrapper open={open} setOpen={setOpen} message={message}>
+            <button
+              onClick={() => deleteCartSingleProduct(setOpen, setMessage, id)}
+              className=" focus-within:border-warning px-3.5 "
+            >
+              <Delete fontSize="small" color="warning" />
+            </button>
           </TooltipWrapper>
         </div>
 

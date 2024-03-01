@@ -11,7 +11,6 @@ const AccountDrawer: React.FC<{
   setOpen: (open: boolean) => void;
   Component: React.ComponentType<any>;
 }> = ({ open, setOpen, Component }) => {
-
   const toggleDrawer = () => {
     setOpen(!open);
   };
@@ -43,7 +42,7 @@ const AccountDrawer: React.FC<{
           }}
         >
           {/* <AccountSideBar/> */}
-         { <Component/>}
+          {<Component />}
         </Box>
       </Drawer>
     </div>

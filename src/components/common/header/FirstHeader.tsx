@@ -35,7 +35,9 @@ const FirstHeader = () => {
             <Link href={"/shop"}>Shop</Link>
             <Link href={"/about"}>About</Link>
             <Link href={"/contact"}>Contact</Link>
-            <div className="flex items-center"><p>Pages</p> <BiChevronDown/></div>
+            <div className="flex items-center">
+              <p>Pages</p> <BiChevronDown />
+            </div>
           </div>
         </div>
 

@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import * as React from "react";
 import Box from "@mui/material/Box";
@@ -29,96 +29,100 @@ export default function SimpleBottomNavigation() {
 
   return (
     <div className="">
-       {isMobile && (
-    <Box sx={{ width: 500 }}>
-      <Paper
-        sx={{ position: "fixed", bottom: 0, left: 0, right: 0 }}
-        elevation={3}
-      >
-        <BottomNavigation
-          showLabels
-          value={value}
-          onChange={(event, newValue) => {
-            setValue(newValue);
-          }}
-        >
-          <BottomNavigationAction
-            label="Menu"
-            value="menu"
-            icon={
-              <Menu style={{ color: value === "menu" ? "red" : "#28170bff" }} />
-            }
-            sx={{
-              color: value === "menu" ? "red" : "#28170bff",
-              "& .MuiBottomNavigationAction-label": {
-                color: value === "menu" ? "red" : "#28170bff",
-              },
-            }}
-            onClick={()=>setOpen(!open)}/>
-
-          <BottomNavigationAction
-            label="Categories"
-            value="categories"
-            icon={
-              <Category
-                style={{ color: value === "categories" ? "red" : "#28170bff" }}
-                />
-
-            }
-            sx={{
-              color: value === "categories" ? "red" : "#28170bff",
-              "& .MuiBottomNavigationAction-label": {
-                color: value === "categories" ? "red" : "#28170bff",
-              },
-            }}
-            onClick={()=>setOpen(!open)}
-          />
-          <BottomNavigationAction
-            label="Search"
-            value="search"
-            icon={
-              <Search
-                style={{ color: value === "search" ? "red" : "#28170bff" }}
+      {isMobile && (
+        <Box sx={{ width: 500 }}>
+          <Paper
+            sx={{ position: "fixed", bottom: 0, left: 0, right: 0 }}
+            elevation={3}
+          >
+            <BottomNavigation
+              showLabels
+              value={value}
+              onChange={(event, newValue) => {
+                setValue(newValue);
+              }}
+            >
+              <BottomNavigationAction
+                label="Menu"
+                value="menu"
+                icon={
+                  <Menu
+                    style={{ color: value === "menu" ? "red" : "#28170bff" }}
+                  />
+                }
+                sx={{
+                  color: value === "menu" ? "red" : "#28170bff",
+                  "& .MuiBottomNavigationAction-label": {
+                    color: value === "menu" ? "red" : "#28170bff",
+                  },
+                }}
+                onClick={() => setOpen(!open)}
               />
-            }
-            sx={{
-              color: value === "search" ? "red" : "#28170bff",
-              "& .MuiBottomNavigationAction-label": {
-                color: value === "search" ? "red" : "#28170bff",
-              },
-            }}
-          onClick={()=>setOpen(!open)}/>
 
-          <BottomNavigationAction
-            label="Cart"
-            value="cart"
-            icon={
-              <ShoppingCart
-                style={{ color: value === "cart" ? "red" : "#28170bff" }}
+              <BottomNavigationAction
+                label="Categories"
+                value="categories"
+                icon={
+                  <Category
+                    style={{
+                      color: value === "categories" ? "red" : "#28170bff",
+                    }}
+                  />
+                }
+                sx={{
+                  color: value === "categories" ? "red" : "#28170bff",
+                  "& .MuiBottomNavigationAction-label": {
+                    color: value === "categories" ? "red" : "#28170bff",
+                  },
+                }}
+                onClick={() => setOpen(!open)}
               />
-            }
-            sx={{
-              color: value === "cart" ? "red" : "#28170bff",
-              "& .MuiBottomNavigationAction-label": {
-                color: value === "cart" ? "red" : "#28170bff",
-              },
-            }}
-            onClick={()=>setOpen(!open)}/>
+              <BottomNavigationAction
+                label="Search"
+                value="search"
+                icon={
+                  <Search
+                    style={{ color: value === "search" ? "red" : "#28170bff" }}
+                  />
+                }
+                sx={{
+                  color: value === "search" ? "red" : "#28170bff",
+                  "& .MuiBottomNavigationAction-label": {
+                    color: value === "search" ? "red" : "#28170bff",
+                  },
+                }}
+                onClick={() => setOpen(!open)}
+              />
 
-        </BottomNavigation>
+              <BottomNavigationAction
+                label="Cart"
+                value="cart"
+                icon={
+                  <ShoppingCart
+                    style={{ color: value === "cart" ? "red" : "#28170bff" }}
+                  />
+                }
+                sx={{
+                  color: value === "cart" ? "red" : "#28170bff",
+                  "& .MuiBottomNavigationAction-label": {
+                    color: value === "cart" ? "red" : "#28170bff",
+                  },
+                }}
+                onClick={() => setOpen(!open)}
+              />
+            </BottomNavigation>
 
-        {value === 'menu' && <MenuDrawer open={open} setOpen={setOpen} />}
-        {value === 'cart' && <CartDrawer open={open} setOpen={setOpen} />}
-        {value === 'categories' && <CategoriesDrawer open={open} setOpen={setOpen} />}
-        {value === 'search' && <SearchDrawer open={open} setOpen={setOpen} />}
-
-
-
-        
-
-      </Paper>
-    </Box>
-       )}
+            {value === "menu" && <MenuDrawer open={open} setOpen={setOpen} />}
+            {value === "cart" && <CartDrawer open={open} setOpen={setOpen} />}
+            {value === "categories" && (
+              <CategoriesDrawer open={open} setOpen={setOpen} />
+            )}
+            {value === "search" && (
+              <SearchDrawer open={open} setOpen={setOpen} />
+            )}
+          </Paper>
+        </Box>
+      )}
     </div>
   );
 }

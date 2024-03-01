@@ -13,6 +13,7 @@ import ColorButton from "@/components/buttons/ColorButton";
 import { LuBadgeCheck, LuBadgePercent } from "react-icons/lu";
 import StarRating from "./StarRating";
 import { Product } from "@/type";
+import SizeButton from "@/components/buttons/SizeButton";
 
 interface QuickViewProps {
   id: string;
@@ -25,21 +26,8 @@ const QuickView: React.FC<QuickViewProps> = ({ id, modal }) => {
   const product = getProductById(id);
   console.log(product);
 
-  const {
-    brand,
-    category,
-    colors,
-    description,
-    discount,
-    full_details,
-    images,
-    name,
-    price,
-    quantity,
-    rating,
-    recommended,
-    reviews,
-    stock,
+ /** @ts-expect-error */
+  const { brand,category,colors,description,discount,full_details,images,name,price,quantity, rating,recommended,reviews,stock,
   } = product;
 
   const {
@@ -140,8 +128,8 @@ const QuickView: React.FC<QuickViewProps> = ({ id, modal }) => {
           </div>
         </div>
 
-        <div className="sm:col-span-1 col-span-2 sm:ml-4">
-          <h1 className="md:text-3xl sm:text-xl text-lg font-semibold text-gray-600">
+        <div className="sm:col-span-1 col-span-2 sm:ml-4 font-sans">
+          <h1 className="md:text-3xl sm:text-xl text-lg font-semibold text-gray-600 font-sans">
             {name}
           </h1>
           <div className="mt-2 mb-2">
@@ -199,23 +187,7 @@ const QuickView: React.FC<QuickViewProps> = ({ id, modal }) => {
               </span>
             </div>
 
-            <div className="pt-2">
-              <p className="text-gray-600 font-semibold ">Size</p>
-              <div className="flex items-center mt-2 gap-3">
-                {/* <!-- Single Size --> */}
-
-                <button className="text-orangeRed w-6 h-6 text-sm  ring-2 ring-orangeRed  rounded-sm flex items-center justify-center cursor-pointer font-extrabold">
-                  S
-                </button>
-                <button className="text-orangeRed w-6 h-6 text-sm  ring-2 ring-orangeRed  rounded-sm flex items-center justify-center cursor-pointer font-extrabold">
-                  D
-                </button>
-                <button className="text-orangeRed w-6 h-6 text-sm  ring-2 ring-orangeRed  rounded-sm flex items-center justify-center cursor-pointer font-extrabold">
-                  Q
-                </button>
-                {/* <!-- Single Size Ends --> */}
-              </div>
-            </div>
+            <SizeButton/>
             {/* <!-- Size Section Ends --> */}
 
             {/* <!-- Color Filter --> */}

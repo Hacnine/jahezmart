@@ -29,18 +29,20 @@ import ProductReview from "@/components/singlePageProduct/ProductReview";
 import QuestionAndAnswer from "@/components/singlePageProduct/QuestionAndAnswer";
 import QuickView from "@/components/common/ui/QuickView";
 const Page = ({ params }: { params: { id: string } }) => {
-  const {  getProductById } = useFilterContext();
+  const { getProductById } = useFilterContext();
   const product = getProductById(params.id);
   const {
+    /** @ts-expect-error */
     category,
+    /** @ts-expect-error */
     description,
+    /** @ts-expect-error */
     full_details,
+    /** @ts-expect-error */
     id,
   } = product;
 
-  const {
-    wishListProducts,
-  } = useCartContext();
+  const { wishListProducts } = useCartContext();
 
   const [favorite, setFavorite] = useState<boolean>(false);
 
@@ -74,22 +76,7 @@ const Page = ({ params }: { params: { id: string } }) => {
     <>
       <div className="wrapper my-5">
         {/* <!-- Product View --> */}
-        <QuickView
-        id={params.id}
-          // brand={brand}
-          // category={category}
-          // colors={colors}
-          // discount={discount}
-          // id={id}
-          // images={images}
-          // name={name}
-          // price={price}
-          // quantity={quantity}
-          // rating={rating}
-          // recommended={recommended}
-          // reviews={reviews}
-          // stock={stock}
-        />
+        <QuickView id={params.id} />
         {/* <!-- Product View end --> */}
 
         <div className="">

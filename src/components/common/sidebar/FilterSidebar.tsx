@@ -1,8 +1,19 @@
+"use client";
 import CustomCheckBox from "@/components/shop/CustomCheckBox";
 import { useFilterContext } from "@/context_reducer/filterContext";
-import React from "react";
+import React, { useState } from "react";
+import productsData from "../../../../public/products.json";
 
 const ShopSidebar = () => {
+  const { getProductsByColor, getProductByMinMaxPrice } = useFilterContext();
+  const [minValue, setMinValue] = useState<number | undefined>(undefined);
+  const [maxValue, setMaxValue] = useState<number | undefined>(undefined);
+
+  const handleApply = (e: React.FormEvent) => {
+    e.preventDefault();
+    getProductByMinMaxPrice(minValue, maxValue);
+  };
+
   const { allProducts, getCategoryAndProductQuantity } = useFilterContext();
 
   const uniqueColors = Array.from(
@@ -21,7 +32,7 @@ const ShopSidebar = () => {
         </p>
         {newCategory.map((item, index) => (
           <div className="between" key={index}>
-            <CustomCheckBox label={item.category} />
+            <CustomCheckBox label={item.category} filterBy="CATEGORIES"/>
             <span className="text-gray-600 text-sm">({item.count})</span>
           </div>
         ))}
@@ -33,14 +44,13 @@ const ShopSidebar = () => {
         <p className="text-base text-gray-800 font-semibold mb-2">BRANDS</p>
         {brands.map((item, index) => (
           <div className="between" key={index}>
-            <CustomCheckBox label={item.category} />
+            <CustomCheckBox label={item.category} filterBy="BRANDS"/>
             <span className="text-gray-600 text-sm">({item.count})</span>
           </div>
         ))}
       </div>
       {/* Brands Filter Ends */}
 
-      
       {/* Color Filter */}
       <div className="mt-6 px-4 py-4 col-span-3 shadow-md rounded-s-md shadow-gray-300 bg-white ">
         <p className="text-base font-semibold mb-4 text-gray-800  ">COLOR</p>
@@ -51,13 +61,14 @@ const ShopSidebar = () => {
               <div
                 className={`${
                   property === "white" ? "border border-slate-300" : null
-                } w-2 h-5 rounded cursor-pointer`}
+                } w-3 h-7 rounded-full cursor-pointer m-2 hover:border-2 hover:border-sandyBrown`}
                 style={{
                   backgroundColor: property,
                   color: property,
                   boxShadow: "gray",
                 }}
                 key={index}
+                onClick={() => getProductsByColor(property)}
               />
             </div>
           ))}
@@ -68,27 +79,29 @@ const ShopSidebar = () => {
       {/* Price */}
       <div className="mt-6 px-4 py-4 col-span-3 shadow-md shadow-gray-300 rounded-md bg-white">
         <p className="text-base font-semibold text-gray-800 ">PRICE</p>
-        <div className="flex items-center mt-4 text-xs">
+        <form className="flex items-center mt-4 text-xs" onSubmit={handleApply}>
           <input
-            type="text"
+            type="number"
             placeholder="Min"
-            className="w-full px-3 py-1  focus:bg-slate-100 rounded-md outline-none bg-slate-50"
+            className="w-full px-3 py-1 focus:bg-slate-100 rounded-md outline-none bg-slate-50"
+            onChange={(e) => setMinValue(parseInt(e.target.value))}
           />
           <span className="text-gray-500 px-3">To</span>
           <input
-            type="text"
+            type="number"
             placeholder="Max"
-            className="w-full px-3 py-1  focus:bg-slate-100 rounded-md outline-none bg-slate-50"
+            className="w-full px-3 py-1 focus:bg-slate-100 rounded-md outline-none bg-slate-50"
+            onChange={(e) => setMaxValue(parseInt(e.target.value))}
           />
-          <button className="text-orangeRed ml-5 rounded bg-darkChocolate p-1 px-2">
+          <button
+            type="submit"
+            className="text-orangeRed ml-5 rounded bg-darkChocolate p-1 px-2"
+          >
             Apply
           </button>
-        </div>
+        </form>
       </div>
       {/* Price Ends */}
-
-
-
     </div>
   );
 };

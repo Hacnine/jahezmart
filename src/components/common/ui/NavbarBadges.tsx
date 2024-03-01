@@ -32,7 +32,7 @@ const NavbarBadges = () => {
           <Person sx={{ color: "OrangeRed" }} />
         </Link>
         <Link href="/signin">
-          <Login className="" sx={{ color: "OrangeRed" }}/>
+          <Login className="" sx={{ color: "OrangeRed" }} />
         </Link>
       </div>
     </div>
