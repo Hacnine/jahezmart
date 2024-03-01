@@ -11,16 +11,17 @@ const NavbarBadges = () => {
   return (
     <div>
       <div className=" flex items-center justify-evenly gap-6">
-        <Link href={"/account/cart"} className=" lg:block hidden">
+        <Link  href={"/account/cart"} passHref >
           <Badge
             badgeContent={cartProducts.length}
             color="error"
             sx={{ color: "OrangeRed" }}
+            className=" lg:block hidden"
           >
             <ShoppingCart />
           </Badge>
         </Link>
-        <Link href="/account/wishlist">
+        <Link href="/account/wishlist" passHref>
           <Badge
             badgeContent={wishListProducts.length}
             color="error"
@@ -30,10 +31,10 @@ const NavbarBadges = () => {
           </Badge>
         </Link>
 
-        <Link href="/account">
+        <Link href="/account" passHref>
           <Person sx={{ color: "OrangeRed" }} />
         </Link>
-        <Link href="/signin">
+        <Link href="/signin" passHref>
           <Login className="" sx={{ color: "OrangeRed" }} />
         </Link>
       </div>

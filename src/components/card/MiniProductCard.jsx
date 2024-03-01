@@ -140,6 +140,7 @@ const MiniProductCard = ({
         
               <IconButton
                 onClick={handleFavoriteClick}
+                size="small"
                 sx={{
                   bgcolor: "white",
                   "&:hover": {
