@@ -1,4 +1,4 @@
-import SummaryCard from '@/components/card/OrderSummaryCard'
+import SummaryCard from '../../../../components/card/OrderSummaryCard'
 import React from 'react'
 
 const Checkout = () => {
