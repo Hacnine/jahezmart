@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { Fragment, useState, useEffect } from "react";
 import { Combobox, Transition } from "@headlessui/react";
@@ -11,12 +11,13 @@ import Scrollbars from "react-custom-scrollbars-2";
 import { useRouter } from "next/navigation";
 import { useFilterContext } from "@/context_reducer/filterContext";
 
-const SearchBar:React.FC<{otherClasses:string}> = ({otherClasses}) => {
+const SearchBar: React.FC<{ otherClasses: string }> = ({ otherClasses }) => {
   const [query, setQuery] = useState("");
   const router = useRouter();
 
   const [visible, setVisible] = useState(false);
-  const { allProducts, updateFilteredProducts, filteredProducts } = useFilterContext();
+  const { allProducts, updateFilteredProducts, filteredProducts } =
+    useFilterContext();
 
   const primaryFilteredProducts = allProducts.filter((product) =>
     product.name.toLowerCase().includes(query.toLowerCase())
@@ -26,31 +27,19 @@ const SearchBar:React.FC<{otherClasses:string}> = ({otherClasses}) => {
     if (query === "") {
       alert("Please fill in the search bar");
     } else {
-     
       updateSearchParams(query.toLowerCase());
-      
-       updateFilteredProducts(primaryFilteredProducts);
-      console.log(primaryFilteredProducts)
+
+      updateFilteredProducts(primaryFilteredProducts);
+      console.log(primaryFilteredProducts);
     }
   };
 
   const updateSearchParams = (query: string) => {
     const searchParams = new URLSearchParams(window.location.search);
-    // console.log(searchParams);
-    // if (query) {
-    //   searchParams.set("name", query);
-    // } else {
-    //   searchParams.delete("name");
-    // }
     const queryString = `?search=${query}`;
-
     router.push(`/shop${queryString}`);
-
-    // const newPathname = `${window.location.pathname}?${searchParams.toString()}`;
-    // router.push(newPathname);
-    // console.log(updateSearchParams);
   };
- 
+
   return (
     <div className={`${otherClasses} w-[40%]   lg:block bg-transparent `}>
       <div className=" bg-transparent  lg:flex items-center justify-center  w-full ">
@@ -58,13 +47,16 @@ const SearchBar:React.FC<{otherClasses:string}> = ({otherClasses}) => {
           <div className="relative w-full center">
             <Combobox.Input
               className={
-                "w-full border  h-[48px] border-r-0 px-4 py-3 ring-transparent outline-none focus:border focus:border-orangeRed focus:border-r-0 rounded-lr-md rounded-tl-full"
+                "w-full border  h-[48px] border-r-0 px-8 py-3 ring-transparent outline-none focus:border focus:border-orangeRed focus:border-r-0 rounded-lr-md rounded-tl-full placeholder:text-sm  placeholder:font-sans"
               }
               onChange={(event) => setQuery(event.target.value)}
               placeholder="Search products..."
             />
             {/* <Link href={'/shop'}> */}
-            <Combobox.Button className="bg-orangeRed hover:bg-sandyBrown text-white center gap-1 py-3 pl-3 pr-5 rounded-lr-md rounded-br-full"  onClick={handleFilteredProducts}>
+            <Combobox.Button
+              className="bg-orangeRed hover:bg-sandyBrown text-white center gap-1 py-3 pl-3 pr-10 rounded-lr-md rounded-br-full text-sm"
+              onClick={handleFilteredProducts}
+            >
               <Search fontSize="medium" />
               Search
             </Combobox.Button>
@@ -93,7 +85,8 @@ const SearchBar:React.FC<{otherClasses:string}> = ({otherClasses}) => {
                       className=" text-base font-bold "
                     >
                       <div className="mb-3 start gap-1">
-                        {primaryFilteredProducts.length} Matching products found.
+                        {primaryFilteredProducts.length} Matching products
+                        found.
                         <Link
                           className="center gap-3 text-lightOrange "
                           href={"/shop"}

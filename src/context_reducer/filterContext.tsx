@@ -1,4 +1,5 @@
-"use client";
+"use client"
+
 import React, { createContext, useReducer, useContext, useEffect } from "react";
 import productsData from "../../public/products.json";
 import filterReducer from "./filterReducer";
@@ -18,7 +19,7 @@ export interface ContextState {
 }
 
 const initialState: ContextState = {
-  /** @ts-expect-error */
+ 
   allProducts: productsData,
   filteredProducts: [],
   featuredProducts: [],
@@ -98,22 +99,22 @@ const FilterContextProvider = ({ children }: { children: React.ReactNode }) => {
 
   const setCategories = (data: string, filterBy:string) => {
     if(filterBy === "CATEGORIES"){
-  /** @ts-expect-error */
+ 
       dispatch({ type: "ADD_CATEGORIES_PARAMETERS", payload: [data] })
     }
     else{
-      /** @ts-expect-error */
+     
       dispatch({ type: "ADD_BRAND_PARAMETERS", payload: [data] })
     }
   };
 
   const removeCategories = (data: string, filterBy:string) => {
-    /** @ts-expect-error */
+   
     dispatch({ type: "REMOVE_CATEGORIES_PARAMETERS", payload: {data, filterBy} });
 };
 
 const removeBrands = (data2: string, filterBy2:string)  => {
-  /** @ts-expect-error */
+ 
   dispatch({ type: "REMOVE_BRAND_PARAMETERS", payload: {data2, filterBy2} });
 
 };

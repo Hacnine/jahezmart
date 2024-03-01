@@ -1,4 +1,4 @@
-"use client";
+"use client"
 import React, {
   createContext,
   useReducer,
@@ -13,7 +13,7 @@ import {
   AddToCartProps,
   AddToWishListProps,
 } from "../type/index";
-
+ 
 interface initialStateType {
   filteredProducts: Product[];
   cartProducts: AddToCartProps[];
@@ -57,12 +57,10 @@ type CartContext = initialStateType & {
 export const CartContext = createContext<CartContext | null>(null);
 
 const CartContextProvider = ({ children }: { children: React.ReactNode }) => {
-  /** @ts-expect-error */
 
   const [state, dispatch] = useReducer(cartReducer, initialState);
 
   const addToCart = (props: AddToCartProps) => {
-    /** @ts-expect-error */
     dispatch({ type: "ADD_TO_CART", payload: props });
   };
   const deleteCartSingleProduct = (
@@ -77,7 +75,7 @@ const CartContextProvider = ({ children }: { children: React.ReactNode }) => {
     );
 
     if (existingProduct) {
-      /** @ts-expect-error */
+    
       dispatch({ type: "REMOVE_FROM_CART", payload: id });
       setMessage("Removed From Cart!");
 
@@ -91,12 +89,12 @@ const CartContextProvider = ({ children }: { children: React.ReactNode }) => {
   };
 
   const updateCartItemQuantity = (id: string, quantity: number) => {
-    /** @ts-expect-error */
+  
     dispatch({ type: "UPDATE_QUANTITY", payload: { id, quantity } });
   };
 
   const addToWishList = (whishListData: AddToCartProps) => {
-    /** @ts-expect-error */
+  
     dispatch({ type: "ADD_TO_Wish_List", payload: whishListData });
   };
 
@@ -118,7 +116,7 @@ const CartContextProvider = ({ children }: { children: React.ReactNode }) => {
     if (existingProduct) {
       setMessage("The Product Exist In Your Cart!");
     } else {
-      /** @ts-expect-error */
+    
       dispatch({ type: "ADD_TO_CART", payload: singleProduct });
     }
   };
@@ -137,7 +135,7 @@ const CartContextProvider = ({ children }: { children: React.ReactNode }) => {
     if (existingProduct) {
       setWishListMessage("The Product Exist In Your Wishlist");
     } else {
-      /** @ts-expect-error */
+    
       dispatch({ type: "ADD_TO_Wish_List", payload: whishListData });
       setTimeout(() => {
         setOpenWishList(false);
@@ -152,7 +150,7 @@ const CartContextProvider = ({ children }: { children: React.ReactNode }) => {
     id: string
   ) => {
     setOpenWishList(true);
-    /** @ts-expect-error */
+  
     dispatch({ type: "REMOVE_FROM_Wish_List", payload: id });
     setWishListMessage("Removed from your wishlist!");
 

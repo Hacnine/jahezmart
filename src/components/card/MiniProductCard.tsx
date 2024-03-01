@@ -81,62 +81,7 @@ const MiniProductCard: React.FC<ProductCardProps> = ({
     }
   };
 
-  // const sentCartItem = () => {
-  //   setOpen(true);
 
-  //   setTimeout(() => {
-  //     setOpen(false);
-  //     setMessage("Added to Cart!")
-  //   }, 1000);
-  // const existingProduct = cartProducts.find((item) => item.id === id);
-
-  // if (existingProduct) {
-  //   setMessage("You have already added this product in your cart!");
-  // } else {
-  //   addToCart({ id, name, firstImagePath, quantity, price, stock, selected });
-  //   // }
-  // };
-
-  // const removeCartItem = () => {
-  //   setOpen(true);
-
-  //   deleteCartSingleProduct(id);
-  //   setMessage("Removed from Cart!");
-
-  //   setTimeout(() => {
-  //     setOpen(false);
-  //     setMessage("Added to Cart!"); // Reset message after a certain period
-  //   }, 1000);
-  // };
-
-  // const sentWishListItem = () => {
-  //   setOpenWishList(true);
-  //   addToWishList({
-  //     id,
-  //     name,
-  //     firstImagePath,
-  //     price,
-  //     stock,
-  //     quantity,
-  //     selected,
-  //   });
-
-  //   setTimeout(() => {
-  //     setOpenWishList(false);
-  //     setWishListMessage("Product is added to Wishlist!"); // Reset message after a certain period
-  //   }, 1000);
-  // };
-
-  // const removeWishlistItem = () => {
-  //   setOpenWishList(true);
-  //   removeFromWishList(id);
-  //   setWishListMessage("Removed from your wishlist!");
-
-  //   setTimeout(() => {
-  //     setOpenWishList(false);
-  //     setWishListMessage("Product is added to Wishlist!"); // Reset message after a certain period
-  //   }, 1000);
-  // };
   useEffect(() => {
     const existingProduct = wishListProducts.find((item) => item.id === id);
     if (existingProduct) {
@@ -184,12 +129,13 @@ const MiniProductCard: React.FC<ProductCardProps> = ({
 
         <div
           className="absolute inset-0 bg-opacity-30 bg-blue-200 hover:bg-black
-          group-hover:bg-opacity-30 rounded-md transition-color duration-300 "
+          group-hover:bg-opacity-30 rounded-md transition-color duration-300 center gap-10 w-full z-50"
         >
-          <div className="between mt-10 px-2 ">
+          <div className="between  px-2 ">
             <TooltipWrapper open={open} setOpen={setOpen} message={message}>
               <IconButton
                 onClick={handleCartClick}
+                size="small"
                 sx={{
                   bgcolor: "white",
                   "&:hover": {

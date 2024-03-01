@@ -75,7 +75,7 @@ const filterReducer = (state: ContextState, action: FilterAction) => {
       };
 
     case "REMOVE_CATEGORIES_PARAMETERS":
-      /** @ts-expect-error */
+     
       const { data, filterBy } = action.payload;
 /** @ts-expect-error */
       let temporaryFilteredCategories= [];
@@ -88,12 +88,12 @@ const filterReducer = (state: ContextState, action: FilterAction) => {
       // console.log(temporaryFilteredCategories);
       return {
         ...state,
-        /** @ts-expect-error */
+       
         categoryParameters: temporaryFilteredCategories,
       };
 
     case "REMOVE_BRAND_PARAMETERS":
-      /** @ts-expect-error */
+     
       const {data2, filterBy2} = action.payload;
 /** @ts-expect-error */
       let temporaryFilteredBrands = [];
@@ -104,7 +104,7 @@ const filterReducer = (state: ContextState, action: FilterAction) => {
       // console.log(temporaryFilteredBrands)
       return {
         ...state,
-        /** @ts-expect-error */
+       
         brandParameters: temporaryFilteredBrands,
       };
 
