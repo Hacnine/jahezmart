@@ -3,8 +3,6 @@ import { useFilterContext } from "@/context_reducer/filterContext";
 import React, { Fragment, useState, useEffect } from "react";
 import ProductCard from "../../card/ProductCard";
 
-import Link from "next/link";
-import { useRouter, useSearchParams } from "next/navigation";
 
 interface Props {
   grid: boolean;
@@ -12,8 +10,6 @@ interface Props {
 
 const AllProducts: React.FC<Props> = ({ grid }) => {
   const { filteredProducts, updateFilteredProducts } = useFilterContext();
-  const searchParams = useSearchParams();
-  const query = searchParams.get("search");
 
   if (filteredProducts.length === 0) {
     return (
