@@ -13,6 +13,7 @@ import ColorButton from "../../buttons/ColorButton";
 import { LuBadgeCheck, LuBadgePercent } from "react-icons/lu";
 import StarRating from "./StarRating";
 import SizeButton from "../../buttons/SizeButton";
+import { MdFavoriteBorder } from "react-icons/md";
 
 const QuickView = ({ id, modal }) => {
   const { allProducts, getProductById } = useFilterContext();
@@ -258,14 +259,9 @@ const QuickView = ({ id, modal }) => {
                   
                   onClick={handleFavoriteClick}
                 >
-                  <FavoriteBorder
-                    className={`${modal? "hidden": "group-hover:text-white sm:text-2xl text-lg"}`}
-                    sx={{
-                      color: "#28170bff",
-                      "&:hover": {
-                        color: "white",
-                      },
-                    }}
+                  <MdFavoriteBorder
+                    className={`${modal? "hidden": "group-hover:text-white sm:text-2xl text-lg "}  text-darkChocolate hover:text-white`}
+                    
                   />{" "}
                   WISH LIST
                 </button>

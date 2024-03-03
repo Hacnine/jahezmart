@@ -119,7 +119,7 @@ const MiniProductCard = ({
           className="absolute inset-0 bg-opacity-30 bg-blue-200 hover:bg-black
           group-hover:bg-opacity-30 rounded-md transition-color duration-300 center gap-10 w-full"
         >
-          <div className="between  px-2 ">
+          <div className="between gap-8 px-2 ">
               <IconButton
                 onClick={handleCartClick}
                 size="small"
@@ -184,7 +184,7 @@ const MiniProductCard = ({
 
       <div className=" p-3 w-full cursor-pointer ">
         <Link href={`shop/${id}`}>
-          <h3 className=" font-semibold uppercase leading-5 md:text-xs text-sm hover:text-chocolate">
+          <h3 className=" font-bold text-gray-700 uppercase leading-5 md:text-xs text-sm hover:text-chocolate">
             {name}
           </h3>
 

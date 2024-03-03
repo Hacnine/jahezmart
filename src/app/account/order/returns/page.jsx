@@ -6,15 +6,15 @@ import React from "react";
 
 const Returns = () => {
   return (
-    <div className="wrapper mt-8   pb-16 ">
-      <CustomBreadcrumbs
+    <div className="md:ml-8 text-gray-600 text-base font-sans  md:mt-20 w-full pb-16  ">
+      {/* <CustomBreadcrumbs
         links={[{ linkName: "My Account", link: "/account" }]}
-      />
+      /> */}
       {/* <!-- Side Bar --> */}
       <div className="gap-5 start">
-        <div className="hidden lg:block">
+        {/* <div className="hidden lg:block">
           <AccountSideBar link="returns" />
-        </div>
+        </div> */}
 
         <div className=" flex items-center  lg:justify-between flex-col lg:flex-row w-full gap-6">
           <div className=" w-full  gap-4  ">

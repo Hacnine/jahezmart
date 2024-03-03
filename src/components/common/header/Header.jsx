@@ -5,7 +5,7 @@ import FirstHeader from "./FirstHeader";
 const Header = () => {
   return (
     <>
-      <div className="md:block hidden w-full max-w-[1350px] mx-auto">
+      <div className="md:block hidden w-full max-w-[1350px] mx-auto font-sans">
         <FirstHeader />
       </div>
       <Navbar />

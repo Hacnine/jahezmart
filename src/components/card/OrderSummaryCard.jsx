@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 const SummaryCard = () => {
   return (
-    <div className="w-[276px] space-y-4 col-span-4 shadow rounded ml-9 p-6">
+    <div className="w-[276px] space-y-4 col-span-4 shadow rounded ml-9 p-6 ext-base font-sans">
       <p className="text-gray-600 text-lg text font-semibold">ORDER SUMMARY</p>
       <div className="flex justify-between">
         <div>

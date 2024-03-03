@@ -7,7 +7,7 @@ import React from "react";
 const ManageAccount = () => {
   return (
     <>
-      <div className=" flex items-center  lg:justify-between flex-col lg:flex-row w-full gap-6">
+      <div className=" md:mt-12 md:ml-8 flex items-center  lg:justify-between flex-col lg:flex-row w-full gap-6">
         <div className=" w-full lg:w-1/3 gap-4  ">
           <ProfileCard />
           <AccountInfoCard

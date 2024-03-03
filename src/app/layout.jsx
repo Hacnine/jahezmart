@@ -16,7 +16,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${openSnas.className} max-w-[1350px] mx-auto`}  >
+      <body className={`${openSnas.className} font-sans max-w-[1350px] mx-auto`}  >
         <FilterContextProvider>
           <CartContextProvider>
             <Header />

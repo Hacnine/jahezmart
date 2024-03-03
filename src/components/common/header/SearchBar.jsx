@@ -47,7 +47,7 @@ const SearchBar = ({ otherClasses }) => {
           <div className="relative w-full center">
             <Combobox.Input
               className={
-                "w-full border  h-[48px] border-r-0 px-8 py-3 ring-transparent outline-none focus:border focus:border-orangeRed focus:border-r-0 rounded-lr-md rounded-tl-full placeholder:text-sm  placeholder:font-sans"
+                "w-full border  h-[48px] border-r-0 px-8 pb-1 ring-transparent outline-none focus:border focus:border-orangeRed focus:border-r-0 rounded-lr-full rounded-tl-full placeholder:text-sm  placeholder:font-sans"
               }
               onChange={(event) => setQuery(event.target.value)}
               placeholder="Search products..."

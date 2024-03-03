@@ -12,7 +12,7 @@ const Navbar = () => {
       <nav className=" bg-tan w-full lg:block md:hidden hidden shadow-md shadow-slate-300 ">
         <div className="wrapper between ">
           <div className="px-8 py-5 bg-chocolate hover:bg-sandyBrown relative flex items center cursor-pointer  z-50 group">
-            <span className="text-white capitalize ml-2 center gap-1">
+            <span className="text-white capitalize ml-2 center font-sans gap-1">
               <Menu /> All Categories
             </span>
             <AllCategories

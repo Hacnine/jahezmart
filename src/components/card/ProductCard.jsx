@@ -166,8 +166,8 @@ const ProductCard= ({
             {name}
           </h3>
         </Link>
-        <p className="flex  sm:text-[20px] text-xs leading-[38px] font-extrabold text-sandyBrown px-3">
-          <span className=" text-base text-gray-600 self-start md:text-[18px] sm:text-[10px] text-[9px] font-extrabold  leading-[17px] ">
+        <p className="flex  md:text-[16px] leading-[38px] font-bold text-sandyBrown px-3">
+          <span className=" text-base text-gray-600 self-start md:text-[16px] sm:text-[10px] text-[9px] font-extrabold  leading-[17px] ">
             ৳
           </span>
           {price}

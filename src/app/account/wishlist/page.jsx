@@ -16,7 +16,7 @@ const WishList = () => {
   const links = [{ linkName: "Wishlist", link: "/account/wishlist" }];
   const [open, setOpen] = useState(false);
   return (
-    <div className="wrapper ">
+    <div className="   w-full">
       <Box
         sx={{
           display: "flex",
@@ -31,11 +31,11 @@ const WishList = () => {
           },
         }}
       >
-        <div className="start  md:flex-row flex-col w-full gap-5">
-        <div className="w-[24%] hidden lg:block  lg:center flex-col">
+        <div className="flex items-start justify-evenly  md:flex-row flex-col w-full gap-5">
+        {/* <div className="w-[24%] hidden lg:block  lg:center flex-col">
         <CustomBreadcrumbs links={links} />
         <AccountSideBar link="wishlist"/>
-        </div>
+        </div> */}
 
         <div className=" center flex-col  lg:w-[50%] w-full">
         <div className="center w-full relative gap-5">
@@ -45,7 +45,7 @@ const WishList = () => {
         <img src="/images/titles/wishlist.svg" className="my-8 w-48" alt="" />
         </div>
         {wishListProducts.map((product) => (
-          <div className="center gap-4  w-full backdrop-blur-sm bg-white/30   my-1 ">
+          <div className="center gap-4  w-full backdrop-blur-sm bg-white/30 text-base font-sans  my-1 ">
             <WishListCard {...product} />
           </div>
         ))}

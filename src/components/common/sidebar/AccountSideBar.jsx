@@ -1,3 +1,5 @@
+"use client"
+
 import {
   Badge,
   BorderColor,
@@ -6,15 +8,18 @@ import {
   Payment,
 } from "@mui/icons-material";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import React from "react";
 import { MdAccountTree } from "react-icons/md";
 
-const AccountSideBar = ({ link }) => {
+const AccountSideBar = () => {
+  const link = usePathname();
+
   return (
-    <div className="text-sm">
-      <div className=" rounded-md shadow-md shadow-gray-300 w-fit ">
+    <div className="text-base font-sans md:px-0 px-6">
+      <div className=" rounded-md shadow-md shadow-gray-300 md:w-fit ">
         <div
-          className="p-4 bg-white  md:flex md:items-center  w-[233px] gap-4  rounded-md 
+          className="p-4 bg-white  md:flex md:items-center  md:w-[233px] w-full gap-4  rounded-md 
        "
         >
           <div className="">
@@ -33,16 +38,16 @@ const AccountSideBar = ({ link }) => {
       {/* <!-- Account Profile End --> */}
 
       {/* <!-- Profile links --> */}
-      <div className="bg-white w-fit col-start-1 mt-6   rounded divide-y  text-gray-600 gap-4 mb-7">
-        <div className="space-y-1  p-4  w-[233px] rounded-md  shadow-md shadow-gray-300">
+      <div className="bg-white md:w-fit w-full col-start-1 mt-6   rounded divide-y  text-gray-600 gap-4 mb-7">
+        <div className="space-y-1  p-4  md:w-[233px] rounded-md  shadow-md shadow-gray-300">
           <Link
             href="/account/manageaccount"
             className={`${
-              link === "manageaccount" ? "text-orangeRed" : "text-gray-600  "
+              link === "/account/manageaccount" ? "text-orangeRed" : "text-gray-600  "
             } start gap-2 block font-semibold `}
           >
             <span className="t">
-              <MdAccountTree className="text-xl" />
+              <MdAccountTree className="text-xl " />
             </span>
             Manage account
           </Link>
@@ -51,7 +56,7 @@ const AccountSideBar = ({ link }) => {
             <Link
               href="/account/profile"
               className={`${
-                link === "profile" ? "text-orangeRed" : "text-gray-600  "
+                link === "/account/profile" ? "text-orangeRed" : "text-gray-600  "
               }   hover:text-orangeRed block  capitalize transition text-sm mb-1`}
             >
               Profile info
@@ -60,7 +65,7 @@ const AccountSideBar = ({ link }) => {
             <Link
               href="/account/shippingaddress"
               className={`${
-                link === "shipping address"
+                link === "/account/shippingaddress"
                   ? "text-orangeRed"
                   : "text-gray-600  hover:text-orangeRed "
               }  capitalize transition  pt-2  text-sm`}
@@ -72,7 +77,7 @@ const AccountSideBar = ({ link }) => {
               <Link
                 href="/account/billingaddress"
                 className={`${
-                  link === "billing address"
+                  link === "/account/billingaddress"
                     ? "text-orangeRed"
                     : "text-gray-600  hover:text-orangeRed "
                 }  capitalize transition    text-sm`}
@@ -84,7 +89,7 @@ const AccountSideBar = ({ link }) => {
             <Link
               href="/account/changepassword"
               className={`${
-                link === "changepassword" ? "text-orangeRed" : "text-gray-600  "
+                link === "/account/changepassword" ? "text-orangeRed" : "text-gray-600  "
               }  hover:text-orangeRed block pt-2 capitalize transition text-sm mb-1`}
             >
               Change Password
@@ -96,7 +101,7 @@ const AccountSideBar = ({ link }) => {
           <Link
             href="/account/order/orderhistory"
             className={`${
-              link === "orderhistory" ? "text-orangeRed" : "text-gray-600  "
+              link === "/account/order/orderhistory" ? "text-orangeRed" : "text-gray-600  "
             }  start gap-2 block capitalize font-semibold`}
           >
             <span className="">
@@ -109,7 +114,7 @@ const AccountSideBar = ({ link }) => {
             <Link
               href="/account/order/returns"
               className={`${
-                link === "returns" ? "text-orangeRed" : "text-gray-600  "
+                link === "/account/order/returns" ? "text-orangeRed" : "text-gray-600  "
               }   hover:text-orangeRed block  capitalize transition text-sm mb-1`}
             >
               {" "}
@@ -122,7 +127,7 @@ const AccountSideBar = ({ link }) => {
           <Link
             href="/account/payment"
             className={`${
-              link === "payment" ? "text-orangeRed" : "text-gray-600  "
+              link === "/account/payment" ? "text-orangeRed" : "text-gray-600  "
             } start gap-2 block capitalize  font-semibold  `}
           >
             <span className=" text-base">
@@ -133,7 +138,7 @@ const AccountSideBar = ({ link }) => {
           <Link
             href="/account/voucher"
             className={`${
-              link === "voucher" ? "text-orangeRed" : "text-gray-600  "
+              link === "/account/voucher" ? "text-orangeRed" : "text-gray-600  "
             }  pl-8 hover:text-orangeRed block  capitalize transition text-sm`}
           >
             Voucher
@@ -144,7 +149,7 @@ const AccountSideBar = ({ link }) => {
           <Link
             href="/account/wishlist"
             className={`${
-              link === "wishlist" ? "text-orangeRed" : "text-gray-600  "
+              link === "/account/wishlist" ? "text-orangeRed" : "text-gray-600  "
             }  start gap-2 block font-medium capitalize`}
           >
             <span className=" text-base font-semibold">
@@ -158,7 +163,7 @@ const AccountSideBar = ({ link }) => {
           <Link
             href="/signin"
             className={`${
-              link === "signin" ? "text-orangeRed" : "text-gray-600  "
+              link === "/account/signin" ? "text-orangeRed" : "text-gray-600  "
             }  `}
           >
             <span className=" text-base">

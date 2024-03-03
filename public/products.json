@@ -1505,7 +1505,7 @@
     "new_product": false,
     "rating": 4.5,
     "reviews": 25,
-    "colors": ["gold", "silver"],
+    "colors": ["tan"],
 
     "images": {
       "tan": [
@@ -1550,7 +1550,7 @@
     "reviews": 15,
     "colors": ["tan"],
     "images": {
-      "gold": [
+      "tan": [
         "/images/products/product.37.1.png",
         "/images/products/product.37.2.png"
       ]
@@ -1590,9 +1590,9 @@
     "new_product": false,
     "rating": 4.8,
     "reviews": 20,
-    "colors": ["chocolate"],
+    "colors": ["tan"],
     "images": {
-      "chocolate": [
+      "tan": [
         "/images/products/product.39.1.png",
         "/images/products/product.39.2.png"
       ]

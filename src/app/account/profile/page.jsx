@@ -1,11 +1,9 @@
 "use client";
 
 import ProfileCard from "../../../components/card/ProfileCard";
-import AccountSideBar from "../../../components/common/sidebar/AccountSideBar";
-import CustomBreadcrumbs from "../../../components/common/ui/CustomBreadcrumbs";
 import React, { useState } from "react";
 
-const ProfileForm = () => {
+const ProfileForm = ({params}) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [birthday, setBirthday] = useState("");
@@ -18,25 +16,19 @@ const ProfileForm = () => {
     // Add your logic here to save changes
   };
 
+
   return (
-    <div className="wrapper text-gray-600 mb-10">
-      <CustomBreadcrumbs
-        links={[
-          { linkName: "My Account", link: "/about" },
-          { linkName: "Profile Information", link: "/profile" },
-        ]}
-      />
+    <div className=" md:ml-8 text-gray-600 text-base font-sans mb-10 w-full md:mt-10">
+      
       <div className="grid grid-cols-12">
-        <div className=" col-span-3 hidden lg:block">
-          <AccountSideBar link={"profile"}/>
-        </div>
-        <div className="lg:col-span-9 col-span-full">
+      
+        <div className="  col-span-full">
          <ProfileCard />
 
-          <h1 className="text-lg font-semibold mb-4">Profile Info</h1>
+          <h1 className="text-lg font-semibold mb-4 ">Profile Info</h1>
           <form
             onSubmit={handleSubmit}
-            className="grid grid-cols-2 gap-4 text-sm"
+            className=" w-full grid grid-cols-2 gap-4 text-sm "
           >
             <div>
               <label htmlFor="firstName" className="block mb-1">
@@ -64,7 +56,7 @@ const ProfileForm = () => {
             </div>
             <div>
               <label htmlFor="birthday" className="block mb-1">
-                Birthday
+                Birth Date
               </label>
               <input
                 type="date"
