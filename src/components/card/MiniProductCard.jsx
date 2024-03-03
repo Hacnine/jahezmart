@@ -119,7 +119,7 @@ const MiniProductCard = ({
           className="absolute inset-0 bg-opacity-30 bg-blue-200 hover:bg-black
           group-hover:bg-opacity-30 rounded-md transition-color duration-300 center gap-10 w-full"
         >
-          <div className="between  px-2 ">
+          <div className="between  px-2 w-full  gap-10 ">
               <IconButton
                 onClick={handleCartClick}
                 size="small"
