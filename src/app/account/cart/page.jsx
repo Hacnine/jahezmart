@@ -8,11 +8,11 @@ const links = [{ linkName: "Cart", link: "/account/cart" }];
 
 const Cart = () => {
   return (
-    <div className="wrapper start md:flex-row flex-col ">
-      <div className="w-[24%] hidden lg:block">
+    <div className="flex items-start justify-evenly  md:flex-row flex-col w-full gap-5">
+      {/* <div className="w-[24%] hidden lg:block">
         <CustomBreadcrumbs links={links} />
         <AccountSideBar link="cart"/>
-      </div>
+      </div> */}
       <div className=" center flex-col lg:w-[50%] w-full  ">
         <div className="center w-full  gap-5">
       

@@ -24,18 +24,18 @@ const BillingAddress = () => {
   };
 
   return (
-    <div className="wrapper text-gray-600">
-      <CustomBreadcrumbs
+    <div className="md:ml-8 md:mt-10 font-sans text-sm text-gray-600 w-full">
+      {/* <CustomBreadcrumbs
         links={[
           { linkName: "My Account", link: "/about" },
           { linkName: "Billing Address", link: "/billingaddress" },
         ]}
-      />
+      /> */}
       <div className="grid grid-cols-12">
-        <div className=" lg:col-span-3 lg:block hidden">
+        {/* <div className=" lg:col-span-3 lg:block hidden">
           <AccountSideBar link="billing address"/>
-        </div>
-        <div className=" lg:col-span-9 col-span-full">
+        </div> */}
+        <div className="col-span-full">
           <ProfileCard/>
           <h1 className="text-lg font-semibold mb-4">Billing Address</h1>
           <form

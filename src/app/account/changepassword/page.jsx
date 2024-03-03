@@ -15,17 +15,9 @@ const ChangePasswordForm = () => {
   };
 
   return (
-    <div className=" wrapper  text-gray-600 text-sm">
-      <CustomBreadcrumbs
-        links={[
-          { linkName: "My Account", link: "/account" },
-          { linkName: "Change Password", link: "/changepassword" },
-        ]}
-      />
-      <div className="start md:flex-row flex-col gap-4 w-full ">
-        <div className="hidden  lg:block w-[23%] mr-4 ">
-          <AccountSideBar link="changepassword"/>
-        </div>
+      
+      <div className=" md:mt-10 md:ml-8 start md:flex-row flex-col gap-4 w-full text-gray-600 text-base font-sans">
+        
         <div className="lg:w-[70%] w-full">
           <ProfileCard/>
 
@@ -82,7 +74,6 @@ const ChangePasswordForm = () => {
           </form>
         </div>
       </div>
-    </div>
   );
 };
 

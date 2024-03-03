@@ -18,7 +18,7 @@ const ProfileCard = () => {
           </div>
 
           <div className="flex-grow ">
-            <p className="text-gray-800 font-medium">Abu Imadullah</p>
+            <p className="text-gray-800 font-medium">Abdullah</p>
           </div>
         </div>
 

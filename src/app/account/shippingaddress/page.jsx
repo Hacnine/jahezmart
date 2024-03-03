@@ -24,18 +24,18 @@ const AddressForm = () => {
   };
 
   return (
-    <div className="wrapper text-gray-600">
-      <CustomBreadcrumbs
+    <div className=" md:ml-8 text-gray-600 text-sm font-sans w-full md:mt-10">
+      {/* <CustomBreadcrumbs
         links={[
           { linkName: "My Account", link: "/about" },
           { linkName: "Shipping Address", link: "/shippingaddress" },
         ]}
-      />
+      /> */}
       <div className="grid grid-cols-12">
-        <div className=" lg:col-span-3 lg:block hidden">
+        {/* <div className=" lg:col-span-3 lg:block hidden">
           <AccountSideBar link="shipping address"/>
-        </div>
-        <div className=" lg:col-span-9 col-span-full">
+        </div> */}
+        <div className="  col-span-full">
           <ProfileCard/>
           <h1 className="text-lg font-semibold mb-4">Shipping Address</h1>
           <form

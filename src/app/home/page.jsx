@@ -78,7 +78,7 @@ const Home = () => {
             ))}
           </div>
           <div className="">
-            <p className="font-bold  text-base mb-3">Sofa</p>
+            <p className="  text-base mb-3">Sofa</p>
 
             {sofa.map((product) => (
               <MiniProductCard

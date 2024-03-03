@@ -41,7 +41,7 @@ const WishListCard= ({
       <Link href={`/shop/${id}`}>
         <img src={firstImagePath} alt="" className="w-[100px]" />
       </Link>
-      <div className="w-full space-y-1">
+      <div className="w-full space-y-1 text-base font-sans">
         <div className="between gap-3 w-full">
           <p className="font-semibold">{name}</p>
           <TooltipWrapper open={open} setOpen={setOpen} message={message}>
