@@ -225,7 +225,7 @@ const QuickView = ({ id, modal }) => {
             {/* <!-- End Increase Decrease Quantity --> */}
 
             {/* <!-- Button --> */}
-            <div className="font-roboto gap-2 flex items-center pb-5 mt-6 ">
+            <div className="gap-2 flex items-center pb-5 mt-6 ">
               <TooltipWrapper open={open} setOpen={setOpen} message={message}>
                 <button
                   className={`${modal? 'w-24 h-8 text-xs':' sm:w-48 sm:h-10 w-32 h-8 sm:text-base text-xs'} text-white  border-2 bg-orangeRed hover:text-orangeRed hover:bg-white font-semibold border-orangeRed  flex items-center justify-center    gap-4 rounded group transition-colors duration-300`}
