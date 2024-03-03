@@ -1502,10 +1502,10 @@
     "quantity": 10,
     "stock": 20,
     "discount": 10,
-    "new_product": false,
+    "new_product": true,
     "rating": 4.5,
     "reviews": 25,
-    "colors": ["tan"],
+    "colors": ["gold", "silver"],
 
     "images": {
       "tan": [
@@ -1550,7 +1550,7 @@
     "reviews": 15,
     "colors": ["tan"],
     "images": {
-      "tan": [
+      "gold": [
         "/images/products/product.37.1.png",
         "/images/products/product.37.2.png"
       ]
@@ -1587,12 +1587,12 @@
     "quantity": 8,
     "stock": 20,
     "discount": 15,
-    "new_product": false,
+    "new_product": true,
     "rating": 4.8,
     "reviews": 20,
-    "colors": ["tan"],
+    "colors": ["chocolate"],
     "images": {
-      "tan": [
+      "chocolate": [
         "/images/products/product.39.1.png",
         "/images/products/product.39.2.png"
       ]
