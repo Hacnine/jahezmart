@@ -5,7 +5,6 @@ import Box from "@mui/material/Box";
 import WishListCard from "../../../components/card/WishListCard";
 import {  IconButton} from "@mui/material";
 import { Menu} from "@mui/icons-material";
-import CustomBreadcrumbs from "../../../components/common/ui/CustomBreadcrumbs";
 import AccountSideBar from "../../../components/common/sidebar/AccountSideBar";
 import AccountDrawer from "../../../components/Drawer/DynamicDrawer";
 import WishListSummaryCard from "../../../components/card/WishListSummaryCard";

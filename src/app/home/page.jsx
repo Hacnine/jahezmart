@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React from "react";
 import Slider from "../../components/slider/HeroImageSlider";
 
@@ -15,40 +15,71 @@ import CollectionCard from "../../components/card/CollectionCard";
 import FeatureCard from "../../components/common/FeatureCard";
 
 const Home = () => {
-  const { featuredSofa: sofa, featuredDinning: dinning, featuredKidsFurniture: kidsFurniture, featuredBed: bed, newProducts } = useFilterContext();
+  const {
+    featuredSofa: sofa,
+    featuredDinning: dinning,
+    featuredKidsFurniture: kidsFurniture,
+    featuredBed: bed,
+    newProducts,
+  } = useFilterContext();
 
   return (
     <div className="home ">
       <Slider />
 
       <div className="center gap-3">
-      <div>
-        <div className=" wrapper py-9  grid lg:grid-cols-3 sm:grid-cols-1 gap-6  mx-2">
-          {featureCardInfo.map((info, index) => (
-            <div key={index} className="px-2">
-              <FeatureCard {...info} />
-            </div>
-          ))}
+        <div>
+          <div className=" wrapper py-9  grid lg:grid-cols-3 sm:grid-cols-1 gap-6  mx-2">
+            {featureCardInfo.map((info, index) => (
+              <div key={index} className="px-2">
+                <FeatureCard {...info} />
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
       </div>
 
       <div className="wrapper between lg:flex-row flex-col gap-8">
-       
+        <Offer
+          offerPersentase="40%"
+          type="Furniture Light"
+          bg="#b5a99d"
+          image="/images/lamp.png"
+          offerType="Free Shipping"
+          id={39}
+        />
 
-        <Offer offerPersentase="40%" type="Furniture Light" bg="#b5a99d" image="/images/lamp.png" offerType="Free Shipping"  id={39}/>
-
-        <Offer offerPersentase="20%" type="Wood Egg " bg="#efefef" image="/images/egg.jpg" offerType="Free Shipping" id={38}/>
+        <Offer
+          offerPersentase="20%"
+          type="Wood Egg "
+          bg="#efefef"
+          image="/images/egg.jpg"
+          offerType="Free Shipping"
+          id={38}
+        />
       </div>
-      
 
       <div className="wrapper between lg:flex-row flex-col gap-8 mt-8">
-        <CollectionCard image={"/images/products/product.43.1.png"} title1={"Ceiling Light"} title2={"Colletion 39 Items"} otherClass={"center flex-col w-[290px]"} />
+        <CollectionCard
+          image={"/images/products/product.43.1.png"}
+          title1={"Ceiling Light"}
+          title2={"Colletion 39 Items"}
+          otherClass={"center flex-col w-[290px]"}
+        />
 
-        <CollectionCard image={"/images/products/product.42.2.png"} title1={"Sculp"} title2={"Colletion 50 Items"} otherClass={"center md:h-[476px] h-fit md:w-[50%] w-full"} />
+        <CollectionCard
+          image={"/images/products/product.42.2.png"}
+          title1={"Sculp"}
+          title2={"Colletion 50 Items"}
+          otherClass={"center md:h-[476px] h-fit md:w-[50%] w-full"}
+        />
 
-
-        <CollectionCard image={"/images/products/product.41.1.png"} title1={"Wall Light"} title2={"Latest Colletion 60 Items"} otherClass={" max-h-[476px]"} />
+        <CollectionCard
+          image={"/images/products/product.41.1.png"}
+          title1={"Wall Light"}
+          title2={"Latest Colletion 60 Items"}
+          otherClass={" max-h-[476px]"}
+        />
       </div>
 
       <div className="wrapper py-9 center flex-col">
@@ -72,27 +103,21 @@ const Home = () => {
           <div className="">
             <p className=" mb-3  text-base font-semibold">Bed</p>
             {bed.map((product) => (
-              <MiniProductCard
-                {...product}
-              />
+              <MiniProductCard {...product} />
             ))}
           </div>
           <div className="">
             <p className="  text-base mb-3">Sofa</p>
 
             {sofa.map((product) => (
-              <MiniProductCard
-              {...product}
-              />
+              <MiniProductCard {...product} />
             ))}
           </div>
           <div className="">
             <p className="font-semibold  text-base mb-3">Dinnig</p>
 
             {dinning.map((product) => (
-              <MiniProductCard
-              {...product}
-              />
+              <MiniProductCard {...product} />
             ))}
           </div>
           <div className="xl:block lg:hidden sm:block">
@@ -100,9 +125,7 @@ const Home = () => {
 
             <div className="">
               {kidsFurniture.map((product) => (
-                <MiniProductCard
-                {...product}
-                />
+                <MiniProductCard {...product} />
               ))}
             </div>
           </div>

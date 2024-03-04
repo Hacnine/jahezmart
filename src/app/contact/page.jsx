@@ -1,6 +1,9 @@
 import CustomBreadcrumbs from "../../components/common/ui/CustomBreadcrumbs";
 import React from "react";
 
+export const metadata = {
+  title: "Contact"
+}
 const ContactPage = () => {
   return (
     <>

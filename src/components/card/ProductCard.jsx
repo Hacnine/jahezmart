@@ -98,26 +98,22 @@ const ProductCard= ({
               setOpen={setOpenWishList}
               message={wishListMessage}
             >
-              <IconButton
+              <button
                 onClick={handleFavoriteClick}
-                sx={{
-                  bgcolor: "white",
-                  "&:hover": {
-                    bgcolor: "lightgray",
-                  },
-                }}
+                className=" p-1 bg-white hover:bg-gray-100 rounded-full"
+            
               >
                 {favorite ? (
                   <FavoriteIcon className="text-red-600 " />
                 ) : (
                   <FavoriteBorder className="text-red-600 " />
                 )}
-              </IconButton>
+              </button>
             </TooltipWrapper>
           </div>
 
           <button
-            className="w-full opacity-0 bg-orange-500  group-hover:opacity-100 absolute z-10 bottom-0 py-2 font-semibold text-white text-xs transition-color duration-300 rounded-bl-3xl rounded-tr-3xl"
+            className="w-full opacity-0 bg-orange-500  group-hover:opacity-100 absolute bottom-0 py-2 font-semibold text-white text-xs transition-color duration-300 rounded-bl-3xl rounded-tr-3xl "
             onClick={() => setModalOpen(true)}
           >
             Quick View

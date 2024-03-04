@@ -117,13 +117,14 @@ const MiniProductCard = ({
 
         <div
           className="absolute inset-0 bg-opacity-30 bg-blue-200 hover:bg-black
-          group-hover:bg-opacity-30 rounded-md transition-color duration-300 center gap-10 w-full"
+          group-hover:bg-opacity-30 rounded-md transition-color duration-300 center w-full"
         >
-          <div className="between  px-2 ">
-              <IconButton
+          <div className="between  px-2 w-full">
+              <button
                 onClick={handleCartClick}
-                size="small"
-                sx={{
+
+                className=" w-7 h-7 rounded-full bg-white center"
+                style={{
                   bgcolor: "white",
                   "&:hover": {
                     bgcolor: "lightgray",
@@ -135,13 +136,13 @@ const MiniProductCard = ({
                 ) : (
                   <BsCart className="text-red-600 text-base" />
                 )}
-              </IconButton>
+              </button>
 
         
-              <IconButton
+              <button
                 onClick={handleFavoriteClick}
-                size="small"
-                sx={{
+                className=" w-7 h-7 rounded-full bg-white center"
+                style={{
                   bgcolor: "white",
                   "&:hover": {
                     bgcolor: "lightgray",
@@ -153,7 +154,7 @@ const MiniProductCard = ({
                 ) : (
                   <FavoriteBorder className="text-red-600 text-base" />
                 )}
-              </IconButton>
+              </button>
           </div>
         </div>
       </div>
