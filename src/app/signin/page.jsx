@@ -1,7 +1,9 @@
 import { Checkbox, FormControlLabel } from "@mui/material";
 import React from "react";
 
-
+export const metadata = {
+  title: "SignIn"
+}
 const SignIn = () => {
   return (
     <div className="container py-16 text-sm">

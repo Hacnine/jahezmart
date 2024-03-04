@@ -9,7 +9,7 @@ import NavbarBadges from "../ui/NavbarBadges";
 const Navbar = () => {
   return (
     <Headroom>
-      <nav className=" bg-tan w-full lg:block md:hidden hidden shadow-md shadow-slate-300 ">
+      <nav className=" bg-tan w-full lg:block md:hidden hidden shadow-md shadow-slate-300 z-50">
         <div className="wrapper between ">
           <div className="px-8 py-5 bg-chocolate hover:bg-sandyBrown relative flex items center cursor-pointer  z-50 group">
             <span className="text-white capitalize ml-2 center font-sans gap-1">
