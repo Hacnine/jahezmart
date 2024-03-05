@@ -1,21 +1,13 @@
 "use client";
-import Image from "next/image";
 import React, { useEffect, useState } from "react";
-
-import { Box, Button, Fade, Modal } from "@mui/material";
+import {  Modal } from "@mui/material";
 import {
-  FavoriteBorder,
-  HeartBroken,
   Preview,
-  ShoppingCart,
 } from "@mui/icons-material";
-import IconButton from "@mui/material/IconButton";
-import FavoriteIcon from "@mui/icons-material/Favorite";
+import { MdFavoriteBorder,  MdFavorite } from "react-icons/md";
 import StarRating from "../common/ui/StarRating";
-import { BsCart, BsCartCheckFill, BsCartDash } from "react-icons/bs";
-import { BsCartFill } from "react-icons/bs";
+import { BsCart, BsCartCheckFill,  } from "react-icons/bs";
 import { useCartContext } from "../../context_reducer/cartContext";
-import TooltipWrapper from "../wrapper/TooltipWrapper";
 import Link from "next/link";
 import QuickView from "../common/ui/QuickView";
 import Scrollbars from "react-custom-scrollbars-2";
@@ -141,7 +133,7 @@ const MiniProductCard = ({
         
               <button
                 onClick={handleFavoriteClick}
-                className=" w-7 h-7 rounded-full bg-white center"
+                className=" size-7 rounded-full bg-white center"
                 style={{
                   bgcolor: "white",
                   "&:hover": {
@@ -150,9 +142,9 @@ const MiniProductCard = ({
                 }}
               >
                 {favorite ? (
-                  <FavoriteIcon className="text-red-600 text-base" />
+                  <MdFavorite  className="text-red-600 text-lg" />
                 ) : (
-                  <FavoriteBorder className="text-red-600 text-base" />
+                  <MdFavoriteBorder className="text-red-600 text-lg" />
                 )}
               </button>
           </div>

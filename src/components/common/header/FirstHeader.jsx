@@ -23,8 +23,8 @@ const FirstHeader = () => {
               href={"/home"}
               className={`${
                 pathName === "/home"
-                  ? " rounded-bl-xl rounded-tr-full border-2 p-1 border-orangeRed px-2 pr-4 bg-darkChocolate text-lightOrange"
-                  : "rounded-bl-xl rounded-tr-full border-2 p-1  px-2 pr-4"
+                  ? " rounded-bl-xl rounded-tr-full border-2 p-1  px-2 pr-4 bg-gray-300 "
+                  : "rounded-bl-xl rounded-tr-full border-2 bg-gray-200 p-1  px-2 pr-4"
               }`}
             >
               Home
@@ -33,8 +33,8 @@ const FirstHeader = () => {
               href={"/shop"}
               className={`${
                 pathName === "/shop"
-                  ? " rounded-bl-xl rounded-tr-full border-2 p-1 border-orangeRed px-2 pr-4 bg-darkChocolate text-lightOrange"
-                  : "rounded-bl-xl rounded-tr-full border-2 p-1  px-2 pr-4"
+                  ? "  rounded-bl-xl rounded-tr-full border-2 p-1  px-2 pr-4 bg-gray-300 "
+                  : "rounded-bl-xl rounded-tr-full border-2 bg-gray-200 p-1  px-2 pr-4"
               }`}
             >
               Shop
@@ -43,8 +43,8 @@ const FirstHeader = () => {
               href={"/about"}
               className={`${
                 pathName === "/about"
-                  ? " rounded-bl-xl rounded-tr-full border-2 p-1 border-orangeRed px-2 pr-4 bg-darkChocolate text-lightOrange"
-                  : "rounded-bl-xl rounded-tr-full border-2 p-1  px-2 pr-4"
+                  ? " rounded-bl-xl rounded-tr-full border-2 p-1  px-2 pr-4 bg-gray-300 "
+                  : "rounded-bl-xl rounded-tr-full border-2 bg-gray-200 p-1  px-2 pr-4"
               }`}
             >
               About
@@ -53,8 +53,8 @@ const FirstHeader = () => {
               href={"/contact"}
               className={`${
                 pathName === "/contact"
-                  ? " rounded-bl-xl rounded-tr-full border-2 p-1 border-orangeRed px-2 pr-4 bg-darkChocolate text-lightOrange"
-                  : "rounded-bl-xl rounded-tr-full border-2 p-1  px-2 pr-4"
+                  ? " rounded-bl-xl rounded-tr-full border-2 p-1  px-2 pr-4 bg-gray-300 "
+                  : "rounded-bl-xl rounded-tr-full border-2 bg-gray-200 p-1  px-2 pr-4"
               }`}
             >
               Contact

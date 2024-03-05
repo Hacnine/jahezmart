@@ -22,7 +22,7 @@ const CustomSlider = () => {
         <CustomSliderBackground image={"images/heroImage1.svg"} title1={"Transform "} title2={"your space with "} title3={"timeless elegance."}/>
         <CustomSliderBackground image={"images/heroImage2.svg"} title1={"Discover"} title2={" furniture that defines your style."} title3={""}/>
         <CustomSliderBackground image={"images/heroImage3.svg"} title1={"Elevate"} title2={" your home with our curated collection."} title3={""}/>
-        <CustomSliderBackground image={"images/heroImage4.svg"} title1={"Create"} title2={" the perfect "} title3={"ambiance"} title4={" with our decor"} title5={" essentials."}/>
+        <CustomSliderBackground image={"images/heroImage4.svg"} title1={"Craft"} title2={""} title3={"ideal ambiance "} title4={"  "} title5={" with decor."}/>
       </Slider>
     </div>
   );

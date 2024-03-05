@@ -26,7 +26,7 @@ const ShopSidebar = () => {
   return (
     <div className="mx-4 lg:mx-0   max-w-[310px] py-4">
       <div className="px-4 py-4 col-span-3 shadow-md shadow-gray-300 bg-white rounded-md">
-        <p className="text-base text-gray-800 font-extrabold mb-2">
+        <p className="text-base text-gray-800 font-semibold mb-2">
           CATEGORIES
         </p>
         {newCategory.map((item, index) => (
@@ -94,7 +94,7 @@ const ShopSidebar = () => {
           />
           <button
             type="submit"
-            className="text-orangeRed ml-5 rounded bg-darkChocolate p-1 px-2"
+            className="text-orangeRed ml-5 rounded bg-darkChocolate pt-0.5 pb-1 px-2"
           >
             Apply
           </button>

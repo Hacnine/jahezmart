@@ -100,7 +100,7 @@ const ProductCard= ({
             >
               <button
                 onClick={handleFavoriteClick}
-                className=" p-1 bg-white hover:bg-gray-100 rounded-full"
+                className=" size-10  bg-white hover:bg-gray-100 rounded-full"
             
               >
                 {favorite ? (

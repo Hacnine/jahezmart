@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
 import Slider from "../../components/slider/HeroImageSlider";
-
 import { featureCardInfo, shopByCategory } from "../../constant/index";
 import ShopByCategory from "../../components/common/ShopByCategory";
 import "../customcss.css";
@@ -24,7 +23,7 @@ const Home = () => {
   } = useFilterContext();
 
   return (
-    <div className="home ">
+    <div className="home space-y-8">
       <Slider />
 
       <div className="center gap-3">

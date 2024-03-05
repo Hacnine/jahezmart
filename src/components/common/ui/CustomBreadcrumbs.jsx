@@ -26,13 +26,14 @@ const CustomBreadcrumbs = ({ links, textColor }) => {
         separator="›"
         aria-label="breadcrumb"
         sx={{ color: textColor ? "white" : "#aa4400" }}
+        className="flex items-center"
       >
         <Link color="inherit" href="/">
           <Home />
         </Link>
 
         {linkArray.map((linkItem) => (
-          <Link key={linkItem.link} href={linkItem.link} className="capitalize text-sm">
+          <Link key={linkItem.link} href={linkItem.link} className="capitalize text-sm font-semibold">
             {linkItem.linkName}
           </Link>
         ))}
