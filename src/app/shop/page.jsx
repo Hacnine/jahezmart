@@ -40,8 +40,8 @@ const Shop = () => {
 
   // Later, when an event occurs (e.g., button click):
   // Pass the event to the curried function without causing infinite loops
-  handleSearchForSingle(event);
-  console.log(primaryFilteredProducts);
+  // handleSearchForSingle(event);
+  // console.log(primaryFilteredProducts);
   return (
     <>
       <div className="wrapper grid grid-cols-12 pb-12">

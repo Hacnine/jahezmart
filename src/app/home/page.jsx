@@ -12,7 +12,7 @@ import MiniProductCard from "../../components/card/MiniProductCard";
 import Offer from "../../components/common/Offer";
 import CollectionCard from "../../components/card/CollectionCard";
 import FeatureCard from "../../components/common/FeatureCard";
-
+import '../customcss.css'
 const Home = () => {
   const {
     featuredSofa: sofa,
@@ -98,6 +98,11 @@ const Home = () => {
           Featured Products
         </p> */}
         <img src="/images/titles/featured.svg" className="mb-9" alt="" />
+        {bed.length === 0?
+        <div className="secondLoader">
+        
+        </div>
+        :
         <div className="grid  xl:grid-cols-4 lg:grid-cols-3 grid-cols-2  gap-3">
           <div className="">
             <p className=" mb-3  text-base font-semibold">Bed</p>
@@ -129,6 +134,8 @@ const Home = () => {
             </div>
           </div>
         </div>
+        
+        }
       </div>
 
       <div className="wrapper w-full">
@@ -137,7 +144,11 @@ const Home = () => {
 
       <div className="wrapper py-9 center flex-col">
         <img src="/images/titles/new.svg" className="mb-9" alt="" />
-
+        {newProducts.length === 0?
+        <div className="secondLoader">
+        
+        </div>
+        :
         <div className="grid lg:grid-cols-4 grid-cols-2 gap-6 ">
           {newProducts.map((product) => (
             <ProductCard
@@ -159,6 +170,8 @@ const Home = () => {
             />
           ))}
         </div>
+        }
+        
       </div>
     </div>
   );

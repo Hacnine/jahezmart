@@ -119,3 +119,73 @@
      
     
   }
+
+
+  .loader {
+    position: relative;
+    width: 100px;
+    height: 16px;
+  }
+  .loader:before , .loader:after{
+    content: "";
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: orangered;
+    box-shadow: 32px 0 orangered;
+    left: 0;
+    top: 0;
+    animation: ballMoveX 1s linear infinite;
+  }
+  .loader:after {
+    box-shadow: none;
+    transform-origin: 40px 0;
+    transform: rotate(-153deg);
+    animation: rotateLoader 1s linear infinite;
+  }
+
+  @keyframes rotateLoader {
+    0% , 10%{ transform: rotate(-153deg); }
+    90%, 100% { transform: rotate(0deg); }
+  }
+  @keyframes ballMoveX {
+    0% , 10%{  transform: translateX(0) }
+    90%, 100% { transform: translateX(32px) }
+  }
+
+
+
+
+  .secondLoader {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    position: relative;
+    animation: rotate 1s linear infinite
+  }
+  .secondLoader::before , .secondLoader::after {
+    content: "";
+    box-sizing: border-box;
+    position: absolute;
+    inset: 0px;
+    border-radius: 50%;
+    border: 5px solid #FFF;
+    animation: prixClipFix 2s linear infinite ;
+  }
+  .secondLoader::after{
+    inset: 8px;
+    transform: rotate3d(90, 90, 0, 180deg );
+    border-color: #FF3D00;
+  }
+  
+  @keyframes rotate {
+    0%   {transform: rotate(0deg)}
+    100%   {transform: rotate(360deg)}
+  }
+  
+  @keyframes prixClipFix {
+      0%   {clip-path:polygon(50% 50%,0 0,0 0,0 0,0 0,0 0)}
+      50%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 0,100% 0,100% 0)}
+      75%, 100%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,100% 100%,100% 100%)}
+  }
