@@ -1,16 +1,15 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import {  Modal } from "@mui/material";
-import {
-  Preview,
-} from "@mui/icons-material";
-import { MdFavoriteBorder,  MdFavorite } from "react-icons/md";
+import { Modal } from "@mui/material";
+import { Preview } from "@mui/icons-material";
+import { MdFavoriteBorder, MdFavorite } from "react-icons/md";
 import StarRating from "../common/ui/StarRating";
-import { BsCart, BsCartCheckFill,  } from "react-icons/bs";
+import { BsCart, BsCartCheckFill } from "react-icons/bs";
 import { useCartContext } from "../../context_reducer/cartContext";
 import Link from "next/link";
 import QuickView from "../common/ui/QuickView";
 import Scrollbars from "react-custom-scrollbars-2";
+import { useRouter } from "next/navigation";
 
 const MiniProductCard = ({
   id,
@@ -51,9 +50,7 @@ const MiniProductCard = ({
   const [index, setIndex] = useState(0);
 
   const firstColorKey = Object.keys(images)[index];
-  const firstImagePath = (images )[
-    firstColorKey
-  ]?.[0];
+  const firstImagePath = images[firstColorKey]?.[0];
 
   const handleFavoriteClick = () => {
     setFavorite(!favorite);
@@ -71,7 +68,6 @@ const MiniProductCard = ({
       });
     }
   };
-
 
   useEffect(() => {
     const existingProduct = wishListProducts.find((item) => item.id === id);
@@ -100,6 +96,12 @@ const MiniProductCard = ({
     }
   };
 
+  const router = useRouter()
+  const updateQuery = ()=>{
+    const queryString = `/id=${id}&&name=${name}`;
+    router.push(`/shop${queryString}`);
+  }
+
   return (
     <div className=" mb-2 relative group  rounded-md overflow-hidden  start md:flex-row flex-col md:w-[276px] md:h-[95px] w-full">
       <div className="w-fit h-fit relative  group overflow-hidden">
@@ -111,51 +113,50 @@ const MiniProductCard = ({
           className="absolute inset-0 bg-opacity-30 bg-blue-200 hover:bg-black
           group-hover:bg-opacity-30 rounded-md transition-color duration-300 center w-full"
         >
-          <div className="between  px-2 w-full">
-              <button
-                onClick={handleCartClick}
+          <div className="between relative px-2 w-full">
+            <button
+              onClick={handleCartClick}
+              className=" w-7 h-7 rounded-full bg-white center"
+              style={{
+                bgcolor: "white",
+                "&:hover": {
+                  bgcolor: "lightgray",
+                },
+              }}
+            >
+              {cart ? (
+                <BsCartCheckFill className="text-red-600 text-base" />
+              ) : (
+                <BsCart className="text-red-600 text-base" />
+              )}
+            </button>
 
-                className=" w-7 h-7 rounded-full bg-white center"
-                style={{
-                  bgcolor: "white",
-                  "&:hover": {
-                    bgcolor: "lightgray",
-                  },
-                }}
-              >
-                {cart ? (
-                  <BsCartCheckFill className="text-red-600 text-base" />
-                ) : (
-                  <BsCart className="text-red-600 text-base" />
-                )}
-              </button>
-
-        
-              <button
-                onClick={handleFavoriteClick}
-                className=" size-7 rounded-full bg-white center"
-                style={{
-                  bgcolor: "white",
-                  "&:hover": {
-                    bgcolor: "lightgray",
-                  },
-                }}
-              >
-                {favorite ? (
-                  <MdFavorite  className="text-red-600 text-lg" />
-                ) : (
-                  <MdFavoriteBorder className="text-red-600 text-lg" />
-                )}
-              </button>
+            <button
+              className=" opacity-0   group-hover:opacity-100  z-10 w-fit px-2  bg-orangeRed/70 py-1 font-semibold text-white text-xs transition-color duration-300 rounded-tl-full rounded-tr-full"
+              onClick={() => setModalOpen(true)}
+            >
+              <Preview />
+            </button>
+            <button
+              onClick={handleFavoriteClick}
+              className=" size-7 rounded-full bg-white center"
+              style={{
+                bgcolor: "white",
+                "&:hover": {
+                  bgcolor: "lightgray",
+                },
+              }}
+            >
+              {favorite ? (
+                <MdFavorite className="text-red-600 text-lg" />
+              ) : (
+                <MdFavoriteBorder className="text-red-600 text-lg" />
+              )}
+            </button>
           </div>
         </div>
       </div>
-      <button
-        className="left-0 opacity-0   group-hover:opacity-100 absolute z-10 w-fit px-2 bottom-0 bg-orangeRed py-1 font-semibold text-white text-xs transition-color duration-300 rounded-md"
-        onClick={() => setModalOpen(true)}
-      >
-        <Preview />
-      </button>
+
       <Modal
         open={modalOpen}
         onClose={() => setModalOpen(false)}
@@ -175,9 +176,8 @@ const MiniProductCard = ({
         </div>
       </Modal>
 
-      <div className=" p-3 w-full cursor-pointer ">
-        <Link href={`shop/${id}`}>
-          <h3 className=" font-bold text-gray-700 uppercase leading-5 md:text-xs text-sm hover:text-chocolate">
+      <div className=" p-3 w-full cursor-pointer " onClick={updateQuery}>
+          <h3 className=" font-bold text-gray-700 uppercase leading-5 md:text-xs text-sm hover:text-chocolate" >
             {name}
           </h3>
 
@@ -188,7 +188,6 @@ const MiniProductCard = ({
           <div className="start text-xs">
             <StarRating rating={rating} reviews={reviews} />
           </div>
-        </Link>
       </div>
     </div>
   );

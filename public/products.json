@@ -1189,9 +1189,7 @@
     "colors": ["WhiteSmoke"],
     "images": {
       "WhiteSmoke": [
-        "/images/products/product27.1.jpg",
-        "/images/products/product27.2.jpg"
-      ]
+        "/images/products/product27.1.jpg"      ]
     },
     "brand": "Jordan",
     "description": [],

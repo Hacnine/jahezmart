@@ -1,17 +1,50 @@
+"use client";
 import React from "react";
 import Link from "next/link";
-const SummaryCard = () => {
+import { useRouter } from "next/navigation";
+import { useCartContext } from "../../context_reducer/cartContext";
+const SummaryCard = ({ children }) => {
+  const { cartProducts } = useCartContext();
+
+  const router = useRouter();
+
+  const handleClick = () => {
+    if (children === "Place Order") {
+      router.push("/shop");
+    } else if (children === "Checkout") {
+      router.push("/account/cart/checkout");
+    } else {
+    }
+  };
   return (
-    <div className="w-[276px] space-y-4 col-span-4 shadow rounded ml-9 p-6 ext-base font-sans">
-      <p className="text-gray-600 text-lg text font-semibold">ORDER SUMMARY</p>
-      <div className="flex justify-between">
-        <div>
-          <p className="font-semibold text-gray-600 text-base">Lorem Product</p>
-          <p className="text-gray-500 text-sm">Size M</p>
-        </div>
-        <span className="font-sm text-gray-500">x3</span>
-        <span className="font-semibold text-gray-600">$560</span>
-      </div>
+    <div className="w-[276px] space-y-4 col-span-4 shadow rounded ml-9 p-6 text-sm font-sans">
+      <p className="text-gray-600 text-base font-semibold">ORDER SUMMARY</p>
+          {cartProducts.map((product) => (
+            <div className="between w-full">
+              <p
+                className="text-sm font-semibold text-gray-600 "
+                style={{
+                  overflow: "hidden",
+                  whiteSpace: "nowrap",
+                  textOverflow: "ellipsis",
+                  width: "7rem",
+                }}
+              >
+                {product.name}
+              </p>
+
+              <span className="text-xs font-semibold text-gray-500">
+                x{product.quantity}
+              </span>
+              <div>
+                {" "}
+                <span className="text-xs text-orangeRed">
+                  <span className=" font-extrabold">৳</span>
+                  {product.quantity} * {product.price}
+                </span>
+              </div>
+            </div>
+          ))}
       <div className="flex justify-between">
         <p className="font-semibold text-gray-600 text-base">Shipping</p>
         <span className="font-semibold text-gray-600">$40</span>
@@ -32,14 +65,15 @@ const SummaryCard = () => {
           <span className="text-orangeRed">terms and conditions</span>
         </label>
       </div>
-      <Link href={"/account/cart/checkout"}>
-        <button
-          type="submit"
-          className=" block text-center bg-orangeRed w-full rounded-md text-white h-10  ring-1 hover:bg-transparent hover:text-orangeRed ring-orangeRed mt-4"
-        >
-          Place Order
-        </button>
-      </Link>
+      {/* <Link href=""> */}
+      <button
+        type="submit"
+        className=" block text-center bg-orangeRed w-full rounded-md text-white h-10  ring-1 hover:bg-transparent hover:text-orangeRed ring-orangeRed mt-4"
+        onClick={handleClick}
+      >
+        {children}
+      </button>
+      {/* </Link> */}
     </div>
   );
 };

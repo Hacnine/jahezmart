@@ -20,7 +20,7 @@ const FirstHeader = () => {
         <div className="lg:flex items-center justify-between flex-grow pl-12 text-gray-600  hidden font-semibold">
           <div className="flex items-center  flex-grow space-x-6 capitalize ">
             <Link
-              href={"/home"}
+              href="/home"
               className={`${
                 pathName === "/home"
                   ? " rounded-bl-xl rounded-tr-full border-2 p-1  px-2 pr-4 bg-gray-300 "
@@ -30,7 +30,7 @@ const FirstHeader = () => {
               Home
             </Link>
             <Link
-              href={"/shop"}
+              href="/shop"
               className={`${
                 pathName === "/shop"
                   ? "  rounded-bl-xl rounded-tr-full border-2 p-1  px-2 pr-4 bg-gray-300 "
@@ -40,7 +40,7 @@ const FirstHeader = () => {
               Shop
             </Link>
             <Link
-              href={"/about"}
+              href="/about"
               className={`${
                 pathName === "/about"
                   ? " rounded-bl-xl rounded-tr-full border-2 p-1  px-2 pr-4 bg-gray-300 "
@@ -50,7 +50,7 @@ const FirstHeader = () => {
               About
             </Link>
             <Link
-              href={"/contact"}
+              href="/contact"
               className={`${
                 pathName === "/contact"
                   ? " rounded-bl-xl rounded-tr-full border-2 p-1  px-2 pr-4 bg-gray-300 "

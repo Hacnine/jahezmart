@@ -4,6 +4,7 @@ import { ShoppingCart } from "@mui/icons-material";
 import { useCartContext } from "../../context_reducer/cartContext";
 import Link from "next/link";
 import TooltipWrapper from "../wrapper/TooltipWrapper";
+import { useRouter } from "next/navigation";
 
 const SearchbarMiniProductCard= ({
   id,
@@ -28,9 +29,18 @@ const SearchbarMiniProductCard= ({
     firstColorKey
   ]?.[0];
 
+  const router = useRouter();
+
+  const updateSearchParams = () => {
+    const searchParams = new URLSearchParams(window.location.search);
+    const queryString = `/id=${id}&&name=${name}`;
+    router.push(`/shop${queryString}`);
+  };
+
+
   return (
     <div className=" mb-2 relative  rounded-md overflow-hidden rounded-tr-3xl rounded-bl-3xl center  w-[350px] h-[95px] border-b border-l z-50">
-      <div className="w-fit h-fit relative group overflow-hidden">
+      <div className="w-fit h-fit relative group overflow-clip">
         <div className="start relative group  ">
           <img src={firstImagePath} alt="" className="w-[65%]  h-[55%] " />
         </div>
@@ -61,19 +71,20 @@ const SearchbarMiniProductCard= ({
       </div>
 
       <div className=" p-3 w-full ">
-        <Link href={`shop/${id}`}>
+        {/* <Link href={`/shop/${id}`}> */}
           <h3
-            className=" font-semibold uppercase leading-5 text-[11px]  hover:text-chocolate"
+            className=" font-semibold font-sans uppercase leading-5 text-xs  hover:text-chocolate cursor-pointer"
             style={{
               overflow: "hidden",
               whiteSpace: "nowrap",
               textOverflow: "ellipsis",
               width: "8rem",
             }}
+            onClick={updateSearchParams}
           >
             {name}
           </h3>
-        </Link>
+        {/* </Link> */}
         <span className="font-extrabold text-xs text-red-600 leading-5">
           <span className=" font-extrabold"> ৳</span> {price}
         </span>

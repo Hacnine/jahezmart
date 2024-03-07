@@ -56,10 +56,10 @@ const CategorySlider = ({ category }) => {
   };
 
   return (
-    <div className=" h-full  w-full  ">
+    <div className=" h-full  w-full ">
       <Slider {...settings}>
-        {categoryProducts.map((product) => (
-          <div className=" px-6">
+        {categoryProducts.map((product, index) => (
+          <div className=" px-6" key={index}>
             <ProductCard {...product} />
           </div>
         ))}

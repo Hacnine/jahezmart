@@ -18,7 +18,7 @@ const Cart = () => {
         </div>
       </div>
       <div className="w-fit mt-28 mb-20 shadow-sm">
-        <SummaryCard/>
+        <SummaryCard children={"Checkout"}/>
       </div>
     </div>
   );

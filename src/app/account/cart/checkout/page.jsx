@@ -72,7 +72,7 @@ const Checkout = () => {
       </div>
     </div>
     {/* <div className="col-span-4 border border-gray-300 rounded ml-9 p-6"> */}
-      <SummaryCard/>
+      <SummaryCard children={"Place Order"}/>
     {/* </div> */}
   </div>
   {/* Checkout Wrapper Ends*/}

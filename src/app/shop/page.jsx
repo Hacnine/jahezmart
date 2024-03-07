@@ -6,15 +6,19 @@ import AllProducts from "../../components/common/ui/AllProducts";
 import CustomBreadcrumbs from "../../components/common/ui/CustomBreadcrumbs";
 import { useFilterContext } from "../../context_reducer/filterContext";
 import { GridView, Menu, TableRows } from "@mui/icons-material";
-
 import React, { useState } from "react";
 
+// export const generateMetadata = ({params}) =>{
+//   return {
+//     title:`Product ${params.productId}`
+//   };
+// }
+
 const Shop = () => {
+
   const {
     allProducts,
-    sortingProduct,
-    updateFilteredProducts,
-    filteredProducts,
+    sortingProduct
   } = useFilterContext();
 
   const [open, setOpen] = useState(false);

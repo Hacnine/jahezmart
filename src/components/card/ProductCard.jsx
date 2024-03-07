@@ -1,9 +1,9 @@
-"use client"
+"use client";
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 
-import { Modal} from "@mui/material";
-import { FavoriteBorder} from "@mui/icons-material";
+import { Modal } from "@mui/material";
+import { FavoriteBorder } from "@mui/icons-material";
 import IconButton from "@mui/material/IconButton";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import StarRating from "../common/ui/StarRating";
@@ -14,7 +14,8 @@ import { CgShoppingCart } from "react-icons/cg";
 import TooltipWrapper from "../wrapper/TooltipWrapper";
 import Scrollbars from "react-custom-scrollbars-2";
 import QuickView from "../common/ui/QuickView";
-const ProductCard= ({
+import { useRouter } from "next/navigation";
+const ProductCard = ({
   id,
   name,
   category,
@@ -44,9 +45,7 @@ const ProductCard= ({
   const [favorite, setFavorite] = useState(false);
   const [index, setIndex] = useState(0);
   const firstColorKey = Object.keys(images)[index];
-  const firstImagePath = (images)[
-    firstColorKey
-  ]?.[0];
+  const firstImagePath = images[firstColorKey]?.[0];
 
   const handleFavoriteClick = () => {
     setFavorite(!favorite);
@@ -73,6 +72,16 @@ const ProductCard= ({
       setFavorite(false);
     }
   }, [wishListProducts, id]);
+
+  
+  const router = useRouter()
+  const updateQuery = ()=>{
+    const queryString = `/id=${id}&&name=${name}`;
+    // router.push(`/shop${queryString}`);
+    router.replace(`/shop${queryString}`);
+    // router.back();
+    // router.forward();
+  }
 
   return (
     <div className=" hover:cursor-pointer relative group shadow-md shadow-slate-300 w-full rounded-md overflow-hidden rounded-tr-3xl rounded-bl-3xl">
@@ -101,7 +110,6 @@ const ProductCard= ({
               <button
                 onClick={handleFavoriteClick}
                 className=" size-10  bg-white hover:bg-gray-100 rounded-full"
-            
               >
                 {favorite ? (
                   <FavoriteIcon className="text-red-600 " />
@@ -157,20 +165,21 @@ const ProductCard= ({
           })}
         </div>
 
-        <Link href={`/shop/${id}`}>
+        <div onClick={updateQuery}>
           <h3 className="  font-bold uppercase text-gray-600  md:text-sm text-[10px] hover:text-chocolate pt-1.5 pl-3">
             {name}
           </h3>
-        </Link>
-        <p className="flex  md:text-[16px] leading-[38px] font-bold text-sandyBrown px-3">
-          <span className=" text-base text-gray-600 self-start md:text-[16px] sm:text-[10px] text-[9px] font-extrabold  leading-[17px] ">
-            ৳
-          </span>
-          {price}
-          <span className="self-end text-[14px] leading-[17px] font-medium">
-            /1 item
-          </span>
-        </p>
+
+          <p className="flex  md:text-[16px] leading-[38px] font-bold text-sandyBrown px-3">
+            <span className=" text-base text-gray-600 self-start md:text-[16px] sm:text-[10px] text-[9px] font-extrabold  leading-[17px] ">
+              ৳
+            </span>
+            {price}
+            <span className="self-end text-[14px] leading-[17px] font-medium">
+              /1 item
+            </span>
+          </p>
+        </div>
 
         <div className="block group-hover:opacity-0 opacity-100 start px-3 md:pb-2 pb-5 ">
           <StarRating rating={rating} reviews={reviews} />

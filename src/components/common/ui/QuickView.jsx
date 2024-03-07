@@ -19,7 +19,6 @@ const QuickView = ({ id, modal }) => {
   const { allProducts, getProductById } = useFilterContext();
 
   const product = getProductById(id);
-  console.log(product);
 
   const { brand,category,colors,description,discount,full_details,images,name,price,quantity, rating,recommended,reviews,stock,
   } = product;
@@ -95,7 +94,7 @@ const QuickView = ({ id, modal }) => {
 
   return (
     <>
-      <div className=" grid grid-cols-2 ">
+      <div className=" grid grid-cols-2  overflow-hidden md:px-0 px-4">
         <div className="sm:col-span-1 col-span-2 center flex-col">
           <img
             src={firstImagePath}
@@ -105,9 +104,9 @@ const QuickView = ({ id, modal }) => {
 
           <div className="grid grid-cols-5 items-center justify-between mt-3 gap-3 mb-6">
             {Object.keys(images).map((color, index2) =>
-              images[color].map((imageUrl) => (
+              images[color].map((imageUrl, index) => (
                 <img
-                  key={`${color}-${index}`}
+                  key={index}
                   src={imageUrl}
                   alt=""
                   className="border border-1  w-full h-full object-cover transform transition-transform hover:scale-110 hover: cursor-pointer rounded-md shadow-blue-200 shadow-md"
@@ -150,7 +149,7 @@ const QuickView = ({ id, modal }) => {
                 <div className="flex items-center my-2 gap-1 text-colorRed font-semibold">
                   <p className="font-semibold text-gray-600 ">Discount:</p>
                   <p className="text-sm">{discount}</p>
-                  <LuBadgePercent className="text-green-600  text-xl" />
+                  <LuBadgePercent className="text-colorRed  text-xl" />
                 </div>
               ) : null}
             </>
