@@ -29,7 +29,7 @@ const FirstHeader = () => {
           <div className="flex items-center  flex-grow space-x-6 capitalize ">
             <button
               onClick={() => {
-                router.replace("/home");
+                router.replace("home");
               }}
               className={`${
                 pathName === "/home"
@@ -41,7 +41,7 @@ const FirstHeader = () => {
             </button>
             <button
               onClick={() => {
-                router.replace("/shop");
+                router.push("shop");
               }}
               className={`${
                 pathName === "/shop"
