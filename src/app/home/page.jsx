@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import Link from "next/link";
 import Slider from "../../components/slider/HeroImageSlider";
 import { featureCardInfo, shopByCategory } from "../../constant/index";
 import ShopByCategory from "../../components/common/ShopByCategory";
@@ -97,7 +98,10 @@ const Home = () => {
         {/* <p className="text-3xl font-medium text-gray-800 uppercase mb-6">
           Featured Products
         </p> */}
+        <Link href="/account/cart">
         <img src="/images/titles/featured.svg" className="mb-9" alt="" />
+        </Link>
+        
         {bed.length === 0?
         <div className="secondLoader">
         
@@ -143,7 +147,7 @@ const Home = () => {
       </div>
 
       <div className="wrapper py-9 center flex-col">
-        <img src="/images/titles/new.svg" className="mb-9" alt="" />
+        <img src="/images/titles/new.svg"  className="mb-9" alt="" />
         {newProducts.length === 0?
         <div className="secondLoader">
         
