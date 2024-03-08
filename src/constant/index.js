@@ -1,3 +1,12 @@
+export const accountSidebar = [
+  { label: " Manage account", link: "/account/manageaccount",},
+  { label: "profile", link: "/account/profile" },
+  { label: "shipping address", link: "/account/shippingaddress" },
+  { label: "billing address", link: "/account/billingaddress" },
+  { label: "change password", link: "/account/changepassword" },
+
+];
+
 export const MY_ACCOUNT = [
   { label: "Orders", link: "/orders" },
   { label: "Wishlist", link: "/wishlist" },

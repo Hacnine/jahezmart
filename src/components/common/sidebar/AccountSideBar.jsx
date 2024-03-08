@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import {
   Badge,
@@ -7,17 +7,18 @@ import {
   Logout,
   Payment,
 } from "@mui/icons-material";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import React from "react";
 import { MdAccountTree } from "react-icons/md";
+import { accountSidebar } from "../../../constant";
 
 const AccountSideBar = () => {
   const link = usePathname();
+  const router = useRouter();
 
   return (
     <div className="text-base font-sans md:px-0 px-6">
-      <div className=" rounded-md shadow-md shadow-gray-300 md:w-fit ">
+      <div className=" rounded-md shadow-md shadow-gray-300 md:w-fit hover:scale-105 transition-transform duration-500">
         <div
           className="p-4 bg-white  md:flex md:items-center  md:w-[233px] w-full gap-4  rounded-md 
        "
@@ -38,140 +39,119 @@ const AccountSideBar = () => {
       {/* <!-- Account Profile End --> */}
 
       {/* <!-- Profile links --> */}
-      <div className="bg-white md:w-fit w-full col-start-1 mt-6   rounded divide-y  text-gray-600 gap-4 mb-7">
-        <div className="space-y-1  p-4  md:w-[233px] rounded-md  shadow-md shadow-gray-300">
-          <Link
-            href="/account/manageaccount"
-            className={`${
-              link === "/account/manageaccount" ? "text-orangeRed" : "text-gray-600  "
-            } start gap-2 block font-semibold `}
-          >
-            <span className="t">
-              <MdAccountTree className="text-xl " />
-            </span>
-            Manage account
-          </Link>
-
-          <div className="pl-8">
-            <Link
-              href="/account/profile"
-              className={`${
-                link === "/account/profile" ? "text-orangeRed" : "text-gray-600  "
-              }   hover:text-orangeRed block  capitalize transition text-sm mb-1`}
-            >
-              Profile info
-            </Link>
-
-            <Link
-              href="/account/shippingaddress"
-              className={`${
-                link === "/account/shippingaddress"
-                  ? "text-orangeRed"
-                  : "text-gray-600  hover:text-orangeRed "
-              }  capitalize transition  pt-2  text-sm`}
-            >
-              Shipping Address
-            </Link>
-            {""}
-            <div className="pt-2">
-              <Link
-                href="/account/billingaddress"
+      <div className="bg-white md:w-fit w-full col-start-1 mt-6   rounded divide-y  text-gray-600 gap-4 mb-7 ">
+        {" "}
+        <div className="space-y-1  p-3  md:w-[233px] rounded-md  shadow-md shadow-gray-300 flex items-start mb-3 hover:scale-105 transition-transform duration-500">
+          {" "}
+          <div className={` space-y-2 text-gray-600`}>
+            {accountSidebar.map((item, index) => (
+              <button
+                onClick={() => {
+                  router.replace(item.link);
+                }}
                 className={`${
-                  link === "/account/billingaddress"
-                    ? "text-orangeRed"
-                    : "text-gray-600  hover:text-orangeRed "
-                }  capitalize transition    text-sm`}
-              >
-                Billing Address
-              </Link>
-            </div>
+                  link === item.link ? "text-orangeRed" : "text-gray-600  "
+                } start gap-2 block font-semibold capitalize hover:text-orangeRed  ${index===0? "text-base ml-0":"ml-7 text-sm"}`}
+                key={index}
+              >{index === 0? <span className="mt-1 ">
+              <MdAccountTree  className=" text-xl hover:text-orangeRed cursor-pointer" />
+            </span>: null}
+                {item.label}
+              </button>
 
-            <Link
-              href="/account/changepassword"
-              className={`${
-                link === "/account/changepassword" ? "text-orangeRed" : "text-gray-600  "
-              }  hover:text-orangeRed block pt-2 capitalize transition text-sm mb-1`}
-            >
-              Change Password
-            </Link>
+              // <div className="pl-8">
+
+              // </div>
+            ))}
           </div>
         </div>
 
-        <div className="space-y-1 mt-3 p-2  rounded-md shadow-md shadow-gray-300 ">
-          <Link
-            href="/account/order/orderhistory"
+        <div className="space-y-1 mt-3 p-2  rounded-md shadow-md shadow-gray-300 hover:scale-105 transition-transform duration-500">
+          <button
             className={`${
-              link === "/account/order/orderhistory" ? "text-orangeRed" : "text-gray-600  "
-            }  start gap-2 block capitalize font-semibold`}
+              link === "/account/order/orderhistory"
+                ? "text-orangeRed"
+                : "text-gray-600  "
+            } hover:text-orangeRed start gap-2 block capitalize font-semibold`}
+            onClick={() => {
+              router.replace("/account/order/orderhistory");
+            }}
           >
             <span className="">
               <BorderColor />
             </span>
             Order History
-          </Link>
+          </button>
 
           <div className="pl-8">
-            <Link
-              href="/account/order/returns"
+            <button
               className={`${
-                link === "/account/order/returns" ? "text-orangeRed" : "text-gray-600  "
-              }   hover:text-orangeRed block  capitalize transition text-sm mb-1`}
+                link === "/account/order/returns"
+                  ? "text-orangeRed"
+                  : "text-gray-600  "
+              }   hover:text-orangeRed block  capitalize transition text-sm mb-1 `}
+              onClick={() => {
+                router.replace("/account/order/returns");
+              }}
             >
               {" "}
               Returns
-            </Link>
+            </button>
           </div>
         </div>
-
-        <div className="space-y-1  mt-3 p-2  rounded-md shadow-md shadow-gray-300  ">
-          <Link
-            href="/account/payment"
+        <div className="space-y-1  mt-3 p-2  rounded-md shadow-md shadow-gray-300  hover:scale-105 transition-transform duration-500">
+          <button
             className={`${
               link === "/account/payment" ? "text-orangeRed" : "text-gray-600  "
-            } start gap-2 block capitalize  font-semibold  `}
+            } start gap-2 block capitalize  font-semibold hover:text-orangeRed `}
+            onClick={() => {
+              router.replace("/account/payment");
+            }}
           >
             <span className=" text-base">
               <Payment />
             </span>
             Payments Method
-          </Link>
-          <Link
-            href="/account/voucher"
+          </button>
+          <button
             className={`${
               link === "/account/voucher" ? "text-orangeRed" : "text-gray-600  "
             }  pl-8 hover:text-orangeRed block  capitalize transition text-sm`}
+            onClick={() => {
+              router.replace("/account/voucher");
+            }}
           >
             Voucher
-          </Link>
+          </button>
         </div>
-
-        <div className="space-y-1 mt-3 p-2  rounded-md shadow-md shadow-gray-300  ">
-          <Link
-            href="/account/wishlist"
+          <button
             className={`${
-              link === "/account/wishlist" ? "text-orangeRed" : "text-gray-600  "
-            }  start gap-2 block font-medium capitalize`}
+              link === "/account/wishlist"
+                ? "text-orangeRed"
+                : "text-gray-600  "
+            }  start gap-2 block font-medium capitalize hover:text-orangeRed hover:scale-105 transition-transform duration-500 space-y-1 mt-3 p-2  rounded-md shadow-md shadow-gray-300 w-full`}
+            onClick={() => {
+              router.replace("/account/wishlist");
+            }}
           >
             <span className=" text-base font-semibold">
               <Favorite />
             </span>
             <p className="font-semibold"> Wish List</p>
-          </Link>
-        </div>
-
-        <div className="space-y-1  mt-3 p-2  rounded-md shadow-md shadow-gray-300  ">
-          <Link
-            href="/signin"
+          </button>
+          <button
             className={`${
               link === "/account/signin" ? "text-orangeRed" : "text-gray-600  "
-            }  `}
+            } hover:text-orangeRed space-y-1  mt-3 p-2  rounded-md shadow-md shadow-gray-300 start  w-full hover:scale-105 transition-transform duration-500`}
+            onClick={() => {
+              router.replace("/signin");
+            }}
           >
-            <span className=" text-base">
+            <span className=" mr-2 text-base">
               <Logout />
             </span>
             Log Out
-          </Link>
-        </div>
+          </button>
       </div>
     </div>
   );

@@ -10,7 +10,6 @@ import StarRating from "../common/ui/StarRating";
 import ColorButton from "../buttons/ColorButton";
 import { useCartContext } from "../../context_reducer/cartContext";
 import { CgShoppingCart } from "react-icons/cg";
-
 import TooltipWrapper from "../wrapper/TooltipWrapper";
 import Scrollbars from "react-custom-scrollbars-2";
 import QuickView from "../common/ui/QuickView";
@@ -35,6 +34,7 @@ const ProductCard = ({
     wishListProducts,
     removeFromWishList,
   } = useCartContext();
+  const router = useRouter();
 
   const [modalOpen, setModalOpen] = useState(false);
   const [selected, setSelected] = useState(colors[0]);
@@ -74,7 +74,7 @@ const ProductCard = ({
   }, [wishListProducts, id]);
 
   
-  const router = useRouter()
+
   const updateQuery = ()=>{
     const queryString = `/id=${id}&&name=${name}`;
     // router.push(`/shop${queryString}`);

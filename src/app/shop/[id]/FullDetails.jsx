@@ -56,7 +56,7 @@ const Page = ({ params }) => {
     borderTopRightRadius: "10px",
     border: "1px solid #ccc",
     borderBottom: "none",
-
+    mx: 1,
     fontSize: "14px",
     fontWeight: "bold",
     "&.Mui-selected": {
@@ -79,7 +79,7 @@ const Page = ({ params }) => {
             TabIndicatorProps={{ style: { backgroundColor: "orangered" } }}
           >
             <Tab label="Product Info" sx={tabStyles} />
-            <Tab label="Question & Answer" sx={tabStyles} className=" mx-2" />
+            <Tab label="Question & Answer" sx={tabStyles} />
             <Tab
               label="Review (2)"
               sx={tabStyles}

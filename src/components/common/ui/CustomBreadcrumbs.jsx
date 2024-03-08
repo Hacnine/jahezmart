@@ -2,12 +2,14 @@
 import { Home } from "@mui/icons-material";
 import { Breadcrumbs } from "@mui/material";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import React from "react";
 
 const CustomBreadcrumbs = ({ links, textColor }) => {
-  // [{ linkName: "Account", link: "/account" }]
-  const link = usePathname();
+
+const router = useRouter();
+
+const link = usePathname();
   // Step 1: Split the string
   const parts = link.split("/");
 
@@ -25,17 +27,17 @@ const CustomBreadcrumbs = ({ links, textColor }) => {
       <Breadcrumbs
         separator="›"
         aria-label="breadcrumb"
-        sx={{ color: textColor ? "white" : "#aa4400" }}
-        className="flex items-center"
+        sx={{ color: textColor ? "white" : "#28170bff" }}
+        className="flex items-center cursor-pointer"
       >
-        <Link color="inherit" href="/">
+        <div onClick={()=>router.replace('/')}>
           <Home />
-        </Link>
+        </div>
 
         {linkArray.map((linkItem) => (
-          <Link key={linkItem.link} href={linkItem.link} className="capitalize text-sm font-semibold">
+          <div key={linkItem.link} onClick={()=>router.replace(`${linkItem.link}`)} className="capitalize text-sm font-semibold">
             {linkItem.linkName}
-          </Link>
+          </div>
         ))}
       </Breadcrumbs>
     </div>
