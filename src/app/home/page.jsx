@@ -1,6 +1,5 @@
 "use client";
 import React from "react";
-import Link from "next/link";
 import Slider from "../../components/slider/HeroImageSlider";
 import { featureCardInfo, shopByCategory } from "../../constant/index";
 import ShopByCategory from "../../components/common/ShopByCategory";
@@ -14,7 +13,9 @@ import Offer from "../../components/common/Offer";
 import CollectionCard from "../../components/card/CollectionCard";
 import FeatureCard from "../../components/common/FeatureCard";
 import '../customcss.css'
+import { useRouter } from "next/navigation";
 const Home = () => {
+  const router = useRouter();
   const {
     featuredSofa: sofa,
     featuredDinning: dinning,
@@ -98,10 +99,7 @@ const Home = () => {
         {/* <p className="text-3xl font-medium text-gray-800 uppercase mb-6">
           Featured Products
         </p> */}
-        <Link href="/account/cart">
-        <img src="/images/titles/featured.svg" className="mb-9" alt="" />
-        </Link>
-        
+        <img src="/images/titles/featured.svg" className="mb-9" alt="" onClick={()=>router.push('account/cart')}/>
         {bed.length === 0?
         <div className="secondLoader">
         
