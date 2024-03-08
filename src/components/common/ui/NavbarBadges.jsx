@@ -19,7 +19,7 @@ const NavbarBadges = () => {
         color="error"
         sx={{ color: "OrangeRed" }}
         onClick={() => {
-          router.replace("/account/cart");
+          router.push("/account/cart");
         }}
       >
         <ShoppingCart />
@@ -30,7 +30,7 @@ const NavbarBadges = () => {
         color="error"
         sx={{ color: "OrangeRed" }}
         onClick={() => {
-          router.replace("/account/wishlist");
+          router.push("/account/wishlist");
         }}
       >
         <Favorite />
@@ -39,7 +39,7 @@ const NavbarBadges = () => {
         sx={{ color: "OrangeRed" }}
         className="cursor-pointer"
         onClick={() => {
-          router.replace("/account");
+          router.push("/account");
         }}
       />
 
@@ -47,7 +47,7 @@ const NavbarBadges = () => {
         className="cursor-pointer"
         sx={{ color: "OrangeRed" }}
         onClick={() => {
-          router.replace("/signin");
+          router.push("/signin");
         }}
       />
     </div>

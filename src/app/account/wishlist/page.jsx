@@ -3,12 +3,11 @@
 import React, { useState } from "react";
 import Box from "@mui/material/Box";
 import WishListCard from "../../../components/card/WishListCard";
-import {  IconButton} from "@mui/material";
-import { Menu} from "@mui/icons-material";
 import AccountSideBar from "../../../components/common/sidebar/AccountSideBar";
 import AccountDrawer from "../../../components/Drawer/DynamicDrawer";
 import WishListSummaryCard from "../../../components/card/WishListSummaryCard";
 import { useCartContext } from "../../../context_reducer/cartContext";
+import { MdMenu } from "react-icons/md";
 const WishList = () => {
   const { wishListProducts } = useCartContext();
 
@@ -38,9 +37,9 @@ const WishList = () => {
 
         <div className=" center flex-col  lg:w-[50%] w-full">
         <div className="center w-full relative gap-5">
-        <IconButton className="absolute left-0 block text-darkChocolate md:hidden" onClick={()=> setOpen(true)} >
-        <Menu/>
-        </IconButton>
+        <button className="absolute left-0 block text-darkChocolate md:hidden" onClick={()=> setOpen(true)} >
+        <MdMenu/>
+        </button>
         <img src="/images/titles/wishlist.svg" className="my-8 w-48" alt="" />
         </div>
         {wishListProducts.map((product) => (
