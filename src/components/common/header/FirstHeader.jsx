@@ -10,26 +10,21 @@ const FirstHeader = () => {
   return (
     <div className=" w-full  lg:bg-white bg-tan  wrapper shadow-md shadow-slate-300 py-2">
       <div className=" py-4 between w-full ">
-        <button
-          onClick={() => {
-            router.replace("/account");
-          }}
-        >
+     
           <img
             src="/images/logo.svg"
-            className=" md:w-[200px] w-[100px]"
+            className=" md:w-[200px] w-[100px] cursor-pointer"
             alt="logo"
             onClick={() => {
-              router.replace("/");
+              router.push("/");
             }}
           />
-        </button>
 
         <div className="lg:flex items-center justify-between flex-grow pl-12 text-gray-600  hidden font-semibold">
           <div className="flex items-center  flex-grow space-x-6 capitalize ">
             <button
               onClick={() => {
-                router.replace("home");
+                router.push("/home");
               }}
               className={`${
                 pathName === "/home"
@@ -41,7 +36,7 @@ const FirstHeader = () => {
             </button>
             <button
               onClick={() => {
-                router.push("shop");
+                router.push("/shop");
               }}
               className={`${
                 pathName === "/shop"
@@ -53,7 +48,7 @@ const FirstHeader = () => {
             </button>
             <button
               onClick={() => {
-                router.replace("/about");
+                router.push("/about");
               }}
               className={`${
                 pathName === "/about"
@@ -65,7 +60,7 @@ const FirstHeader = () => {
             </button>
             <button
               onClick={() => {
-                router.replace("/contact");
+                router.push("/contact");
               }}
               className={`${
                 pathName === "/contact"

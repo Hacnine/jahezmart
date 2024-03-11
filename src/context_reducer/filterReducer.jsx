@@ -2,6 +2,21 @@
 
 const filterReducer = (state, action) => {
   switch (action.type) {
+
+    case "SET_LOADING":
+      return {
+        ...state,
+        isLoading: true,
+      };
+
+    case "SET_API_DATA":
+      return {
+        ...state,
+        allProducts:action.payload,
+        filteredProducts:action.payload,
+
+        
+      }
     case "UPDATE_FILTERED_DATA":
       const featuredData = (categoryName) =>
         state.allProducts.filter((currentElement) => {
@@ -28,6 +43,8 @@ const filterReducer = (state, action) => {
         featuredBed: featuredBed,
         featuredDinning: featuredDinning,
         featuredKidsFurniture: featuredKidsFurniture,
+        isLoading: false,
+
       };
 
     case "FILTERED_BY_BRAND_AND_CATEGORY":
@@ -71,9 +88,7 @@ const filterReducer = (state, action) => {
     case "REMOVE_CATEGORIES_PARAMETERS":
      
       const { data, filterBy } = action.payload;
-/** @ts-expect-error */
       let temporaryFilteredCategories= [];
-
       if (filterBy === "CATEGORIES") {
         temporaryFilteredCategories = state.categoryParameters.filter(
           (category) => category !== data

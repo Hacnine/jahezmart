@@ -33,14 +33,14 @@ const SummaryCard = ({ children }) => {
                 {product.name}
               </p>
 
-              <span className="text-xs font-semibold text-gray-500">
+              
+              <div className="center gap-5">
+                {" "}<span className="text-xs font-semibold text-gray-500">
                 x{product.quantity}
               </span>
-              <div>
-                {" "}
-                <span className="text-xs text-orangeRed">
+                <span className="text-xs text-orangeRed w-9">
                   <span className=" font-extrabold">৳</span>
-                  {product.quantity} * {product.price}
+                  {product.quantity * product.price}
                 </span>
               </div>
             </div>

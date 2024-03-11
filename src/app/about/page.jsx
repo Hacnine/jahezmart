@@ -51,8 +51,8 @@ const AboutPage = () => {
       </div>
 
       <div className="">
-        <section className="mb-8 center gap-10">
-          <img src="/images/background/computer.jpg" className="w-1/2" alt="" />
+        <section className="mb-8 center md:flex-row flex-col gap-10">
+          <img src="/images/background/computer.jpg" className="md:w-1/2  w-full" alt="" />
           <div className="">
             <h2 className="text-orangeRed text-sm font-semibold mb-4 w-1/2">
               OUR HISTORY
@@ -83,8 +83,10 @@ const AboutPage = () => {
           </div>
         </section>
 
-        <section className="mb-8 center gap-10">
-          <div className="w-1/2">
+        <section className="mb-8 center  md:flex-row flex-col  gap-10">
+
+        <img src="/images/background/coffee.jpg" className="md:w-1/2  block md:hidden" alt="" />
+          <div className="md:w-1/2 w-full">
             <h2 className="font-semibold mb-4 text-orangeRed text-sm">
               OUR VISION
             </h2>
@@ -106,7 +108,7 @@ const AboutPage = () => {
             </ul>
           </div>
 
-          <img src="/images/background/coffee.jpg" className="w-1/2" alt="" />
+          <img src="/images/background/coffee.jpg" className="w-1/2 md:block hidden" alt="" />
         </section>
       </div>
 
@@ -114,13 +116,13 @@ const AboutPage = () => {
         <h2 className="text-3xl font-semibold mb-4 text-orangRed">
           MEET OUR TEAM
         </h2>
-        <div className="center gap-3">
+        <div className="grid md:grid-cols-4 grid-cols-2 gap-3">
           {teamMembers.map((member, index) => (
             <>
               <div className="mb-6 center flex-col">
                 <img
                   src={member.image}
-                  className="w-[250px] h-[320px]"
+                  className="lg:w-[250px] lg:h-[320px] md:w-[220px] md:h-[290px]  w-[190px] h-[260px]"
                   alt=""
                 />
                 <div className="center flex-col mt-2">

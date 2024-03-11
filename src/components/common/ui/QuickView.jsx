@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { useEffect, useState } from "react";
@@ -14,6 +15,7 @@ import { LuBadgeCheck, LuBadgePercent } from "react-icons/lu";
 import StarRating from "./StarRating";
 import SizeButton from "../../buttons/SizeButton";
 import { MdFavoriteBorder } from "react-icons/md";
+import { useRouter } from "next/navigation";
 
 const QuickView = ({ id, modal }) => {
   const { allProducts, getProductById } = useFilterContext();
@@ -25,13 +27,12 @@ const QuickView = ({ id, modal }) => {
 
   const {
     sentCartItem,
-    deleteCartSingleProduct,
     sentWishListItem,
     wishListProducts,
     removeFromWishList,
   } = useCartContext();
   const { filterByCategory } = useFilterContext();
-  const categoryProducts = filterByCategory(category);
+  const router = useRouter();
   const [open, setOpen] = React.useState(false);
   const [openWishList, setOpenWishList] = React.useState(false);
   const [message, setMessage] = useState("Added to cart!");
@@ -48,6 +49,7 @@ const QuickView = ({ id, modal }) => {
   ]?.[pathIndex];
 
   const handleFavoriteClick = () => {
+
     setFavorite(!favorite);
     if (favorite) {
       removeFromWishList(setOpenWishList, setWishListMessage, id);
@@ -63,7 +65,10 @@ const QuickView = ({ id, modal }) => {
       });
     }
   };
-
+  const updateQuery = ()=>{
+    const queryString = `/id=${id}&&name=${name}`;
+    router.push(`/shop${queryString}`);
+  }
   const [tempQuantity, setTempQuantity] = React.useState(quantity);
   const setDecrease = () => {
     if (tempQuantity > 1) {
@@ -126,7 +131,7 @@ const QuickView = ({ id, modal }) => {
             {name}
           </h1>
           <div className="mt-2 mb-2">
-            <div className="start lg:flex-row flex-col  ">
+            <div className="  ">
               <div className="center w-[190px]">
                 <StarRating rating={rating} reviews={reviews} />
                 <span className="ml-3 text-gray-400 text-sm">
@@ -136,8 +141,8 @@ const QuickView = ({ id, modal }) => {
 
               <>
                 {recommended ? (
-                  <span className=" font-semibold text-sm text-orangeRed center md:mt-0 mt-2 ">
-                    <LuBadgeCheck className="mr-1 lg:ml-2  text-colorRed text-xl" />
+                  <span className=" font-semibold text-sm text-orangeRed flex items-center md:mt-0 mt-2 ">
+                    <LuBadgeCheck className="mr-1  text-colorRed text-xl" />
                     Recommended for you.
                   </span>
                 ) : null}
@@ -156,7 +161,7 @@ const QuickView = ({ id, modal }) => {
 
             <div className="my-2  font-semibold  text-base">
               <span className="text-gray-600">Availability:</span>
-              <span className="text-green-600 ml-2">{stock} In Stock</span>
+              <span className="text-green-600 ml-2 text-sm ">{stock} In Stock</span>
             </div>
 
             <div className="mt-2 mb-2  ">
@@ -170,20 +175,18 @@ const QuickView = ({ id, modal }) => {
             </div>
 
             <div className="mt-2  font-roboto space-x-2 ">
-              <span className=" text-orangeRed font-semibold text-xl">
-                <span className="   text-gray-600 text-lg line-through ">
-                  ৳ {price}
+              <span className=" text-orangeRed font-semibold text-base">Price:
+                <span className="   text-gray-600 text-base line-through ">
+                <span className=" ml-3 font-extrabold text-sm">৳</span> {price}
                 </span>
-                <span className=" ml-3 font-extrabold text-xl">৳</span>
+                <span className=" ml-3 font-extrabold text-base">৳</span>
 
-                {price - 200}
+                <span>{price - 200}</span>
               </span>
             </div>
 
             <SizeButton/>
-            {/* <!-- Size Section Ends --> */}
-
-            {/* <!-- Color Filter --> */}
+        
             <div className="pt-4">
               <p className="text-gray-600 font-semibold">Color</p>
 
@@ -203,10 +206,8 @@ const QuickView = ({ id, modal }) => {
                   );
                 })}
               </div>
-              {/* <!-- Single Size Ends --> */}
             </div>
 
-            {/* <!-- Increase Decrease Quantity --> */}
             <div
               className={`
               "text-lg font-semibold border mt-4 border-warning center rounded-sm w-fit text-gray-600`}
@@ -221,9 +222,7 @@ const QuickView = ({ id, modal }) => {
                 +
               </button>
             </div>
-            {/* <!-- End Increase Decrease Quantity --> */}
 
-            {/* <!-- Button --> */}
             <div className="gap-2 flex items-center pb-5 mt-6 ">
               <TooltipWrapper open={open} setOpen={setOpen} message={message}>
                 <button
@@ -289,11 +288,10 @@ const QuickView = ({ id, modal }) => {
             </div>
           </div>
         </div>
-        {/* <!-- Product Name Rating Size Etc --> */}
 
         {modal? 
         
-          <button className=" col-span-2  mt-3 bg-darkChocolate hover:bg-darkChocolate/90 w-full py-2 md:text-sm text-base center text-white font-semibold rounded-tr-3xl rounded-bl-3xl center gap-1 group-hover:opacity-100"><Link href={`shop/${id}`} className="w-full">View More </Link></button>
+          <button className=" col-span-2  mt-3 bg-darkChocolate hover:bg-darkChocolate/90 w-full py-2 md:text-sm text-base center text-white font-semibold rounded-tr-3xl rounded-bl-3xl center gap-1 group-hover:opacity-100" onClick={updateQuery}>View More </button>
         :null}
       </div>
     </>
@@ -301,3 +299,4 @@ const QuickView = ({ id, modal }) => {
 };
 
 export default QuickView;
+

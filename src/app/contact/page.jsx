@@ -7,7 +7,7 @@ export const metadata = {
 const ContactPage = () => {
   return (
     <>
-      <div
+      <section
         className=" w-screen h-[300px] center mb-7 text"
         style={{
           backgroundImage: 'url("/images/background/laptop.jpg")',
@@ -25,11 +25,11 @@ const ContactPage = () => {
             links={[{ linkName: "Contact", link: "/contact" }]}  textColor={true}
           />
         </div>
-      </div>
+      </section>
 
 
-      <div className="wrapper pb-8 start gap-10 text-sm text-gray-600 ">
-        <div className="w-[70%] shadow p-6">
+      <section className="wrapper pb-8 flex md:items-start items-center md:flex-row flex-col gap-10 text-sm text-gray-600 ">
+        <div className=" w-full md:w-[70%] shadow p-6">
           <h1 className="text-lg font-semibold mb-4">LEAVE US A MESSAGE</h1>
           <p className="mb-4 font-sans text-sm">
             Use the form below to get in touch with the sales team
@@ -104,7 +104,7 @@ const ContactPage = () => {
             </button>
           </form>
         </div>
-        <div className="w-[30%] shadow p-6 rounded text-sm">
+        <div className=" w-full md:w-[30%] shadow p-6 rounded text-sm">
           <div className="">
             <h2 className="text-base font-semibold mb-2">OUR STORE</h2>
             <div className=" font-sans text-gray-500">
@@ -151,7 +151,7 @@ const ContactPage = () => {
             </p>
           </div>
         </div>
-      </div>
+      </section>
     </>
   );
 };

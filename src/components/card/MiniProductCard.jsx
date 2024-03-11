@@ -113,16 +113,10 @@ const MiniProductCard = ({
           className="absolute inset-0 bg-opacity-30 bg-blue-200 hover:bg-black
           group-hover:bg-opacity-30 rounded-md transition-color duration-300 center w-full"
         >
-          <div className="between relative px-2 w-full">
+          <div className="center group-hover:gap-2 group-hover:transition-transform group-hover:duration-900 relative px-2 w-full">
             <button
               onClick={handleCartClick}
-              className=" w-7 h-7 rounded-full bg-white center"
-              style={{
-                bgcolor: "white",
-                "&:hover": {
-                  bgcolor: "lightgray",
-                },
-              }}
+              className=" w-7 h-7 rounded-full bg-slate-300 center"
             >
               {cart ? (
                 <BsCartCheckFill className="text-red-600 text-base" />
@@ -132,20 +126,14 @@ const MiniProductCard = ({
             </button>
 
             <button
-              className=" opacity-0   group-hover:opacity-100  z-10 w-fit px-2  bg-orangeRed/70 py-1 font-semibold text-white text-xs transition-color duration-300 rounded-tl-full rounded-tr-full"
+              className=" opacity-0   group-hover:opacity-100  z-10 group-hover:w-fit group-hover:px-2 w-1  bg-orangeRed/70 hover:bg-orangeRed py-1 font-semibold text-white text-xs transition-color duration-300 rounded-tl-full rounded-tr-full"
               onClick={() => setModalOpen(true)}
             >
               <Preview />
             </button>
             <button
               onClick={handleFavoriteClick}
-              className=" size-7 rounded-full bg-white center"
-              style={{
-                bgcolor: "white",
-                "&:hover": {
-                  bgcolor: "lightgray",
-                },
-              }}
+              className=" size-7 rounded-full bg-slate-300 center"
             >
               {favorite ? (
                 <MdFavorite className="text-red-600 text-lg" />
