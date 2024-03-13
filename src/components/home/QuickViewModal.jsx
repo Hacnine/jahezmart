@@ -38,16 +38,6 @@ const QuickViewModal = ({ preview, id, name }) => {
     }
   };
 
-  const updateQuery = () => {
-    console.log(pathName)
-    // setModalOpen(true)
-    if (pathName === "/shop") {
-      const queryString = `/id=${id}&&name=${name}`;
-      router.push(`/shop${queryString}`);
-    } else {
-      handlePreview();
-    }
-  };
   return (
     <>
       {preview ? (
@@ -60,7 +50,7 @@ const QuickViewModal = ({ preview, id, name }) => {
       ) : (
         <button
           className="w-full opacity-0 bg-orange-500  group-hover:opacity-100 absolute bottom-0 py-2 font-semibold text-white text-xs transition-color duration-300 rounded-bl-3xl rounded-tr-3xl "
-          onClick={updateQuery}
+          onClick={handlePreview}
         >
           Quick View
         </button>
