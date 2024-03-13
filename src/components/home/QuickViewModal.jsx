@@ -24,7 +24,7 @@ const QuickViewModal = ({ preview, id, name }) => {
   useEffect(() => {
     addName();
   }, [pathName]);
-  const lastPathName = storePathName.slice(-1);
+  const firstPathName = storePathName.slice(-1);
 
   const handlePreview = () => {
     setModalOpen(!modalOpen);
@@ -34,12 +34,12 @@ const QuickViewModal = ({ preview, id, name }) => {
     window.history.replaceState(null, "", newUrl);
 
     if (modalOpen) {
-      // window.history.replaceState(null, "", pathName);
-      window.history.replaceState(null, "", lastPathName);
+      window.history.replaceState(null, "", firstPathName);
     }
   };
 
   const updateQuery = () => {
+    console.log(pathName)
     // setModalOpen(true)
     if (pathName === "/shop") {
       const queryString = `/id=${id}&&name=${name}`;
@@ -75,17 +75,16 @@ const QuickViewModal = ({ preview, id, name }) => {
         }}
       >
         <>
-          <div>
-            <button onClick={handlePreview}>
-              <RiDeleteBack2Fill className=" bg-colorRed text-white" />
-            </button>
-          </div>
+          
           <div
-            className="bg-white center md:p-10 p-4 rounded-tr-[33px] rounded-bl-[33px] rounded"
+            className="bg-white center md:p-10 p-4 rounded-tr-[33px] rounded-bl-[33px] rounded-tl  relative"
             style={{ width: "90%", height: "90%" }}
           >
+            <button onClick={handlePreview} className="absolute left-0 top-0">
+              <RiDeleteBack2Fill className=" text-sm rounded-br-2xl w-9 h-7 p-1 bg-colorRed text-white" />
+            </button>
             <Scrollbars style={{ width: "100%", height: "100%" }}>
-              <QuickView id={id} modal={true} />
+              <QuickView id={id} modal={true} setModalOpen={setModalOpen}/>
             </Scrollbars>
           </div>
         </>
