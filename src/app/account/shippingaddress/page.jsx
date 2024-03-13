@@ -152,7 +152,7 @@ const AddressForm = () => {
             <div className="col-span-2">
               <button
                 type="submit"
-                className=" border border-orangeRed bg-orangeRed hover:bg-transparent text-white transition-colors  hover:text-orangeRed font-medium text-base px-4 py-2 rounded"
+                className=" border border-orangeRed bg-orangeRed hover:bg-transparent text-white transition-colors  hover:text-orangeRed font-medium text-sm px-4 py-2 rounded"
               >
                 SAVE CHANGES
               </button>

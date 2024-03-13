@@ -4,7 +4,7 @@ import React, { createContext, useReducer, useContext, useEffect } from "react";
 import filterReducer from "./filterReducer";
 import productsData from "../../public/products.json";
 const initialState = {
-  allProducts: productsData,
+  allProducts: [],
   filteredProducts: [],
   featuredProducts: [],
   newProducts: [],
@@ -14,6 +14,7 @@ const initialState = {
   featuredKidsFurniture: [],
   categoryParameters: [],
   brandParameters: [],
+  isLoading:false
 };
 
 export const FilterContext = createContext(null);
@@ -89,14 +90,16 @@ const FilterContextProvider = ({ children }) => {
       filteredProducts = state.allProducts;
     } else {
       if (state.brandParameters.length != 0) {
-        filteredProducts = state.filteredProducts.filter((product) =>
-          state.categoryParameters.includes(product.category)||
-          state.brandParameters.includes(product.brand)
+        filteredProducts = state.filteredProducts.filter(
+          (product) =>
+            state.categoryParameters.includes(product.category) ||
+            state.brandParameters.includes(product.brand)
         );
       } else {
-        filteredProducts = state.allProducts.filter((product) =>
-          state.categoryParameters.includes(product.category)||
-          state.brandParameters.includes(product.brand)
+        filteredProducts = state.allProducts.filter(
+          (product) =>
+            state.categoryParameters.includes(product.category) ||
+            state.brandParameters.includes(product.brand)
         );
       }
     }
@@ -108,15 +111,13 @@ const FilterContextProvider = ({ children }) => {
     if (state.brandParameters.includes("All")) {
       filteredProducts = state.allProducts;
     } else {
-      if(state.categoryParameters.length!= 0){
+      if (state.categoryParameters.length != 0) {
         filteredProducts = state.filteredProducts.filter(
           (product) =>
             state.categoryParameters.includes(product.category) ||
             state.brandParameters.includes(product.brand)
         );
-      }
-
-      else{
+      } else {
         filteredProducts = state.allProducts.filter(
           (product) =>
             state.categoryParameters.includes(product.category) ||
@@ -190,7 +191,21 @@ const FilterContextProvider = ({ children }) => {
     }
   }
 
+  const getProducts = async (productsData) => {
+    dispatch({ type: "SET_LOADING"});
+  
+    try {
+
+      dispatch({ type: "SET_API_DATA", payload: productsData });
+    } catch (error) {
+      console.error("Error fetching data:", error); 
+      dispatch({ type: "API_ERROR" });
+    }
+  };
+  
+
   useEffect(() => {
+    getProducts(productsData);
     dispatch({ type: "UPDATE_FILTERED_DATA" });
   }, []);
 
@@ -207,6 +222,7 @@ const FilterContextProvider = ({ children }) => {
         featuredKidsFurniture: state.featuredKidsFurniture,
         categoryParameters: state.categoryParameters,
         brandParameters: state.brandParameters,
+        isLoading:state.isLoading,
         updateFilteredProducts,
         getProductById,
         filterByCategory,

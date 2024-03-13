@@ -6,22 +6,20 @@ import ProductCard from "../../card/ProductCard";
 
 
 const AllProducts= ({ grid }) => {
-  const { filteredProducts, updateFilteredProducts } = useFilterContext();
+  const { filteredProducts} = useFilterContext();
 
-  if (filteredProducts.length === 0) {
-    return (
-      <div className="lg:col-span-9 col-span-12 ">
-       <div className="center">
-       {/* <img src="/images/404.svg" alt="" /> */}
-       </div>
-      </div>
-    );
-  }
+  // if (filteredProducts.length === 0) {
+  //   return (
+  //     <div className="lg:col-span-9 col-span-12 ">
+  //      <div className="center">
+  //      <img src="/images/404.svg" alt="" />
+  //      </div>
+  //     </div>
+  //   );
+  // }
 
   return (
-    <div className="lg:col-span-9 col-span-12  ">
-      {/* <div className="  w-full center flex-col"> */}
-
+    <div className="lg:col-span-9 col-span-12 mt-3 ">
       <div
         className={` lg:ml-8  grid ${
           grid

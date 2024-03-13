@@ -2,9 +2,8 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 
-import { Modal } from "@mui/material";
+import Modal from "@mui/material/Modal";
 import { FavoriteBorder } from "@mui/icons-material";
-import IconButton from "@mui/material/IconButton";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import StarRating from "../common/ui/StarRating";
 import ColorButton from "../buttons/ColorButton";
@@ -14,6 +13,7 @@ import TooltipWrapper from "../wrapper/TooltipWrapper";
 import Scrollbars from "react-custom-scrollbars-2";
 import QuickView from "../common/ui/QuickView";
 import { useRouter } from "next/navigation";
+import QuickViewModal from "../home/QuickViewModal";
 const ProductCard = ({
   id,
   name,
@@ -75,12 +75,10 @@ const ProductCard = ({
 
   
 
-  const updateQuery = ()=>{
+  const updateQueryForProductDetails = ()=>{
+    // setModalOpen(true)
     const queryString = `/id=${id}&&name=${name}`;
-    // router.push(`/shop${queryString}`);
-    router.replace(`/shop${queryString}`);
-    // router.back();
-    // router.forward();
+    router.push(`/shop/product/${queryString}`);
   }
 
   return (
@@ -120,30 +118,8 @@ const ProductCard = ({
             </TooltipWrapper>
           </div>
 
-          <button
-            className="w-full opacity-0 bg-orange-500  group-hover:opacity-100 absolute bottom-0 py-2 font-semibold text-white text-xs transition-color duration-300 rounded-bl-3xl rounded-tr-3xl "
-            onClick={() => setModalOpen(true)}
-          >
-            Quick View
-          </button>
-          <Modal
-            open={modalOpen}
-            onClose={() => setModalOpen(false)}
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            <div
-              className="bg-white center md:p-10 p-4 center rounded-tr-[33px] rounded-bl-[33px] rounded"
-              style={{ width: "90%", height: "90%" }}
-            >
-              <Scrollbars style={{ width: "100%", height: "100%" }}>
-                <QuickView id={id} modal={true} />
-              </Scrollbars>
-            </div>
-          </Modal>
+          <QuickViewModal preview={false} id={id} name={name}/>
+         
         </div>
       </div>
 
@@ -165,7 +141,7 @@ const ProductCard = ({
           })}
         </div>
 
-        <div onClick={updateQuery}>
+        <div onClick={updateQueryForProductDetails}>
           <h3 className="  font-bold uppercase text-gray-600  md:text-sm text-[10px] hover:text-chocolate pt-1.5 pl-3">
             {name}
           </h3>

@@ -93,8 +93,11 @@ const CartCard = ({
           </TooltipWrapper>
         </div>
         <div className="between gap-5">
-          <div className="font-semibold text-lg">
-            <span className="text-sm "> x{temporaryQuantity}</span>
+          <div className="font-semibold text-lg flex items-center gap-2">
+          <span
+          className="w-4 h-4 rounded-md lg:block md:hidden"
+          style={{ backgroundColor: selected }}
+        ></span>
             <span className="text-sm text-orangeRed">
               {" "}
               <span className=" font-extrabold">৳</span>
@@ -127,10 +130,6 @@ const CartCard = ({
           </TooltipWrapper>
         </div>
 
-        <div
-          className="w-4 h-4 rounded-md lg:block md:hidden"
-          style={{ backgroundColor: selected }}
-        ></div>
       </div>
     </>
   );

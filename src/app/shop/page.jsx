@@ -7,6 +7,7 @@ import CustomBreadcrumbs from "../../components/common/ui/CustomBreadcrumbs";
 import { useFilterContext } from "../../context_reducer/filterContext";
 import { GridView, Menu, TableRows } from "@mui/icons-material";
 import React, { useState } from "react";
+import ProductCard from "../../components/card/ProductCard";
 
 // export const generateMetadata = ({params}) =>{
 //   return {
@@ -15,11 +16,7 @@ import React, { useState } from "react";
 // }
 
 const Shop = () => {
-
-  const {
-    allProducts,
-    sortingProduct
-  } = useFilterContext();
+  const { allProducts, sortingProduct, filteredProducts } = useFilterContext();
 
   const [open, setOpen] = useState(false);
   const [grid, setGrid] = useState(true);
@@ -28,12 +25,12 @@ const Shop = () => {
   let primaryFilteredProducts;
   const handleSearch = (searchValue) => (event) => {
     // Your logic here
-   if(searchValue){
-     console.log(`Search value: ${searchValue}`);
-    primaryFilteredProducts = allProducts.filter((product) =>
-      product.name.toLowerCase().includes(searchValue.toLowerCase())
-    );
-   }
+    if (searchValue) {
+      console.log(`Search value: ${searchValue}`);
+      primaryFilteredProducts = allProducts.filter((product) =>
+        product.name.toLowerCase().includes(searchValue.toLowerCase())
+      );
+    }
   };
   const searchValue = searchParams.get("search");
   const handleSearchForSingle = handleSearch(searchValue);
@@ -109,7 +106,23 @@ const Shop = () => {
           <FilterSidebar />
         </div>
 
-        <AllProducts grid={grid} />
+        <section className="lg:col-span-9 col-span-12 mt-3 ">
+          <div
+            className={` lg:ml-8  grid ${
+              grid
+                ? "lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-2 grid-cols-2"
+                : "grid-cols-1"
+            } gap-6`}
+          >
+            {filteredProducts.map((product, index) => (
+              <div key={index}>
+                <ProductCard {...product} />
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* <AllProducts grid={grid} /> */}
         {/* Product */}
 
         {/* Shop Wrapper Ends */}

@@ -82,7 +82,7 @@
     position: absolute;
     inset: 0px;
     border-radius: 50%;
-    border: 5px solid #FFF;
+    border: 5px solid #28170bff;
     animation: prixClipFix 2s linear infinite ;
   }
   .secondLoader::after{

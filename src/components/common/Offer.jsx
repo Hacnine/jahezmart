@@ -1,6 +1,7 @@
 import { Button } from "@mui/material";
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import React from "react";
 
 const Offer = ({
@@ -11,11 +12,23 @@ const Offer = ({
   bg,
   id,
 }) => {
+
+    
+  const router = useRouter();
+
+  const updateQuery = ()=>{
+    const queryString = `/id=${id}&&name=${offerType}`;
+    // router.push(`/shop${queryString}`);
+    router.replace(`/shop${queryString}`);
+    // router.back();
+    // router.forward();
+  }
+
   return (
-    <Link href={`/shop/${id}`} className="w-full center">
     <div
       className={` lg:w-[100%] md:w-[80%] w-full h-[235px] px-10 py-10 between`}
       style={{ background: bg }}
+      onClick={updateQuery}
     >
       <div className=" w-fit ">
         <p className="text-lg font-semibold text-red-500  leading-9">
@@ -39,7 +52,6 @@ const Offer = ({
         className=" hover:scale-110 hover:cursor-pointer transition-transform duration-500 w-44 "
       />
     </div>
-    </Link>
   );
 };
 
