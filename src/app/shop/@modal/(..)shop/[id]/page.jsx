@@ -40,7 +40,7 @@ const Page = ({ params }) => {
         style={{ width: "90%", height: "90%" }}
       >
         <Scrollbars style={{ width: "100%", height: "100%" }}>
-          <QuickView id={productId} modal={true} />
+          <QuickView id={productId} modal={true} setModalOpen={setModalOpen}/>
         </Scrollbars>
       </div>
    </Modal>

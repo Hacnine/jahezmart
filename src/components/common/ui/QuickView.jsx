@@ -17,7 +17,7 @@ import SizeButton from "../../buttons/SizeButton";
 import { MdFavoriteBorder } from "react-icons/md";
 import { useRouter } from "next/navigation";
 
-const QuickView = ({ id, modal }) => {
+const QuickView = ({ id, modal, setModalOpen }) => {
   const { allProducts, getProductById } = useFilterContext();
 
   const product = getProductById(id);
@@ -66,6 +66,7 @@ const QuickView = ({ id, modal }) => {
     }
   };
   const updateQuery = ()=>{
+    setModalOpen(false)
     const queryString = `/id=${id}&&name=${name}`;
     router.push(`/shop/product${queryString}`);
   }
