@@ -1526,7 +1526,7 @@
         "description": "Whether you're looking for ambient lighting in your living room or a bedside lamp for reading, our Carved Lamps offer versatile lighting solutions to suit your needs."
       }
     ],
-    "category": "home decor",
+    "category": "lighting",
     "full_details":[ {
       "Material": "Metal",
       "Height": "12 inches",
@@ -1567,7 +1567,7 @@
         "description": "Each Wood Egg is handcrafted with care and attention to detail by skilled artisans, ensuring quality craftsmanship and a one-of-a-kind finish. Embrace the beauty of imperfection with these unique pieces."
       }
     ],
-    "category": "decorative accents",
+    "category": "lighting",
     "full_details": [{
       "Material": "Wood",
       "Size": "2.5 inches diameter",
@@ -1581,7 +1581,7 @@
     "id": "39",
     "name": "Furniture Light",
     "brand": "Luminous Designs",
-    "price": 129.99,
+    "price": 1290,
     "quantity": 8,
     "stock": 20,
     "discount": 15,

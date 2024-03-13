@@ -67,7 +67,7 @@ const QuickView = ({ id, modal }) => {
   };
   const updateQuery = ()=>{
     const queryString = `/id=${id}&&name=${name}`;
-    router.push(`/shop${queryString}`);
+    router.push(`/shop/product${queryString}`);
   }
   const [tempQuantity, setTempQuantity] = React.useState(quantity);
   const setDecrease = () => {
@@ -114,7 +114,7 @@ const QuickView = ({ id, modal }) => {
                   key={index}
                   src={imageUrl}
                   alt=""
-                  className="border border-1  w-full h-full object-cover transform transition-transform hover:scale-110 hover: cursor-pointer rounded-md shadow-blue-200 shadow-md"
+                  className="border border-1  w-full h-full object-cover transform transition-transform hover:scale-110 hover: cursor-pointer rounded-md shadow-md"
                   onClick={() => {
                     setIndex(index2),
                       setPathIndex(index),

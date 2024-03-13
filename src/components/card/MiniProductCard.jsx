@@ -1,15 +1,13 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { Modal } from "@mui/material";
-import { Preview } from "@mui/icons-material";
 import { MdFavoriteBorder, MdFavorite } from "react-icons/md";
 import StarRating from "../common/ui/StarRating";
 import { BsCart, BsCartCheckFill } from "react-icons/bs";
 import { useCartContext } from "../../context_reducer/cartContext";
 import Link from "next/link";
-import QuickView from "../common/ui/QuickView";
-import Scrollbars from "react-custom-scrollbars-2";
+
 import { useRouter } from "next/navigation";
+import QuickViewModal from "../home/QuickViewModal";
 
 const MiniProductCard = ({
   id,
@@ -33,11 +31,10 @@ const MiniProductCard = ({
     removeFromWishList,
   } = useCartContext();
 
-  const [modalOpen, setModalOpen] = useState(false);
+
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  const [wishList, setWishList] = useState(false);
   const [cart, setCart] = useState(false);
 
   const [selected, setSelected] = useState(colors[0]);
@@ -96,11 +93,13 @@ const MiniProductCard = ({
     }
   };
 
-  const router = useRouter()
-  const updateQuery = ()=>{
+  const router = useRouter();
+  const updateQuery = () => {
     const queryString = `/id=${id}&&name=${name}`;
-    router.push(`/shop${queryString}`);
-  }
+    router.push(`/shop/product${queryString}`);
+  };
+
+
 
   return (
     <div className=" mb-2 relative group  rounded-md overflow-hidden  start md:flex-row flex-col md:w-[276px] md:h-[95px] w-full">
@@ -124,13 +123,7 @@ const MiniProductCard = ({
                 <BsCart className="text-red-600 text-base" />
               )}
             </button>
-
-            <button
-              className=" opacity-0   group-hover:opacity-100  z-10 group-hover:w-fit group-hover:px-2 w-1  bg-orangeRed/70 hover:bg-orangeRed py-1 font-semibold text-white text-xs transition-color duration-300 rounded-tl-full rounded-tr-full"
-              onClick={() => setModalOpen(true)}
-            >
-              <Preview />
-            </button>
+            <QuickViewModal preview={true} id={id} name={name}/>
             <button
               onClick={handleFavoriteClick}
               className=" size-7 rounded-full bg-slate-300 center"
@@ -145,37 +138,20 @@ const MiniProductCard = ({
         </div>
       </div>
 
-      <Modal
-        open={modalOpen}
-        onClose={() => setModalOpen(false)}
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
-        <div
-          className="bg-white center md:p-10 p-4 rounded-tr-[33px] rounded-bl-[33px] rounded"
-          style={{ width: "90%", height: "90%" }}
-        >
-          <Scrollbars style={{ width: "100%", height: "100%" }}>
-            <QuickView id={id} modal={true} />
-          </Scrollbars>
-        </div>
-      </Modal>
+
 
       <div className=" p-3 w-full cursor-pointer " onClick={updateQuery}>
-          <h3 className=" font-bold text-gray-700 uppercase leading-5 md:text-xs text-sm hover:text-chocolate" >
-            {name}
-          </h3>
+        <h3 className=" font-bold text-gray-700 uppercase leading-5 md:text-xs text-sm hover:text-chocolate">
+          {name}
+        </h3>
 
-          <span className="font-extrabold text-xs text-red-600 leading-5">
-            <span className=" font-extrabold"> ৳</span> {price}
-          </span>
+        <span className="font-extrabold text-xs text-red-600 leading-5">
+          <span className=" font-extrabold"> ৳</span> {price}
+        </span>
 
-          <div className="start text-xs">
-            <StarRating rating={rating} reviews={reviews} />
-          </div>
+        <div className="start text-xs">
+          <StarRating rating={rating} reviews={reviews} />
+        </div>
       </div>
     </div>
   );

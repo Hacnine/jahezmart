@@ -8,7 +8,7 @@ const ContactPage = () => {
   return (
     <>
       <section
-        className=" w-screen h-[300px] center mb-7 text"
+        className=" w-screen h-[300px] center mb-7"
         style={{
           backgroundImage: 'url("/images/background/laptop.jpg")',
           backgroundSize: "cover",
