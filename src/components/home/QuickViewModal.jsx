@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import Preview from "@mui/icons-material/Preview";
 import Modal from "@mui/material/Modal";
+import Backdrop from "@mui/material/Backdrop";
 import { RiDeleteBack2Fill } from "react-icons/ri";
 
 import QuickView from "../common/ui/QuickView";
@@ -58,6 +59,13 @@ const QuickViewModal = ({ preview, id, name }) => {
       <Modal
         open={modalOpen}
         onClose={handlePreview}
+        closeAfterTransition
+        slots={{ backdrop: Backdrop }}
+        slotProps={{
+          backdrop: {
+            timeout: 500,
+          },
+        }}
         style={{
           display: "flex",
           alignItems: "center",
@@ -65,7 +73,6 @@ const QuickViewModal = ({ preview, id, name }) => {
         }}
       >
         <>
-          
           <div
             className="bg-white center md:p-10 p-4 rounded-tr-[33px] rounded-bl-[33px] rounded-tl  relative"
             style={{ width: "90%", height: "90%" }}
@@ -74,7 +81,7 @@ const QuickViewModal = ({ preview, id, name }) => {
               <RiDeleteBack2Fill className=" text-sm rounded-br-2xl w-9 h-7 p-1 bg-colorRed text-white" />
             </button>
             <Scrollbars style={{ width: "100%", height: "100%" }}>
-              <QuickView id={id} modal={true} setModalOpen={setModalOpen}/>
+              <QuickView id={id} modal={true} setModalOpen={setModalOpen} />
             </Scrollbars>
           </div>
         </>

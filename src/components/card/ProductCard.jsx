@@ -142,7 +142,7 @@ const ProductCard = ({
         </div>
 
         <div onClick={updateQueryForProductDetails}>
-          <h3 className="  font-bold uppercase text-gray-600  md:text-sm text-[10px] hover:text-chocolate pt-1.5 pl-3">
+          <h3 className="  font-bold uppercase text-gray-600  md:text-sm text-[11px] hover:text-chocolate pt-1.5 pl-3">
             {name}
           </h3>
 

@@ -84,7 +84,7 @@ const Home = () => {
       </div>
 
       <div className="wrapper py-9 center flex-col">
-        <img src="/images/titles/category.svg" className="mb-9" alt="" />
+        <img src="/images/titles/category.svg" className="mb-9 w-[300px] md:w-fit" alt=""  />
 
         <div className="grid lg:grid-cols-3 grid-cols-2 gap-3">
           {shopByCategory.map((category, index) => (
@@ -99,7 +99,7 @@ const Home = () => {
         {/* <p className="text-3xl font-medium text-gray-800 uppercase mb-6">
           Featured Products
         </p> */}
-        <img src="/images/titles/featured.svg" className="mb-9" alt="" onClick={()=>router.push('account/cart')}/>
+        <img src="/images/titles/featured.svg" className="mb-9 w-[300px] md:w-fit" alt="" onClick={()=>router.push('account/cart')}/>
         {bed.length === 0?
         <div className="secondLoader">
         
@@ -107,27 +107,27 @@ const Home = () => {
         :
         <div className="grid  xl:grid-cols-4 lg:grid-cols-3 grid-cols-2  gap-3">
           <div className="">
-            <p className=" mb-3  text-base font-semibold">Bed</p>
+            <p className=" mb-3  text-base font-semibold border-b-2 border-darkChocolate w-2/4">Bed</p>
             {bed.map((product) => (
               <MiniProductCard {...product} />
             ))}
           </div>
           <div className="">
-            <p className="  text-base mb-3">Sofa</p>
+            <p className="  text-base mb-3 border-b-2 border-darkChocolate w-2/4">Sofa</p>
 
             {sofa.map((product) => (
               <MiniProductCard {...product} />
             ))}
           </div>
           <div className="">
-            <p className="font-semibold  text-base mb-3">Dinnig</p>
+            <p className="font-semibold  text-base mb-3 border-b-2 border-darkChocolate w-2/4">Dinning</p>
 
             {dinning.map((product) => (
               <MiniProductCard {...product} />
             ))}
           </div>
           <div className="xl:block lg:hidden sm:block">
-            <p className="text-base font-semibold mb-3">Kid's Furniture</p>
+            <p className="text-base font-semibold mb-3 border-b-2 border-darkChocolate w-2/4">Kid's Furniture</p>
 
             <div className="">
               {kidsFurniture.map((product) => (
@@ -145,7 +145,7 @@ const Home = () => {
       </div>
 
       <div className="wrapper py-9 center flex-col">
-        <img src="/images/titles/new.svg"  className="mb-9" alt="" />
+        <img src="/images/titles/new.svg"  className="mb-9 w-[300px] md:w-fit" alt="" />
         {newProducts.length === 0?
         <div className="secondLoader">
         
