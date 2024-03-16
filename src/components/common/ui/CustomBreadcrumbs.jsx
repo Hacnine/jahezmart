@@ -16,7 +16,6 @@ const link = usePathname();
   // Step 2: Create an array of objects
   const linkArray = [];
   for (let i = 1; i < parts.length; i++) {
-    console.log( parts[i].length)
 
     linkArray.push({
       linkName: parts[i],

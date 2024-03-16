@@ -141,7 +141,7 @@ const MiniProductCard = ({
 
 
       <div className=" p-3 w-full cursor-pointer " onClick={updateQuery}>
-        <h3 className=" font-bold text-gray-700 uppercase leading-5 md:text-xs text-sm hover:text-chocolate">
+        <h3 className=" font-bold text-gray-700 uppercase leading-5  md:text-sm text-[11px]  hover:text-chocolate">
           {name}
         </h3>
 

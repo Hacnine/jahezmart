@@ -13,6 +13,7 @@ import { useFilterContext } from "../../../context_reducer/filterContext";
 
 const SearchBar = ({ otherClasses }) => {
   const [query, setQuery] = useState("");
+  const [wider, setWider] = useState(false);
   const router = useRouter();
 
   const [visible, setVisible] = useState(false);
@@ -41,7 +42,7 @@ const SearchBar = ({ otherClasses }) => {
   };
 
   return (
-    <div className={`${otherClasses} w-[40%]   lg:block bg-transparent `}>
+    <div className={`${otherClasses} ${wider? "w-[45%] " : "w-[40%]"} transition-transform duration-1000  lg:block bg-transparent `}>
       <div className=" bg-transparent  lg:flex items-center justify-center  w-full ">
         <Combobox>
           <div className="relative w-full center">
@@ -50,6 +51,7 @@ const SearchBar = ({ otherClasses }) => {
                 "w-full border  h-[48px] border-r-0 px-8 pb-1 ring-transparent outline-none focus:border focus:border-orangeRed focus:border-r-0 rounded-lr-full rounded-tl-full placeholder:text-sm  placeholder:font-sans"
               }
               onChange={(event) => setQuery(event.target.value)}
+              onClick={()=>setWider(true)}
               placeholder="Search products..."
             />
             {/* <Link href={'/shop'}> */}
