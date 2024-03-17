@@ -39,8 +39,7 @@ const Offer = ({
         </p>
         <p className=" text-gray-600 md:text-base text-sm leading-8">{type}</p>
           <button
-            className="px-3 py-2 rounded-md bg-sandyBrown mt-2 text-white text-sm hover:bg-tan"
-            style={{ backgroundColor: "chocolate" }}
+            className="button"
           >
             SHOP NOW
           </button>
