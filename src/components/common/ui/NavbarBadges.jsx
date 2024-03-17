@@ -13,43 +13,32 @@ const NavbarBadges = () => {
 
   return (
     <div className=" flex items-center justify-evenly gap-6">
-      <Badge
-        className="cursor-pointer"
-        badgeContent={cartProducts.length}
-        color="error"
-        sx={{ color: "OrangeRed" }}
-        onClick={() => {
-          router.push("/account/cart");
-        }}
-      >
-        <ShoppingCart />
-      </Badge>
-      <Badge
-        className="cursor-pointer"
-        badgeContent={wishListProducts.length}
-        color="error"
-        sx={{ color: "OrangeRed" }}
-        onClick={() => {
-          router.push("/account/wishlist");
-        }}
-      >
-        <Favorite />
-      </Badge>
-      <Person
-        sx={{ color: "OrangeRed" }}
-        className="cursor-pointer"
-        onClick={() => {
-          router.push("/account");
-        }}
-      />
-
-      <Login
-        className="cursor-pointer"
-        sx={{ color: "OrangeRed" }}
-        onClick={() => {
-          router.push("/signin");
-        }}
-      />
+      <Link href={"/account/cart"}>
+        <Badge
+          className="cursor-pointer"
+          badgeContent={cartProducts.length}
+          color="error"
+          sx={{ color: "OrangeRed" }}
+        >
+          <ShoppingCart />
+        </Badge>
+      </Link>
+      <Link href={"/account/wishlist"}>
+        <Badge
+          className="cursor-pointer"
+          badgeContent={wishListProducts.length}
+          color="error"
+          sx={{ color: "OrangeRed" }}
+        >
+          <Favorite />
+        </Badge>
+      </Link>
+      <Link href={"/account"}>
+        <Person sx={{ color: "OrangeRed" }} className="cursor-pointer" />
+      </Link>
+      <Link href={"/signin"}>
+        <Login className="cursor-pointer" sx={{ color: "OrangeRed" }} />
+      </Link>
     </div>
   );
 };

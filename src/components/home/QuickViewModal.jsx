@@ -74,8 +74,8 @@ const QuickViewModal = ({ preview, id, name }) => {
       >
         <>
           <div
-            className="bg-white center md:p-10 p-4 rounded-tr-[33px] rounded-bl-[33px] rounded-tl  relative"
-            style={{ width: "90%", height: "90%" }}
+            className="bg-white center md:p-10 p-4 rounded-tr-[33px] rounded-bl-[33px] rounded-tl  relative  w-[90%] h-[90%] max-h-[546px] max-w-[1229px]"
+            
           >
             <button onClick={handlePreview} className="absolute left-0 top-0">
               <RiDeleteBack2Fill className=" text-sm rounded-br-2xl w-9 h-7 p-1 bg-colorRed text-white" />

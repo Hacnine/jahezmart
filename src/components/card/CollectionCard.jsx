@@ -8,9 +8,7 @@ const CollectionCard = ({image, title1, title2, otherClass}) => {
             <p className='lg:text-lg text-base mt-3'>{title1}</p>
             <p className='lg:text-base text-xs mt-3 font-sans '>{title2}</p>
             <button
-            className="px-3 py-2 rounded-md bg-sandyBrown text-xs mt-3 font-sans text-white min-w-[88px] hover:bg-tan"
-            style={{ backgroundColor: "chocolate" }}
-          >
+            className="button">
             SHOP NOW
           </button>
 
