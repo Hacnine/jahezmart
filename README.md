@@ -1,36 +1,43 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
 
-First, run the development server:
+ ### ⭐ Jazezmart
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+ ### 🚀 Live Preview: 
+https://jahezmart.netlify.app
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 📑 Table of Contents
+* **About**
+* **Features**
+* **Technologies Used**
+* **Installation**
+* **Scripts**
+* **Deployment**
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### 📝 About
+Jahezmart is a fully developed restaurant website initially created as a homepage but expanded to provide a comprehensive user experience. It features essential sections and functionalities commonly required in restaurant websites.
 
-## Learn More
+### 📝 Project Description
 
-To learn more about Next.js, take a look at the following resources:
+### 🌟 Features
+Multi-Page Structure: Includes key pages such as:
+About
+Portfolio
+Clients
+Blog
+Contact (with a functional contact form)
+Responsive Sidebar: Enhances navigation on smaller screens.
+Interactive UI Components: Includes sliders, date pickers, and sticky elements for improved user experience.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 🛠️ Technologies and Frameworks
+The following frameworks and libraries were used in this project:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+* **React**: Core library for building interactive user interfaces.
+* **Next.js**: Framework for optimized and server-rendered builds.
+* **React Router DOM**: Used for routing within the app.
+* **Material-UI (MUI)**: Provides icons and styled components for a consistent look.
+* **React Slick**: Carousel library for implementing image sliders.
+* **React Icons**: A collection of icons for UI consistency.
+* **Headless UI**: Accessible components for custom styling.
+* **Tailwind CSS**: Utility-first CSS framework for rapid and responsive design.
+* **Development Tools
