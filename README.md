@@ -20,14 +20,7 @@ Jahezmart is a fully developed e-commerce website. It features essential section
 ### 📝 Project Description
 
 ### 🌟 Features
-Multi-Page Structure: Includes key pages such as:
-About
-Portfolio
-Clients
-Blog
-Contact (with a functional contact form)
-Responsive Sidebar: Enhances navigation on smaller screens.
-Interactive UI Components: Includes sliders, date pickers, and sticky elements for improved user experience.
+
 
 ### 🛠️ Technologies and Frameworks
 The following frameworks and libraries were used in this project:
