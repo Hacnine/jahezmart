@@ -15,7 +15,7 @@ https://jahezmart.netlify.app
 
 
 ### 📝 About
-Jahezmart is a fully developed ecommerce website. It features essential sections and functionalities commonly required in restaurant websites.
+Jahezmart is a fully developed e-commerce website. It features essential sections and functionalities commonly required in e-commerce websites.
 
 ### 📝 Project Description
 
