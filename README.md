@@ -1,6 +1,6 @@
 
 
-### ⭐ Project Name: Jazezmart
+### ⭐ Project Name: Jahezmart
 
 ### 🚀 Live Preview: 
 https://jahezmart.netlify.app
