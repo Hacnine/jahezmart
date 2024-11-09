@@ -1,6 +1,6 @@
 
 
- ### ⭐ Jazezmart
+ ### ⭐ Project Name: Jazezmart
 
  ### 🚀 Live Preview: 
 https://jahezmart.netlify.app
@@ -11,11 +11,11 @@ https://jahezmart.netlify.app
 * **Technologies Used**
 * **Installation**
 * **Scripts**
-* **Deployment**
+
 
 
 ### 📝 About
-Jahezmart is a fully developed restaurant website initially created as a homepage but expanded to provide a comprehensive user experience. It features essential sections and functionalities commonly required in restaurant websites.
+Jahezmart is a fully developed ecommerce website. It features essential sections and functionalities commonly required in restaurant websites.
 
 ### 📝 Project Description
 
