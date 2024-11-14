@@ -36,7 +36,6 @@
 }
 
 body {
-  max-width: 1350;
   margin-left: auto; 
   margin-right: auto;
 }
@@ -53,7 +52,7 @@ body {
 }
 
 .wrapper {
-  @apply sm:px-[24px] md:px-[48px] px-[16px]
+  @apply  sm:px-[24px] md:px-[48px] px-[16px]
 }
 
 .input{

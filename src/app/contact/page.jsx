@@ -9,7 +9,7 @@ const ContactPage = () => {
   return (
     <>
       <section
-        className=" w-screen h-[300px] center mb-7"
+        className=" w-full h-[300px] center mb-7"
         style={{
           backgroundImage: 'url("/images/background/laptop.jpg")',
           backgroundSize: "cover",
@@ -18,7 +18,7 @@ const ContactPage = () => {
         }}
       >
         <div
-          className=" bg-black w-screen h-full text-2xl  text-white bg-opacity-50 text-center center flex-col"
+          className=" bg-black w-full h-full text-2xl  text-white bg-opacity-50 text-center center flex-col"
           style={{ fontWeight: 500 }}
         >
           CONTACT US

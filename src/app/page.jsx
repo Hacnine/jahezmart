@@ -5,7 +5,7 @@ export const metadata = {
 }
 export default function Home() {
   return (
-    <main className="max-w-screen-2xl mx-auto">
+    <main className=" mx-auto">
       <Head>
         <link rel="icon" href="/new.svg" />
       </Head>

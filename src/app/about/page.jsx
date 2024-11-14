@@ -33,15 +33,15 @@ const AboutPage = () => {
     },
   ];
   return (
-    <div className="wrapper center flex-col px-4 ">
+    <div className="  center flex-col ">
       <div
-        className=" w-screen h-[300px] center mb-20"
+        className=" w-full h-[300px] center mb-20"
         style={{ backgroundImage: 'url("/images/background/laptop.jpg")', backgroundSize: 'cover', 
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center', }}
       >
         <div
-          className=" bg-black w-screen h-full text-2xl  text-white bg-opacity-50 text-center center flex-col"
+          className=" bg-black w-full h-full text-2xl  text-white bg-opacity-50 text-center center flex-col"
           style={{ fontWeight: 500 }}
         >
           ABOUT US
