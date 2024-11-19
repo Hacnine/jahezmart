@@ -48,7 +48,7 @@ const SearchBar = ({ otherClasses }) => {
           <div className="relative w-full center">
             <Combobox.Input
               className={
-                "w-full border  h-[48px] border-r-0 px-8 pb-1 ring-transparent outline-none focus:border focus:border-orangeRed focus:border-r-0 rounded-lr-full rounded-tl-full placeholder:text-sm  placeholder:font-sans"
+                "w-full border  h-[48px] border-r-0 px-8 pb-1 ring-transparent outline-none focus:border focus:border-orangeRed focus:border-r-0 rounded-l-full placeholder:text-sm  placeholder:font-sans"
               }
               onChange={(event) => setQuery(event.target.value)}
               onClick={()=>setWider(true)}
@@ -56,7 +56,7 @@ const SearchBar = ({ otherClasses }) => {
             />
             {/* <Link href={'/shop'}> */}
             <Combobox.Button
-              className="bg-orangeRed hover:bg-sandyBrown text-white center gap-1 py-3 pl-3 pr-10 rounded-lr-md rounded-br-full text-sm"
+              className="bg-orangeRed hover:bg-sandyBrown text-white center gap-1 py-3 pl-3 pr-10 rounded-r-full text-sm"
               onClick={handleFilteredProducts}
             >
               <Search fontSize="medium" />
@@ -73,7 +73,7 @@ const SearchBar = ({ otherClasses }) => {
             >
               <Combobox.Options
                 className={
-                  " w-full h-[400px] bg-slate-100 absolute top-20 rounded-md z-50 rounded-lr-md rounded-tl-3xl rounded-br-3xl p-4 overflow-clip"
+                  " w-full h-[400px] bg-slate-100 absolute top-20 rounded-md z-50   p-4 overflow-clip"
                 }
               >
                 {primaryFilteredProducts.length === 0 && query !== "" ? (

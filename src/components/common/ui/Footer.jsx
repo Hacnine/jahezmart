@@ -25,9 +25,9 @@ const Footer = () => {
           <div className="start">
             <input
               type="text"
-              className="md:w-[260px] w-[190px] border border-gray-300   h-[48px]  border-r-0  px-4 py-3 ring-transparent  outline-none focus:border focus:border-orangeRed focus:border-r-0 rounded-lr-md rounded-tl-3xl"
+              className="md:w-[260px] w-[190px] border border-gray-300   h-[48px]  border-r-0  px-4 py-3 ring-transparent  outline-none focus:border focus:border-orangeRed focus:border-r-0 rounded-l-full"
             />
-            <button className="bg-orangeRed hover:bg-sandyBrown text-white center gap-1 py-3 sm:px-5 px-2 rounded-lr-md rounded-tr-3xl font-semibold sm:text-base ">
+            <button className="bg-orangeRed hover:bg-sandyBrown text-white center gap-1 py-3 sm:px-5 px-2 rounded-r-full font-semibold sm:text-base ">
               Subscribe{" "}
             </button>
           </div>

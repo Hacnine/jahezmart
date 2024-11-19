@@ -24,8 +24,8 @@ const FirstHeader = () => {
               href="/home"
               className={`${
                 pathName === "/home"
-                  ? " rounded-bl-xl rounded-tr-full border-2 p-1  px-2 pr-4 bg-gray-300 "
-                  : "rounded-bl-xl rounded-tr-full border-2 bg-gray-200 p-1  px-2 pr-4"
+                  ? " rounded-full border-2   px-3 bg-gray-300 "
+                  : "rounded-full border-2 bg-gray-200   px-3"
               }`}
             >
               Home
@@ -34,8 +34,8 @@ const FirstHeader = () => {
               href="/shop"
               className={`${
                 pathName === "/shop"
-                  ? "  rounded-bl-xl rounded-tr-full border-2 p-1  px-2 pr-4 bg-gray-300 "
-                  : "rounded-bl-xl rounded-tr-full border-2 bg-gray-200 p-1  px-2 pr-4"
+                  ? "  rounded-full border-2   px-3 bg-gray-300 "
+                  : "rounded-full border-2 bg-gray-200   px-3"
               }`}
             >
               Shop
@@ -44,8 +44,8 @@ const FirstHeader = () => {
               href="/about"
               className={`${
                 pathName === "/about"
-                  ? " rounded-bl-xl rounded-tr-full border-2 p-1  px-2 pr-4 bg-gray-300 "
-                  : "rounded-bl-xl rounded-tr-full border-2 bg-gray-200 p-1  px-2 pr-4"
+                  ? " rounded-full border-2   px-3 bg-gray-300 "
+                  : "rounded-full border-2 bg-gray-200   px-3"
               }`}
             >
               About
@@ -54,8 +54,8 @@ const FirstHeader = () => {
               href="/contact"
               className={`${
                 pathName === "/contact"
-                  ? " rounded-bl-xl rounded-tr-full border-2 p-1  px-2 pr-4 bg-gray-300 "
-                  : "rounded-bl-xl rounded-tr-full border-2 bg-gray-200 p-1  px-2 pr-4"
+                  ? " rounded-full border-2   px-3 bg-gray-300 "
+                  : "rounded-full border-2 bg-gray-200   px-3"
               }`}
             >
               Contact
