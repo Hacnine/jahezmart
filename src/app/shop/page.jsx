@@ -4,7 +4,10 @@ import AccountDrawer from "../../components/Drawer/DynamicDrawer";
 import FilterSidebar from "../../components/common/sidebar/FilterSidebar";
 import AllProducts from "../../components/common/ui/AllProducts";
 import CustomBreadcrumbs from "../../components/common/ui/CustomBreadcrumbs";
-import { useFilterContext } from "../../context_reducer/filterContext";
+import { useSelector, useDispatch } from "react-redux";
+import { sortingProduct } from "../../store/slices/filterSlice";
+import { useGetProductsQuery } from "../../store/productsApi";
+import { setApiData } from "../../store/slices/filterSlice";
 import { GridView, Menu, TableRows } from "@mui/icons-material";
 import React, { useEffect, useState } from "react";
 import ProductCard from "../../components/card/ProductCard";
@@ -17,7 +20,16 @@ import PaginationControls from "../../components/shop/PaginationControls";
 // }
 
 const Shop = ({ searchParams }) => {
-  const { allProducts, sortingProduct, filteredProducts } = useFilterContext();
+  const dispatch = useDispatch();
+  const { data: productsData, isLoading } = useGetProductsQuery({ limit: 1000 });
+  const { allProducts, filteredProducts } = useSelector((state) => state.filter);
+
+  useEffect(() => {
+    if (productsData?.items) {
+      dispatch(setApiData(productsData.items));
+    }
+  }, [productsData, dispatch]);
+
   const [open, setOpen] = useState(false);
   const [grid, setGrid] = useState(true);
   const page = searchParams["page"] ?? "1";
@@ -64,7 +76,7 @@ const Shop = ({ searchParams }) => {
             name=""
             id=""
             className=" font-semibold w-fit text-sm text-gray-600 border-gray-300 rounded outline-none focus:ring-0 focus:border-transparent focus:ring-blue-600 focus:border-blue-600 px-4 py-3 border"
-            onChange={(e) => sortingProduct(e.target.value)}
+            onChange={(e) => dispatch(sortingProduct(e.target.value))}
           >
             <option className="rounded" value="Default sorting">
               Default sorting

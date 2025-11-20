@@ -1,11 +1,12 @@
 "use client";
-import React from "react";
+import React, { useMemo } from "react";
 import Slider from "../../components/slider/HeroImageSlider";
 import { featureCardInfo, shopByCategory } from "../../constant/index";
 import ShopByCategory from "../../components/common/ShopByCategory";
 import "../customcss.css";
 import ProductCard from "../../components/card/ProductCard";
-import { useFilterContext } from "../../context_reducer/filterContext";
+// Switched from Context API to RTK Query
+import { useGetProductsQuery } from "../../store/productsApi";
 import chairad from "../../../public/images/ad/chairad.svg";
 import Image from "next/image";
 import MiniProductCard from "../../components/card/MiniProductCard";
@@ -16,13 +17,22 @@ import '../customcss.css'
 import { useRouter } from "next/navigation";
 const Home = () => {
   const router = useRouter();
-  const {
-    featuredSofa: sofa,
-    featuredDinning: dinning,
-    featuredKidsFurniture: kidsFurniture,
-    featuredBed: bed,
-    newProducts,
-  } = useFilterContext();
+  const { data, isLoading } = useGetProductsQuery({ limit: 100 });
+
+  const { bed, sofa, dinning, kidsFurniture, newProducts } = useMemo(() => {
+    const items = data?.items || [];
+    const featuredData = (categoryName) =>
+      items.filter((p) => p?.featured === true && p?.category === categoryName);
+
+    const computed = {
+      bed: featuredData("bed"),
+      sofa: featuredData("sofa"),
+      dinning: featuredData("dining"),
+      kidsFurniture: featuredData("Kids Furniture"),
+      newProducts: items.filter((p) => p?.newProduct === true || p?.new_product === true),
+    };
+    return computed;
+  }, [data]);
 
   return (
     <div className="home space-y-8">
@@ -100,7 +110,7 @@ const Home = () => {
           Featured Products
         </p> */}
         <img src="/images/titles/featured.svg" className="mb-9 w-[300px] md:w-fit" alt="" onClick={()=>router.push('account/cart')}/>
-        {bed.length === 0?
+        {isLoading || (bed?.length ?? 0) === 0?
         <div className="secondLoader">
         
         </div>
@@ -146,7 +156,7 @@ const Home = () => {
 
       <div className="wrapper py-9 center flex-col">
         <img src="/images/titles/new.svg"  className="mb-9 w-[300px] md:w-fit" alt="" />
-        {newProducts.length === 0?
+        {isLoading || (newProducts?.length ?? 0) === 0?
         <div className="secondLoader">
         
         </div>
