@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import {  Delete } from "@mui/icons-material";
-import { useCartContext } from "../../context_reducer/cartContext";
+import { useSelector, useDispatch } from "react-redux";
+import { addToCart, removeFromWishlist } from "../../store/slices/cartSlice";
 import { MdOutlineShoppingCartCheckout } from "react-icons/md";
 import Link from "next/link";
 import TooltipWrapper from "../wrapper/TooltipWrapper";
@@ -13,10 +14,8 @@ const WishListCard= ({
   stock,
   selected,
 }) => {
-  const {
-    sentCartItem,
-    removeFromWishList,
-  } = useCartContext();
+  const dispatch = useDispatch();
+  const { cartProducts } = useSelector((state) => state.cart);
 
   const [openWishList, setOpenWishList] = useState(false);
   const [wishListMessage, setWishListMessage] = useState("Added to WishList!");
@@ -24,17 +23,24 @@ const WishListCard= ({
   const [message, setMessage] = useState("Added to cart!");
 
   const handleClick = ()=>{
-    sentCartItem(setOpen, setMessage, {
-      id,
-      name,
-      firstImagePath,
-      quantity,
-      price,
-      stock,
-      selected,
-    })
-    removeFromWishList(setOpenWishList, setWishListMessage, id)
-
+    const existingProduct = cartProducts.find((item) => item.id === id);
+    if (existingProduct) {
+      setMessage("The Product Exist In Your Cart!");
+    } else {
+      dispatch(addToCart({
+        id,
+        name,
+        firstImagePath,
+        quantity,
+        price,
+        stock,
+        selected,
+      }));
+      setMessage("Added to cart!");
+    }
+    dispatch(removeFromWishlist(id));
+    setOpen(true);
+    setTimeout(() => setOpen(false), 1000);
   }
   return (
     <>
@@ -46,9 +52,12 @@ const WishListCard= ({
           <p className="font-semibold">{name}</p>
           <TooltipWrapper open={open} setOpen={setOpen} message={message}>
           <button
-            onClick={() =>
-              removeFromWishList(setOpenWishList, setWishListMessage, id)
-            }
+            onClick={() => {
+              dispatch(removeFromWishlist(id));
+              setWishListMessage("Removed from wishlist!");
+              setOpenWishList(true);
+              setTimeout(() => setOpenWishList(false), 3000);
+            }}
             className=" text-white  px-4 py-0.5  rounded-sm"
           >
             <Delete fontSize="small" color="warning" />

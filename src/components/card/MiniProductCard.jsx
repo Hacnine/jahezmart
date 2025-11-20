@@ -3,7 +3,8 @@ import React, { useEffect, useState } from "react";
 import { MdFavoriteBorder, MdFavorite } from "react-icons/md";
 import StarRating from "../common/ui/StarRating";
 import { BsCart, BsCartCheckFill } from "react-icons/bs";
-import { useCartContext } from "../../context_reducer/cartContext";
+import { useSelector, useDispatch } from "react-redux";
+import { addToCart, removeFromCart, addToWishlist, removeFromWishlist } from "../../store/slices/cartSlice";
 import Link from "next/link";
 
 import { useRouter } from "next/navigation";
@@ -23,14 +24,8 @@ const MiniProductCard = ({
   reviews,
   stock,
 }) => {
-  const {
-    sentCartItem,
-    deleteCartSingleProduct,
-    sentWishListItem,
-    wishListProducts,
-    removeFromWishList,
-  } = useCartContext();
-
+  const dispatch = useDispatch();
+  const { cartProducts, wishListProducts } = useSelector((state) => state.cart);
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -50,11 +45,14 @@ const MiniProductCard = ({
   const firstImagePath = images[firstColorKey]?.[0];
 
   const handleFavoriteClick = () => {
-    setFavorite(!favorite);
-    if (favorite) {
-      removeFromWishList(setOpenWishList, setWishListMessage, id);
+    const existingProduct = wishListProducts.find((item) => item.id === id);
+    if (existingProduct) {
+      dispatch(removeFromWishlist(id));
+      setWishListMessage("Removed from wishlist!");
+      setOpenWishList(true);
+      setTimeout(() => setOpenWishList(false), 3000);
     } else {
-      sentWishListItem(setOpenWishList, setWishListMessage, {
+      dispatch(addToWishlist({
         id,
         name,
         firstImagePath,
@@ -62,7 +60,10 @@ const MiniProductCard = ({
         price,
         stock,
         selected,
-      });
+      }));
+      setWishListMessage("Added to wishlist!");
+      setOpenWishList(true);
+      setTimeout(() => setOpenWishList(false), 3000);
     }
   };
 
@@ -76,12 +77,13 @@ const MiniProductCard = ({
   }, [wishListProducts, id]);
 
   const handleCartClick = () => {
-    setCart(!cart);
-
-    if (cart) {
-      deleteCartSingleProduct(setOpen, setMessage, id);
+    const existingProduct = cartProducts.find((item) => item.id === id);
+    if (existingProduct) {
+      dispatch(removeFromCart(id));
+      setMessage("Removed from cart!");
+      setCart(false);
     } else {
-      sentCartItem(setOpen, setMessage, {
+      dispatch(addToCart({
         id,
         name,
         firstImagePath,
@@ -89,8 +91,12 @@ const MiniProductCard = ({
         price,
         stock,
         selected,
-      });
+      }));
+      setMessage("Added to cart!");
+      setCart(true);
     }
+    setOpen(true);
+    setTimeout(() => setOpen(false), 1000);
   };
 
   const router = useRouter();

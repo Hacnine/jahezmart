@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import StarRating from "../common/ui/StarRating";
 import { ShoppingCart } from "@mui/icons-material";
-import { useCartContext } from "../../context_reducer/cartContext";
+import { useSelector, useDispatch } from "react-redux";
+import { addToCart } from "../../store/slices/cartSlice";
 import Link from "next/link";
 import TooltipWrapper from "../wrapper/TooltipWrapper";
 import { useRouter } from "next/navigation";
@@ -20,7 +21,8 @@ const SearchbarMiniProductCard= ({
   reviews,
   stock,
 }) => {
-  const { sentCartItem } = useCartContext();
+  const dispatch = useDispatch();
+  const { cartProducts } = useSelector((state) => state.cart);
   const [selected, setSelected] = useState(colors[0]);
   const [open, setOpen] = React.useState(false);
   const [message, setMessage] = useState("Added to cart!");
@@ -52,17 +54,25 @@ const SearchbarMiniProductCard= ({
           <TooltipWrapper open={open} setOpen={setOpen} message={message}>
             <button
               className="w-full opacity-0 bg-orange-500  group-hover:opacity-100 absolute z-10 md:bottom-0 bottom-0 py-1 font-semibold text-white text-xs transition-color duration-300 rounded-bl-3xl "
-              onClick={() =>
-                sentCartItem(setOpen, setMessage, {
-                  id,
-                  name,
-                  firstImagePath,
-                  quantity,
-                  price,
-                  stock,
-                  selected,
-                })
-              }
+              onClick={() => {
+                const existingProduct = cartProducts.find((item) => item.id === id);
+                if (existingProduct) {
+                  setMessage("The Product Exist In Your Cart!");
+                } else {
+                  dispatch(addToCart({
+                    id,
+                    name,
+                    firstImagePath,
+                    quantity,
+                    price,
+                    stock,
+                    selected,
+                  }));
+                  setMessage("Added to cart!");
+                }
+                setOpen(true);
+                setTimeout(() => setOpen(false), 1000);
+              }}
             >
               <ShoppingCart fontSize="small" />
             </button>

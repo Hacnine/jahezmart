@@ -6,10 +6,10 @@ import WishListCard from "../../../components/card/WishListCard";
 import AccountSideBar from "../../../components/common/sidebar/AccountSideBar";
 import AccountDrawer from "../../../components/Drawer/DynamicDrawer";
 import WishListSummaryCard from "../../../components/card/WishListSummaryCard";
-import { useCartContext } from "../../../context_reducer/cartContext";
+import { useSelector } from "react-redux";
 import { MdMenu } from "react-icons/md";
 const WishList = () => {
-  const { wishListProducts } = useCartContext();
+  const { wishListProducts } = useSelector((state) => state.cart);
 
   const links = [{ linkName: "Wishlist", link: "/account/wishlist" }];
   const [open, setOpen] = useState(false);

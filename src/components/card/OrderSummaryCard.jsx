@@ -2,9 +2,9 @@
 import React from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useCartContext } from "../../context_reducer/cartContext";
+import { useSelector } from "react-redux";
 const SummaryCard = ({ children }) => {
-  const { cartProducts } = useCartContext();
+  const { cartProducts } = useSelector((state) => state.cart);
 
   const router = useRouter();
 

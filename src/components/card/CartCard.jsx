@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import {  Delete } from "@mui/icons-material";
 import { FaHeartCirclePlus } from "react-icons/fa6";
-import { useCartContext } from "../../context_reducer/cartContext";
+import { useSelector, useDispatch } from "react-redux";
+import { addToWishlist, updateQuantity, removeFromCart } from "../../store/slices/cartSlice";
 import Link from "next/link";
 import TooltipWrapper from "../wrapper/TooltipWrapper";
 
@@ -16,12 +17,8 @@ const CartCard = ({
   selected,
   large,
 }) => {
-  const {
-    sentWishListItem,
-    updateCartItemQuantity,
-    deleteCartSingleProduct,
-    addToWishList,
-  } = useCartContext();
+  const dispatch = useDispatch();
+  const { wishListProducts } = useSelector((state) => state.cart);
   const [temporaryQuantity, setTemporaryQuantity] = useState(
     quantity ?? tempQuantity ?? 0
   );
@@ -32,35 +29,41 @@ const CartCard = ({
 
   const setDecrease = () => {
     if (temporaryQuantity > 1) {
-      setTemporaryQuantity(temporaryQuantity - 1);
-      updateCartItemQuantity(id, temporaryQuantity - 1);
+      const newQuantity = temporaryQuantity - 1;
+      setTemporaryQuantity(newQuantity);
+      dispatch(updateQuantity({ id, quantity: newQuantity }));
     } else {
       setTemporaryQuantity(1);
-      // updateCartItemQuantity(id, temporaryQuantity)
     }
   };
 
   const setIncrease = () => {
     if (temporaryQuantity < stock) {
-      setTemporaryQuantity(temporaryQuantity + 1);
-      updateCartItemQuantity(id, temporaryQuantity + 1);
+      const newQuantity = temporaryQuantity + 1;
+      setTemporaryQuantity(newQuantity);
+      dispatch(updateQuantity({ id, quantity: newQuantity }));
     }
-    temporaryQuantity < stock
-      ? setTemporaryQuantity(temporaryQuantity + 1)
-      : setTemporaryQuantity(stock);
   };
 
   const sentToCart = () => {
-    sentWishListItem(setOpenWishList, setWishListMessage, {
-      id,
-      name,
-      firstImagePath,
-      quantity,
-      price,
-      stock,
-      selected,
-    });
-    deleteCartSingleProduct(setOpen, setMessage, id);
+    const existingProduct = wishListProducts.find((item) => item.id === id);
+    if (existingProduct) {
+      setWishListMessage("Already in wishlist!");
+    } else {
+      dispatch(addToWishlist({
+        id,
+        name,
+        firstImagePath,
+        quantity,
+        price,
+        stock,
+        selected,
+      }));
+      setWishListMessage("Added to wishlist!");
+    }
+    dispatch(removeFromCart(id));
+    setOpenWishList(true);
+    setTimeout(() => setOpenWishList(false), 3000);
   };
 
   return (
@@ -122,7 +125,12 @@ const CartCard = ({
           </div>
           <TooltipWrapper open={open} setOpen={setOpen} message={message}>
             <button
-              onClick={() => deleteCartSingleProduct(setOpen, setMessage, id)}
+              onClick={() => {
+                dispatch(removeFromCart(id));
+                setMessage("Removed from cart!");
+                setOpen(true);
+                setTimeout(() => setOpen(false), 1000);
+              }}
               className=" focus-within:border-warning px-3.5 "
             >
               <Delete fontSize="small" color="warning" />
