@@ -1,9 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { useFilterContext } from "../../../context_reducer/filterContext";
 import CategorySlider from "../../slider/CategorySlider";
-import { useCartContext } from "../../../context_reducer/cartContext";
 import { FavoriteBorder, Twitter } from "@mui/icons-material";
 import { BsInstagram } from "react-icons/bs";
 import { FaFacebookF, FaOpencart } from "react-icons/fa";
@@ -15,11 +13,18 @@ import StarRating from "./StarRating";
 import SizeButton from "../../buttons/SizeButton";
 import { MdFavoriteBorder } from "react-icons/md";
 import { useRouter } from "next/navigation";
+import { useSelector, useDispatch } from "react-redux";
+import { addToCart, addToWishlist, removeFromWishlist } from "../../../store/slices/cartSlice";
+import { useGetProductQuery } from "../../../store/productsApi";
 
 const QuickView = ({ id, modal, setModalOpen }) => {
-  const { allProducts, getProductById } = useFilterContext();
+  const dispatch = useDispatch();
+  const { data: product, isLoading } = useGetProductQuery(id);
+  const { wishListProducts, cartProducts } = useSelector((state) => state.cart);
 
-  const product = getProductById(id);
+  if (isLoading || !product) {
+    return <div>Loading...</div>;
+  }
 
   const {
     brand,
@@ -37,14 +42,6 @@ const QuickView = ({ id, modal, setModalOpen }) => {
     reviews,
     stock,
   } = product;
-
-  const {
-    sentCartItem,
-    sentWishListItem,
-    wishListProducts,
-    removeFromWishList,
-  } = useCartContext();
-  const { filterByCategory } = useFilterContext();
   const router = useRouter();
   const [open, setOpen] = React.useState(false);
   const [openWishList, setOpenWishList] = React.useState(false);
@@ -60,11 +57,14 @@ const QuickView = ({ id, modal, setModalOpen }) => {
   const firstImagePath = images[firstColorKey]?.[pathIndex];
 
   const handleFavoriteClick = () => {
-    setFavorite(!favorite);
-    if (favorite) {
-      removeFromWishList(setOpenWishList, setWishListMessage, id);
+    const existingProduct = wishListProducts.find((item) => item.id === id);
+    if (existingProduct) {
+      dispatch(removeFromWishlist(id));
+      setWishListMessage("Removed from wishlist!");
+      setOpenWishList(true);
+      setTimeout(() => setOpenWishList(false), 3000);
     } else {
-      sentWishListItem(setOpenWishList, setWishListMessage, {
+      dispatch(addToWishlist({
         id,
         name,
         firstImagePath,
@@ -72,7 +72,10 @@ const QuickView = ({ id, modal, setModalOpen }) => {
         price,
         stock,
         selected,
-      });
+      }));
+      setWishListMessage("Added to wishlist!");
+      setOpenWishList(true);
+      setTimeout(() => setOpenWishList(false), 3000);
     }
   };
   const updateQuery = () => {
@@ -243,17 +246,25 @@ const QuickView = ({ id, modal, setModalOpen }) => {
                     ? "w-24 h-8 text-xs"
                     : " sm:w-48 sm:h-10 w-32 h-8 sm:text-base text-xs"
                 } text-white  border-2 bg-orangeRed hover:text-orangeRed hover:bg-white font-semibold border-orangeRed  flex items-center justify-center    gap-4 rounded group transition-colors duration-300`}
-                onClick={() =>
-                  sentCartItem(setOpen, setMessage, {
-                    id,
-                    name,
-                    firstImagePath,
-                    tempQuantity,
-                    price,
-                    stock,
-                    selected,
-                  })
-                }
+                onClick={() => {
+                  const existingProduct = cartProducts.find((item) => item.id === id);
+                  if (existingProduct) {
+                    setMessage("The Product Exist In Your Cart!");
+                  } else {
+                    dispatch(addToCart({
+                      id,
+                      name,
+                      firstImagePath,
+                      quantity: tempQuantity,
+                      price,
+                      stock,
+                      selected,
+                    }));
+                    setMessage("Added to cart!");
+                  }
+                  setOpen(true);
+                  setTimeout(() => setOpen(false), 1000);
+                }}
               >
                 <FaOpencart
                   className={`${

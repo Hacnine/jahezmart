@@ -1,12 +1,12 @@
 "use client";
-import { useFilterContext } from "../../../context_reducer/filterContext";
 import React, { Fragment, useState, useEffect } from "react";
 import ProductCard from "../../card/ProductCard";
+import { useSelector } from "react-redux";
 
 
 
 const AllProducts= ({ grid }) => {
-  const { filteredProducts} = useFilterContext();
+  const { filteredProducts } = useSelector((state) => state.filter);
 
   // if (filteredProducts.length === 0) {
   //   return (

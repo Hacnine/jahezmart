@@ -1,18 +1,18 @@
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { useFilterContext } from "../../context_reducer/filterContext";
 import ProductCard from "../card/ProductCard";
 import {
   IoMdArrowDropleft,
   IoMdArrowDropright,
 } from "react-icons/io";
+import { useSelector } from "react-redux";
 
 
 
 const CategorySlider = ({ category }) => {
-  const { filterByCategory } = useFilterContext();
-  const categoryProducts = filterByCategory(category);
+  const { allProducts } = useSelector((state) => state.filter);
+  const categoryProducts = allProducts.filter((product) => product.category === category);
 
 
   var settings = {

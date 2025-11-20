@@ -2,13 +2,13 @@
 
 import React, { useEffect, useState } from "react";
 import { Box, Tab, Tabs } from "@mui/material";
-import { useFilterContext } from "../../../../context_reducer/filterContext";
-import { useCartContext } from "../../../../context_reducer/cartContext";
 import QuickView from "../../../../components/common/ui/QuickView";
 import ProductInfo from "../../../../components/singlePageProduct/ProductInfo";
 import QuestionAndAnswer from "../../../../components/singlePageProduct/QuestionAndAnswer";
 import ProductReview from "../../../../components/singlePageProduct/ProductReview";
 import CategorySlider from "../../../../components/slider/CategorySlider";
+import { useSelector } from "react-redux";
+import { useGetProductQuery } from "../../../../store/productsApi";
 
 const Page = ({ params }) => {
   const [favorite, setFavorite] = useState(false);
@@ -26,9 +26,13 @@ const Page = ({ params }) => {
 
   console.log("Extracted id:", productId);
 
-  const { getProductById } = useFilterContext();
-  const { wishListProducts } = useCartContext();
-  const product = getProductById(productId);
+  const { data: product, isLoading } = useGetProductQuery(productId);
+  const { wishListProducts } = useSelector((state) => state.cart);
+
+  if (isLoading || !product) {
+    return <div>Loading...</div>;
+  }
+
   const { category, description, full_details, id } = product;
 
   useEffect(() => {

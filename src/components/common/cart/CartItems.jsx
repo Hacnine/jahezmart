@@ -2,12 +2,12 @@
 
 import React from "react";
 import Box from "@mui/material/Box";
-import { useCartContext } from "../../../context_reducer/cartContext";
 import Scrollbars from "react-custom-scrollbars-2";
 import CartCard from "../../card/CartCard";
+import { useSelector } from "react-redux";
 
 const CartItems = ({ width, height, large }) => {
-  const { cartProducts } = useCartContext();
+  const { cartProducts } = useSelector((state) => state.cart);
 
   return (
     <div>

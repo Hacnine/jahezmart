@@ -1,14 +1,14 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { useFilterContext } from "../../../context_reducer/filterContext";
-import { useCartContext } from "../../../context_reducer/cartContext";
 import CategorySlider from "../../../components/slider/CategorySlider";
 import { Box, Tab, Tabs } from "@mui/material";
 import ProductInfo from "../../../components/singlePageProduct/ProductInfo";
 import ProductReview from "../../../components/singlePageProduct/ProductReview";
 import QuestionAndAnswer from "../../../components/singlePageProduct/QuestionAndAnswer";
 import QuickView from "../../../components/common/ui/QuickView";
+import { useSelector } from "react-redux";
+import { useGetProductQuery } from "../../../store/productsApi";
 
 const Page = ({ params }) => {
 
@@ -27,13 +27,14 @@ const Page = ({ params }) => {
     }
   }
   
-  // console.log("Extracted id:", productId); // Output: Extracted id: 2
+  const { data: product, isLoading } = useGetProductQuery(productId);
+  const { wishListProducts } = useSelector((state) => state.cart);
 
-  const { getProductById } = useFilterContext();
-  const product = getProductById(productId);
+  if (isLoading || !product) {
+    return <div>Loading...</div>;
+  }
+
   const { category, description, full_details, id } = product;
-
-  const { wishListProducts } = useCartContext();
 
   const [favorite, setFavorite] = useState(false);
 
