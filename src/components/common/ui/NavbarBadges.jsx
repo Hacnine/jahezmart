@@ -4,12 +4,27 @@ import React from "react";
 import { Badge } from "@mui/material";
 import { Favorite, Login, Person, ShoppingCart } from "@mui/icons-material";
 import Link from "next/link";
-import { useCartContext } from "../../../context_reducer/cartContext";
+import { useSelector, useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
+import { useSession, signOut } from "next-auth/react";
+import { logout } from "../../../store/slices/authSlice";
 
 const NavbarBadges = () => {
-  const { wishListProducts, cartProducts } = useCartContext();
+  const { wishListProducts, cartProducts } = useSelector((state) => state.cart);
+  const { user: reduxUser } = useSelector((state) => state.auth);
+  const { data: session } = useSession();
+  const dispatch = useDispatch();
   const router = useRouter();
+
+  const user = session?.user || reduxUser;
+
+  const handleLogout = async () => {
+    if (session) {
+      await signOut({ redirect: false });
+    }
+    dispatch(logout());
+    router.push("/signin");
+  };
 
   return (
     <div className=" flex items-center justify-evenly gap-6">
@@ -36,9 +51,15 @@ const NavbarBadges = () => {
       <Link href={"/account"}>
         <Person sx={{ color: "OrangeRed" }} className="cursor-pointer" />
       </Link>
-      <Link href={"/signin"}>
-        <Login className="cursor-pointer" sx={{ color: "OrangeRed" }} />
-      </Link>
+      {user ? (
+        <button onClick={handleLogout} className="cursor-pointer">
+          <Login sx={{ color: "OrangeRed" }} className="rotate-180" />
+        </button>
+      ) : (
+        <Link href={"/signin"}>
+          <Login className="cursor-pointer" sx={{ color: "OrangeRed" }} />
+        </Link>
+      )}
     </div>
   );
 };
