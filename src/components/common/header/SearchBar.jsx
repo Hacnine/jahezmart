@@ -9,16 +9,17 @@ import React from "react";
 import SearchbarMiniProductCard from "../../card/SearchbarMiniProductCard";
 import Scrollbars from "react-custom-scrollbars-2";
 import { useRouter } from "next/navigation";
-import { useFilterContext } from "../../../context_reducer/filterContext";
+import { useSelector, useDispatch } from "react-redux";
+import { updateFilteredData } from "../../../store/slices/filterSlice";
 
 const SearchBar = ({ otherClasses }) => {
   const [query, setQuery] = useState("");
   const [wider, setWider] = useState(false);
   const router = useRouter();
+  const dispatch = useDispatch();
 
   const [visible, setVisible] = useState(false);
-  const { allProducts, updateFilteredProducts, filteredProducts } =
-    useFilterContext();
+  const { allProducts, filteredProducts } = useSelector((state) => state.filter);
 
   const primaryFilteredProducts = allProducts.filter((product) =>
     product.name.toLowerCase().includes(query.toLowerCase())
@@ -30,7 +31,7 @@ const SearchBar = ({ otherClasses }) => {
     } else {
       updateSearchParams(query.toLowerCase());
 
-      updateFilteredProducts(primaryFilteredProducts);
+      dispatch(updateFilteredData(primaryFilteredProducts));
       console.log(primaryFilteredProducts);
     }
   };

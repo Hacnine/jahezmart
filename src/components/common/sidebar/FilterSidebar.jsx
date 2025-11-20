@@ -1,19 +1,46 @@
 "use client";
 import CustomCheckBox from "../../../components/shop/CustomCheckBox";
-import { useFilterContext } from "../../../context_reducer/filterContext";
+import { useSelector, useDispatch } from "react-redux";
+import { filterByColor, filterByPriceRange } from "../../../store/slices/filterSlice";
 import React, { useState } from "react";
 
 const ShopSidebar = () => {
-  const { getProductsByColor, getProductByMinMaxPrice } = useFilterContext();
+  const dispatch = useDispatch();
+  const allProducts = useSelector((state) => state.filter.allProducts);
   const [minValue, setMinValue] = useState();
   const [maxValue, setMaxValue] = useState();
 
-  const handleApply = (e) => {
-    e.preventDefault();
-    getProductByMinMaxPrice(minValue, maxValue);
+  const getProductsByColor = (color) => {
+    dispatch(filterByColor(color));
   };
 
-  const { allProducts, getCategoryAndProductQuantity } = useFilterContext();
+  const handleApply = (e) => {
+    e.preventDefault();
+    dispatch(filterByPriceRange({ minValue, maxValue }));
+  };
+
+  const getCategoryAndProductQuantity = (property) => {
+    let categoryCounts = {};
+    allProducts.forEach((currentElement) => {
+      const category = currentElement[property];
+      if (categoryCounts.hasOwnProperty(category)) {
+        categoryCounts[category]++;
+      } else {
+        categoryCounts[category] = 1;
+      }
+    });
+
+    let uniqueCategories = Object.keys(categoryCounts);
+    let uniqueData = uniqueCategories.map((category) => ({
+      category: category,
+      count: categoryCounts[category],
+    }));
+
+    return [
+      { category: "All", count: allProducts.length },
+      ...uniqueData,
+    ];
+  };
 
   const uniqueColors = Array.from(
     new Set(allProducts.flatMap((product) => Object.keys(product.images)))

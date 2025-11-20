@@ -7,7 +7,8 @@ import { FavoriteBorder } from "@mui/icons-material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import StarRating from "../common/ui/StarRating";
 import ColorButton from "../buttons/ColorButton";
-import { useCartContext } from "../../context_reducer/cartContext";
+import { useSelector, useDispatch } from "react-redux";
+import { addToCart, addToWishlist, removeFromWishlist } from "../../store/slices/cartSlice";
 import { CgShoppingCart } from "react-icons/cg";
 import TooltipWrapper from "../wrapper/TooltipWrapper";
 import Scrollbars from "react-custom-scrollbars-2";
@@ -28,12 +29,8 @@ const ProductCard = ({
   reviews,
   stock,
 }) => {
-  const {
-    sentCartItem,
-    sentWishListItem,
-    wishListProducts,
-    removeFromWishList,
-  } = useCartContext();
+  const dispatch = useDispatch();
+  const { wishListProducts, cartProducts } = useSelector((state) => state.cart);
   const router = useRouter();
 
   const [modalOpen, setModalOpen] = useState(false);
@@ -48,11 +45,14 @@ const ProductCard = ({
   const firstImagePath = images[firstColorKey]?.[0];
 
   const handleFavoriteClick = () => {
-    setFavorite(!favorite);
-    if (favorite) {
-      removeFromWishList(setOpenWishList, setWishListMessage, id);
+    const existingProduct = wishListProducts.find((item) => item.id === id);
+    if (existingProduct) {
+      dispatch(removeFromWishlist(id));
+      setWishListMessage("Removed from wishlist!");
+      setOpenWishList(true);
+      setTimeout(() => setOpenWishList(false), 3000);
     } else {
-      sentWishListItem(setOpenWishList, setWishListMessage, {
+      dispatch(addToWishlist({
         id,
         name,
         firstImagePath,
@@ -60,7 +60,10 @@ const ProductCard = ({
         price,
         stock,
         selected,
-      });
+      }));
+      setWishListMessage("Added to wishlist!");
+      setOpenWishList(true);
+      setTimeout(() => setOpenWishList(false), 3000);
     }
   };
 
@@ -164,17 +167,25 @@ const ProductCard = ({
         <TooltipWrapper open={open} setOpen={setOpen} message={message}>
           <button
             className="absolute bottom-0 mt-3 bg-chocolate hover:bg-chocolate/90 w-full py-2 md:text-sm text-[10px] center text-white font-semibold rounded-tr-3xl rounded-bl-3xl center gap-1 opacity-0 group-hover:opacity-100"
-            onClick={() =>
-              sentCartItem(setOpen, setMessage, {
-                id,
-                name,
-                firstImagePath,
-                quantity,
-                price,
-                stock,
-                selected,
-              })
-            }
+            onClick={() => {
+              const existingProduct = cartProducts.find((item) => item.id === id);
+              if (existingProduct) {
+                setMessage("The Product Exist In Your Cart!");
+              } else {
+                dispatch(addToCart({
+                  id,
+                  name,
+                  firstImagePath,
+                  quantity,
+                  price,
+                  stock,
+                  selected,
+                }));
+                setMessage("Added to cart!");
+              }
+              setOpen(true);
+              setTimeout(() => setOpen(false), 1000);
+            }}
           >
             <CgShoppingCart className="text-lg" />
             <p>ADD TO CART</p>

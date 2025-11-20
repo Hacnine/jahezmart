@@ -1,19 +1,22 @@
-import { useFilterContext } from "../../context_reducer/filterContext";
+import { useDispatch } from "react-redux";
+import { setCategories, setBrands, removeCategory, removeBrand } from "../../store/slices/filterSlice";
 import { Checkbox, FormControlLabel } from "@mui/material";
 import React from "react";
 
 
 const CustomCheckBox= ({ label,filterBy }) => {
-  const { setCategories, removeCategories, removeBrands} = useFilterContext();
+  const dispatch = useDispatch();
 
   const handleCheckboxChange = (event) => {
     if (event.target.checked) {
-      setCategories(label, filterBy);
-      
+      if (filterBy === "CATEGORIES") {
+        dispatch(setCategories([label]));
+      } else {
+        dispatch(setBrands([label]));
+      }
     } else {
-      
-      removeCategories(label, filterBy);
-      removeBrands(label, filterBy);
+      dispatch(removeCategory(label));
+      dispatch(removeBrand(label));
     }
   };
 
