@@ -27,4 +27,18 @@ The following frameworks and libraries were used in this project:
 * **React Icons**: A collection of icons for UI consistency.
 * **Headless UI**: Accessible components for custom styling.
 * **Tailwind CSS**: Utility-first CSS framework for rapid and responsive design.
+* **Redux Toolkit**: State management with RTK Query for API calls.
+
+### 🔄 State Management Migration
+The project has been migrated from Context API to Redux Toolkit for better state management and API handling.
+
+- **Redux Store**: Configured in `src/store/store.js` with RTK Query integration.
+- **Slices**: Cart, filter, and auth slices handle UI state.
+- **RTK Query**: API calls for products, auth (login/register) using endpoints in `src/store/api.js` and `src/store/productsApi.js`.
+- **Usage**: Use `useSelector` for state, `useDispatch` for actions, and RTK Query hooks for API data.
+- **Context API Removal**: The old `context_reducer` files can be removed once migration is fully tested.
+
+### 📝 Notes
+- Backend API base URL: `http://localhost:8000/api` (set NEXT_PUBLIC_API_BASE_URL for production).
+- Ensure MongoDB Atlas cluster is resumed if backend fails to connect.
 
