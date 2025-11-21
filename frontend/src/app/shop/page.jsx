@@ -6,7 +6,7 @@ import AllProducts from "../../components/common/ui/AllProducts";
 import CustomBreadcrumbs from "../../components/common/ui/CustomBreadcrumbs";
 import { useSelector, useDispatch } from "react-redux";
 import { sortingProduct } from "../../store/slices/filterSlice";
-import { useGetProductsQuery } from "../../store/productsApi";
+import { useGetProductsQuery } from "../../store/api";
 import { setApiData } from "../../store/slices/filterSlice";
 import { GridView, Menu, TableRows } from "@mui/icons-material";
 import React, { useEffect, useState } from "react";

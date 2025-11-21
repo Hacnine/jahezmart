@@ -8,7 +8,7 @@ import ProductReview from "../../../components/singlePageProduct/ProductReview";
 import QuestionAndAnswer from "../../../components/singlePageProduct/QuestionAndAnswer";
 import QuickView from "../../../components/common/ui/QuickView";
 import { useSelector } from "react-redux";
-import { useGetProductQuery } from "../../../store/productsApi";
+import { useGetProductQuery } from "../../../store/api";
 
 const Page = ({ params }) => {
 

@@ -1,8 +1,8 @@
 "use client";
 
-import { api } from "./api";
+import { adminApi } from "./api";
 
-export const productsApi = api.injectEndpoints({
+export const productsApi = adminApi.injectEndpoints({
   endpoints: (builder) => ({
     getProducts: builder.query({
       query: (params = {}) => {

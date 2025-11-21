@@ -15,7 +15,7 @@ import { MdFavoriteBorder } from "react-icons/md";
 import { useRouter } from "next/navigation";
 import { useSelector, useDispatch } from "react-redux";
 import { addToCart, addToWishlist, removeFromWishlist } from "../../../store/slices/cartSlice";
-import { useGetProductQuery } from "../../../store/productsApi";
+import { useGetProductQuery } from "../../../store/api";
 
 const QuickView = ({ id, modal, setModalOpen }) => {
   const dispatch = useDispatch();

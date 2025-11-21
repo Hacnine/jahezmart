@@ -6,7 +6,7 @@ import ShopByCategory from "../../components/common/ShopByCategory";
 import "../customcss.css";
 import ProductCard from "../../components/card/ProductCard";
 // Switched from Context API to RTK Query
-import { useGetProductsQuery } from "../../store/productsApi";
+import { useGetProductsQuery } from "../../store/api";
 import chairad from "../../../public/images/ad/chairad.svg";
 import Image from "next/image";
 import MiniProductCard from "../../components/card/MiniProductCard";

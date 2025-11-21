@@ -14,7 +14,7 @@ import {
   Inventory as InventoryIcon,
   AttachMoney as MoneyIcon,
 } from '@mui/icons-material';
-import { useGetProductsQuery } from '../../store/productsApi';
+import { useGetProductsQuery } from '../../store/api';
 
 export default function AdminDashboard() {
   const { data: productsData, isLoading: productsLoading } = useGetProductsQuery({ limit: 1000 });

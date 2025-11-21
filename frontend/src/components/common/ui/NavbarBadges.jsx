@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Badge } from "@mui/material";
 import { Favorite, Login, Person, ShoppingCart, AdminPanelSettings } from "@mui/icons-material";
 import Link from "next/link";
@@ -10,11 +10,16 @@ import { useSession, signOut } from "next-auth/react";
 import { logout } from "../../../store/slices/authSlice";
 
 const NavbarBadges = () => {
+  const [isClient, setIsClient] = useState(false);
   const { wishListProducts, cartProducts } = useSelector((state) => state.cart);
   const { user: reduxUser } = useSelector((state) => state.auth);
   const { data: session } = useSession();
   const dispatch = useDispatch();
   const router = useRouter();
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   const user = session?.user || reduxUser;
 
@@ -51,7 +56,7 @@ const NavbarBadges = () => {
       <Link href={"/account"}>
         <Person sx={{ color: "OrangeRed" }} className="cursor-pointer" />
       </Link>
-      {user?.role === 'admin' && (
+      {isClient && user?.role === 'admin' && (
         <Link href={"/admin"} title="Admin Panel">
           <AdminPanelSettings sx={{ color: "OrangeRed" }} className="cursor-pointer" />
         </Link>

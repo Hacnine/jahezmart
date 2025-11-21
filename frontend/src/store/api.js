@@ -15,11 +15,8 @@ export const api = createApi({
     },
   }),
   tagTypes: ["Products", "Product", "Auth", "Users", "Orders"],
-  endpoints: () => ({}),
-});
-
-export const authApi = api.injectEndpoints({
   endpoints: (builder) => ({
+    // Auth endpoints
     login: builder.mutation({
       query: (credentials) => ({
         url: "/auth/login",
@@ -41,11 +38,32 @@ export const authApi = api.injectEndpoints({
         body: { ...credentials, role: 'admin' },
       }),
     }),
-  }),
-});
 
-export const adminApi = api.injectEndpoints({
-  endpoints: (builder) => ({
+    // Products endpoints
+    getProducts: builder.query({
+      query: (params = {}) => {
+        const qs = new URLSearchParams();
+        Object.entries(params).forEach(([k, v]) => {
+          if (v !== undefined && v !== null && v !== "") {
+            qs.set(k, String(v));
+          }
+        });
+        const query = qs.toString();
+        return `/products${query ? `?${query}` : ""}`;
+      },
+      providesTags: (result) =>
+        result?.items
+          ? [
+              ...result.items.map((p) => ({ type: "Product", id: p.id })),
+              { type: "Products", id: "LIST" },
+            ]
+          : [{ type: "Products", id: "LIST" }],
+    }),
+    getProduct: builder.query({
+      query: (id) => `/products/${id}`,
+      providesTags: (result, error, id) => [{ type: "Product", id }],
+    }),
+
     // Products management (admin only)
     createProduct: builder.mutation({
       query: (productData) => ({
@@ -129,10 +147,9 @@ export const adminApi = api.injectEndpoints({
 export const {
   useLoginMutation,
   useRegisterMutation,
-  useAdminLoginMutation
-} = authApi;
-
-export const {
+  useAdminLoginMutation,
+  useGetProductsQuery,
+  useGetProductQuery,
   useCreateProductMutation,
   useUpdateProductMutation,
   useDeleteProductMutation,
@@ -141,4 +158,4 @@ export const {
   useDeleteUserMutation,
   useGetOrdersQuery,
   useUpdateOrderStatusMutation,
-} = adminApi;
+} = api;

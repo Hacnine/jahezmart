@@ -37,7 +37,7 @@ export default function AdminLayout({ children }) {
   const menuItems = [
     { text: 'Dashboard', icon: <DashboardIcon />, path: '/admin' },
     { text: 'Products', icon: <ProductsIcon />, path: '/admin/products' },
-    { text: 'Users', icon: <PeopleIcon />, path: '/admin/users' },
+    { text: 'Users', icon: <UsersIcon />, path: '/admin/users' },
     { text: 'Orders', icon: <InventoryIcon />, path: '/admin/orders' },
   ];
 

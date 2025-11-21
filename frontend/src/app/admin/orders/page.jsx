@@ -1,3 +1,5 @@
+"use client"
+import React, { useState, useEffect } from 'react';
 import { useGetOrdersQuery, useUpdateOrderStatusMutation } from '../../../store/api';
 import {
   Box,
@@ -56,7 +58,7 @@ export default function AdminOrders() {
     console.log('View order:', orderId);
   };
 
-  if (loading) {
+  if (isLoading) {
     return (
       <Box display="flex" justifyContent="center" alignItems="center" minHeight="400px">
         <CircularProgress />
@@ -67,7 +69,7 @@ export default function AdminOrders() {
   if (error) {
     return (
       <Alert severity="error" sx={{ mt: 2 }}>
-        {error}
+        Error loading orders. Please try again.
       </Alert>
     );
   }

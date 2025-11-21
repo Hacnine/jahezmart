@@ -1,3 +1,5 @@
+"use client"
+import React, { useState, useEffect } from 'react';
 import { useGetUsersQuery, useUpdateUserRoleMutation, useDeleteUserMutation } from '../../../store/api';
 import {
   Box,
@@ -52,7 +54,7 @@ export default function AdminUsers() {
     }
   };
 
-  if (loading) {
+  if (isLoading) {
     return (
       <Box display="flex" justifyContent="center" alignItems="center" minHeight="400px">
         <CircularProgress />
@@ -63,7 +65,7 @@ export default function AdminUsers() {
   if (error) {
     return (
       <Alert severity="error" sx={{ mt: 2 }}>
-        {error}
+        Error loading users. Please try again.
       </Alert>
     );
   }

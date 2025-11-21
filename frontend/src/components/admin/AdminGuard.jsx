@@ -11,11 +11,20 @@ export default function AdminGuard({ children }) {
   useEffect(() => {
     const checkAdminAccess = () => {
       // Check if user is logged in as admin
-      // This could be from localStorage, context, or API call
       const adminToken = localStorage.getItem('adminToken');
       const userRole = localStorage.getItem('userRole');
+      const token = localStorage.getItem('token');
+      const userStr = localStorage.getItem('user');
+      let user = null;
+      if (userStr) {
+        try {
+          user = JSON.parse(userStr);
+        } catch (e) {
+          // ignore
+        }
+      }
 
-      if (adminToken && userRole === 'admin') {
+      if ((adminToken && userRole === 'admin') || (token && user?.role === 'admin')) {
         setIsAuthorized(true);
       } else {
         // Redirect to admin login page

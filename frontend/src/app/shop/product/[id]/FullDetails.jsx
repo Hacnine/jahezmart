@@ -8,7 +8,7 @@ import QuestionAndAnswer from "../../../../components/singlePageProduct/Question
 import ProductReview from "../../../../components/singlePageProduct/ProductReview";
 import CategorySlider from "../../../../components/slider/CategorySlider";
 import { useSelector } from "react-redux";
-import { useGetProductQuery } from "../../../../store/productsApi";
+import { useGetProductQuery } from "../../../../store/api";
 
 const Page = ({ params }) => {
   const [favorite, setFavorite] = useState(false);
