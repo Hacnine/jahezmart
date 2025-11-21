@@ -119,21 +119,21 @@ const Home = () => {
           <div className="">
             <p className=" mb-3  text-base font-semibold border-b-2 border-darkChocolate w-2/4">Bed</p>
             {bed.map((product) => (
-              <MiniProductCard {...product} />
+              <MiniProductCard key={product.id} {...product} />
             ))}
           </div>
           <div className="">
             <p className="  text-base mb-3 border-b-2 border-darkChocolate w-2/4">Sofa</p>
 
             {sofa.map((product) => (
-              <MiniProductCard {...product} />
+              <MiniProductCard key={product.id} {...product} />
             ))}
           </div>
           <div className="">
             <p className="font-semibold  text-base mb-3 border-b-2 border-darkChocolate w-2/4">Dinning</p>
 
             {dinning.map((product) => (
-              <MiniProductCard {...product} />
+              <MiniProductCard key={product.id} {...product} />
             ))}
           </div>
           <div className="xl:block lg:hidden sm:block">
@@ -141,7 +141,7 @@ const Home = () => {
 
             <div className="">
               {kidsFurniture.map((product) => (
-                <MiniProductCard {...product} />
+                <MiniProductCard key={product.id} {...product} />
               ))}
             </div>
           </div>
@@ -164,6 +164,7 @@ const Home = () => {
         <div className="grid lg:grid-cols-4 grid-cols-2 gap-6 ">
           {newProducts.map((product) => (
             <ProductCard
+              key={product.id}
               id={product.id} // Make sure to add a unique key for each item
               name={product.name}
               category={product.category}

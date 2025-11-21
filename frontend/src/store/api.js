@@ -14,7 +14,7 @@ export const api = createApi({
       return headers;
     },
   }),
-  tagTypes: ["Products", "Product", "Auth"],
+  tagTypes: ["Products", "Product", "Auth", "Users", "Orders"],
   endpoints: () => ({}),
 });
 
@@ -34,7 +34,111 @@ export const authApi = api.injectEndpoints({
         body: userData,
       }),
     }),
+    adminLogin: builder.mutation({
+      query: (credentials) => ({
+        url: "/auth/login",
+        method: "POST",
+        body: { ...credentials, role: 'admin' },
+      }),
+    }),
   }),
 });
 
-export const { useLoginMutation, useRegisterMutation } = api;
+export const adminApi = api.injectEndpoints({
+  endpoints: (builder) => ({
+    // Products management (admin only)
+    createProduct: builder.mutation({
+      query: (productData) => ({
+        url: "/products",
+        method: "POST",
+        body: productData,
+      }),
+      invalidatesTags: ["Products"],
+    }),
+    updateProduct: builder.mutation({
+      query: ({ id, ...productData }) => ({
+        url: `/products/${id}`,
+        method: "PATCH",
+        body: productData,
+      }),
+      invalidatesTags: ["Products", "Product"],
+    }),
+    deleteProduct: builder.mutation({
+      query: (id) => ({
+        url: `/products/${id}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ["Products", "Product"],
+    }),
+
+    // Users management (admin only)
+    getUsers: builder.query({
+      query: (params = {}) => {
+        const qs = new URLSearchParams();
+        Object.entries(params).forEach(([k, v]) => {
+          if (v !== undefined && v !== null && v !== "") {
+            qs.set(k, String(v));
+          }
+        });
+        const query = qs.toString();
+        return `/users${query ? `?${query}` : ""}`;
+      },
+      providesTags: ["Users"],
+    }),
+    updateUserRole: builder.mutation({
+      query: ({ id, role }) => ({
+        url: `/users/${id}`,
+        method: "PATCH",
+        body: { role },
+      }),
+      invalidatesTags: ["Users"],
+    }),
+    deleteUser: builder.mutation({
+      query: (id) => ({
+        url: `/users/${id}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ["Users"],
+    }),
+
+    // Orders management (admin only)
+    getOrders: builder.query({
+      query: (params = {}) => {
+        const qs = new URLSearchParams();
+        Object.entries(params).forEach(([k, v]) => {
+          if (v !== undefined && v !== null && v !== "") {
+            qs.set(k, String(v));
+          }
+        });
+        const query = qs.toString();
+        return `/orders${query ? `?${query}` : ""}`;
+      },
+      providesTags: ["Orders"],
+    }),
+    updateOrderStatus: builder.mutation({
+      query: ({ id, status }) => ({
+        url: `/orders/${id}`,
+        method: "PATCH",
+        body: { status },
+      }),
+      invalidatesTags: ["Orders"],
+    }),
+  }),
+});
+
+export const {
+  useLoginMutation,
+  useRegisterMutation,
+  useAdminLoginMutation
+} = authApi;
+
+export const {
+  useCreateProductMutation,
+  useUpdateProductMutation,
+  useDeleteProductMutation,
+  useGetUsersQuery,
+  useUpdateUserRoleMutation,
+  useDeleteUserMutation,
+  useGetOrdersQuery,
+  useUpdateOrderStatusMutation,
+} = adminApi;

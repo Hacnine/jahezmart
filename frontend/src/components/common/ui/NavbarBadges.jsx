@@ -2,7 +2,7 @@
 
 import React from "react";
 import { Badge } from "@mui/material";
-import { Favorite, Login, Person, ShoppingCart } from "@mui/icons-material";
+import { Favorite, Login, Person, ShoppingCart, AdminPanelSettings } from "@mui/icons-material";
 import Link from "next/link";
 import { useSelector, useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
@@ -51,6 +51,11 @@ const NavbarBadges = () => {
       <Link href={"/account"}>
         <Person sx={{ color: "OrangeRed" }} className="cursor-pointer" />
       </Link>
+      {user?.role === 'admin' && (
+        <Link href={"/admin"} title="Admin Panel">
+          <AdminPanelSettings sx={{ color: "OrangeRed" }} className="cursor-pointer" />
+        </Link>
+      )}
       {user ? (
         <button onClick={handleLogout} className="cursor-pointer">
           <Login sx={{ color: "OrangeRed" }} className="rotate-180" />
