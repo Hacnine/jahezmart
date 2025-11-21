@@ -141,9 +141,8 @@ const SignIn = () => {
         >
           {isLoading ? "Logging in..." : "Log in"}
         </button>
-      </form>
 
-      <div className=" w-full md:w-[40%]  space-y-5">
+        <div className=" w-full mt-5 space-y-5">
       <div className=" flex justify-center relative">
         <div className="text-gray-600 text center uppercase px-3 bg-gray-200 z-10 ">
           OR LOG IN WITH
@@ -176,6 +175,9 @@ const SignIn = () => {
         </Link>
       </p>
       </div>
+      </form>
+
+      
       </div>
     </div>
   );
