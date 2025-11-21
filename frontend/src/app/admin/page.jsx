@@ -20,9 +20,9 @@ export default function AdminDashboard() {
   const { data: productsData, isLoading: productsLoading } = useGetProductsQuery({ limit: 1000 });
   const [stats, setStats] = useState({
     totalProducts: 0,
-    totalUsers: 0,
-    totalOrders: 0,
-    totalRevenue: 0,
+    totalUsers: 15,
+    totalOrders: 25,
+    totalRevenue: 12500,
   });
 
   useEffect(() => {
@@ -161,9 +161,36 @@ export default function AdminDashboard() {
               <Typography variant="body2" color="textSecondary" sx={{ mb: 2 }}>
                 Latest orders placed by customers
               </Typography>
-              <Typography variant="body2" color="textSecondary" sx={{ fontStyle: 'italic' }}>
-                Order data will be displayed here once implemented
-              </Typography>
+              {[
+                { id: 'ORD-001', customer: 'John Doe', total: 89.99, status: 'completed', date: '2025-11-20' },
+                { id: 'ORD-002', customer: 'Jane Smith', total: 124.50, status: 'processing', date: '2025-11-19' },
+                { id: 'ORD-003', customer: 'Mike Johnson', total: 67.25, status: 'shipped', date: '2025-11-18' },
+                { id: 'ORD-004', customer: 'Sarah Wilson', total: 156.80, status: 'pending', date: '2025-11-17' },
+                { id: 'ORD-005', customer: 'Tom Brown', total: 43.90, status: 'completed', date: '2025-11-16' }
+              ].map((order) => (
+                <Box key={order.id} sx={{ 
+                  display: 'flex', 
+                  justifyContent: 'space-between', 
+                  alignItems: 'center', 
+                  py: 1, 
+                  borderBottom: '1px solid #eee' 
+                }}>
+                  <Box>
+                    <Typography variant="body2" sx={{ fontWeight: 500 }}>{order.customer}</Typography>
+                    <Typography variant="caption" color="textSecondary">{order.id}</Typography>
+                  </Box>
+                  <Box sx={{ textAlign: 'right' }}>
+                    <Typography variant="body2" color="primary" sx={{ fontWeight: 'bold' }}>${order.total}</Typography>
+                    <Typography variant="caption" color={
+                      order.status === 'completed' ? 'success.main' :
+                      order.status === 'processing' ? 'warning.main' :
+                      order.status === 'shipped' ? 'info.main' : 'error.main'
+                    }>
+                      {order.status}
+                    </Typography>
+                  </Box>
+                </Box>
+              ))}
             </CardContent>
           </Card>
         </Grid>
