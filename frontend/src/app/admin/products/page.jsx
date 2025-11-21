@@ -252,7 +252,8 @@ export default function AdminProducts() {
               margin="normal"
               required
               variant="outlined"
-              sx={{ mb: 2 }}
+              size="small"
+              sx={{ mb: 2, borderRadius: 2 }}
             />
             <TextField
               fullWidth
@@ -263,7 +264,8 @@ export default function AdminProducts() {
               margin="normal"
               required
               variant="outlined"
-              sx={{ mb: 2 }}
+              size="small"
+              sx={{ mb: 2, borderRadius: 2 }}
             />
             <TextField
               fullWidth
@@ -273,7 +275,8 @@ export default function AdminProducts() {
               margin="normal"
               required
               variant="outlined"
-              sx={{ mb: 2 }}
+              size="small"
+              sx={{ mb: 2, borderRadius: 2 }}
             />
             <TextField
               fullWidth
@@ -284,7 +287,8 @@ export default function AdminProducts() {
               margin="normal"
               required
               variant="outlined"
-              sx={{ mb: 2 }}
+              size="small"
+              sx={{ mb: 2, borderRadius: 2 }}
             />
             <TextField
               fullWidth
@@ -295,6 +299,7 @@ export default function AdminProducts() {
               onChange={(e) => setFormData({ ...formData, description: e.target.value })}
               margin="normal"
               variant="outlined"
+              sx={{ borderRadius: 2 }}
             />
           </Box>
         </DialogContent>
