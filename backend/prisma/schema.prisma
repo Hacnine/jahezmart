@@ -8,13 +8,20 @@ datasource db {
 }
 
 model User {
-  id        String   @id @map("_id") @default(auto()) @db.ObjectId
-  name      String
-  email     String   @unique
-  password  String
-  role      String   @default("user")
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id              String   @id @map("_id") @default(auto()) @db.ObjectId
+  name            String
+  email           String   @unique
+  password        String
+  role            String   @default("user")
+  firstName       String?
+  lastName        String?
+  birthday        DateTime?
+  gender          String?
+  phoneNumber     String?
+  shippingAddress String?
+  billingAddress  String?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
 }
 
 model Product {

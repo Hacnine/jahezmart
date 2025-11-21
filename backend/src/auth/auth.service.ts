@@ -135,4 +135,47 @@ export class AuthService {
       role: user.role,
     };
   }
+
+  async getProfile(userId: string) {
+    const user = await this.prisma.user.findUnique({
+      where: { id: userId },
+    });
+
+    if (!user) {
+      throw new UnauthorizedException('User not found');
+    }
+
+    return {
+      id: user.id,
+      name: user.name,
+      email: user.email,
+      firstName: user.firstName,
+      lastName: user.lastName,
+      birthday: user.birthday,
+      gender: user.gender,
+      phoneNumber: user.phoneNumber,
+      shippingAddress: user.shippingAddress,
+      billingAddress: user.billingAddress,
+    };
+  }
+
+  async updateProfile(userId: string, updateData: any) {
+    const user = await this.prisma.user.update({
+      where: { id: userId },
+      data: updateData,
+    });
+
+    return {
+      id: user.id,
+      name: user.name,
+      email: user.email,
+      firstName: user.firstName,
+      lastName: user.lastName,
+      birthday: user.birthday,
+      gender: user.gender,
+      phoneNumber: user.phoneNumber,
+      shippingAddress: user.shippingAddress,
+      billingAddress: user.billingAddress,
+    };
+  }
 }
