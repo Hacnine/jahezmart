@@ -57,9 +57,9 @@ export class CreateProductDto {
   @IsObject()
   images: any;
 
-  @IsNotEmpty()
-  @IsObject()
-  description: any;
+  @IsOptional()
+  @IsString()
+  description: string;
 
   @IsOptional()
   @IsString()
@@ -131,8 +131,8 @@ export class UpdateProductDto {
   images?: any;
 
   @IsOptional()
-  @IsObject()
-  description?: any;
+  @IsString()
+  description?: string;
 
   @IsOptional()
   @IsString()

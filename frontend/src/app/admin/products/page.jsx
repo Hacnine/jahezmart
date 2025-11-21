@@ -58,7 +58,9 @@ export default function AdminProducts() {
         price: product.price || '',
         category: product.category || '',
         stock: product.stock || '',
-        description: product.description || '',
+        description: Array.isArray(product.description) 
+          ? product.description.map(d => d.title ? `${d.title}: ${d.description}` : d).join('\n\n')
+          : product.description || '',
       });
     } else {
       setEditingProduct(null);
