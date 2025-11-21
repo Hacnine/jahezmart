@@ -53,37 +53,63 @@ export default function AdminLayout({ children }) {
   };
 
   const drawer = (
-    <div>
-      <Toolbar>
-        <Typography variant="h6" noWrap component="div">
-          Admin Panel
+    <Box sx={{ 
+      height: '100%', 
+      background: 'linear-gradient(180deg, #667eea 0%, #764ba2 100%)',
+      color: 'white'
+    }}>
+      <Toolbar sx={{ backgroundColor: 'rgba(255,255,255,0.1)' }}>
+        <Typography variant="h6" noWrap component="div" sx={{ fontWeight: 'bold' }}>
+          🛍️ Jahezmart Admin
         </Typography>
       </Toolbar>
-      <Divider />
-      <List>
-        {menuItems.map((item) => (
-          <ListItem key={item.text} disablePadding>
-            <ListItemButton onClick={() => handleMenuClick(item.path)}>
-              <ListItemIcon>
+      <Divider sx={{ backgroundColor: 'rgba(255,255,255,0.3)' }} />
+      <List sx={{ pt: 2 }}>
+        {menuItems.map((item, index) => (
+          <ListItem key={item.text} disablePadding sx={{ mb: 1 }}>
+            <ListItemButton 
+              onClick={() => handleMenuClick(item.path)}
+              sx={{
+                mx: 2,
+                borderRadius: 2,
+                '&:hover': {
+                  backgroundColor: 'rgba(255,255,255,0.2)',
+                  transform: 'translateX(5px)',
+                  transition: 'all 0.3s ease'
+                }
+              }}
+            >
+              <ListItemIcon sx={{ color: 'white' }}>
                 {item.icon}
               </ListItemIcon>
-              <ListItemText primary={item.text} />
+              <ListItemText primary={item.text} sx={{ '& .MuiTypography-root': { fontWeight: 500 } }} />
             </ListItemButton>
           </ListItem>
         ))}
       </List>
-      <Divider />
+      <Divider sx={{ backgroundColor: 'rgba(255,255,255,0.3)', mt: 'auto' }} />
       <List>
         <ListItem disablePadding>
-          <ListItemButton onClick={handleLogout}>
-            <ListItemIcon>
+          <ListItemButton 
+            onClick={handleLogout}
+            sx={{
+              mx: 2,
+              borderRadius: 2,
+              '&:hover': {
+                backgroundColor: 'rgba(255,255,255,0.2)',
+                transform: 'translateX(5px)',
+                transition: 'all 0.3s ease'
+              }
+            }}
+          >
+            <ListItemIcon sx={{ color: 'white' }}>
               <LogoutIcon />
             </ListItemIcon>
-            <ListItemText primary="Logout" />
+            <ListItemText primary="Logout" sx={{ '& .MuiTypography-root': { fontWeight: 500 } }} />
           </ListItemButton>
         </ListItem>
       </List>
-    </div>
+    </Box>
   );
 
   return (
@@ -94,6 +120,8 @@ export default function AdminLayout({ children }) {
         sx={{
           width: { sm: `calc(100% - ${drawerWidth}px)` },
           ml: { sm: `${drawerWidth}px` },
+          background: 'linear-gradient(90deg, #667eea 0%, #764ba2 100%)',
+          boxShadow: '0 4px 20px rgba(0,0,0,0.1)'
         }}
       >
         <Toolbar>
@@ -106,8 +134,8 @@ export default function AdminLayout({ children }) {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap component="div">
-            Jahezmart Admin
+          <Typography variant="h6" noWrap component="div" sx={{ fontWeight: 'bold' }}>
+            Dashboard Overview
           </Typography>
         </Toolbar>
       </AppBar>
@@ -155,6 +183,8 @@ export default function AdminLayout({ children }) {
           p: 3,
           width: { sm: `calc(100% - ${drawerWidth}px)` },
           mt: '64px', // AppBar height
+          backgroundColor: '#f5f5f5',
+          minHeight: '100vh'
         }}
       >
         {children}

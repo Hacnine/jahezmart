@@ -130,57 +130,86 @@ export default function AdminProducts() {
 
   return (
     <Box>
-      <Box display="flex" justifyContent="space-between" alignItems="center" mb={3}>
-        <Typography variant="h4" component="h1">
-          Products Management
-        </Typography>
+      <Box display="flex" justifyContent="space-between" alignItems="center" mb={4} sx={{ backgroundColor: 'white', p: 3, borderRadius: 2, boxShadow: 1 }}>
+        <Box>
+          <Typography variant="h4" component="h1" sx={{ fontWeight: 'bold', color: '#333' }}>
+            🛍️ Products Management
+          </Typography>
+          <Typography variant="body1" color="text.secondary">
+            Manage your product inventory
+          </Typography>
+        </Box>
         <Button
-          variant="contained"
           startIcon={<AddIcon />}
           onClick={() => handleOpen()}
+          sx={{
+            background: 'linear-gradient(45deg, #667eea 30%, #764ba2 90%) !important',
+            color: 'white !important',
+            padding: '8px 16px',
+            borderRadius: '4px',
+            boxShadow: '0 3px 5px 2px rgba(102, 126, 234, .3)',
+            border: 'none',
+            cursor: 'pointer',
+            fontSize: '0.875rem',
+            fontWeight: 500,
+            textTransform: 'none',
+            '&:hover': {
+              background: 'linear-gradient(45deg, #5a6fd8 30%, #6a4190 90%) !important',
+              boxShadow: '0 6px 10px 2px rgba(102, 126, 234, .3)',
+            }
+          }}
         >
           Add Product
         </Button>
       </Box>
 
-      <TableContainer component={Paper}>
+      <TableContainer component={Paper} sx={{ borderRadius: 2, boxShadow: 3 }}>
         <Table>
-          <TableHead>
+          <TableHead sx={{ background: 'linear-gradient(90deg, #667eea 0%, #764ba2 100%)' }}>
             <TableRow>
-              <TableCell>ID</TableCell>
-              <TableCell>Name</TableCell>
-              <TableCell>Category</TableCell>
-              <TableCell>Price</TableCell>
-              <TableCell>Stock</TableCell>
-              <TableCell>Status</TableCell>
-              <TableCell>Actions</TableCell>
+              <TableCell sx={{ color: 'white', fontWeight: 'bold' }}>ID</TableCell>
+              <TableCell sx={{ color: 'white', fontWeight: 'bold' }}>Name</TableCell>
+              <TableCell sx={{ color: 'white', fontWeight: 'bold' }}>Category</TableCell>
+              <TableCell sx={{ color: 'white', fontWeight: 'bold' }}>Price</TableCell>
+              <TableCell sx={{ color: 'white', fontWeight: 'bold' }}>Stock</TableCell>
+              <TableCell sx={{ color: 'white', fontWeight: 'bold' }}>Status</TableCell>
+              <TableCell sx={{ color: 'white', fontWeight: 'bold' }}>Actions</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {products.map((product) => (
-              <TableRow key={product.id}>
+            {products.map((product, index) => (
+              <TableRow 
+                key={product.id} 
+                sx={{ 
+                  '&:nth-of-type(odd)': { backgroundColor: '#f9f9f9' },
+                  '&:hover': { backgroundColor: '#e3f2fd', transform: 'scale(1.01)', transition: 'all 0.2s ease' }
+                }}
+              >
                 <TableCell>{product.id}</TableCell>
-                <TableCell>{product.name}</TableCell>
+                <TableCell sx={{ fontWeight: 500 }}>{product.name}</TableCell>
                 <TableCell>{product.category}</TableCell>
-                <TableCell>${product.price}</TableCell>
+                <TableCell sx={{ fontWeight: 'bold', color: '#2e7d32' }}>${product.price}</TableCell>
                 <TableCell>{product.stock}</TableCell>
                 <TableCell>
                   <Chip
                     label={product.stock > 0 ? 'In Stock' : 'Out of Stock'}
                     color={product.stock > 0 ? 'success' : 'error'}
                     size="small"
+                    variant="outlined"
                   />
                 </TableCell>
                 <TableCell>
                   <IconButton
                     color="primary"
                     onClick={() => handleOpen(product)}
+                    sx={{ '&:hover': { backgroundColor: '#e3f2fd' } }}
                   >
                     <EditIcon />
                   </IconButton>
                   <IconButton
                     color="error"
                     onClick={() => handleDelete(product.id)}
+                    sx={{ '&:hover': { backgroundColor: '#ffebee' } }}
                   >
                     <DeleteIcon />
                   </IconButton>
@@ -192,11 +221,26 @@ export default function AdminProducts() {
       </TableContainer>
 
       {/* Add/Edit Product Dialog */}
-      <Dialog open={open} onClose={handleClose} maxWidth="md" fullWidth>
-        <DialogTitle>
-          {editingProduct ? 'Edit Product' : 'Add New Product'}
+      <Dialog 
+        open={open} 
+        onClose={handleClose} 
+        maxWidth="md" 
+        fullWidth
+        sx={{
+          '& .MuiDialog-paper': {
+            borderRadius: 3,
+            boxShadow: '0 10px 30px rgba(0,0,0,0.2)'
+          }
+        }}
+      >
+        <DialogTitle sx={{ 
+          background: 'linear-gradient(90deg, #667eea 0%, #764ba2 100%)',
+          color: 'white',
+          fontWeight: 'bold'
+        }}>
+          {editingProduct ? '✏️ Edit Product' : '➕ Add New Product'}
         </DialogTitle>
-        <DialogContent>
+        <DialogContent sx={{ mt: 2 }}>
           <Box component="form" sx={{ mt: 2 }}>
             <TextField
               fullWidth
@@ -205,6 +249,8 @@ export default function AdminProducts() {
               onChange={(e) => setFormData({ ...formData, name: e.target.value })}
               margin="normal"
               required
+              variant="outlined"
+              sx={{ mb: 2 }}
             />
             <TextField
               fullWidth
@@ -214,6 +260,8 @@ export default function AdminProducts() {
               onChange={(e) => setFormData({ ...formData, price: e.target.value })}
               margin="normal"
               required
+              variant="outlined"
+              sx={{ mb: 2 }}
             />
             <TextField
               fullWidth
@@ -222,6 +270,8 @@ export default function AdminProducts() {
               onChange={(e) => setFormData({ ...formData, category: e.target.value })}
               margin="normal"
               required
+              variant="outlined"
+              sx={{ mb: 2 }}
             />
             <TextField
               fullWidth
@@ -231,6 +281,8 @@ export default function AdminProducts() {
               onChange={(e) => setFormData({ ...formData, stock: e.target.value })}
               margin="normal"
               required
+              variant="outlined"
+              sx={{ mb: 2 }}
             />
             <TextField
               fullWidth
@@ -240,12 +292,33 @@ export default function AdminProducts() {
               value={formData.description}
               onChange={(e) => setFormData({ ...formData, description: e.target.value })}
               margin="normal"
+              variant="outlined"
             />
           </Box>
         </DialogContent>
-        <DialogActions>
-          <Button onClick={handleClose}>Cancel</Button>
-          <Button onClick={handleSubmit} variant="contained">
+        <DialogActions sx={{ p: 3 }}>
+          <Button onClick={handleClose} variant="outlined" sx={{ mr: 1 }}>
+            Cancel
+          </Button>
+          <Button 
+            onClick={handleSubmit}
+            sx={{
+              background: 'linear-gradient(45deg, #667eea 30%, #764ba2 90%) !important',
+              color: 'white !important',
+              padding: '8px 16px',
+              borderRadius: '4px',
+              boxShadow: '0 3px 5px 2px rgba(102, 126, 234, .3)',
+              border: 'none',
+              cursor: 'pointer',
+              fontSize: '0.875rem',
+              fontWeight: 500,
+              textTransform: 'none',
+              '&:hover': {
+                background: 'linear-gradient(45deg, #5a6fd8 30%, #6a4190 90%) !important',
+                boxShadow: '0 6px 10px 2px rgba(102, 126, 234, .3)',
+              }
+            }}
+          >
             {editingProduct ? 'Update' : 'Create'}
           </Button>
         </DialogActions>
