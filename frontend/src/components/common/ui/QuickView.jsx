@@ -15,12 +15,15 @@ import { MdFavoriteBorder } from "react-icons/md";
 import { useRouter } from "next/navigation";
 import { useSelector, useDispatch } from "react-redux";
 import { addToCart, addToWishlist, removeFromWishlist } from "../../../store/slices/cartSlice";
-import { useGetProductQuery } from "../../../store/api";
+import { useGetProductQuery, useAddToCartMutation, useAddToWishlistMutation } from "../../../store/api";
 
 const QuickView = ({ id, modal, setModalOpen }) => {
   const dispatch = useDispatch();
   const { data: product, isLoading } = useGetProductQuery(id);
   const { wishListProducts, cartProducts } = useSelector((state) => state.cart);
+  const { token } = useSelector((state) => state.auth || {});
+  const [addToCartApi] = useAddToCartMutation();
+  const [addToWishlistApi] = useAddToWishlistMutation();
 
   if (isLoading || !product) {
     return <div>Loading...</div>;
@@ -73,6 +76,14 @@ const QuickView = ({ id, modal, setModalOpen }) => {
         stock,
         selected,
       }));
+      if (token) {
+        addToWishlistApi({
+          productId: id,
+          name,
+          price,
+          image: firstImagePath,
+        }).catch((e) => console.error("addToWishlistApi failed", e));
+      }
       setWishListMessage("Added to wishlist!");
       setOpenWishList(true);
       setTimeout(() => setOpenWishList(false), 3000);
@@ -260,6 +271,16 @@ const QuickView = ({ id, modal, setModalOpen }) => {
                       stock,
                       selected,
                     }));
+                    // persist to backend when authenticated
+                    if (token) {
+                      addToCartApi({
+                        productId: id,
+                        name,
+                        price,
+                        quantity: tempQuantity,
+                        image: firstImagePath,
+                      }).catch((e) => console.error("addToCartApi failed", e));
+                    }
                     setMessage("Added to cart!");
                   }
                   setOpen(true);

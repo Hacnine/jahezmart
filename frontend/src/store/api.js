@@ -14,7 +14,7 @@ export const api = createApi({
       return headers;
     },
   }),
-  tagTypes: ["Products", "Product", "Auth", "Users", "Orders"],
+  tagTypes: ["Products", "Product", "Auth", "Users", "Orders", "Cart", "Wishlist"],
   endpoints: (builder) => ({
     // Auth endpoints
     login: builder.mutation({
@@ -183,6 +183,56 @@ export const api = createApi({
         "UserOrders"
       ],
     }),
+
+    // User cart
+    getCart: builder.query({
+      query: () => "/auth/cart",
+      providesTags: ["Cart"],
+    }),
+    addToCart: builder.mutation({
+      query: (item) => ({
+        url: "/auth/cart",
+        method: "POST",
+        body: item,
+      }),
+      invalidatesTags: ["Cart"],
+    }),
+    updateCartItem: builder.mutation({
+      query: ({ id, ...data }) => ({
+        url: `/auth/cart/${id}`,
+        method: "PATCH",
+        body: data,
+      }),
+      invalidatesTags: ["Cart"],
+    }),
+    removeCartItem: builder.mutation({
+      query: (id) => ({
+        url: `/auth/cart/${id}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ["Cart"],
+    }),
+
+    // User wishlist
+    getWishlist: builder.query({
+      query: () => "/auth/wishlist",
+      providesTags: ["Wishlist"],
+    }),
+    addToWishlist: builder.mutation({
+      query: (item) => ({
+        url: "/auth/wishlist",
+        method: "POST",
+        body: item,
+      }),
+      invalidatesTags: ["Wishlist"],
+    }),
+    removeWishlistItem: builder.mutation({
+      query: (id) => ({
+        url: `/auth/wishlist/${id}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ["Wishlist"],
+    }),
   }),
 });
 
@@ -206,4 +256,11 @@ export const {
   useGetUserOrdersQuery,
   useGetUserOrderQuery,
   useUpdateOrderMutation,
+  useGetCartQuery,
+  useAddToCartMutation,
+  useUpdateCartItemMutation,
+  useRemoveCartItemMutation,
+  useGetWishlistQuery,
+  useAddToWishlistMutation,
+  useRemoveWishlistItemMutation,
 } = api;

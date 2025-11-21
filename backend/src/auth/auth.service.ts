@@ -252,4 +252,70 @@ export class AuthService {
 
     return updatedOrder;
   }
+
+  // Cart methods
+  async getCart(userId: string) {
+    const items = await this.prisma.cartItem.findMany({
+      where: { userId },
+    });
+    return items;
+  }
+
+  async addToCart(userId: string, itemData: any) {
+    const item = await this.prisma.cartItem.create({
+      data: {
+        userId,
+        productId: itemData.productId || itemData.id,
+        name: itemData.name,
+        price: itemData.price,
+        quantity: itemData.quantity || 1,
+        image: itemData.image || itemData.firstImagePath || null,
+      },
+    });
+    return item;
+  }
+
+  async updateCartItem(userId: string, itemId: string, updateData: any) {
+    const existing = await this.prisma.cartItem.findFirst({ where: { id: itemId, userId } });
+    if (!existing) throw new UnauthorizedException('Cart item not found');
+    const updated = await this.prisma.cartItem.update({ where: { id: itemId }, data: updateData });
+    return updated;
+  }
+
+  async removeCartItem(userId: string, itemId: string) {
+    const existing = await this.prisma.cartItem.findFirst({ where: { id: itemId, userId } });
+    if (!existing) throw new UnauthorizedException('Cart item not found');
+    await this.prisma.cartItem.delete({ where: { id: itemId } });
+    return { message: 'Removed' };
+  }
+
+  // Wishlist methods
+  async getWishlist(userId: string) {
+    const items = await this.prisma.wishlistItem.findMany({ where: { userId } });
+    return items;
+  }
+
+  async addToWishlist(userId: string, itemData: any) {
+    // Prevent duplicates by productId for the same user
+    const productId = itemData.productId || itemData.id;
+    const existing = await this.prisma.wishlistItem.findFirst({ where: { userId, productId } });
+    if (existing) return existing;
+    const item = await this.prisma.wishlistItem.create({
+      data: {
+        userId,
+        productId,
+        name: itemData.name,
+        price: itemData.price,
+        image: itemData.image || itemData.firstImagePath || null,
+      },
+    });
+    return item;
+  }
+
+  async removeWishlistItem(userId: string, itemId: string) {
+    const existing = await this.prisma.wishlistItem.findFirst({ where: { id: itemId, userId } });
+    if (!existing) throw new UnauthorizedException('Wishlist item not found');
+    await this.prisma.wishlistItem.delete({ where: { id: itemId } });
+    return { message: 'Removed' };
+  }
 }

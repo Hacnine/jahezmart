@@ -57,4 +57,48 @@ export class AuthController {
   async updateOrder(@Request() req, @Param('id') orderId: string, @Body() updateData: any) {
     return this.authService.updateOrder(req.user.id, orderId, updateData);
   }
+
+  // Cart endpoints
+  @UseGuards(JwtAuthGuard)
+  @Get('cart')
+  async getCart(@Request() req) {
+    return this.authService.getCart(req.user.id);
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Post('cart')
+  async addToCart(@Request() req, @Body() itemData: any) {
+    return this.authService.addToCart(req.user.id, itemData);
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Patch('cart/:id')
+  async updateCartItem(@Request() req, @Param('id') itemId: string, @Body() updateData: any) {
+    return this.authService.updateCartItem(req.user.id, itemId, updateData);
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Delete('cart/:id')
+  async removeCartItem(@Request() req, @Param('id') itemId: string) {
+    return this.authService.removeCartItem(req.user.id, itemId);
+  }
+
+  // Wishlist endpoints
+  @UseGuards(JwtAuthGuard)
+  @Get('wishlist')
+  async getWishlist(@Request() req) {
+    return this.authService.getWishlist(req.user.id);
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Post('wishlist')
+  async addToWishlist(@Request() req, @Body() itemData: any) {
+    return this.authService.addToWishlist(req.user.id, itemData);
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Delete('wishlist/:id')
+  async removeWishlistItem(@Request() req, @Param('id') itemId: string) {
+    return this.authService.removeWishlistItem(req.user.id, itemId);
+  }
 }
