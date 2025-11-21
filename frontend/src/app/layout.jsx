@@ -12,7 +12,10 @@ const openSnas = Poppins({ subsets: ["latin"], weight: "600" });
       default:"Jahezmart",
       template:"%s | Jahezmart"
     },
-    description:"Made By Hasanain"
+    description:"Made By Hasanain",
+    icons: {
+      icon: "/new.svg"
+    }
   }
 
 export default function RootLayout({

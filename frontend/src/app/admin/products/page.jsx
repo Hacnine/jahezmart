@@ -134,7 +134,7 @@ export default function AdminProducts() {
     <Box>
       <Box display="flex" justifyContent="space-between" alignItems="center" mb={4} sx={{ backgroundColor: 'white', p: 3, borderRadius: 2, boxShadow: 1 }}>
         <Box>
-          <Typography variant="h4" component="h1" sx={{ fontWeight: 'bold', color: '#333' }}>
+          <Typography variant="h4" component="h3" sx={{ fontWeight: 'bold', color: '#333' }}>
             🛍️ Products Management
           </Typography>
           <Typography variant="body1" color="text.secondary">

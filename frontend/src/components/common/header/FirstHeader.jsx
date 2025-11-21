@@ -1,9 +1,11 @@
 "use client";
 import React from "react";
 import Link from "next/link";
-import NavbarBadges from "../ui/NavbarBadges";
 import { BiChevronDown } from "react-icons/bi";
 import { usePathname, useRouter } from "next/navigation";
+import dynamic from 'next/dynamic';
+
+const NavbarBadges = dynamic(() => import('../ui/NavbarBadges'), { ssr: false });
 const FirstHeader = () => {
   const router = useRouter();
   let pathName = usePathname();

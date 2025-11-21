@@ -1,10 +1,7 @@
 import Home2 from "./home/page";
 
 export const metadata = {
-  title: "Home",
-  icons: {
-    icon: "/new.svg"
-  }
+  title: "Home"
 }
 
 export default function Home() {

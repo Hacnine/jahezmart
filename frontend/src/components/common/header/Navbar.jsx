@@ -5,7 +5,9 @@ import { Menu } from "@mui/icons-material";
 import Headroom from "react-headroom";
 import FirstHeader from "./FirstHeader";
 import SearchBar from "./SearchBar";
-import NavbarBadges from "../ui/NavbarBadges";
+import dynamic from 'next/dynamic';
+
+const NavbarBadges = dynamic(() => import('../ui/NavbarBadges'), { ssr: false });
 const Navbar = () => {
   return (
     <Headroom>

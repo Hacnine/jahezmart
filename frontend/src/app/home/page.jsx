@@ -4,17 +4,19 @@ import Slider from "../../components/slider/HeroImageSlider";
 import { featureCardInfo, shopByCategory } from "../../constant/index";
 import ShopByCategory from "../../components/common/ShopByCategory";
 import "../customcss.css";
-import ProductCard from "../../components/card/ProductCard";
 // Switched from Context API to RTK Query
 import { useGetProductsQuery } from "../../store/api";
 import chairad from "../../../public/images/ad/chairad.svg";
 import Image from "next/image";
-import MiniProductCard from "../../components/card/MiniProductCard";
 import Offer from "../../components/common/Offer";
 import CollectionCard from "../../components/card/CollectionCard";
 import FeatureCard from "../../components/common/FeatureCard";
 import '../customcss.css'
 import { useRouter } from "next/navigation";
+import dynamic from 'next/dynamic';
+
+const MiniProductCard = dynamic(() => import('../../components/card/MiniProductCard'), { ssr: false });
+const ProductCard = dynamic(() => import('../../components/card/ProductCard'), { ssr: false });
 const Home = () => {
   const router = useRouter();
   const { data, isLoading } = useGetProductsQuery({ limit: 100 });
