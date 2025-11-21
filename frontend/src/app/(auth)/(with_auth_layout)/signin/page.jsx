@@ -37,7 +37,15 @@ const SignIn = () => {
       }).unwrap();
       
       dispatch(setCredentials(result));
-      router.push("/account");
+      // Redirect based on user role
+      if (result.user?.role === 'admin') {
+        // Set admin-specific localStorage for AdminGuard
+        localStorage.setItem('adminToken', result.token);
+        localStorage.setItem('userRole', 'admin');
+        router.push("/admin");
+      } else {
+        router.push("/account");
+      }
     } catch (err) {
       console.error("Login failed:", err);
     }
