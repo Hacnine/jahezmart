@@ -1,12 +1,13 @@
 import { PrismaClient } from '@prisma/client';
-import fs from 'fs';
-import path from 'path';
+const fs = require('fs');
+const path = require('path');
+const bcrypt = require('bcryptjs');
 
 const prisma = new PrismaClient();
 
 async function main() {
   // Read the backend-local products.json by default
-  const filePath = path.resolve(__dirname, '../products.json');
+  const filePath = path.resolve(__dirname, '../../frontend/public/products.json');
   if (!fs.existsSync(filePath)) {
     console.error('products.json not found at', filePath);
     process.exit(1);
@@ -43,6 +44,47 @@ async function main() {
       create: data,
     });
     console.log(`Upserted product ${data.jsonId} - ${data.name}`);
+  }
+
+  // Seed dummy users
+  const users = [
+    {
+      name: 'Admin User',
+      email: 'admin@jahezmart.com',
+      password: 'admin123',
+      role: 'admin',
+    },
+    {
+      name: 'Abdullah',
+      email: 'abdullah@example.com',
+      password: '1',
+      role: 'user',
+    },
+    {
+      name: 'Imadullah',
+      email: 'imadullah@example.com',
+      password: '1',
+      role: 'user',
+    },
+  ];
+
+  for (const u of users) {
+    const hashedPassword = await bcrypt.hash(u.password, 10);
+    await prisma.user.upsert({
+      where: { email: u.email },
+      update: {
+        name: u.name,
+        password: hashedPassword,
+        role: u.role,
+      },
+      create: {
+        name: u.name,
+        email: u.email,
+        password: hashedPassword,
+        role: u.role,
+      },
+    });
+    console.log(`Upserted user ${u.email} - ${u.name}`);
   }
 }
 
