@@ -21,17 +21,24 @@ import {
   People as UsersIcon,
   ExitToApp as LogoutIcon,
   Inventory as InventoryIcon,
+  ChevronLeft as ChevronLeftIcon,
 } from '@mui/icons-material';
 import { useRouter } from 'next/navigation';
 
 const drawerWidth = 240;
+const collapsedDrawerWidth = 64;
 
 export default function AdminLayout({ children }) {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
   const router = useRouter();
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
+  };
+
+  const handleSidebarToggle = () => {
+    setSidebarCollapsed(!sidebarCollapsed);
   };
 
   const menuItems = [
@@ -56,12 +63,29 @@ export default function AdminLayout({ children }) {
     <Box sx={{ 
       height: '100%', 
       background: 'linear-gradient(180deg, #667eea 0%, #764ba2 100%)',
-      color: 'white'
+      color: 'white',
+      width: sidebarCollapsed ? collapsedDrawerWidth : drawerWidth,
+      transition: 'width 0.3s ease'
     }}>
-      <Toolbar sx={{ backgroundColor: 'rgba(255,255,255,0.1)' }}>
-        <Typography variant="h6" noWrap component="div" sx={{ fontWeight: 'bold' }}>
-          🛍️ Jahezmart Admin
-        </Typography>
+      <Toolbar sx={{ backgroundColor: 'rgba(255,255,255,0.1)', minHeight: '64px !important' }}>
+        {!sidebarCollapsed && (
+          <Typography variant="h6" noWrap component="div" sx={{ fontWeight: 'bold' }}>
+            🛍️ Jahezmart Admin
+          </Typography>
+        )}
+        <IconButton 
+          onClick={handleSidebarToggle} 
+          sx={{ 
+            color: 'white', 
+            ml: sidebarCollapsed ? 0 : 'auto',
+            '&:hover': { backgroundColor: 'rgba(255,255,255,0.2)' }
+          }}
+        >
+          <ChevronLeftIcon sx={{ 
+            transform: sidebarCollapsed ? 'rotate(180deg)' : 'rotate(0deg)',
+            transition: 'transform 0.3s ease'
+          }} />
+        </IconButton>
       </Toolbar>
       <Divider sx={{ backgroundColor: 'rgba(255,255,255,0.3)' }} />
       <List sx={{ pt: 2 }}>
@@ -70,8 +94,10 @@ export default function AdminLayout({ children }) {
             <ListItemButton 
               onClick={() => handleMenuClick(item.path)}
               sx={{
-                mx: 2,
+                mx: 1,
                 borderRadius: 2,
+                justifyContent: sidebarCollapsed ? 'center' : 'initial',
+                px: sidebarCollapsed ? 1 : 2,
                 '&:hover': {
                   backgroundColor: 'rgba(255,255,255,0.2)',
                   transform: 'translateX(5px)',
@@ -79,10 +105,12 @@ export default function AdminLayout({ children }) {
                 }
               }}
             >
-              <ListItemIcon sx={{ color: 'white' }}>
+              <ListItemIcon sx={{ color: 'white', minWidth: sidebarCollapsed ? 'auto' : 56 }}>
                 {item.icon}
               </ListItemIcon>
-              <ListItemText primary={item.text} sx={{ '& .MuiTypography-root': { fontWeight: 500 } }} />
+              {!sidebarCollapsed && (
+                <ListItemText primary={item.text} sx={{ '& .MuiTypography-root': { fontWeight: 500 } }} />
+              )}
             </ListItemButton>
           </ListItem>
         ))}
@@ -93,8 +121,10 @@ export default function AdminLayout({ children }) {
           <ListItemButton 
             onClick={handleLogout}
             sx={{
-              mx: 2,
+              mx: 1,
               borderRadius: 2,
+              justifyContent: sidebarCollapsed ? 'center' : 'initial',
+              px: sidebarCollapsed ? 1 : 2,
               '&:hover': {
                 backgroundColor: 'rgba(255,255,255,0.2)',
                 transform: 'translateX(5px)',
@@ -102,10 +132,12 @@ export default function AdminLayout({ children }) {
               }
             }}
           >
-            <ListItemIcon sx={{ color: 'white' }}>
+            <ListItemIcon sx={{ color: 'white', minWidth: sidebarCollapsed ? 'auto' : 56 }}>
               <LogoutIcon />
             </ListItemIcon>
-            <ListItemText primary="Logout" sx={{ '& .MuiTypography-root': { fontWeight: 500 } }} />
+            {!sidebarCollapsed && (
+              <ListItemText primary="Logout" sx={{ '& .MuiTypography-root': { fontWeight: 500 } }} />
+            )}
           </ListItemButton>
         </ListItem>
       </List>
@@ -118,10 +150,11 @@ export default function AdminLayout({ children }) {
       <AppBar
         position="fixed"
         sx={{
-          width: { sm: `calc(100% - ${drawerWidth}px)` },
-          ml: { sm: `${drawerWidth}px` },
+          width: { sm: `calc(100% - ${sidebarCollapsed ? collapsedDrawerWidth : drawerWidth}px)` },
+          ml: { sm: `${sidebarCollapsed ? collapsedDrawerWidth : drawerWidth}px` },
           background: 'linear-gradient(90deg, #667eea 0%, #764ba2 100%)',
-          boxShadow: '0 4px 20px rgba(0,0,0,0.1)'
+          boxShadow: '0 4px 20px rgba(0,0,0,0.1)',
+          transition: 'width 0.3s ease, margin-left 0.3s ease'
         }}
       >
         <Toolbar>
@@ -143,7 +176,7 @@ export default function AdminLayout({ children }) {
       {/* Navigation Drawer */}
       <Box
         component="nav"
-        sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
+        sx={{ width: { sm: sidebarCollapsed ? collapsedDrawerWidth : drawerWidth }, flexShrink: { sm: 0 }, transition: 'width 0.3s ease' }}
         aria-label="admin navigation"
       >
         {/* Mobile drawer */}
@@ -167,7 +200,11 @@ export default function AdminLayout({ children }) {
           variant="permanent"
           sx={{
             display: { xs: 'none', sm: 'block' },
-            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
+            '& .MuiDrawer-paper': { 
+              boxSizing: 'border-box', 
+              width: sidebarCollapsed ? collapsedDrawerWidth : drawerWidth,
+              transition: 'width 0.3s ease'
+            },
           }}
           open
         >
@@ -181,10 +218,11 @@ export default function AdminLayout({ children }) {
         sx={{
           flexGrow: 1,
           p: 3,
-          width: { sm: `calc(100% - ${drawerWidth}px)` },
+          width: { sm: `calc(100% - ${sidebarCollapsed ? collapsedDrawerWidth : drawerWidth}px)` },
           mt: '64px', // AppBar height
           backgroundColor: '#f5f5f5',
-          minHeight: '100vh'
+          minHeight: '100vh',
+          transition: 'width 0.3s ease'
         }}
       >
         {children}

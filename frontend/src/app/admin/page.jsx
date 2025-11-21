@@ -83,6 +83,7 @@ export default function AdminDashboard() {
                 height: '100%', 
                 background: `linear-gradient(135deg, ${card.color}15 0%, ${card.color}05 100%)`,
                 border: `1px solid ${card.color}20`,
+                borderRadius: 4,
                 '&:hover': {
                   transform: 'translateY(-5px)',
                   boxShadow: `0 10px 25px ${card.color}30`,
@@ -121,7 +122,7 @@ export default function AdminDashboard() {
       <Grid container spacing={3} sx={{ mt: 4 }}>
         <Grid item xs={12} md={6}>
           <Card sx={{ 
-            borderRadius: 3, 
+            borderRadius: 4, 
             boxShadow: 3,
             '&:hover': { boxShadow: 6, transition: 'all 0.3s ease' }
           }}>
@@ -150,7 +151,7 @@ export default function AdminDashboard() {
 
         <Grid item xs={12} md={6}>
           <Card sx={{ 
-            borderRadius: 3, 
+            borderRadius: 4, 
             boxShadow: 3,
             '&:hover': { boxShadow: 6, transition: 'all 0.3s ease' }
           }}>
