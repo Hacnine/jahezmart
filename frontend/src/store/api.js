@@ -141,6 +141,48 @@ export const api = createApi({
       }),
       invalidatesTags: ["Orders"],
     }),
+
+    // Profile management
+    getProfile: builder.query({
+      query: () => "/auth/profile",
+      providesTags: ["Profile"],
+    }),
+    updateProfile: builder.mutation({
+      query: (profileData) => ({
+        url: "/auth/profile",
+        method: "PATCH",
+        body: profileData,
+      }),
+      invalidatesTags: ["Profile"],
+    }),
+    changePassword: builder.mutation({
+      query: (passwordData) => ({
+        url: "/auth/change-password",
+        method: "POST",
+        body: passwordData,
+      }),
+    }),
+
+    // User orders
+    getUserOrders: builder.query({
+      query: () => "/auth/orders",
+      providesTags: ["UserOrders"],
+    }),
+    getUserOrder: builder.query({
+      query: (orderId) => `/auth/orders/${orderId}`,
+      providesTags: (result, error, orderId) => [{ type: "UserOrder", id: orderId }],
+    }),
+    updateOrder: builder.mutation({
+      query: ({ id, ...orderData }) => ({
+        url: `/auth/orders/${id}`,
+        method: "PATCH",
+        body: orderData,
+      }),
+      invalidatesTags: (result, error, { id }) => [
+        { type: "UserOrder", id },
+        "UserOrders"
+      ],
+    }),
   }),
 });
 
@@ -158,4 +200,10 @@ export const {
   useDeleteUserMutation,
   useGetOrdersQuery,
   useUpdateOrderStatusMutation,
+  useGetProfileQuery,
+  useUpdateProfileMutation,
+  useChangePasswordMutation,
+  useGetUserOrdersQuery,
+  useGetUserOrderQuery,
+  useUpdateOrderMutation,
 } = api;

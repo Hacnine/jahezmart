@@ -20,28 +20,45 @@ model User {
   phoneNumber     String?
   shippingAddress String?
   billingAddress  String?
+  paymentMethod   Json?
+  orders          Order[]
   createdAt       DateTime @default(now())
   updatedAt       DateTime @updatedAt
 }
 
+model Order {
+  id          String   @id @map("_id") @default(auto()) @db.ObjectId
+  userId      String   @db.ObjectId
+  user        User     @relation(fields: [userId], references: [id])
+  orderNumber String   @unique
+  items       OrderItem[]
+  total       Float
+  status      String   @default("pending") // pending, processing, shipped, delivered, cancelled, returned
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model OrderItem {
+  id        String  @id @map("_id") @default(auto()) @db.ObjectId
+  orderId   String  @db.ObjectId
+  order     Order   @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  productId String
+  name      String
+  price     Float
+  quantity  Int
+  image     String?
+}
+
 model Product {
   id          String   @id @map("_id") @default(auto()) @db.ObjectId
-  jsonId      String   @unique
+  jsonId      String?  @unique
   name        String
-  brand       String?
-  stock       Int?
-  quantity    Int?
+  description String?
   price       Float
-  discount    Float?
-  rating      Float?
-  reviews     Int?
-  recommended Boolean? @default(false)
-  colors      String[] @default([])
-  images      Json
-  description Json
+  image       String?
   category    String?
-  featured    Boolean? @default(false)
-  newProduct  Boolean?  @map("new_product") @default(false)
-  fullDetails Json     @map("full_details")
+  stock       Int      @default(0)
+  isActive    Boolean  @default(true)
   createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }

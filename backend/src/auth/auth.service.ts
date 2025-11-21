@@ -156,6 +156,7 @@ export class AuthService {
       phoneNumber: user.phoneNumber,
       shippingAddress: user.shippingAddress,
       billingAddress: user.billingAddress,
+      paymentMethod: user.paymentMethod,
     };
   }
 
@@ -176,6 +177,79 @@ export class AuthService {
       phoneNumber: user.phoneNumber,
       shippingAddress: user.shippingAddress,
       billingAddress: user.billingAddress,
+      paymentMethod: user.paymentMethod,
     };
+  }
+
+  async changePassword(userId: string, currentPassword: string, newPassword: string) {
+    const user = await this.prisma.user.findUnique({
+      where: { id: userId },
+    });
+
+    if (!user) {
+      throw new UnauthorizedException('User not found');
+    }
+
+    const isCurrentPasswordValid = await bcrypt.compare(currentPassword, user.password);
+    if (!isCurrentPasswordValid) {
+      throw new UnauthorizedException('Current password is incorrect');
+    }
+
+    const hashedNewPassword = await bcrypt.hash(newPassword, 10);
+    await this.prisma.user.update({
+      where: { id: userId },
+      data: { password: hashedNewPassword },
+    });
+
+    return { message: 'Password changed successfully' };
+  }
+
+  async getOrders(userId: string) {
+    const orders = await this.prisma.order.findMany({
+      where: { userId },
+      include: {
+        items: true,
+      },
+      orderBy: { createdAt: 'desc' },
+    });
+
+    return orders;
+  }
+
+  async getOrder(userId: string, orderId: string) {
+    const order = await this.prisma.order.findFirst({
+      where: { id: orderId, userId },
+      include: {
+        items: true,
+      },
+    });
+
+    if (!order) {
+      throw new UnauthorizedException('Order not found');
+    }
+
+    return order;
+  }
+
+  async updateOrder(userId: string, orderId: string, updateData: any) {
+    // First check if the order belongs to the user
+    const order = await this.prisma.order.findFirst({
+      where: { id: orderId, userId },
+    });
+
+    if (!order) {
+      throw new UnauthorizedException('Order not found');
+    }
+
+    // Update the order
+    const updatedOrder = await this.prisma.order.update({
+      where: { id: orderId },
+      data: updateData,
+      include: {
+        items: true,
+      },
+    });
+
+    return updatedOrder;
   }
 }

@@ -84,7 +84,7 @@ async function main() {
 
   for (const u of users) {
     const hashedPassword = await bcrypt.hash(u.password, 10);
-    await prisma.user.upsert({
+    const user = await prisma.user.upsert({
       where: { email: u.email },
       update: {
         name: u.name,
@@ -112,6 +112,52 @@ async function main() {
         billingAddress: u.billingAddress,
       },
     });
+
+    // Create dummy orders for users
+    if (u.role === 'user') {
+      const order1 = await prisma.order.create({
+        data: {
+          userId: user.id,
+          orderNumber: `ORD-${user.id.slice(-6).toUpperCase()}-001`,
+          total: 120,
+          status: 'delivered',
+          items: {
+            create: [
+              {
+                productId: '1',
+                name: '3 Seater Sofa',
+                price: 120,
+                quantity: 1,
+                image: '/images/products/product1.1.jpg',
+              },
+            ],
+          },
+        },
+      });
+
+      const order2 = await prisma.order.create({
+        data: {
+          userId: user.id,
+          orderNumber: `ORD-${user.id.slice(-6).toUpperCase()}-002`,
+          total: 200,
+          status: 'cancelled',
+          items: {
+            create: [
+              {
+                productId: '2',
+                name: 'Single Bed',
+                price: 200,
+                quantity: 1,
+                image: '/images/products/product2.1.jpg',
+              },
+            ],
+          },
+        },
+      });
+
+      console.log(`Created orders for user ${u.email}`);
+    }
+
     console.log(`Upserted user ${u.email} - ${u.name}`);
   }
 }

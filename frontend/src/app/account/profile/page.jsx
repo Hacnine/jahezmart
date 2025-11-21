@@ -1,9 +1,13 @@
 "use client";
 
 import ProfileCard from "../../../components/card/ProfileCard";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useGetProfileQuery, useUpdateProfileMutation } from "../../../store/api";
 
 const ProfileForm = ({params}) => {
+  const { data: profile, isLoading } = useGetProfileQuery();
+  const [updateProfile, { isLoading: isUpdating }] = useUpdateProfileMutation();
+
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [birthday, setBirthday] = useState("");
@@ -11,11 +15,38 @@ const ProfileForm = ({params}) => {
   const [email, setEmail] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
 
-  const handleSubmit = (e) => {
+  useEffect(() => {
+    if (profile) {
+      setFirstName(profile.firstName || "");
+      setLastName(profile.lastName || "");
+      setBirthday(profile.birthday ? profile.birthday.split('T')[0] : "");
+      setGender(profile.gender || "");
+      setEmail(profile.email || "");
+      setPhoneNumber(profile.phoneNumber || "");
+    }
+  }, [profile]);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Add your logic here to save changes
+    try {
+      await updateProfile({
+        firstName,
+        lastName,
+        birthday: birthday ? new Date(birthday) : null,
+        gender,
+        email,
+        phoneNumber,
+      }).unwrap();
+      alert("Profile updated successfully!");
+    } catch (error) {
+      console.error("Failed to update profile:", error);
+      alert("Failed to update profile. Please try again.");
+    }
   };
 
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div className=" md:ml-8 text-gray-600 text-base font-sans mb-10 w-full md:mt-10">
@@ -108,9 +139,10 @@ const ProfileForm = ({params}) => {
             <div className="col-span-2">
               <button
                 type="submit"
+                disabled={isUpdating}
                 className=" border border-orangeRed bg-orangeRed hover:bg-transparent text-white transition-colors  hover:text-orangeRed font-medium text-sm px-4 py-2 rounded"
               >
-                SAVE CHANGES
+                {isUpdating ? "Saving..." : "SAVE CHANGES"}
               </button>
             </div>
           </form>

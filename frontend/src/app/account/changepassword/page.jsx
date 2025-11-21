@@ -3,15 +3,34 @@ import ProfileCard from "../../../components/card/ProfileCard";
 import AccountSideBar from "../../../components/common/sidebar/AccountSideBar";
 import CustomBreadcrumbs from "../../../components/common/ui/CustomBreadcrumbs";
 import React, { useState } from "react";
+import { useChangePasswordMutation } from "../../../store/api";
 
 const ChangePasswordForm = () => {
+  const [changePassword, { isLoading }] = useChangePasswordMutation();
+
   const [currentPassword, setCurrentPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [retypePassword, setRetypePassword] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Add your logic here to handle password change
+    if (newPassword !== retypePassword) {
+      alert("New passwords do not match!");
+      return;
+    }
+    try {
+      await changePassword({
+        currentPassword,
+        newPassword,
+      }).unwrap();
+      alert("Password changed successfully!");
+      setCurrentPassword("");
+      setNewPassword("");
+      setRetypePassword("");
+    } catch (error) {
+      console.error("Failed to change password:", error);
+      alert("Failed to change password. Please check your current password.");
+    }
   };
 
   return (
@@ -67,9 +86,10 @@ const ChangePasswordForm = () => {
             </div>
             <button
               type="submit"
+              disabled={isLoading}
               className=" col-start-7 col-span-1 border border-orangeRed bg-orangeRed hover:bg-transparent text-white transition-colors  hover:text-orangeRed font-medium text-sm px-4 py-2 rounded"
             >
-              SAVE CHANGES
+              {isLoading ? "Changing..." : "SAVE CHANGES"}
             </button>{" "}
           </form>
         </div>

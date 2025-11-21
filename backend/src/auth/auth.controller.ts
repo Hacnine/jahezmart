@@ -1,4 +1,4 @@
-import { Controller, Post, Body, Get, Patch, UseGuards, Request } from '@nestjs/common';
+import { Controller, Post, Body, Get, Patch, UseGuards, Request, Param } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { RegisterDto, LoginDto, OAuthDto } from './dto/auth.dto';
 import { JwtAuthGuard } from './guards/jwt-auth.guard';
@@ -32,5 +32,29 @@ export class AuthController {
   @Patch('profile')
   async updateProfile(@Request() req, @Body() updateData: any) {
     return this.authService.updateProfile(req.user.id, updateData);
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Post('change-password')
+  async changePassword(@Request() req, @Body() changePasswordDto: { currentPassword: string; newPassword: string }) {
+    return this.authService.changePassword(req.user.id, changePasswordDto.currentPassword, changePasswordDto.newPassword);
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Get('orders')
+  async getOrders(@Request() req) {
+    return this.authService.getOrders(req.user.id);
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Get('orders/:id')
+  async getOrder(@Request() req, @Param('id') orderId: string) {
+    return this.authService.getOrder(req.user.id, orderId);
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Patch('orders/:id')
+  async updateOrder(@Request() req, @Param('id') orderId: string, @Body() updateData: any) {
+    return this.authService.updateOrder(req.user.id, orderId, updateData);
   }
 }

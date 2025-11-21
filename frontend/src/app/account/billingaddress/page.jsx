@@ -3,9 +3,13 @@
 import ProfileCard from "../../../components/card/ProfileCard";
 import AccountSideBar from "../../../components/common/sidebar/AccountSideBar";
 import CustomBreadcrumbs from "../../../components/common/ui/CustomBreadcrumbs";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useGetProfileQuery, useUpdateProfileMutation } from "../../../store/api";
 
 const BillingAddress = () => {
+  const { data: profile, isLoading } = useGetProfileQuery();
+  const [updateProfile, { isLoading: isUpdating }] = useUpdateProfileMutation();
+
   const [fullName, setFullName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [country, setCountry] = useState("");
@@ -14,14 +18,39 @@ const BillingAddress = () => {
   const [area, setArea] = useState("");
   const [address, setAddress] = useState("");
 
-  const countries = ["Country A", "Country B", "Country C"]; 
-  const regions = ["Region A", "Region B", "Region C"]; 
-  const cities = ["City A", "City B", "City C"]; 
-  const areas = ["Area A", "Area B", "Area C"];
+  const countries = ["Bangladesh", "India", "Pakistan", "USA"];
+  const regions = ["Dhaka", "Chittagong", "Khulna", "Rajshahi"];
+  const cities = ["Dhaka", "Chittagong", "Khulna", "Rajshahi"];
+  const areas = ["Mirpur", "Gulshan", "Banani", "Uttara"];
 
-  const handleSubmit = (e) => {
+  useEffect(() => {
+    if (profile?.billingAddress) {
+      const addr = profile.billingAddress;
+      setAddress(addr);
+    }
+    if (profile?.phoneNumber) {
+      setPhoneNumber(profile.phoneNumber);
+    }
+    if (profile?.name) {
+      setFullName(profile.name);
+    }
+  }, [profile]);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    try {
+      const billingAddress = `${fullName}, ${phoneNumber}, ${country}, ${region}, ${city}, ${area}, ${address}`;
+      await updateProfile({ billingAddress }).unwrap();
+      alert("Billing address updated successfully!");
+    } catch (error) {
+      console.error("Failed to update billing address:", error);
+      alert("Failed to update billing address. Please try again.");
+    }
   };
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div className="md:ml-8 md:mt-10 font-sans text-sm text-gray-600 w-full">
@@ -152,9 +181,10 @@ const BillingAddress = () => {
             <div className="col-span-2">
               <button
                 type="submit"
+                disabled={isUpdating}
                 className=" border border-orangeRed bg-orangeRed hover:bg-transparent text-white transition-colors  hover:text-orangeRed font-medium text-sm px-4 py-2 rounded"
               >
-                SAVE CHANGES
+                {isUpdating ? "Saving..." : "SAVE CHANGES"}
               </button>
             </div>
           </form>
