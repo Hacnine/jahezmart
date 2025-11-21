@@ -17,25 +17,27 @@ async function main() {
   const products = JSON.parse(raw);
 
   for (const p of products) {
+    // Map incoming product shape to Prisma Product model fields
+    const imagesObj = p.images ?? {};
+    const firstImage = imagesObj[Object.keys(imagesObj || {})[0]]?.[0] || p.image || null;
+    let descriptionText = "";
+    if (Array.isArray(p.description)) {
+      descriptionText = p.description
+        .map((d: any) => (d && d.title && d.description ? `${d.title}: ${d.description}` : JSON.stringify(d)))
+        .join("\n");
+    } else if (typeof p.description === "string") {
+      descriptionText = p.description;
+    }
+
     const data: any = {
-      jsonId: String(p.id ?? ''),
-      name: p.name ?? '',
-      brand: p.brand ?? null,
-      stock: p.stock != null ? Number(p.stock) : null,
-      quantity: p.quantity != null ? Number(p.quantity) : null,
+      jsonId: String(p.id ?? ""),
+      name: p.name ?? "",
+      description: descriptionText || null,
       price: p.price != null ? Number(p.price) : 0,
-      discount: p.discount != null ? Number(p.discount) : null,
-      rating: p.rating != null ? Number(p.rating) : null,
-      reviews: p.reviews != null ? Number(p.reviews) : null,
-      recommended: !!p.recommended,
-      colors: Array.isArray(p.colors) ? p.colors.map(String) : [],
-      images: p.images ?? {},
-      description: p.description ?? [],
+      image: firstImage,
       category: p.category ?? null,
-      featured: !!p.featured,
-      // use Prisma model field names
-      newProduct: !!p.new_product || !!p.newProduct,
-      fullDetails: p.full_details ?? p.fullDetails ?? [],
+      stock: p.stock != null ? Number(p.stock) : 0,
+      isActive: p.isActive != null ? !!p.isActive : true,
     };
 
     await prisma.product.upsert({
@@ -115,10 +117,17 @@ async function main() {
 
     // Create dummy orders for users
     if (u.role === 'user') {
-      const order1 = await prisma.order.create({
-        data: {
+      const orderNumber1 = `ORD-${user.id.slice(-6).toUpperCase()}-001`;
+      const order1 = await prisma.order.upsert({
+        where: { orderNumber: orderNumber1 },
+        update: {
           userId: user.id,
-          orderNumber: `ORD-${user.id.slice(-6).toUpperCase()}-001`,
+          total: 120,
+          status: 'delivered',
+        },
+        create: {
+          userId: user.id,
+          orderNumber: orderNumber1,
           total: 120,
           status: 'delivered',
           items: {
@@ -135,10 +144,17 @@ async function main() {
         },
       });
 
-      const order2 = await prisma.order.create({
-        data: {
+      const orderNumber2 = `ORD-${user.id.slice(-6).toUpperCase()}-002`;
+      const order2 = await prisma.order.upsert({
+        where: { orderNumber: orderNumber2 },
+        update: {
           userId: user.id,
-          orderNumber: `ORD-${user.id.slice(-6).toUpperCase()}-002`,
+          total: 200,
+          status: 'cancelled',
+        },
+        create: {
+          userId: user.id,
+          orderNumber: orderNumber2,
           total: 200,
           status: 'cancelled',
           items: {
@@ -156,6 +172,138 @@ async function main() {
       });
 
       console.log(`Created orders for user ${u.email}`);
+    }
+
+    // Create dummy cart and wishlist items for users
+    if (u.role === 'user') {
+      // pick first two products from products list if available
+      const prod1 = products[0];
+      const prod2 = products[1] || products[0];
+
+      if (prod1) {
+        const existingCart = await prisma.cartItem.findFirst({ where: { userId: user.id, productId: String(prod1.id) } });
+        if (!existingCart) {
+          await prisma.cartItem.create({
+            data: {
+              userId: user.id,
+              productId: String(prod1.id),
+              name: prod1.name || 'Sample Product',
+              price: Number(prod1.price || 0),
+              quantity: 1,
+              image: prod1.images?.[Object.keys(prod1.images || {})?.[0]]?.[0] || null,
+            },
+          });
+        }
+
+        const existingWishlist = await prisma.wishlistItem.findFirst({ where: { userId: user.id, productId: String(prod2.id) } });
+        if (!existingWishlist) {
+          await prisma.wishlistItem.create({
+            data: {
+              userId: user.id,
+              productId: String(prod2.id),
+              name: prod2.name || 'Sample Product',
+              price: Number(prod2.price || 0),
+              image: prod2.images?.[Object.keys(prod2.images || {})?.[0]]?.[0] || null,
+            },
+          });
+        }
+      }
+      // Additional seeding for Abdullah specifically
+      if (u.email === 'abdullah@example.com') {
+        // create a couple more cart items
+        const extraProds = products.slice(2, 5);
+        for (const p of extraProds) {
+          const pid = String(p.id);
+          const exists = await prisma.cartItem.findFirst({ where: { userId: user.id, productId: pid } });
+          if (!exists) {
+            await prisma.cartItem.create({
+              data: {
+                userId: user.id,
+                productId: pid,
+                name: p.name || 'Sample Product',
+                price: Number(p.price || 0),
+                quantity: 1,
+                image: p.images?.[Object.keys(p.images || {})?.[0]]?.[0] || null,
+              },
+            });
+          }
+        }
+
+        // create a couple more wishlist items
+        const wishProds = products.slice(5, 8);
+        for (const p of wishProds) {
+          const pid = String(p.id);
+          const existsW = await prisma.wishlistItem.findFirst({ where: { userId: user.id, productId: pid } });
+          if (!existsW) {
+            await prisma.wishlistItem.create({
+              data: {
+                userId: user.id,
+                productId: pid,
+                name: p.name || 'Sample Product',
+                price: Number(p.price || 0),
+                image: p.images?.[Object.keys(p.images || {})?.[0]]?.[0] || null,
+              },
+            });
+          }
+        }
+
+        // create an additional delivered order (returnable) and a returned order
+        const orderNumber3 = `ORD-${user.id.slice(-6).toUpperCase()}-003`;
+        const deliveredOrder = await prisma.order.upsert({
+          where: { orderNumber: orderNumber3 },
+          update: {
+            userId: user.id,
+            total: 350,
+            status: 'delivered',
+          },
+          create: {
+            userId: user.id,
+            orderNumber: orderNumber3,
+            total: 350,
+            status: 'delivered',
+            items: {
+              create: [
+                {
+                  productId: String(products[2]?.id || ''),
+                  name: products[2]?.name || 'Delivered Item',
+                  price: Number(products[2]?.price || 0),
+                  quantity: 1,
+                  image: products[2]?.images?.[Object.keys(products[2].images || {})?.[0]]?.[0] || null,
+                },
+              ],
+            },
+          },
+        });
+
+        const orderNumber4 = `ORD-${user.id.slice(-6).toUpperCase()}-004`;
+        const returnedOrder = await prisma.order.upsert({
+          where: { orderNumber: orderNumber4 },
+          update: {
+            userId: user.id,
+            total: 150,
+            status: 'returned',
+          },
+          create: {
+            userId: user.id,
+            orderNumber: orderNumber4,
+            total: 150,
+            status: 'returned',
+            items: {
+              create: [
+                {
+                  productId: String(products[3]?.id || ''),
+                  name: products[3]?.name || 'Returned Item',
+                  price: Number(products[3]?.price || 0),
+                  quantity: 1,
+                  image: products[3]?.images?.[Object.keys(products[3].images || {})?.[0]]?.[0] || null,
+                },
+              ],
+            },
+          },
+        });
+      }
+
+      console.log(`Created cart/wishlist items for user ${u.email}`);
     }
 
     console.log(`Upserted user ${u.email} - ${u.name}`);
